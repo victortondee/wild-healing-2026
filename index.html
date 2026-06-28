@@ -442,6 +442,12 @@ body.is-navigating .route-veil{ display:block; animation:screen-focus .8s var(--
 .hero .anim{ opacity:0; transform:translateY(26px); animation:hero-up 1.1s var(--ease) forwards; }
 .hero .a1{ animation-delay:.15s; } .hero .a2{ animation-delay:.32s; } .hero .a3{ animation-delay:.5s; } .hero .a4{ animation-delay:.66s; } .hero .a5{ animation-delay:.82s; }
 @keyframes hero-up{ to{ opacity:1; transform:none; } }
+/* After the first SPA navigation, show hero content statically (no entrance
+   animation). iOS Safari does not reliably replay a CSS animation when the
+   router toggles a page from display:none back to block, which left the hero
+   content stuck at opacity:0 when returning home via the logo. The .nav-since-load
+   flag is set by the router on the first route change after initial load. */
+html.nav-since-load .hero .anim{ opacity:1; transform:none; animation:none; }
 @media (prefers-reduced-motion: reduce){ .hero .anim{ opacity:1; transform:none; animation:none; } }
 
 .scroll-chevron{ position:absolute; left:50%; bottom:1.4rem; transform:translateX(-50%); z-index:5; display:flex; align-items:center; justify-content:center; color:var(--sage); }
@@ -2622,6 +2628,9 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     var routeChanged = (st.route !== renderedRoute);
 
     if(routeChanged){
+      // after the first navigation, hero content renders statically (see CSS):
+      // iOS Safari won't reliably replay the entrance animation on re-show.
+      if(renderedRoute !== null){ document.documentElement.classList.add("nav-since-load"); }
       routes.forEach(function(r){ pages[r].classList.toggle("active", r === st.route); });
       document.body.setAttribute("data-page", st.route);
       renderedRoute = st.route;
