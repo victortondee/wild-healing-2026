@@ -1256,8 +1256,9 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 .hero.hero--light.hero--black.hero--altfmt .hdate.land .hd-num,
 .hero.hero--light.hero--black.hero--altfmt .hdate.land .hd-mon{ color:var(--lantern-lo); }
 .hero.hero--light.hero--black.hero--altfmt .btn-ghost{ color:var(--ink-deep); border-color:var(--line-deep-2); }
-/* draft variant: home hero on a solid white background (drop the photo + bottom fade). */
-.hero.hero--light.hero--white{ background:#fff; background-image:none; }
+/* draft variant: mobile gets the 31:69 fabric photo (see media query below);
+   all other breakpoints inherit the landing hero's background image. The ::after
+   placeholder fade stays off so the mobile fabric crop reads clean. */
 .hero.hero--light.hero--white::after{ display:none; }
 /* mobile: the white-bg draft hero takes the flowing-fabric photo as its
    background, with the section locked to the image's 31:69 portrait ratio so
