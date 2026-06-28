@@ -3,17 +3,23 @@
 Single-page site for **WILD! Healing 2026** — a Restore Forward gathering.
 Online Sept 17–18, on-the-land gathering Sept 19 in Ava, New York.
 
-## Preview access
+## Files
 
-The site is currently a **private preview**: `index.html` is a branded password
-screen that renders the full site once the correct password is entered
-(remembered for 10 days per browser via `localStorage`). This is a soft gate for
-casual visitors — the content is base64-embedded, not strongly encrypted.
+- **`site-source.html`** — the editable site (the actual content). **Edit this.**
+- **`build-gate.py`** — regenerates the password-gated `index.html` from `site-source.html`.
+- **`index.html`** — the **published, password-gated** page (built — do not edit by hand; it gets overwritten on rebuild). The real site loads normally with an opaque password overlay on top; the correct password removes it and is remembered for 10 days. Soft gate for casual visitors, not strong encryption.
+- `CNAME` — custom domain (`wildgala.com`).
 
-- **`index.html`** — the published, password-gated page (fully self-contained).
-- The plaintext source and the gate build script are kept locally, not in this repo.
+## Editing the site
+
+1. Edit `site-source.html`.
+2. Rebuild the gate:
+   ```
+   python3 build-gate.py <password>
+   ```
+3. Commit `site-source.html` and `index.html`.
 
 ## Hosting
 
-Served via GitHub Pages from the repository root. Custom domain `wildgala.com`
-(via Namecheap) to be connected.
+Served via GitHub Pages from the repository root, live at **https://wildgala.com**
+(custom domain via Namecheap).

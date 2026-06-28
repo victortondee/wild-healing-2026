@@ -10,8 +10,5 @@ archive/
 # internal handoff / working notes
 wild-healing-2026-handoff.md
 
-# password-gate build: plaintext source + tooling stay local;
-# only the built (gated) index.html is published
-site-source.html
-build-gate.py
+# old version snapshot (kept local)
 wild-healing-2026-v10.html
