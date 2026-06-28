@@ -944,8 +944,13 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 .hero.hero--light a.hdate::after{ background:var(--lantern-lo); }
 .hero.hero--light .btn-primary{ background:linear-gradient(180deg, var(--lantern-hi), var(--lantern)); color:var(--cream); box-shadow:0 1px 0 rgba(255,243,222,0.22) inset, 0 10px 30px -14px var(--glow); }
 .hero.hero--light .btn-primary:hover{ box-shadow:0 18px 44px -18px rgba(11,33,42,0.6); }
-.hero.hero--light .btn-ghost{ color:var(--ink-deep); border-color:var(--line-deep-2); background:rgba(255,255,255,0.5); -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px); }
-.hero.hero--light .btn-ghost:hover{ color:var(--ink-deep); border-color:var(--ink-deep); background:rgba(255,255,255,0.68); }
+.hero.hero--light .btn-ghost{ color:var(--ink-deep); border-color:var(--line-deep-2); }
+.hero.hero--light .btn-ghost:hover{ color:var(--ink-deep); border-color:var(--ink-deep); }
+/* mobile only: keep the semi-transparent white layer behind the hero ghost button; desktop has none */
+@media (max-width:760px){
+  .hero.hero--light .btn-ghost{ background:rgba(255,255,255,0.5); -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px); }
+  .hero.hero--light .btn-ghost:hover{ background:rgba(255,255,255,0.68); }
+}
 
 /* ============================================================
    DRAFT v9 — WHY NOW, light treatment v2 — BRIGHT type on the image.
