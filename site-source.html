@@ -1244,6 +1244,16 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 .hero.hero--light.hero--black .hdate.land .hd-mon{ color:var(--lantern-hi); }
 .hero.hero--light.hero--black .btn-primary{ background:linear-gradient(180deg, var(--lantern-hi), var(--lantern)); color:var(--cream); box-shadow:0 10px 30px -14px var(--glow); }
 .hero.hero--light.hero--black .btn-ghost{ color:var(--cream); border-color:rgba(236,227,207,0.5); }
+/* draft variant: black background, but the date tiles + "Read the invitation"
+   ghost button keep the landing-page (light) formatting instead of the cream remap. */
+.hero.hero--light.hero--black.hero--altfmt .hd-tag{ color:var(--ink-deep-2); }
+.hero.hero--light.hero--black.hero--altfmt .hd-num{ color:var(--ink-deep); }
+.hero.hero--light.hero--black.hero--altfmt .hd-mon{ color:var(--ink-deep-2); }
+.hero.hero--light.hero--black.hero--altfmt .hd-div{ background:var(--line-deep); }
+.hero.hero--light.hero--black.hero--altfmt .hdate.land .hd-tag,
+.hero.hero--light.hero--black.hero--altfmt .hdate.land .hd-num,
+.hero.hero--light.hero--black.hero--altfmt .hdate.land .hd-mon{ color:var(--lantern-lo); }
+.hero.hero--light.hero--black.hero--altfmt .btn-ghost{ color:var(--ink-deep); border-color:var(--line-deep-2); }
 
 /* Why Now paragraphs: same shadow as the Gathering header (desktop photo only) */
 @media (min-width:761px){ .why-now--light p{ text-shadow:0 1px 20px rgba(4,12,8,0.9), 0 1px 4px rgba(4,12,8,0.6); } }
@@ -2108,8 +2118,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <h1>Drafts</h1>
     <p class="lede dim">A staging area for sections in progress, before they go live. This page isn't linked publicly.</p>
   </div>
-  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · Home hero — duplicate of landing page</span></div>
-  <section class="hero hero--flat hero--light">
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · Home hero (black bg) — dates &amp; ghost button in landing/light formatting</span></div>
+  <section class="hero hero--flat hero--light hero--black hero--altfmt">
     <div class="hero-motes" aria-hidden="true">
       <span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span>
       <span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span>
