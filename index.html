@@ -1281,6 +1281,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   }
   /* nudge the content (not the bg photo) down a touch on mobile */
   .hero.hero--light.hero--white .hero-inner{ transform:translateY(40px); }
+  /* on-the-land "19" in clay-rose on mobile (override the black land-date treatment) */
+  .hero.hero--light.hero--white .hdate.land .hd-tag,
+  .hero.hero--light.hero--white .hdate.land .hd-num,
+  .hero.hero--light.hero--white .hdate.land .hd-mon{ color:var(--lantern-lo); }
 }
 
 /* Why Now paragraphs: same shadow as the Gathering header (desktop photo only) */
