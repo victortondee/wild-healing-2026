@@ -1,0 +1,11 @@
+# OS / editor cruft
+.DS_Store
+
+# local tooling
+.claude/
+
+# large uncompressed backups (kept locally only)
+archive/
+
+# internal handoff / working notes
+wild-healing-2026-handoff.md
