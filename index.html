@@ -1259,6 +1259,20 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 /* draft variant: home hero on a solid white background (drop the photo + bottom fade). */
 .hero.hero--light.hero--white{ background:#fff; background-image:none; }
 .hero.hero--light.hero--white::after{ display:none; }
+/* mobile: the white-bg draft hero takes the flowing-fabric photo as its
+   background, with the section locked to the image's 31:69 portrait ratio so
+   it fits edge to edge without cropping. */
+@media (max-width:760px){
+  .hero.hero--light.hero--white{
+    aspect-ratio:31 / 69;
+    min-height:0;
+    background-color:#fff;
+    background-image:url("images/white-fabric.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+  }
+}
 
 /* Why Now paragraphs: same shadow as the Gathering header (desktop photo only) */
 @media (min-width:761px){ .why-now--light p{ text-shadow:0 1px 20px rgba(4,12,8,0.9), 0 1px 4px rgba(4,12,8,0.6); } }
