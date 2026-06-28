@@ -1265,8 +1265,14 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
    it fits edge to edge without cropping. */
 @media (max-width:760px){
   .hero.hero--light.hero--white{
-    aspect-ratio:31 / 69;
-    min-height:0;
+    /* 31:69 portrait box expressed via min-height rather than aspect-ratio:
+       iOS Safari collapses aspect-ratio boxes to height 0 when the SPA toggles
+       a page from display:none back to display:block (e.g. tapping the logo to
+       return home), which made the hero look like it failed to load. min-height
+       with vw gives the identical height and survives the display toggle. */
+    min-height: calc(100vw * 69 / 31);
+    aspect-ratio: auto;   /* override the <=480px landing 2/5 rule; height comes from min-height only */
+    padding-bottom: clamp(3rem, 7vh, 5rem);  /* drop the old hero's 12rem placeholder band so min-height holds 31:69 */
     background-color:#fff;
     background-image:url("images/white-fabric.jpg");
     background-size:cover;
