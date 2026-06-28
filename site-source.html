@@ -1431,82 +1431,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <p class="dim mt-s">Choose how you'll join the circle — the two online days, the gathering on the land, or a patron seat that holds space for someone who couldn't otherwise be there.</p>
       </div>
 
-      <div class="tixform reveal d1">
-        <!-- pass selection -->
-        <div class="tixform-passes">
-          <div class="tixrow" data-pass="Summit Pass" data-price="0">
-            <div class="tixrow-info">
-              <span class="htix-tag">Online</span>
-              <span class="htix-name">Summit Pass</span>
-              <span class="htix-desc">Both online days — Sept 17 &amp; 18. Join the virtual summit from anywhere.</span>
-            </div>
-            <div class="tixrow-action">
-              <span class="tixrow-price" data-price-label>$&nbsp;—</span>
-              <div class="qty">
-                <button type="button" class="qty-btn" data-step="-1" aria-label="Remove one Summit Pass">−</button>
-                <span class="qty-num" data-count>0</span>
-                <button type="button" class="qty-btn" data-step="1" aria-label="Add one Summit Pass">+</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tixrow" data-pass="The Gathering" data-price="0">
-            <div class="tixrow-info">
-              <span class="htix-tag">On the land</span>
-              <span class="htix-name">The Gathering</span>
-              <span class="htix-desc">Sept 19 in Ava, New York — the feast, the performance, and the medicine walk.</span>
-            </div>
-            <div class="tixrow-action">
-              <span class="tixrow-price" data-price-label>$&nbsp;—</span>
-              <div class="qty">
-                <button type="button" class="qty-btn" data-step="-1" aria-label="Remove one Gathering ticket">−</button>
-                <span class="qty-num" data-count>0</span>
-                <button type="button" class="qty-btn" data-step="1" aria-label="Add one Gathering ticket">+</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tixrow" data-pass="Patron Seat" data-price="0">
-            <div class="tixrow-info">
-              <span class="htix-tag">Give a seat</span>
-              <span class="htix-name">Patron</span>
-              <span class="htix-desc">Fund a healer's seat — help someone walk with us who otherwise couldn't.</span>
-            </div>
-            <div class="tixrow-action">
-              <span class="tixrow-price" data-price-label>$&nbsp;—</span>
-              <div class="qty">
-                <button type="button" class="qty-btn" data-step="-1" aria-label="Remove one Patron seat">−</button>
-                <span class="qty-num" data-count>0</span>
-                <button type="button" class="qty-btn" data-step="1" aria-label="Add one Patron seat">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- order summary + details -->
-        <div class="tixform-checkout">
-          <div class="tixsummary">
-            <span class="ts-label">Your selection</span>
-            <ul class="ts-list" data-summary>
-              <li class="ts-empty">No passes selected yet.</li>
-            </ul>
-            <div class="ts-total"><span>Total</span><span data-total>—</span></div>
-          </div>
-          <form id="tixForm" novalidate>
-            <div class="field">
-              <label for="tixName">Full name</label>
-              <input type="text" id="tixName" name="name" placeholder="Your name" autocomplete="name" />
-            </div>
-            <div class="field">
-              <label for="tixEmail">Email</label>
-              <input type="email" id="tixEmail" name="email" placeholder="you@email.com" autocomplete="email" />
-            </div>
-            <div class="form-msg" id="tixMsg" role="status" aria-live="polite"></div>
-            <!-- TODO before launch: set data-price on each .tixrow above (e.g. data-price="150"), and connect this submit to a real checkout/payment provider (Stripe, Eventbrite, etc.) -->
-            <button type="submit" class="btn btn-primary">Continue to checkout <span class="arrow">→</span></button>
-            <p class="note-soft">Secure payment on the next step. Patron seats are a gift — thank you.</p>
-          </form>
-        </div>
+      <div class="btn-row reveal d1" style="justify-content:center; margin-top:2.6rem">
+        <a href="https://ourpowerbase.net/" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -2083,6 +2009,94 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
     </div>
   </section>
+
+  <!-- archived: in-page ticket selector form (replaced on the Walk-with-us section by a single Get tickets button) -->
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head reveal" style="text-align:center; margin-inline:auto; max-width:46rem">
+        <span class="eyebrow"><span class="tick"></span>Retired · Ticket selector form</span>
+        <h2>Walk with us</h2>
+        <p class="dim mt-s">Choose how you'll join the circle — the two online days, the gathering on the land, or a patron seat that holds space for someone who couldn't otherwise be there.</p>
+      </div>
+
+      <div class="tixform reveal d1">
+        <!-- pass selection -->
+        <div class="tixform-passes">
+          <div class="tixrow" data-pass="Summit Pass" data-price="0">
+            <div class="tixrow-info">
+              <span class="htix-tag">Online</span>
+              <span class="htix-name">Summit Pass</span>
+              <span class="htix-desc">Both online days — Sept 17 &amp; 18. Join the virtual summit from anywhere.</span>
+            </div>
+            <div class="tixrow-action">
+              <span class="tixrow-price" data-price-label>$&nbsp;—</span>
+              <div class="qty">
+                <button type="button" class="qty-btn" data-step="-1" aria-label="Remove one Summit Pass">−</button>
+                <span class="qty-num" data-count>0</span>
+                <button type="button" class="qty-btn" data-step="1" aria-label="Add one Summit Pass">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tixrow" data-pass="The Gathering" data-price="0">
+            <div class="tixrow-info">
+              <span class="htix-tag">On the land</span>
+              <span class="htix-name">The Gathering</span>
+              <span class="htix-desc">Sept 19 in Ava, New York — the feast, the performance, and the medicine walk.</span>
+            </div>
+            <div class="tixrow-action">
+              <span class="tixrow-price" data-price-label>$&nbsp;—</span>
+              <div class="qty">
+                <button type="button" class="qty-btn" data-step="-1" aria-label="Remove one Gathering ticket">−</button>
+                <span class="qty-num" data-count>0</span>
+                <button type="button" class="qty-btn" data-step="1" aria-label="Add one Gathering ticket">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tixrow" data-pass="Patron Seat" data-price="0">
+            <div class="tixrow-info">
+              <span class="htix-tag">Give a seat</span>
+              <span class="htix-name">Patron</span>
+              <span class="htix-desc">Fund a healer's seat — help someone walk with us who otherwise couldn't.</span>
+            </div>
+            <div class="tixrow-action">
+              <span class="tixrow-price" data-price-label>$&nbsp;—</span>
+              <div class="qty">
+                <button type="button" class="qty-btn" data-step="-1" aria-label="Remove one Patron seat">−</button>
+                <span class="qty-num" data-count>0</span>
+                <button type="button" class="qty-btn" data-step="1" aria-label="Add one Patron seat">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- order summary + details -->
+        <div class="tixform-checkout">
+          <div class="tixsummary">
+            <span class="ts-label">Your selection</span>
+            <ul class="ts-list" data-summary>
+              <li class="ts-empty">No passes selected yet.</li>
+            </ul>
+            <div class="ts-total"><span>Total</span><span data-total>—</span></div>
+          </div>
+          <form id="tixForm" novalidate>
+            <div class="field">
+              <label for="tixName">Full name</label>
+              <input type="text" id="tixName" name="name" placeholder="Your name" autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="tixEmail">Email</label>
+              <input type="email" id="tixEmail" name="email" placeholder="you@email.com" autocomplete="email" />
+            </div>
+            <div class="form-msg" id="tixMsg" role="status" aria-live="polite"></div>
+            <button type="submit" class="btn btn-primary">Continue to checkout <span class="arrow">→</span></button>
+            <p class="note-soft">Secure payment on the next step. Patron seats are a gift — thank you.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- ============================================================
@@ -2545,8 +2559,9 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 
   /* ---------- tickets order form ---------- */
   (function(){
-    var section = document.getElementById("tickets");
-    if(!section) return;
+    var form0 = document.getElementById("tixForm");
+    if(!form0) return;
+    var section = form0.closest(".tixform") || document;
     var rows = Array.prototype.slice.call(section.querySelectorAll(".tixrow"));
     var summary = section.querySelector("[data-summary]");
     var totalEl = section.querySelector("[data-total]");
