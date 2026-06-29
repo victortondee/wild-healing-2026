@@ -1366,6 +1366,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   .hero.hero--light.hero--white .btn-ghost:hover{ background:#fff; border-color:var(--ink-deep); color:var(--ink-deep); }
 }/* Why Now paragraphs: same shadow as the Gathering header (desktop photo only) */
 @media (min-width:761px){ .why-now--light p{ text-shadow:0 1px 20px rgba(4,12,8,0.9), 0 1px 4px rgba(4,12,8,0.6); } }
+/* Why Now: the "And still, you are here…" paragraph (incl. its glow-word) white over the photo at tablet+desktop */
+@media (min-width:761px){ .why-now--light .dim, .why-now--light .dim .glow-word{ color:#fff; } }
 /* tablet: Why Now — all text reads white over the photo */
 @media (min-width:761px) and (max-width:1024px){
   .why-now--light .eyebrow,
