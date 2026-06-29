@@ -1340,7 +1340,14 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   .hero--draftwhite .btn-ghost:hover{ background:#fff; border-color:var(--ink-deep); color:var(--ink-deep); }
 }
 
-/* Why Now paragraphs: same shadow as the Gathering header (desktop photo only) */
+/* TABLET (761–1024px): live landing hero takes the draft tablet treatment —
+   sky/fabric photo (right-anchored), content raised 30px, frosted ghost button. */
+@media (min-width:761px) and (max-width:1024px){
+  .hero.hero--light.hero--white{ background-color:#fff; background-image:url("images/hero-tablet.jpg"); background-size:cover; background-position:right center; background-repeat:no-repeat; }
+  .hero.hero--light.hero--white .hero-inner{ transform:translateY(-30px); }
+  .hero.hero--light.hero--white .btn-ghost{ background:rgba(255,255,255,0.82); -webkit-backdrop-filter:blur(5px); backdrop-filter:blur(5px); border-color:rgba(21,38,45,0.5); color:var(--ink-deep); box-shadow:0 10px 28px -18px rgba(11,33,42,0.55); }
+  .hero.hero--light.hero--white .btn-ghost:hover{ background:#fff; border-color:var(--ink-deep); color:var(--ink-deep); }
+}/* Why Now paragraphs: same shadow as the Gathering header (desktop photo only) */
 @media (min-width:761px){ .why-now--light p{ text-shadow:0 1px 20px rgba(4,12,8,0.9), 0 1px 4px rgba(4,12,8,0.6); } }
 
 /* ============================================================
@@ -1458,7 +1465,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <p class="hero-sub anim a3">A refusal to surrender our bodies — and an invitation to walk back and get what was lost.</p>
       <p class="hero-loc anim a4">
         <svg class="hl-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>The gathering, on the land in <a href="https://maps.app.goo.gl/PR75VYSk5743Q3dD7" target="_blank" rel="noopener">Ava, New York</a></span>
+        <span><a href="https://maps.app.goo.gl/PR75VYSk5743Q3dD7" target="_blank" rel="noopener">Ava, New York</a> & Online</span>
       </p>
       <div class="hero-dates anim a4">
         <a class="hdate" href="#/journey/day-one" aria-label="September 17, online — Day One">
