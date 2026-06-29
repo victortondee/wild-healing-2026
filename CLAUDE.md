@@ -49,6 +49,23 @@ A `git pull --rebase` may hit a conflict in `site-source.html`:
 - When practical, different chats should work on **different sections** of
   `site-source.html` — same-line conflicts then basically never happen.
 
+## Structural / global changes = do them SOLO
+
+Section separation only protects **localized** edits. A change is *cross-cutting*
+when it touches shared or structural code that affects the whole site, e.g.:
+
+- global CSS (`:root` variables, `.hero`, `.btn`, shared classes),
+- the router / page JS, the header / nav, or `<head>`,
+- architecture rebuilds: restructuring page containers, renaming classes,
+  splitting/reordering/moving large regions (these shift line ranges everywhere
+  and can conflict even across "different" sections).
+
+If the user asks for a structural or global change, **tell them it should be done
+solo** — i.e. no other chats editing `site-source.html` at the same time. Do the
+structural work in one chat, commit + push it, then parallel section work can
+resume on top of it. Don't start a cross-cutting edit while other chats may be
+mid-edit.
+
 ## Verifying changes
 
 Use the preview server (`.claude/launch.json` → `wildhealing`, port 8728) to
