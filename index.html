@@ -1044,6 +1044,10 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
   background-attachment: fixed;
   background-position: center 5rem;
 }
+/* TABLET/iPad — no parallax for Why Now (placed after the base fixed rule so it wins) */
+@media (min-width:761px) and (max-width:1024px){
+  .band.alt.why-now.why-now--light.wn-parallax{ background-attachment: scroll; background-position: center; }
+}
 @media (max-width:760px){
   .band.alt.why-now.why-now--light.wn-parallax{ background-attachment: scroll; background-position: center; }
 }
