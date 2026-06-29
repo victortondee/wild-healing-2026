@@ -78,8 +78,14 @@ mid-edit.
 
 ## Verifying changes
 
-Use the preview server (`.claude/launch.json` → `wildhealing`, port 8728) to
-check changes locally. Note: the offscreen preview freezes CSS animation clocks,
-so `getComputedStyle` may report `opacity:0` mid-animation even when a real
-browser would show the content — force a paint (screenshot) to verify, or assert
-on static (non-animated) styles.
+**Avoid `preview_eval` (and the preview server) as much as possible — it slows
+the process a lot.** Prefer reasoning about the CSS/HTML directly and trusting a
+careful edit. Use the preview only **rarely, when verification is genuinely
+unavoidable** (e.g. you can't otherwise be confident a layout/visual change is
+correct). For most edits, skip it and just commit.
+
+If you do need it: use the preview server (`.claude/launch.json` → `wildhealing`,
+port 8728). Note the offscreen preview freezes CSS animation clocks, so
+`getComputedStyle` may report `opacity:0` mid-animation even when a real browser
+would show the content — force a paint (screenshot) to verify, or assert on
+static (non-animated) styles.
