@@ -892,6 +892,8 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 .invitation-hero--light .eyebrow .tick{ background:var(--ink-deep-2); }
 .invitation-hero--light h1{ color:var(--ink-deep); }
 .invitation-hero--light .lede{ color:var(--ink-deep-2); }
+/* draft variant: invitation header on a solid white background (drop the photo) */
+.invitation-hero--light.invitation-hero--white{ background-color:#fff; background-image:none; }
 
 /* DRAFT v9 — The Gathering header (bright theme): cream/gold type on the sunset-fabric
    photo, darkened on the text side with a dark left scrim (same family as Why Now).
@@ -2251,6 +2253,14 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <h1>Drafts</h1>
     <p class="lede dim">A staging area for sections in progress, before they go live. This page isn't linked publicly.</p>
   </div>
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · Invitation header — solid white background</span></div>
+  <section class="band invitation-hero invitation-hero--light invitation-hero--white">
+    <div class="wrap page-intro">
+      <span class="eyebrow"><span class="tick"></span>The Invitation</span>
+      <h1>A love letter to those<br>who survived illness</h1>
+      <p class="lede dim">Read it slowly. It was written for you.</p>
+    </div>
+  </section>
   <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · Home hero (black bg) — dates &amp; ghost button in landing/light formatting</span></div>
   <section class="hero hero--flat hero--light hero--black hero--altfmt">
     <div class="hero-motes" aria-hidden="true">
