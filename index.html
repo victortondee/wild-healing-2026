@@ -591,9 +591,11 @@ body[data-page="invitation"]{ --lantern:#e2a25e; }
 /* big faint date watermark behind each day's title section */
 .day-band{ position:relative; overflow:hidden; }
 .day-band > .wrap{ position:relative; z-index:1; }
-.day-wm{ position:absolute; top:-0.12em; right:0.04em; z-index:0; pointer-events:none; user-select:none;
-  font-family:var(--ff-display); font-weight:300; line-height:0.8; letter-spacing:-0.03em;
-  font-size:clamp(9rem, 30vw, 26rem); color:var(--lantern); opacity:0.08; }
+.day-wm{ position:absolute; top:clamp(1.25rem,3vw,2.5rem); right:clamp(1rem,4vw,3.5rem); z-index:0;
+  pointer-events:none; user-select:none; display:flex; flex-direction:column; align-items:center;
+  font-family:var(--ff-display); font-weight:300; line-height:0.82; color:var(--lantern); opacity:0.12; }
+.day-wm .dw-mon{ font-size:clamp(0.9rem,2.4vw,1.6rem); letter-spacing:0.3em; text-transform:uppercase; margin-bottom:0.12em; }
+.day-wm .dw-num{ font-size:clamp(5rem,18vw,13rem); letter-spacing:-0.03em; }
 .trail{ position:relative; margin-top:3.2rem; padding-left:clamp(1.8rem,4vw,3.2rem); }
 .trail::before{ content:""; position:absolute; left:0.6rem; top:0.5rem; bottom:0.5rem; width:1px; background:linear-gradient(180deg, transparent, var(--line-strong) 6%, var(--line-strong) 94%, transparent); }
 @media (min-width:880px){ .trail::before{ left:0.75rem; } }
@@ -1692,7 +1694,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 
   <!-- DAY ONE -->
   <section class="band day-band">
-    <span class="day-wm" aria-hidden="true">17</span>
+    <span class="day-wm" aria-hidden="true"><span class="dw-mon">Sep</span><span class="dw-num">17</span></span>
     <div class="wrap">
       <div class="day-head reveal">
         <span class="dnum">Day One · September 17 · Online</span>
@@ -1777,7 +1779,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 
   <!-- DAY TWO -->
   <section class="band alt day-band" id="day-two">
-    <span class="day-wm" aria-hidden="true">18</span>
+    <span class="day-wm" aria-hidden="true"><span class="dw-mon">Sep</span><span class="dw-num">18</span></span>
     <div class="wrap">
       <div class="day-head reveal">
         <span class="dnum">Day Two · September 18 · Online</span>
