@@ -592,11 +592,12 @@ body[data-page="invitation"]{ --lantern:#e2a25e; }
 .day-band{ position:relative; overflow:hidden; }
 .day-band > .wrap{ position:relative; z-index:1; }
 .day-wm{ position:absolute; top:clamp(1.25rem,3vw,2.5rem); right:clamp(1rem,4vw,3.5rem); z-index:0;
-  pointer-events:none; user-select:none; display:flex; flex-direction:column; align-items:stretch; text-align:center;
+  pointer-events:none; user-select:none; display:flex; flex-direction:column; align-items:stretch; text-align:left;
   font-family:var(--ff-display); font-weight:300; line-height:0.82; color:var(--lantern); opacity:0.12; }
 .day-wm .dw-mon{ text-align:justify; text-align-last:justify; text-transform:uppercase;
   font-weight:500; font-size:clamp(1.5rem,5vw,3.3rem); margin-bottom:0.04em; }
-.day-wm .dw-num{ font-size:clamp(5rem,18vw,13rem); letter-spacing:-0.03em; }
+.day-wm .dw-num{ font-size:clamp(5rem,18vw,13rem); letter-spacing:-0.03em; text-align:left; padding-right:0.13em; }
+#day-two .day-wm .dw-num{ padding-right:0.02em; }   /* "8" has little right overhang vs the "7" swash */
 .trail{ position:relative; margin-top:3.2rem; padding-left:clamp(1.8rem,4vw,3.2rem); }
 .trail::before{ content:""; position:absolute; left:0.6rem; top:0.5rem; bottom:0.5rem; width:1px; background:linear-gradient(180deg, transparent, var(--line-strong) 6%, var(--line-strong) 94%, transparent); }
 @media (min-width:880px){ .trail::before{ left:0.75rem; } }
