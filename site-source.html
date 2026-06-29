@@ -856,6 +856,11 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 .why-now .wrap{ text-shadow: 0 1px 22px rgba(4,12,8,0.5); }
 
 #page-home .why-now .prose{ margin-inline-start: 0; }
+/* TABLET (761-1024px) — keep Why Now text in the left column, off the face on the right */
+@media (min-width:761px) and (max-width:1024px){
+  #page-home .why-now .section-head,
+  #page-home .why-now .prose{ max-width:58%; }
+}
 
 /* v8.4 — The Medicine Walk: fixed-attachment parallax background (.medicine-walk only) */
 .band.medicine-walk{
