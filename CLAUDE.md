@@ -15,6 +15,14 @@ below so chats don't overwrite or conflict with each other.
   automatically on every push to `main` (see `.github/workflows/build-gate.yml`).
   If you stage `index.html`, unstage it before committing.
 
+## Drafts page convention
+
+When adding a **new section to the Drafts page** (`#page-drafts` in
+`site-source.html`), insert it at the **top** of the drafts area — newest first,
+directly under the page intro — not appended at the bottom. Each draft gets its
+own labeled `<div class="wrap"><span class="eyebrow">…</span></div>` header above
+the section.
+
 ## Git workflow (do this yourself — the user shouldn't touch git)
 
 Work directly on `main`. For every change:
