@@ -1362,9 +1362,18 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   .hero.hero--light.hero--white .btn-ghost:hover{ background:#fff; border-color:var(--ink-deep); color:var(--ink-deep); }
 }/* Why Now paragraphs: same shadow as the Gathering header (desktop photo only) */
 @media (min-width:761px){ .why-now--light p{ text-shadow:0 1px 20px rgba(4,12,8,0.9), 0 1px 4px rgba(4,12,8,0.6); } }
-/* tablet: Why Now "outnumber it with wisdom" glow-word reads white over the photo */
-@media (min-width:761px) and (max-width:1024px){ .why-now--light .glow-word{ color:#fff; } }
-
+/* tablet: Why Now — all text reads white over the photo */
+@media (min-width:761px) and (max-width:1024px){
+  .why-now--light .eyebrow,
+  .why-now--light h2,
+  .why-now--light .lede,
+  .why-now--light .prose p,
+  .why-now--light p,
+  .why-now--light .dim,
+  .why-now--light .glow-word{ color:#fff; }
+  .why-now--light .eyebrow .tick{ background:#fff; }
+  .why-now--light .dropcap::first-letter{ color:#fff; }
+}
 /* ============================================================
    v11 — MOBILE WIDTH-SCALING (mirror of the desktop >=1440 lock).
    Locks for PORTRAIT-PHONE widths only (<=480px) — phones held vertically top
