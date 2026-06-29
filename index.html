@@ -780,8 +780,21 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 
 
 /* ============================================================
+   TABLET WIDTH-SCALING LOCK (481-1439px)
+   Locks the tablet band to one scale (design width 960px) -- same uniform-zoom
+   approach as phone (<=480 -> 390) and desktop (>=1440 -> 1440). 1rem tracks
+   viewport width so the whole band zooms as one unit:
+       481 -> 8.0px (0.5x) | 768 -> 12.8 | 960 -> 16.0 (1x) | 1024 -> 17.1 | 1439 -> 24.0 (1.5x)
+   Only scaling is affected; structural breakpoints inside the band (e.g. the
+   <=1000px hamburger menu) are unchanged.
+   ============================================================ */
+@media (min-width:481px) and (max-width:1439px){
+  :root{ font-size: calc(100vw / 60); }
+}
+
+/* ============================================================
    v8 — SITEWIDE WIDTH-SCALING
-   At/below 1440px: the site behaves exactly as before (responsive).
+   At/below 1439px the site uses dedicated phone (<=480) and tablet (481-1439) scaling locks.
    From 1440px up, 1rem tracks viewport width, so every route locks at
    its 1440 layout and scales as a single unit, with no upper cap:
        1440px -> 16.0px (1x) | 2880px -> 32.0px (2x) | 5120px -> 56.9px (3.56x)
