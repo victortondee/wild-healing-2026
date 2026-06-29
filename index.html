@@ -873,6 +873,12 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 }
 .medicine-walk .wrap{ text-shadow: 0 1px 20px rgba(4,12,8,0.5); }
 @media (max-width:760px){ .band.medicine-walk{ background-attachment: scroll; } }
+/* TABLET (761-1024px / iPad) — disable fixed-attachment parallax; iOS Safari mishandles it */
+@media (min-width:761px) and (max-width:1024px){
+  .band--breathe,
+  .band.medicine-walk,
+  .band.alt.why-now.why-now--light.wn-parallax{ background-attachment: scroll; }
+}
 
 /* v8.4 — 'You were never meant to heal alone' callband background (.heal-alone only) */
 .callband.heal-alone{
