@@ -1308,7 +1308,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   .hero.hero--light.hero--white .hdate.land .hd-mon{ color:var(--lantern-lo); }
 }
 
-/* Why Now paragraphs: same shadow as the Gathering header (desktop photo only) */
+/* DRAFT — white-background copy of the landing hero (Drafts page): forces a plain white\n   background at every breakpoint so the empty hero box is visible for sizing a\n   replacement background image. Used only by the Drafts hero copy below. */\n.hero--draftwhite{ background:#fff !important; background-image:none !important; }\n.hero--draftwhite::after{ display:none !important; }\n.hero--draftwhite .hero-motes{ display:none; }\n\n/* Why Now paragraphs: same shadow as the Gathering header (desktop photo only) */
 @media (min-width:761px){ .why-now--light p{ text-shadow:0 1px 20px rgba(4,12,8,0.9), 0 1px 4px rgba(4,12,8,0.6); } }
 
 /* ============================================================
@@ -2477,6 +2477,49 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <h1>The medicine walk begins</h1>
     <p class="lede dim">You enter through a digital gateway — an opening ritual that calls the spirit of the plants, the ancestors, and the land. A singing bowl rings. A drumbeat begins. The screen opens onto forests, gardens, and medicine fields from around the world. A voice says: <span class="glow-word" style="color:#161310;font-weight:400;text-shadow:none;">"Welcome to the medicine walk."</span></p>
   </div>
+  </section>
+
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · Landing hero — white background (for tablet bg-image sizing)</span></div>
+  <section class="hero hero--flat hero--light hero--white hero--draftwhite">
+    <div class="hero-motes" aria-hidden="true">
+      <span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span>
+      <span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span>
+      <span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span>
+      <span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span>
+    </div>
+    <div class="wrap hero-inner">
+      <span class="eyebrow anim a1">A <a href="https://restoreny.org" class="orglink" target="_blank" rel="noopener">Restore Forward</a> gathering</span>
+      <h1 class="anim a2">WILD<span class="bang">!</span> Healing<span class="row2">A harvest of medicine</span></h1>
+      <p class="hero-sub anim a3">A refusal to surrender our bodies — and an invitation to walk back and get what was lost.</p>
+      <p class="hero-loc anim a4">
+        <svg class="hl-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>The gathering, on the land in <a href="https://maps.app.goo.gl/PR75VYSk5743Q3dD7" target="_blank" rel="noopener">Ava, New York</a></span>
+      </p>
+      <div class="hero-dates anim a4">
+        <a class="hdate" href="#/journey/day-one" aria-label="September 17, online — Day One">
+          <span class="hd-tag">Online</span>
+          <span class="hd-num">17</span>
+          <span class="hd-mon">Sep</span>
+        </a>
+        <span class="hd-div" aria-hidden="true"></span>
+        <a class="hdate" href="#/journey/day-two" aria-label="September 18, online — Day Two">
+          <span class="hd-tag">Online</span>
+          <span class="hd-num">18</span>
+          <span class="hd-mon">Sep</span>
+        </a>
+        <span class="hd-div" aria-hidden="true"></span>
+        <a class="hdate land" href="#/gathering" aria-label="September 19, on the land — The Gathering">
+          <span class="hd-tag">On the land</span>
+          <span class="hd-num">19</span>
+          <span class="hd-mon">Sep</span>
+        </a>
+      </div>
+      <div class="btn-row anim a5">
+        <a href="https://ourpowerbase.net/" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow">→</span></a>
+        <a href="#/invitation" class="btn btn-ghost">Read the invitation</a>
+      </div>
+    </div>
+    <span class="scroll-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span>
   </section>
 </div>
 <!-- ============================================================
