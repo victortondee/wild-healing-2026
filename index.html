@@ -1332,6 +1332,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 .hero--draftwhite{ background:#fff !important; background-image:none !important; }
 .hero--draftwhite::after{ display:none !important; }
 .hero--draftwhite .hero-motes{ display:none; }
+/* tablet only (761–1024px): give the white-bg draft hero the uploaded sky/fabric photo */
+@media (min-width:761px) and (max-width:1024px){
+  .hero--draftwhite{ background-color:#fff !important; background-image:url("images/hero-tablet.jpg") !important; background-size:cover !important; background-position:center !important; background-repeat:no-repeat !important; }
+}
 
 /* Why Now paragraphs: same shadow as the Gathering header (desktop photo only) */
 @media (min-width:761px){ .why-now--light p{ text-shadow:0 1px 20px rgba(4,12,8,0.9), 0 1px 4px rgba(4,12,8,0.6); } }
