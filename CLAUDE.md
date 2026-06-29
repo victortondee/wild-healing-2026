@@ -1,7 +1,9 @@
 # WILD! Healing 2026 — working notes for Claude
 
 This repo is a single static site. The live site is **https://wildgala.com**
-(GitHub Pages, served from `index.html` on `main`, behind a soft password gate).
+(GitHub Pages, served from `index.html` on `main`). It is **public — no password
+gate** (the gate was removed; `index.html` is now just a plain copy of
+`site-source.html`).
 
 **This repo is edited by several Claude chats in parallel.** Follow the rules
 below so chats don't overwrite or conflict with each other.

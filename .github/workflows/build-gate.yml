@@ -1,7 +1,7 @@
-name: Build gated index.html
+name: Publish index.html
 
-# Rebuilds the password-gated index.html from site-source.html on every push.
-# Chats only ever edit site-source.html; this workflow regenerates index.html so
+# Publishes index.html from site-source.html on every push (no password gate).
+# Chats only ever edit site-source.html; this workflow keeps index.html in sync so
 # the generated file never causes merge conflicts between parallel chats.
 
 on:
@@ -9,14 +9,13 @@ on:
     branches: [main]
     paths:
       - "site-source.html"
-      - "build-gate.py"
   workflow_dispatch: {}   # allow manual runs from the Actions tab
 
 permissions:
   contents: write
 
 concurrency:
-  group: build-gate
+  group: publish-index
   cancel-in-progress: false
 
 jobs:
@@ -25,8 +24,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build index.html from site-source.html
-        run: python3 build-gate.py "${{ secrets.GATE_PASSWORD }}"
+      - name: Publish index.html (ungated copy of site-source.html)
+        run: cp site-source.html index.html
 
       - name: Commit index.html if it changed
         run: |
@@ -37,12 +36,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "ci: rebuild gated index.html from site-source.html"
-          # retry-push in case another push landed first
+          git commit -m "ci: publish index.html from site-source.html"
           for i in 1 2 3 4 5; do
-            if git push; then
-              echo "pushed."; exit 0
-            fi
+            if git push; then echo "pushed."; exit 0; fi
             echo "push rejected, rebasing and retrying ($i)…"
             git pull --rebase --autostash
           done
