@@ -613,8 +613,8 @@ body[data-page="invitation"]{ --lantern:#e2a25e; }
   font-family:var(--ff-display); font-weight:300; line-height:0.82; color:var(--lantern); opacity:0.12; }
 .day-wm .dw-mon{ text-align:justify; text-align-last:justify; text-transform:uppercase;
   font-weight:500; font-size:clamp(1.5rem,5vw,3.3rem); margin-bottom:0.04em; }
-.day-wm .dw-num{ font-size:clamp(5rem,18vw,13rem); letter-spacing:-0.03em; text-align:left; padding-right:0.13em; }
-#day-two .day-wm .dw-num{ padding-right:0.02em; }   /* "8" has little right overhang vs the "7" swash */
+.day-wm .dw-num{ font-size:clamp(5rem,18vw,13rem); letter-spacing:-0.03em; text-align:left; padding-right:0.02em; }
+#day-two .day-wm .dw-num{ padding-right:0.13em; }   /* Day Two = Sep 17: the "7" swash overhangs, so widen its box */
 .trail{ position:relative; margin-top:3.2rem; padding-left:clamp(1.8rem,4vw,3.2rem); }
 .trail::before{ content:""; position:absolute; left:0.6rem; top:0.5rem; bottom:0.5rem; width:1px; background:linear-gradient(180deg, transparent, var(--line-strong) 6%, var(--line-strong) 94%, transparent); }
 @media (min-width:880px){ .trail::before{ left:0.75rem; } }
@@ -1749,10 +1749,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 <!-- ============================================================
      THE JOURNEY
      ============================================================ -->
-<div class="page" id="page-journey" role="region" aria-label="The Journey">
+<div class="page" id="page-journey" role="region" aria-label="Online">
   <section class="band journey-hero">
   <div class="wrap page-intro" id="day-one">
-    <span class="eyebrow"><span class="tick"></span>The Journey · Online · Sept 17 &amp; 18</span>
+    <span class="eyebrow"><span class="tick"></span>Online · Sept 16, 17 &amp; 18</span>
     <h1>The medicine walk begins</h1>
     <p class="lede dim">You enter through a digital gateway — an opening ritual that calls the spirit of the plants, the ancestors, and the land. A singing bowl rings. A drumbeat begins. The screen opens onto forests, gardens, and medicine fields from around the world. A voice says: <span class="glow-word" style="color:#161310;font-weight:400;text-shadow:none;">"Welcome to the medicine walk."</span></p>
   </div>
@@ -1760,10 +1760,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 
   <!-- DAY ONE -->
   <section class="band day-band">
-    <span class="day-wm" aria-hidden="true"><span class="dw-mon">Sep</span><span class="dw-num">17</span></span>
+    <span class="day-wm" aria-hidden="true"><span class="dw-mon">Sep</span><span class="dw-num">16</span></span>
     <div class="wrap">
       <div class="day-head reveal">
-        <span class="dnum">Day One · September 17 · Online</span>
+        <span class="dnum">Day One · September 16 · Online</span>
       </div>
       <div class="day-head reveal">
         <h2>The Remembering</h2>
@@ -1845,10 +1845,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 
   <!-- DAY TWO -->
   <section class="band alt day-band" id="day-two">
-    <span class="day-wm" aria-hidden="true"><span class="dw-mon">Sep</span><span class="dw-num">18</span></span>
+    <span class="day-wm" aria-hidden="true"><span class="dw-mon">Sep</span><span class="dw-num">17</span></span>
     <div class="wrap">
       <div class="day-head reveal">
-        <span class="dnum">Day Two · September 18 · Online</span>
+        <span class="dnum">Day Two · September 17 · Online</span>
       </div>
       <div class="day-head reveal">
         <h2>The Resurrection</h2>
@@ -1885,6 +1885,21 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <p class="dim">Stories of miraculous recoveries. Bodies restored. Communities healed. People rising again.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- DAY THREE (v12 — PLACEHOLDER, copy TBD; all text red) -->
+  <section class="band day-band" id="day-three">
+    <span class="day-wm" aria-hidden="true"><span class="dw-mon">Sep</span><span class="dw-num">18</span></span>
+    <div class="wrap">
+      <div class="day-head reveal">
+        <span class="dnum phr">Day Three · September 18 · Online</span>
+      </div>
+      <div class="day-head reveal">
+        <h2 class="phr">The Journey</h2>
+        <span class="dsub phr">— placeholder subtitle, to be provided</span>
+      </div>
+      <p class="prose dim reveal d1 phr">[PLACEHOLDER] Copy for Day Three — The Journey (September 18, Online) to be provided by the client.</p>
     </div>
   </section>
 
@@ -2093,6 +2108,11 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <div class="datestrip">
           <div class="dscol">
             <span class="hd-tag">Online</span>
+            <span class="hd-num">16</span>
+            <span class="hd-mon">Sep</span>
+          </div>
+          <div class="dscol">
+            <span class="hd-tag">Online</span>
             <span class="hd-num">17</span>
             <span class="hd-mon">Sep</span>
           </div>
@@ -2117,7 +2137,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <h3>Choose your pass</h3>
           <p>Three ways to walk with us:</p>
           <div class="tiers">
-            <div class="tier"><span class="tname">Summit Pass<small>Both online days — Sept 17 &amp; 18</small></span><span class="tprice">$&nbsp;—</span></div>
+            <div class="tier"><span class="tname">Summit Pass<small>All three online days — Sept 16, 17 &amp; 18</small></span><span class="tprice">$&nbsp;—</span></div>
             <div class="tier"><span class="tname">The Gathering<small>On the land — Sept 19, feast &amp; performance</small></span><span class="tprice">$&nbsp;—</span></div>
             <div class="tier"><span class="tname">Patron<small>Fund a healer's seat — supports the gathering</small></span><span class="tprice">$&nbsp;—</span></div>
           </div>
@@ -2468,8 +2488,9 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <div class="footer-col">
         <h5>The journey</h5>
         <a href="#/invitation">The Invitation</a>
-        <a href="#/journey/day-one">Sep 17 (Online)</a>
-        <a href="#/journey/day-two">Sep 18 (Online)</a>
+        <a href="#/journey/day-one">Sep 16 (Online)</a>
+        <a href="#/journey/day-two">Sep 17 (Online)</a>
+        <a href="#/journey/day-three">Sep 18 (Online)</a>
         <a href="#/gathering" style="color:var(--lantern)">Sep 19 (On the land)</a>
       </div>
       <div class="footer-col">
@@ -2481,7 +2502,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
     </div>
     <div class="footer-bottom">
-      <span>September 17–19, 2026 · Online &amp; on the land</span>
+      <span>September 16–19, 2026 · Online &amp; on the land</span>
       <span>© 2026 <a href="https://restoreny.org" class="orglink" target="_blank" rel="noopener">Restore Forward</a> · WILD! Healing</span>
     </div>
     <p class="footer-credit">Website created by <a href="https://lumezia.com" class="orglink" target="_blank" rel="noopener">lumezia.com</a></p>
