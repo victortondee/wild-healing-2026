@@ -1402,13 +1402,13 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 /* draft (hero--tleft): editorial split on TABLET — all text held in a left column,
    clear of the dancer; only the buttons may extend past it. */
 @media (min-width:761px) and (max-width:1024px){
+  /* re-crop the photo so the dancer drops to the lower-right, keeping the whole left column over clean sky */
+  .hero.hero--light.hero--white.hero--tleft{ background-position:left center; }
   .hero--tleft .eyebrow,
   .hero--tleft h1,
   .hero--tleft .hero-sub,
   .hero--tleft .hero-loc,
   .hero--tleft .hero-dates{ max-width:44%; }
-  .hero--tleft h1{ font-size:clamp(2.4rem,6vw,3.5rem); line-height:1.03; }
-  .hero--tleft h1 .row2{ margin-top:0.25rem; }
   .hero--tleft .hero-sub{ font-size:1.05rem; margin-top:1.4rem; }
   /* compact 2x2 date grid so the dates also stay in the column */
   .hero--tleft .hero-dates{ display:grid; grid-template-columns:repeat(2,minmax(4.6rem,max-content)); justify-content:start; gap:0; margin-top:2rem; }
