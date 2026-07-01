@@ -1420,6 +1420,12 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   .hero--tleft .hero-dates .hdate:nth-of-type(4){ padding-top:1rem; }
   .hero--tleft .hero-dates .hd-num{ font-size:2.3rem; }
 }
+/* draft (hero--tleft) MOBILE: darken the Sep 19 (On the land) tile so it reads on the light fabric */
+@media (max-width:760px){
+  .hero.hero--light.hero--white.hero--tleft .hdate.land .hd-tag,
+  .hero.hero--light.hero--white.hero--tleft .hdate.land .hd-num,
+  .hero.hero--light.hero--white.hero--tleft .hdate.land .hd-mon{ color:#8a4632; }
+}
 /* mobile: the white-bg draft hero takes the flowing-fabric photo as its
    background, with the section locked to the image's 31:69 portrait ratio so
    it fits edge to edge without cropping. */
