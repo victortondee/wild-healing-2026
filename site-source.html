@@ -575,6 +575,15 @@ a.speaker:hover .speaker-name{ color:var(--lantern-lo); }
 .fact .v{ font-family:var(--ff-display); font-size:1.4rem; line-height:1.2; font-weight:400; }
 .fact .v small{ display:block; font-family:var(--ff-body); font-size:0.94rem; color:var(--ink-2); margin-top:0.35rem; font-style:italic; }
 
+/* Getting-there / Info page — travel modes as a hairline-divided list */
+.travel{ max-width:52rem; }
+.travel-mode{ display:grid; grid-template-columns:9rem 1fr; gap:0.6rem 2.4rem; align-items:baseline; padding:1.7rem 0; border-top:1px solid var(--line); }
+.travel-mode:last-child{ border-bottom:1px solid var(--line); }
+.travel-mode .tm-k{ font-family:var(--ff-ui); font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--lantern); }
+.travel-mode .tm-v{ margin:0; font-size:1.08rem; line-height:1.62; color:var(--ink); }
+.travel-mode .tm-v a{ color:inherit; border-bottom:1px solid var(--line-strong); }
+@media (max-width:640px){ .travel-mode{ grid-template-columns:1fr; gap:0.35rem; padding:1.3rem 0; } }
+
 /* call band — a full-bleed quote moment */
 .callband{ position:relative; background:linear-gradient(180deg, rgba(215,158,140,0.05), rgba(255,255,255,0.006)); border-block:1px solid var(--line); }
 .callband .wrap{ text-align:center; max-width:60rem; }
@@ -2440,6 +2449,38 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   </section>
 </div>
 
+<!-- ===================== INFO — getting there ===================== -->
+<div class="page" id="page-info" role="region" aria-label="Getting there">
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Getting there · Sept 12 · On the land</span>
+    <h1>How to reach the woods</h1>
+    <p class="lede dim">The WILD! Gala — dinner &amp; theater in the woods — gathers on the land at Restore Forward, Ava, New York. However you travel, here's how to arrive.</p>
+  </div>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="travel reveal">
+        <div class="travel-mode">
+          <span class="tm-k">By air</span>
+          <p class="tm-v">From your destination city, the nearest airport to listed lodging and the event site is <strong>Syracuse Hancock International Airport</strong>. From the airport, it's about an hour's drive to Restore Forward.</p>
+        </div>
+        <div class="travel-mode">
+          <span class="tm-k">By car</span>
+          <p class="tm-v">For navigation, please input this address:<br><a href="https://maps.app.goo.gl/PR75VYSk5743Q3dD7" target="_blank" rel="noopener"><strong>11518 Webster Hill Road, Ava, New York 13309</strong></a></p>
+        </div>
+        <div class="travel-mode">
+          <span class="tm-k">By train</span>
+          <p class="tm-v">The nearest Amtrak station is <strong>Utica</strong> — about a 35-minute drive from the land at Restore Forward.</p>
+        </div>
+        <div class="travel-mode">
+          <span class="tm-k">By charter bus</span>
+          <p class="tm-v">Catch the charter bus from <strong>Brooklyn or Harlem</strong>. <span class="phr">[Charter bus pickup points, times &amp; booking — to be confirmed]</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <div class="page" id="page-archive" role="region" aria-label="Archive (internal)">
   <div class="wrap page-intro">
     <span class="eyebrow"><span class="tick"></span>Internal · Archive</span>
@@ -2899,6 +2940,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <a href="https://ourpowerbase.net/" target="_blank" rel="noopener">Get tickets</a>
         <a href="mailto:info@restoreny.org">info@restoreny.org</a>
         <a href="#/attend">Join the circle</a>
+        <a href="#/info">Getting there</a>
         <a href="#/contact">Contact us</a>
       </div>
     </div>
@@ -2924,7 +2966,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- routing ---------- */
-  var routes = ["home","invitation","journey","gathering","attend","contact","archive","drafts","dashboard","speaker-stoff","speaker-jb"];
+  var routes = ["home","invitation","journey","gathering","attend","contact","info","archive","drafts","dashboard","speaker-stoff","speaker-jb"];
   var pages = {};
   routes.forEach(function(r){ pages[r] = document.getElementById("page-" + r); });
   var navLinks = document.querySelectorAll(".nav-links a[data-key]");
