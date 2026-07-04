@@ -528,6 +528,31 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
 .speaker-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block; }
 .speaker-name{ font-family:var(--ff-display); font-weight:400; font-size:clamp(1.15rem,1.6vw,1.4rem); color:var(--ink); line-height:1.15; }
 .speaker-role{ font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--sage); margin-top:0.45rem; }
+
+/* speaker cards → links to profile pages (v12) */
+a.speaker{ text-decoration:none; color:inherit; display:block; cursor:pointer; }
+a.speaker .speaker-photo{ transition:box-shadow .5s var(--ease); }
+a.speaker:hover .speaker-photo{ box-shadow:0 24px 50px -30px rgba(20,19,16,0.5); }
+a.speaker .speaker-name{ transition:color .3s var(--ease); }
+a.speaker:hover .speaker-name{ color:var(--lantern-lo); }
+
+/* speaker profile pages */
+.spk-grid{ display:grid; grid-template-columns:minmax(0,20rem) 1fr; gap:clamp(2rem,5vw,4.5rem); align-items:start; }
+@media (max-width:820px){ .spk-grid{ grid-template-columns:1fr; max-width:30rem; } }
+.spk-photo{ margin:0; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line-strong); aspect-ratio:3/4; }
+.spk-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+.spk-cred{ font-family:var(--ff-ui); font-size:0.76rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--sage); margin-top:1.4rem; }
+.spk-body p{ font-family:var(--ff-body); font-size:clamp(1rem,0.4vw + 0.95rem,1.1rem); line-height:1.75; color:var(--ink); margin-top:1.15rem; }
+.spk-body p:first-child{ margin-top:0; }
+.spk-body em{ font-style:italic; }
+.spk-facts{ list-style:none; margin:2.4rem 0 0; padding:0; border-top:1px solid var(--line); }
+.spk-facts li{ padding:0.75rem 0 0.75rem 1.4rem; border-bottom:1px solid var(--line); position:relative; font-family:var(--ff-body); font-size:0.98rem; line-height:1.5; color:var(--ink); }
+.spk-facts li::before{ content:""; position:absolute; left:0; top:1.2rem; width:6px; height:6px; border-radius:50%; background:var(--lantern); }
+.spk-works{ margin-top:1.9rem; }
+.spk-works .lbl{ display:block; font-family:var(--ff-ui); font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem; }
+.spk-works .titles{ font-family:var(--ff-body); font-size:0.97rem; line-height:1.6; color:var(--ink-2); }
+.spk-back{ margin-top:2.6rem; }
+
 .movement{ position:relative; border:1px solid var(--line); border-radius:var(--radius); padding:2.6rem 2rem 2.2rem;
   background:linear-gradient(180deg, rgba(255,255,255,0.022), rgba(255,255,255,0.004)); text-decoration:none; color:var(--ink);
   display:flex; flex-direction:column; gap:0.7rem; overflow:hidden; transition:border-color .45s var(--ease), transform .45s var(--ease), box-shadow .45s var(--ease); }
@@ -1680,16 +1705,16 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <span class="eyebrow"><span class="tick"></span>Speakers</span>
       </div>
       <div class="speakers reveal d1">
-        <div class="speaker">
+        <a class="speaker" href="#/speaker-stoff">
           <div class="speaker-photo"><img src="images/dr-jesse-stoff.jpg" alt="Dr. Jesse Stoff" loading="lazy"></div>
           <div class="speaker-name">Dr. Jesse Stoff</div>
           <div class="speaker-role">Integrative &amp; Functional Medicine</div>
-        </div>
-        <div class="speaker">
+        </a>
+        <a class="speaker" href="#/speaker-jb">
           <div class="speaker-photo"><img src="images/dr-jean-baptiste.jpg" alt="Dr. Dieudonné Jean-Baptiste" loading="lazy"></div>
           <div class="speaker-name">Dr. Dieudonné Jean-Baptiste</div>
           <div class="speaker-role">Functional &amp; Integrative Medicine</div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -2339,6 +2364,82 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 <!-- ============================================================
      ARCHIVE — internal, not linked publicly
      ============================================================ -->
+<!-- ============================================================
+     SPEAKER — Dr. Jesse Stoff
+     ============================================================ -->
+<div class="page" id="page-speaker-stoff" role="region" aria-label="Dr. Jesse Stoff">
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Speaker</span>
+    <h1>Dr. Jesse Stoff</h1>
+    <p class="spk-cred">MD, MDH, FAAFP &middot; Integrative Physician &amp; Clinical Immunologist</p>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="spk-grid reveal">
+        <figure class="spk-photo"><img src="images/dr-jesse-stoff.jpg" alt="Dr. Jesse Stoff" loading="lazy"></figure>
+        <div class="spk-body">
+          <p>Dr. Jesse A. Stoff is an integrative physician and clinical immunologist who has spent more than three decades focused on the immune system and its role in healing. He earned his BA in biology, cum laude, from Adelphi University, and his MD from New York Medical College in 1981 &mdash; followed by postgraduate training that included a family-practice residency year and a fellowship in emergency medicine, and postdoctoral study in clinical medicine and homeopathy at the Royal London Homeopathic Hospital in London, England.</p>
+          <p>He is founder and Medical Director of Integrative Medicine of New York (formerly Linchitz Medical Wellness) on Long Island, where the work centers on immunotherapy for autoimmune disease, onco-immunology for cancer, and preventative medicine. His approach draws on clinical immunology and the principle of biochemical individuality, integrating conventional and holistic modalities to help restore immune function and the body&rsquo;s own capacity to heal. He has taught integrative immunology within Dr. Andrew Weil&rsquo;s Integrative Medicine Fellowship at the University of Arizona and consulted for Cancer Treatment Centers of America.</p>
+          <p>Beyond his practice, Dr. Stoff founded the Stoff Institute for Medical Research, a 501(c)(3) nonprofit devoted to public education, patient advocacy, and consultation on immune-system disorders and immune reconstitution. He is a Fellow of the American Academy of Family Physicians and a Fellow of the American College of Longevity Medicine, an elected member of the Male Breast Cancer Coalition&rsquo;s Clinical Advisory Board, and serves on the executive board of the New York Cancer Resource Alliance.</p>
+          <p>A prolific author, he is best known for the bestselling <em>Chronic Fatigue Syndrome: The Hidden Epidemic</em> and <em>The Prostate Miracle</em>, and more recently the medical text <em>Clinical Immunology, Volume 1: Integrative Onco-Immunology</em> &mdash; reflecting a career-long emphasis on integrative, immune-centered care.</p>
+          <ul class="spk-facts">
+            <li>MD, New York Medical College (1981); BA in biology, Adelphi University</li>
+            <li>Postdoctoral study in homeopathy, Royal London Homeopathic Hospital</li>
+            <li>Fellow, American Academy of Family Physicians (FAAFP)</li>
+            <li>Fellow, American College of Longevity Medicine</li>
+            <li>Founder &amp; Medical Director, Integrative Medicine of New York</li>
+            <li>Founder, Stoff Institute for Medical Research (501c3)</li>
+            <li>Focus: clinical immunology, integrative onco-immunology, autoimmune &amp; preventative medicine</li>
+          </ul>
+          <div class="spk-works">
+            <span class="lbl">Selected books</span>
+            <span class="titles">Chronic Fatigue Syndrome: The Hidden Epidemic &middot; The Prostate Miracle &middot; Clinical Immunology, Vol. 1: Integrative Onco-Immunology</span>
+          </div>
+          <div class="btn-row spk-back">
+            <a href="https://drjessestoff.com/" target="_blank" rel="noopener" class="btn btn-ghost">Practice site <span class="arrow">&rarr;</span></a>
+            <a href="#/home" class="btn btn-ghost">&larr; Back</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     SPEAKER — Dr. Dieudonné Jean-Baptiste
+     ============================================================ -->
+<div class="page" id="page-speaker-jb" role="region" aria-label="Dr. Dieudonné Jean-Baptiste">
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Speaker</span>
+    <h1>Dr. Dieudonné Jean-Baptiste</h1>
+    <p class="spk-cred">MD, MSc, CFMP &middot; Functional &amp; Longevity Medicine</p>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="spk-grid reveal">
+        <figure class="spk-photo"><img src="images/dr-jean-baptiste.jpg" alt="Dr. Dieudonné Jean-Baptiste" loading="lazy"></figure>
+        <div class="spk-body">
+          <p>Dr. Dieudonné Jean-Baptiste is a Haitian physician and the founder and lead physician of La Clinique PHI &mdash; Priorité Santé Internationale &mdash; a functional, integrative and longevity medicine practice in Pétion-Ville, in metropolitan Port-au-Prince. He holds a Doctor of Medicine and a Master of Science in Public Health from the Université de Montréal, and is a Certified Functional Medicine Practitioner (CFMP).</p>
+          <p>His clinical philosophy is rooted in what he calls <em>la médecine des causes</em> &mdash; the medicine of root causes. Rather than treating disease by name, PHI seeks to understand why the body has lost its capacity to repair itself, and to help it recover that capacity. Conventional medicine, as he frames it, excels at managing crises and relieving symptoms; but for chronic conditions such as diabetes, hypertension and persistent fatigue, his work asks why the problem appeared in the first place &mdash; with an emphasis on the foundations of health: sleep, stress, movement and nutrition.</p>
+          <p>At La Clinique PHI, care follows a structured method of evaluation, treatment, reassessment and follow-up, guided by three stated values: scientific excellence, transparency and education, and integrity and empathy. The clinic frames its mission as transforming health through the medicine of causes, under the tagline <em>&ldquo;La médecine, autrement&nbsp;!&rdquo;</em> &mdash; &ldquo;Medicine, differently.&rdquo;</p>
+          <p>Dr. Jean-Baptiste is an active public voice for functional medicine in Haiti, featured by the Haitian outlet Juno7 and interviewed on <em>LE POINT</em>, the current-affairs program of Métropole Télé, on his root-cause approach to chronic disease and healthy longevity. He also writes for the clinic&rsquo;s blog, teaching on topics from detoxification to metabolic health.</p>
+          <ul class="spk-facts">
+            <li>Founder &amp; lead physician, La Clinique PHI (Priorité Santé Internationale), Pétion-Ville, Haiti</li>
+            <li>MD &middot; MSc, Public Health, Université de Montréal</li>
+            <li>Certified Functional Medicine Practitioner (CFMP)</li>
+            <li>Practices functional / integrative / longevity (&ldquo;root-cause&rdquo;) medicine</li>
+            <li>Public advocate for functional medicine in Haitian media (Juno7; LE POINT / Métropole Télé)</li>
+          </ul>
+          <div class="btn-row spk-back">
+            <a href="https://phihaiti.com/" target="_blank" rel="noopener" class="btn btn-ghost">La Clinique PHI <span class="arrow">&rarr;</span></a>
+            <a href="#/home" class="btn btn-ghost">&larr; Back</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <div class="page" id="page-archive" role="region" aria-label="Archive (internal)">
   <div class="wrap page-intro">
     <span class="eyebrow"><span class="tick"></span>Internal · Archive</span>
@@ -2823,7 +2924,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- routing ---------- */
-  var routes = ["home","invitation","journey","gathering","attend","contact","archive","drafts","dashboard"];
+  var routes = ["home","invitation","journey","gathering","attend","contact","archive","drafts","dashboard","speaker-stoff","speaker-jb"];
   var pages = {};
   routes.forEach(function(r){ pages[r] = document.getElementById("page-" + r); });
   var navLinks = document.querySelectorAll(".nav-links a[data-key]");
