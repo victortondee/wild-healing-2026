@@ -521,7 +521,7 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
 /* v12 placeholder text — RED so unfinalized copy is obvious and replaced before launch */
 .phr, .phr *{ color:#e11d1d !important; }
 /* speakers (v12) — Home page: blank photo frames + name + placeholder role */
-.speakers{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(1.2rem,2.5vw,2rem); margin-top:2.8rem; }
+.speakers{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(1.4rem,2.5vw,2.2rem); margin-top:2.8rem; max-width:34rem; margin-inline:auto; }
 @media (max-width:860px){ .speakers{ grid-template-columns:repeat(2,1fr); } }
 .speaker-photo{ aspect-ratio:3/4; background:rgba(20,19,16,0.05); border:1px solid var(--line-strong); border-radius:var(--radius); margin-bottom:1rem; }
 .speaker-photo{ overflow:hidden; }
@@ -1687,18 +1687,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         </div>
         <div class="speaker">
           <div class="speaker-photo" aria-hidden="true"></div>
-          <div class="speaker-name phr">Name Surname</div>
-          <div class="speaker-role phr">[Role / title TBD]</div>
-        </div>
-        <div class="speaker">
-          <div class="speaker-photo" aria-hidden="true"></div>
-          <div class="speaker-name phr">Name Surname</div>
-          <div class="speaker-role phr">[Role / title TBD]</div>
-        </div>
-        <div class="speaker">
-          <div class="speaker-photo" aria-hidden="true"></div>
-          <div class="speaker-name phr">Name Surname</div>
-          <div class="speaker-role phr">[Role / title TBD]</div>
+          <div class="speaker-name">Dr. Jean-Baptiste</div>
+          <div class="speaker-role">Functional Medicine</div>
         </div>
       </div>
     </div>
