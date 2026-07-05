@@ -1174,6 +1174,13 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
      keeping the cover + center-bottom dancer framing untouched. Drops away once a
      full 2:5 image (with its own empty lower area) is supplied. */
   .hero.hero--light::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:12rem; background:#e9e3d8; z-index:1; pointer-events:none; }
+  /* 4 date tiles with the wider TRAVEL DAY / ON THE LAND tags overflow the row on
+     phones and clip the "12" tile — tighten the gap + shrink tags so all four
+     sit balanced within the viewport. */
+  .hero-dates{ gap:0.7rem; }
+  .hero-dates .hd-tag{ font-size:0.5rem; letter-spacing:0.1em; margin-bottom:0.4rem; }
+  .hero-dates .hd-num{ font-size:clamp(2.4rem,10vw,3.4rem); }
+  .hero-dates .hd-mon{ font-size:0.95rem; }
 }
 
 /* MOBILE — The Remembering: portrait forest-banquet photo, no parallax (scroll) */
