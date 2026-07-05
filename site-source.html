@@ -557,16 +557,17 @@ a.speaker:hover .speaker-name{ color:var(--lantern-lo); }
 .movement{ position:relative; border:1px solid var(--line); border-radius:var(--radius); padding:2.6rem 2rem 2.2rem;
   background:linear-gradient(180deg, rgba(255,255,255,0.022), rgba(255,255,255,0.004)); text-decoration:none; color:var(--ink);
   display:flex; flex-direction:column; gap:0.7rem; overflow:hidden; transition:border-color .45s var(--ease), transform .45s var(--ease), box-shadow .45s var(--ease); }
-.movement::before{ content:attr(data-num); position:absolute; top:0.6rem; right:1.3rem; font-family:var(--ff-display); font-size:5.5rem; line-height:1; font-weight:300; color:var(--line-strong); opacity:0.5; transition:color .45s var(--ease), opacity .45s var(--ease); pointer-events:none; }
+.movement::before{ content:attr(data-num); position:absolute; top:1.9rem; right:1.3rem; font-family:var(--ff-display); font-size:5.5rem; line-height:1; font-weight:300; color:var(--line-strong); opacity:0.5; transition:color .45s var(--ease), opacity .45s var(--ease); pointer-events:none; }
+.movement::after{ content:"Sep"; position:absolute; top:0.75rem; right:1.3rem; font-family:var(--ff-display); font-size:1.1rem; line-height:1; font-weight:400; letter-spacing:0.08em; text-transform:uppercase; color:var(--line-strong); opacity:0.5; transition:color .45s var(--ease), opacity .45s var(--ease); pointer-events:none; }
 .movement:hover{ transform:translateY(-6px); border-color:var(--line-strong); box-shadow:0 30px 60px -40px rgba(0,0,0,0.8); }
-.movement:hover::before{ color:var(--lantern); opacity:0.5; }
+.movement:hover::before, .movement:hover::after{ color:var(--lantern); opacity:0.5; }
 .movement .num{ font-family:var(--ff-ui); font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage); position:relative; z-index:1; }
 .movement h3{ font-size:1.9rem; font-weight:400; position:relative; z-index:1; }
 .movement .when{ font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--lantern); }
 .movement p{ margin:0.3rem 0 0; color:var(--ink-2); font-size:1.02rem; line-height:1.62; position:relative; z-index:1; }
 .movement .go{ margin-top:auto; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--lantern); padding-top:1rem; }
 .movement.gold{ background:linear-gradient(180deg, rgba(215,158,140,0.09), rgba(215,158,140,0.02)); border-color:rgba(215,158,140,0.28); }
-.movement.gold::before{ color:rgba(215,158,140,0.5); }
+.movement.gold::before, .movement.gold::after{ color:rgba(215,158,140,0.5); }
 .movement.gold h3{ color:var(--lantern-hi); }
 
 /* facts strip */
@@ -1204,19 +1205,19 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
   border-color: rgba(214,164,82,0.52);
   box-shadow: inset 0 1px 0 rgba(236,227,207,0.06);
 }
-.medicine-walk .movement::before{ color: rgba(236,227,207,0.48); opacity:1; }
+.medicine-walk .movement::before, .medicine-walk .movement::after{ color: rgba(236,227,207,0.48); opacity:1; }
 .medicine-walk .movement .num{ color: rgba(236,227,207,0.64); }
 .medicine-walk .movement h3{ color: var(--cream); }
 .medicine-walk .movement p{ color: rgba(236,227,207,0.82); }
 .medicine-walk .movement .go{ color: var(--lantern-hi); }
 .medicine-walk .movement:hover{ border-color: rgba(214,164,82,0.82); box-shadow: 0 30px 60px -40px rgba(0,0,0,0.85); }
-.medicine-walk .movement:hover::before{ color: var(--lantern-hi); opacity:1; }
+.medicine-walk .movement:hover::before, .medicine-walk .movement:hover::after{ color: var(--lantern-hi); opacity:1; }
 .medicine-walk .movement.gold{
   background: linear-gradient(180deg, rgba(214,164,82,0.16), rgba(6,13,12,0.52));
   border-color: rgba(214,164,82,0.70);
 }
 .medicine-walk .movement.gold h3{ color: var(--lantern-hi); }
-.medicine-walk .movement.gold::before{ color: rgba(214,164,82,0.64); }
+.medicine-walk .movement.gold::before, .medicine-walk .movement.gold::after{ color: rgba(214,164,82,0.64); }
 
 /* ============================================================
    MOBILE — Why Now: solid panel + the photo as a SEPARATE block
@@ -1682,25 +1683,25 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
       <div class="movements">
         <a href="#/journey/day-one" class="movement reveal d1" data-num="9">
-          <span class="num">Day One · Sep 9 · Online</span>
+          <span class="num">Day One · Online</span>
           <h3>The Remembering</h3>
           <p>A global circle of healers, a virtual medicine walk through fields and forests, herbalism master classes, and journeys of cellular restoration.</p>
           <span class="go">Walk Day One →</span>
         </a>
         <a href="#/journey/day-two" class="movement reveal d2" data-num="10">
-          <span class="num">Day Two · Sep 10 · Online</span>
+          <span class="num">Day Two · Online</span>
           <h3>The Resurrection</h3>
           <p>From knowledge to embodiment — a farm immersion in the land that heals us back, and wisdom panels from traditions that survived erasure.</p>
           <span class="go">Walk Day Two →</span>
         </a>
         <a href="#/journey/day-three" class="movement reveal d3" data-num="11">
-          <span class="num">Day Three · Sep 11 · <span class="phr" style="white-space:nowrap">On the road</span></span>
+          <span class="num phr">Day Three · <span style="white-space:nowrap">On the road</span></span>
           <h3>The Journey</h3>
           <p class="pnk">The journey to the land is as sacred as the gathering — so travel gently, and bring something, if you wish, in honor of someone lost, someone healing, or yourself.</p>
           <span class="go">Walk Day Three →</span>
         </a>
         <a href="#/gathering" class="movement reveal d4 gold" data-num="12">
-          <span class="num">Day Four · Sep 12 · <span style="white-space:nowrap">On the land</span></span>
+          <span class="num">Day Four · <span style="white-space:nowrap">On the land</span></span>
           <h3>The Gathering</h3>
           <p>Onto the land at dusk — lanterns between the trees, a feast of medicines, drums and dancers, and the honoring of those who heal the healers.</p>
           <span class="go">Enter the woods →</span>
