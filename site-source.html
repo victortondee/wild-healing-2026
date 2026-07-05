@@ -150,6 +150,7 @@
 
   /* the heart — terracotta */
   --clay:     #B0654A;
+  --ember:    #DE4A2C;
 
   --line:        rgba(45,42,33,0.13);
   --line-strong: rgba(45,42,33,0.24);
@@ -512,6 +513,7 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
 @media (max-width:520px){ .movements{ grid-template-columns:1fr; } }
 /* v12 placeholder text — RED so unfinalized copy is obvious and replaced before launch */
 .day-mode{ color:var(--clay); }
+.mode-land{ color:var(--ember); }
 /* speakers (v12) — Home page: blank photo frames + name + placeholder role */
 .speakers{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(1.4rem,2.5vw,2.2rem); margin-top:2.8rem; max-width:34rem; margin-inline:auto; }
 @media (max-width:860px){ .speakers{ grid-template-columns:repeat(2,1fr); } }
@@ -554,6 +556,7 @@ a.speaker:hover .speaker-name{ color:var(--lantern-lo); }
 .movement:hover::before, .movement:hover::after{ color:var(--lantern); opacity:0.5; }
 .movement .num{ font-family:var(--ff-ui); font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage); position:relative; z-index:1; }
 .movement h3{ font-size:1.9rem; font-weight:400; position:relative; z-index:1; }
+@media (min-width:961px){ .movement .num{ min-height:3.6em; } }
 .movement .when{ font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--lantern); }
 .movement p{ margin:0.3rem 0 0; color:var(--ink-2); font-size:1.02rem; line-height:1.62; position:relative; z-index:1; }
 .movement .go{ margin-top:auto; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--lantern); padding-top:1rem; }
@@ -1132,6 +1135,7 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 .site-header.scrolled{ background:rgba(243,237,225,0.92); border-bottom-color:var(--line); }
 .site-footer{ background:linear-gradient(180deg, transparent, rgba(45,42,33,0.05)); border-top-color:var(--line); }
 .band.alt{ background:#E6DCC8; }
+.band.alt.speakers-band{ background:var(--cream); }
 .movement, .teach .card, .land-card, .attend-card, .dash-card{ background:#FBF7ED; }
 .movement.gold, .callband, .attend-card.feature, .tixrow.is-active, .tixform-checkout{ background:linear-gradient(180deg, #FAF1DE, #F6ECD4); border-color:rgba(195,126,105,0.40); }
 
@@ -1692,7 +1696,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <span class="go">Walk Day Three →</span>
         </a>
         <a href="#/gathering" class="movement reveal d4 gold" data-num="12">
-          <span class="num">Day Four · <span class="day-mode" style="white-space:nowrap">On the land</span></span>
+          <span class="num">Day Four · <span class="mode-land" style="white-space:nowrap">On the land</span></span>
           <h3>The Gathering</h3>
           <p>Onto the land at dusk — lanterns between the trees, a feast of medicines, drums and dancers, and the honoring of those who heal the healers.</p>
           <span class="go">Enter the woods →</span>
@@ -1702,7 +1706,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   </section>
 
   <!-- speakers (v12) — Home; Dr. Stoff confirmed, 3 placeholders, blank frames -->
-  <section class="band alt">
+  <section class="band alt speakers-band">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow"><span class="tick"></span>Speakers</span>
