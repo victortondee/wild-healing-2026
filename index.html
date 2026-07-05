@@ -1530,6 +1530,9 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
      is top-anchored, so the extra date height just pushes the buttons down into
      the formerly-empty bottom space (less room beneath them — ok, refined later). */
   #page-home .hero.hero--light.hero--white{ height:calc(100vw * 700 / 768); }
+  /* lift the whole content block (not the bg image) a little higher so the lower
+     buttons keep an adequate gap above the section bottom */
+  #page-home .hero.hero--light.hero--white .hero-inner{ transform:translateY(-60px); }
   #page-home .hero-dates{
     display:grid;
     grid-template-columns:repeat(2, minmax(5rem, max-content));
