@@ -1523,6 +1523,13 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
    Sep 11 / Sep 12 tiles across her body, where they were unreadable. Grid draws
    its own dividers; the button row then drops lower with room to breathe. */
 @media (min-width:761px) and (max-width:1024px){
+  /* Lock the section to its original (single-row) height so the taller 2×2 date
+     block no longer grows the box — a growing box makes background-size:cover
+     re-frame the dancer, shifting the image relative to the title. Height stays
+     tied to viewport width so the crop is stable across the tablet range. Content
+     is top-anchored, so the extra date height just pushes the buttons down into
+     the formerly-empty bottom space (less room beneath them — ok, refined later). */
+  #page-home .hero.hero--light.hero--white{ height:calc(100vw * 700 / 768); }
   #page-home .hero-dates{
     display:grid;
     grid-template-columns:repeat(2, minmax(5rem, max-content));
@@ -1539,8 +1546,9 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   #page-home .hero-dates .hdate:nth-of-type(3),
   #page-home .hero-dates .hdate:nth-of-type(4){ padding-top:1.1rem; }
   #page-home .hero-dates .hd-num{ font-size:2.5rem; }
-  /* buttons lower, clearly separated from the taller 2×2 date block */
-  #page-home .hero .btn-row{ margin-top:3.4rem; }
+  /* buttons lower, clearly separated from the taller 2×2 date block (a small
+     safety gap below them so sub-pixel rounding never clips the row) */
+  #page-home .hero .btn-row{ margin-top:2.6rem; }
 }/* Why Now paragraphs: same shadow as the Gathering header (desktop photo only) */
 @media (min-width:761px){ .why-now--light p{ text-shadow:0 1px 20px rgba(4,12,8,0.9), 0 1px 4px rgba(4,12,8,0.6); } }
 /* Why Now: the "And still, you are here…" paragraph (incl. its glow-word) white over the photo at tablet+desktop */
