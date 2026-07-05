@@ -521,6 +521,7 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
 /* v12 placeholder text — RED so unfinalized copy is obvious and replaced before launch */
 .phr, .phr *{ color:#e11d1d !important; }
 .pnk, .pnk *{ color:#ec4899 !important; }
+.day-mode{ color:var(--clay); }
 /* speakers (v12) — Home page: blank photo frames + name + placeholder role */
 .speakers{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(1.4rem,2.5vw,2.2rem); margin-top:2.8rem; max-width:34rem; margin-inline:auto; }
 @media (max-width:860px){ .speakers{ grid-template-columns:repeat(2,1fr); } }
@@ -1584,7 +1585,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <li><a href="#/info" data-key="info">Info</a></li>
       <li><a href="#/journey/day-one" data-key="journey/day-one"><span class="nl-date">Sep 9</span><span class="nl-mode">(Online)</span></a></li>
       <li><a href="#/journey/day-two" data-key="journey/day-two"><span class="nl-date">Sep 10</span><span class="nl-mode">(Online)</span></a></li>
-      <li><a href="#/journey/day-three" data-key="journey/day-three"><span class="nl-date">Sep 11</span><span class="nl-mode">(Online)</span></a></li>
+      <li><a href="#/journey/day-three" data-key="journey/day-three"><span class="nl-date">Sep 11</span><span class="nl-mode">(Travel day)</span></a></li>
       <li><a href="#/gathering" data-key="gathering" class="land"><span class="nl-date">Sep 12</span><span class="nl-mode">(On the land)</span></a></li>
     </ul>
     <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary nav-cta-btn">Get tickets</a>
@@ -1629,8 +1630,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <span class="hd-mon">Sep</span>
         </a>
         <span class="hd-div" aria-hidden="true"></span>
-        <a class="hdate" href="#/journey/day-three" aria-label="September 11, online — Day Three">
-          <span class="hd-tag">Online</span>
+        <a class="hdate" href="#/journey/day-three" aria-label="September 11, travel day — Day Three">
+          <span class="hd-tag">Travel day</span>
           <span class="hd-num">11</span>
           <span class="hd-mon">Sep</span>
         </a>
@@ -1695,13 +1696,13 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <span class="go">Walk Day Two →</span>
         </a>
         <a href="#/journey/day-three" class="movement reveal d3" data-num="11">
-          <span class="num phr">Day Three · <span style="white-space:nowrap">On the road</span></span>
+          <span class="num">Day Three · <span class="day-mode" style="white-space:nowrap">Travel day</span></span>
           <h3>The Journey</h3>
           <p class="pnk">The journey to the land is as sacred as the gathering — so travel gently, and bring something, if you wish, in honor of someone lost, someone healing, or yourself.</p>
           <span class="go">Walk Day Three →</span>
         </a>
         <a href="#/gathering" class="movement reveal d4 gold" data-num="12">
-          <span class="num">Day Four · <span style="white-space:nowrap">On the land</span></span>
+          <span class="num">Day Four · <span class="day-mode" style="white-space:nowrap">On the land</span></span>
           <h3>The Gathering</h3>
           <p>Onto the land at dusk — lanterns between the trees, a feast of medicines, drums and dancers, and the honoring of those who heal the healers.</p>
           <span class="go">Enter the woods →</span>
@@ -3057,7 +3058,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <a href="#/invitation">The Invitation</a>
         <a href="#/journey/day-one">Sep 9 (Online)</a>
         <a href="#/journey/day-two">Sep 10 (Online)</a>
-        <a href="#/journey/day-three">Sep 11 (Online)</a>
+        <a href="#/journey/day-three">Sep 11 (Travel day)</a>
         <a href="#/gathering" style="color:var(--lantern)">Sep 12 (On the land)</a>
       </div>
       <div class="footer-col">
