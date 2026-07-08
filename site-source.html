@@ -2813,6 +2813,114 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <p class="lede dim">A staging area for sections in progress, before they go live. This page isn't linked publicly.</p>
   </div>
 
+  <!-- ============================================================
+       Draft · WILD! Healing 2026 — RSVP strip & pop-up (for the OTHER
+       Restore Forward site). Self-contained: its own scoped `whp-` styles
+       and a JS-free (checkbox) pop-up trigger. RSVP → the WILD website.
+       ============================================================ -->
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · WILD! Healing 2026 — RSVP strip &amp; pop-up (for the other site)</span></div>
+  <section class="band">
+    <div class="wrap">
+      <p class="prose dim" style="max-width:46rem;">A promo <strong>strip</strong> and a <strong>pop-up</strong> to drop onto the other Restore Forward site, each inviting visitors to RSVP for WILD! Healing 2026. Every RSVP button links out to the WILD website (<a href="https://wildgala.com" target="_blank" rel="noopener">wildgala.com</a>). Two strip styles and one pop-up are shown below to base a design on — swap the link to the tickets page if you'd rather send RSVPs straight there.</p>
+
+      <style>
+        .whp-label{ font-family:var(--ff-ui); font-size:0.66rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage); margin:2.8rem 0 0.9rem; }
+        .whp-note{ font-family:var(--ff-ui); font-size:0.72rem; color:var(--sage-dim); margin:0.7rem 0 0; }
+
+        /* ---- announcement strip ---- */
+        .whp-strip{ border-radius:var(--radius); overflow:hidden; }
+        .whp-strip-inner{ display:flex; align-items:center; justify-content:space-between; gap:1.1rem 2rem; flex-wrap:wrap; padding:1.05rem clamp(1.2rem,3vw,2rem); }
+        .whp-kicker{ display:block; font-family:var(--ff-ui); font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; margin-bottom:0.35rem; }
+        .whp-title{ font-family:var(--ff-display); font-weight:400; font-size:clamp(1.1rem,2.1vw,1.5rem); line-height:1.15; }
+        .whp-title em{ font-style:italic; }
+        .whp-strip .btn{ flex:none; white-space:nowrap; }
+        .whp-strip--dark{ background:linear-gradient(100deg,#20241d,#2d2a21); border:1px solid rgba(236,227,207,0.16); }
+        .whp-strip--dark .whp-kicker{ color:var(--lantern-hi); }
+        .whp-strip--dark .whp-title{ color:var(--cream); }
+        .whp-strip--dark .whp-title em{ color:var(--lantern-hi); }
+        .whp-strip--light{ background:var(--cream); border:1px solid var(--line-strong); }
+        .whp-strip--light .whp-kicker{ color:var(--lantern-lo); }
+        .whp-strip--light .whp-title{ color:var(--ink); }
+        .whp-strip--light .whp-title em{ color:var(--lantern-lo); }
+
+        /* ---- pop-up ---- */
+        .whp-toggle{ position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+        .whp-open-btn{ display:inline-flex; align-items:center; gap:0.55rem; cursor:pointer; font-family:var(--ff-ui); font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink); border:1px solid var(--ink-2); border-radius:100px; padding:0.9em 1.6em; transition:background .2s var(--ease), color .2s var(--ease); }
+        .whp-open-btn:hover{ background:var(--ink); color:var(--cream); }
+        .whp-overlay{ display:none; }
+        .whp-toggle:checked ~ .whp-overlay{ display:flex; position:fixed; inset:0; z-index:1000; align-items:center; justify-content:center; padding:1.4rem; }
+        .whp-overlay-bg{ position:absolute; inset:0; background:rgba(18,17,14,0.62); -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); cursor:pointer; }
+        .whp-modal{ position:relative; z-index:1; width:min(30rem,100%); background:var(--cream); border-radius:var(--radius); overflow:hidden; border:1px solid var(--line-strong); box-shadow:0 40px 90px -30px rgba(12,10,7,0.6); }
+        .whp-modal--static{ margin-top:1rem; }
+        .whp-modal-media{ aspect-ratio:16/9; overflow:hidden; background:var(--cream); }
+        .whp-modal-media img{ width:100%; height:100%; object-fit:cover; object-position:center 28%; display:block; }
+        .whp-modal-body{ padding:clamp(1.6rem,4vw,2.3rem); text-align:center; }
+        .whp-modal-kicker{ font-family:var(--ff-ui); font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--lantern-lo); }
+        .whp-modal-title{ font-family:var(--ff-display); font-weight:300; font-size:clamp(1.9rem,4.4vw,2.5rem); color:var(--ink); margin:0.5rem 0 0; letter-spacing:-0.02em; }
+        .whp-modal-title .bang{ color:var(--clay); font-style:normal; }
+        .whp-modal-sub{ font-family:var(--ff-body); font-size:0.98rem; line-height:1.55; color:var(--ink-2); margin:0.9rem auto 1.5rem; max-width:24rem; }
+        .whp-modal .btn{ width:100%; justify-content:center; }
+        .whp-modal-dismiss{ display:block; margin:0.9rem auto 0; background:none; border:0; font-family:var(--ff-ui); font-size:0.66rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage); cursor:pointer; }
+        .whp-modal-x{ position:absolute; top:0.7rem; right:0.8rem; z-index:2; width:2rem; height:2rem; display:flex; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,0.9); color:var(--ink); font-size:1.4rem; line-height:0.8; cursor:pointer; border:0; }
+      </style>
+
+      <p class="whp-label">Option A · Announcement strip — dark</p>
+      <div class="whp-strip whp-strip--dark">
+        <div class="whp-strip-inner">
+          <div class="whp-strip-copy">
+            <span class="whp-kicker">RSVP now open · Sept 9–12, 2026</span>
+            <span class="whp-title">WILD<span class="bang">!</span> Healing 2026 — <em>a harvest of medicine</em></span>
+          </div>
+          <a href="https://wildgala.com" target="_blank" rel="noopener" class="btn btn-primary">RSVP <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <p class="whp-label">Option A · Announcement strip — light</p>
+      <div class="whp-strip whp-strip--light">
+        <div class="whp-strip-inner">
+          <div class="whp-strip-copy">
+            <span class="whp-kicker">RSVP now open · Sept 9–12, 2026</span>
+            <span class="whp-title">WILD<span class="bang">!</span> Healing 2026 — <em>a harvest of medicine</em></span>
+          </div>
+          <a href="https://wildgala.com" target="_blank" rel="noopener" class="btn btn-primary">RSVP <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <p class="whp-note">Intended use: a full-width bar pinned to the top of the other site.</p>
+
+      <p class="whp-label">Option B · Pop-up</p>
+      <div class="whp-demo">
+        <input type="checkbox" id="whPopup" class="whp-toggle" aria-hidden="true">
+        <label for="whPopup" class="whp-open-btn">Preview the pop-up <span class="arrow">→</span></label>
+        <div class="whp-overlay">
+          <label for="whPopup" class="whp-overlay-bg" aria-label="Close pop-up"></label>
+          <div class="whp-modal" role="dialog" aria-label="WILD! Healing 2026 RSVP">
+            <label for="whPopup" class="whp-modal-x" aria-label="Close">&times;</label>
+            <div class="whp-modal-media"><img src="images/hero-tablet.jpg" alt="" loading="lazy"></div>
+            <div class="whp-modal-body">
+              <span class="whp-modal-kicker">You&rsquo;re invited</span>
+              <h3 class="whp-modal-title">WILD<span class="bang">!</span> Healing 2026</h3>
+              <p class="whp-modal-sub">A harvest of medicine — four days across the screen and the land.<br>September 9&ndash;12 · Ava, New York &amp; Online.</p>
+              <a href="https://wildgala.com" target="_blank" rel="noopener" class="btn btn-primary">RSVP now <span class="arrow">→</span></a>
+              <label for="whPopup" class="whp-modal-dismiss">Maybe later</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="whp-note">Tap &ldquo;Preview the pop-up&rdquo; to see it as a centred overlay (click the backdrop, &times;, or &ldquo;Maybe later&rdquo; to close). Intended use: appears once on load, or after a short delay. The same design, shown static below:</p>
+      <div class="whp-modal whp-modal--static" role="img" aria-label="Pop-up design preview">
+        <span class="whp-modal-x" aria-hidden="true">&times;</span>
+        <div class="whp-modal-media"><img src="images/hero-tablet.jpg" alt="" loading="lazy"></div>
+        <div class="whp-modal-body">
+          <span class="whp-modal-kicker">You&rsquo;re invited</span>
+          <h3 class="whp-modal-title">WILD<span class="bang">!</span> Healing 2026</h3>
+          <p class="whp-modal-sub">A harvest of medicine — four days across the screen and the land.<br>September 9&ndash;12 · Ava, New York &amp; Online.</p>
+          <a href="https://wildgala.com" target="_blank" rel="noopener" class="btn btn-primary">RSVP now <span class="arrow">→</span></a>
+          <span class="whp-modal-dismiss">Maybe later</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · The Journey — Day Three (Sept 11) section</span></div>
   <section class="band day-band">
     <span class="day-wm" aria-hidden="true"><span class="dw-mon">Sep</span><span class="dw-num">11</span></span>
