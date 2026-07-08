@@ -2821,7 +2821,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · WILD! Healing 2026 — RSVP strip &amp; pop-up (for the other site)</span></div>
   <section class="band">
     <div class="wrap">
-      <p class="prose dim" style="max-width:46rem;">A promo <strong>strip</strong> and a <strong>pop-up</strong> to drop onto the other Restore Forward site, each inviting visitors to RSVP for WILD! Healing 2026. Every RSVP button links out to the WILD website (<a href="https://wildgala.com" target="_blank" rel="noopener">wildgala.com</a>). Two strip styles and one pop-up are shown below to base a design on — swap the link to the tickets page if you'd rather send RSVPs straight there.</p>
+      <p class="prose dim" style="max-width:46rem;">Ways to invite visitors on the other Restore Forward site to RSVP for WILD! Healing 2026 — a <strong>strip</strong>, a <strong>pop-up</strong>, and a full <strong>image-background section</strong> (shown at two heights, with an event description). Every RSVP button links out to the WILD website (<a href="https://wildgala.com" target="_blank" rel="noopener">wildgala.com</a>) — swap the link to the tickets page if you'd rather send RSVPs straight there.</p>
 
       <style>
         .whp-label{ font-family:var(--ff-ui); font-size:0.66rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage); margin:2.8rem 0 0.9rem; }
@@ -2862,6 +2862,20 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         .whp-modal .btn{ width:100%; justify-content:center; }
         .whp-modal-dismiss{ display:block; margin:0.9rem auto 0; background:none; border:0; font-family:var(--ff-ui); font-size:0.66rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage); cursor:pointer; }
         .whp-modal-x{ position:absolute; top:0.7rem; right:0.8rem; z-index:2; width:2rem; height:2rem; display:flex; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,0.9); color:var(--ink); font-size:1.4rem; line-height:0.8; cursor:pointer; border:0; }
+
+        /* ---- image-background promo section (evolution of the strip) ---- */
+        .whp-sec{ position:relative; overflow:hidden; border-radius:var(--radius); background:#cfd6d4 url("images/wild-promo-bg.jpg") center center/cover no-repeat; display:flex; }
+        .whp-sec--full{ min-height:min(84vh, 44rem); }
+        .whp-sec--band{ min-height:23rem; }
+        .whp-sec::before{ content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(22,20,16,0.80) 0%, rgba(22,20,16,0.52) 34%, rgba(22,20,16,0.14) 64%, rgba(22,20,16,0) 100%); }
+        .whp-sec-inner{ position:relative; z-index:1; width:100%; max-width:37rem; padding:clamp(2rem,5vw,3.6rem); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; }
+        .whp-sec-kicker{ font-family:var(--ff-ui); font-size:0.64rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--lantern-hi); }
+        .whp-sec-title{ font-family:var(--ff-display); font-weight:300; font-size:clamp(2.3rem,5vw,3.5rem); line-height:1; letter-spacing:-0.02em; color:var(--cream); margin:0.6rem 0 0; }
+        .whp-sec-title .bang{ color:var(--clay); }
+        .whp-sec-lede{ font-family:var(--ff-display); font-style:italic; font-weight:300; font-size:clamp(1.1rem,2vw,1.45rem); color:var(--cream); margin:0.9rem 0 0; }
+        .whp-sec-desc{ font-family:var(--ff-body); font-size:0.98rem; line-height:1.6; color:rgba(236,227,207,0.9); margin:1.1rem 0 0; max-width:31rem; }
+        .whp-sec-meta{ font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.08em; color:rgba(236,227,207,0.82); margin:1.2rem 0 0; }
+        .whp-sec .btn{ margin-top:1.7rem; }
       </style>
 
       <p class="whp-label">Option A · Announcement strip — dark</p>
@@ -2918,6 +2932,28 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <span class="whp-modal-dismiss">Maybe later</span>
         </div>
       </div>
+
+      <p class="whp-label">Option C · Full-height section — image background + description</p>
+      <section class="whp-sec whp-sec--full">
+        <div class="whp-sec-inner">
+          <span class="whp-sec-kicker">You&rsquo;re invited · Sept 9&ndash;12, 2026</span>
+          <h3 class="whp-sec-title">WILD<span class="bang">!</span> Healing 2026</h3>
+          <p class="whp-sec-lede">A harvest of medicine.</p>
+          <p class="whp-sec-desc">WILD! Healing is a four-day medicine walk across cultures and landscapes — three days of virtual immersion, then a gathering on the land. Healers, farmers, herbalists, and wisdom keepers guide a return to ancestral plant medicine, culminating in a lantern-lit feast in the woods of Ava, New York.</p>
+          <p class="whp-sec-meta">September 9&ndash;12, 2026 · Ava, New York &amp; Online</p>
+          <a href="https://wildgala.com" target="_blank" rel="noopener" class="btn btn-primary">RSVP <span class="arrow">→</span></a>
+        </div>
+      </section>
+
+      <p class="whp-label">Option D · Narrower band — same image, condensed copy</p>
+      <section class="whp-sec whp-sec--band">
+        <div class="whp-sec-inner">
+          <span class="whp-sec-kicker">You&rsquo;re invited · Sept 9&ndash;12, 2026</span>
+          <h3 class="whp-sec-title">WILD<span class="bang">!</span> Healing 2026</h3>
+          <p class="whp-sec-desc">A four-day medicine walk — three days of virtual immersion, then a gathering on the land at Ava, New York. A refusal to surrender our bodies, and an invitation to walk back and get what was lost.</p>
+          <a href="https://wildgala.com" target="_blank" rel="noopener" class="btn btn-primary">RSVP <span class="arrow">→</span></a>
+        </div>
+      </section>
     </div>
   </section>
 
