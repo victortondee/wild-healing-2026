@@ -2860,6 +2860,9 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         .whp-modal-title .bang{ color:var(--clay); font-style:normal; }
         .whp-modal-sub{ font-family:var(--ff-body); font-size:0.98rem; line-height:1.55; color:var(--ink-2); margin:0.9rem auto 1.5rem; max-width:24rem; }
         .whp-modal .btn{ width:100%; justify-content:center; }
+        /* RSVP button removed from the mockup but its exact footprint is kept, so the
+           other site can drop its own button into the same space with no layout shift */
+        .whp-rsvp{ visibility:hidden; }
         .whp-modal-dismiss{ display:block; margin:0.9rem auto 0; background:none; border:0; font-family:var(--ff-ui); font-size:0.66rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage); cursor:pointer; }
         .whp-modal-x{ position:absolute; top:0.7rem; right:0.8rem; z-index:2; width:2rem; height:2rem; display:flex; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,0.9); color:var(--ink); font-size:1.4rem; line-height:0.8; cursor:pointer; border:0; }
 
@@ -2908,27 +2911,25 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <div class="whp-overlay">
           <label for="whPopup" class="whp-overlay-bg" aria-label="Close pop-up"></label>
           <div class="whp-modal" role="dialog" aria-label="WILD! Healing 2026 RSVP">
-            <label for="whPopup" class="whp-modal-x" aria-label="Close">&times;</label>
             <div class="whp-modal-media"><img src="images/hero-tablet.jpg" alt="" loading="lazy"></div>
             <div class="whp-modal-body">
               <span class="whp-modal-kicker">You&rsquo;re invited</span>
               <h3 class="whp-modal-title">WILD<span class="bang">!</span> Healing 2026</h3>
-              <p class="whp-modal-sub">A harvest of medicine — four movements: remembering, resurrection, journey, gathering.<br>September 9&ndash;12 · Ava, New York &amp; Online.</p>
-              <a href="https://wildgala.com" target="_blank" rel="noopener" class="btn btn-primary">RSVP now <span class="arrow">→</span></a>
+              <p class="whp-modal-sub">A four-day medicine walk across cultures and landscapes — three days of virtual immersion, then a gathering on the land. Led by healers, farmers, and wisdom keepers, it&rsquo;s a return to ancestral plant medicine and the work of calling the body back to life.<br>September 9&ndash;12 · Ava, New York &amp; Online.</p>
+              <!-- RSVP button removed; the space below is intentionally reserved for the site's own button --><a href="https://wildgala.com" target="_blank" rel="noopener" class="btn btn-primary whp-rsvp" aria-hidden="true" tabindex="-1">RSVP now <span class="arrow">→</span></a>
               <label for="whPopup" class="whp-modal-dismiss">Maybe later</label>
             </div>
           </div>
         </div>
       </div>
-      <p class="whp-note">Tap &ldquo;Preview the pop-up&rdquo; to see it as a centred overlay (click the backdrop, &times;, or &ldquo;Maybe later&rdquo; to close). Intended use: appears once on load, or after a short delay. The same design, shown static below:</p>
+      <p class="whp-note">Tap &ldquo;Preview the pop-up&rdquo; to see it as a centred overlay (click the backdrop or &ldquo;Maybe later&rdquo; to close). The RSVP button is removed but its space is kept. Intended use: appears once on load, or after a short delay. The same design, shown static below:</p>
       <div class="whp-modal whp-modal--static" role="img" aria-label="Pop-up design preview">
-        <span class="whp-modal-x" aria-hidden="true">&times;</span>
         <div class="whp-modal-media"><img src="images/hero-tablet.jpg" alt="" loading="lazy"></div>
         <div class="whp-modal-body">
           <span class="whp-modal-kicker">You&rsquo;re invited</span>
           <h3 class="whp-modal-title">WILD<span class="bang">!</span> Healing 2026</h3>
-          <p class="whp-modal-sub">A harvest of medicine — four movements: remembering, resurrection, journey, gathering.<br>September 9&ndash;12 · Ava, New York &amp; Online.</p>
-          <a href="https://wildgala.com" target="_blank" rel="noopener" class="btn btn-primary">RSVP now <span class="arrow">→</span></a>
+          <p class="whp-modal-sub">A four-day medicine walk across cultures and landscapes — three days of virtual immersion, then a gathering on the land. Led by healers, farmers, and wisdom keepers, it&rsquo;s a return to ancestral plant medicine and the work of calling the body back to life.<br>September 9&ndash;12 · Ava, New York &amp; Online.</p>
+          <!-- RSVP button removed; the space below is intentionally reserved for the site's own button --><a href="https://wildgala.com" target="_blank" rel="noopener" class="btn btn-primary whp-rsvp" aria-hidden="true" tabindex="-1">RSVP now <span class="arrow">→</span></a>
           <span class="whp-modal-dismiss">Maybe later</span>
         </div>
       </div>
