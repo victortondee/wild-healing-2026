@@ -2864,6 +2864,66 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   </div>
 
   <!-- ============================================================
+       Draft · Home hero — alternate DESKTOP background image.
+       Verbatim copy of the live home hero; only the desktop (≥1025px) background
+       is swapped to images/hero-desktop-draft.jpg via the .hero--deskbg override
+       below. Tablet (761–1024) and mobile (≤760) backgrounds are left unchanged.
+       ============================================================ -->
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · Home hero — alternate desktop background</span></div>
+  <style>
+    @media (min-width:1025px){
+      .hero.hero--light.hero--deskbg{ background-image:url("images/hero-desktop-draft.jpg"); }
+    }
+  </style>
+  <section class="hero hero--flat hero--light hero--white hero--deskbg">
+    <div class="hero-motes" aria-hidden="true">
+      <span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span>
+      <span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span>
+      <span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span>
+      <span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span><span class="mote"><i class="mote-core"></i></span>
+    </div>
+    <div class="wrap hero-inner">
+      <span class="eyebrow anim a1">A <a href="https://restoreny.org" class="orglink" target="_blank" rel="noopener">Restore Forward</a> gathering</span>
+      <h1 class="anim a2">WILD<span class="bang">!</span> Healing<span class="row2">A harvest of medicine</span></h1>
+      <p class="hero-sub anim a3">A refusal to surrender our bodies — and an invitation to walk back and get what was lost.</p>
+      <p class="hero-loc anim a4">
+        <svg class="hl-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span><a href="https://maps.app.goo.gl/PR75VYSk5743Q3dD7" target="_blank" rel="noopener">Ava, New York</a> & Online</span>
+      </p>
+      <div class="hero-dates anim a4">
+        <a class="hdate" href="#/journey/day-one" aria-label="September 9, online — Day One">
+          <span class="hd-tag">Online</span>
+          <span class="hd-num">9</span>
+          <span class="hd-mon">Sep</span>
+        </a>
+        <span class="hd-div" aria-hidden="true"></span>
+        <a class="hdate" href="#/journey/day-two" aria-label="September 10, online — Day Two">
+          <span class="hd-tag">Online</span>
+          <span class="hd-num">10</span>
+          <span class="hd-mon">Sep</span>
+        </a>
+        <span class="hd-div" aria-hidden="true"></span>
+        <a class="hdate" href="#/journey/day-three" aria-label="September 11, travel day — Day Three">
+          <span class="hd-tag">Travel day</span>
+          <span class="hd-num">11</span>
+          <span class="hd-mon">Sep</span>
+        </a>
+        <span class="hd-div" aria-hidden="true"></span>
+        <a class="hdate land" href="#/gathering" aria-label="September 12, on the land — The Gathering">
+          <span class="hd-tag">On the land</span>
+          <span class="hd-num">12</span>
+          <span class="hd-mon">Sep</span>
+        </a>
+      </div>
+      <div class="btn-row anim a5">
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow">→</span></a>
+        <a href="#/invitation" class="btn btn-ghost">Read the invitation</a>
+      </div>
+    </div>
+    <span class="scroll-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span>
+  </section>
+
+  <!-- ============================================================
        Draft · WILD! Healing 2026 — RSVP strip & pop-up (for the OTHER
        Restore Forward site). Self-contained: its own scoped `whp-` styles
        and a JS-free (checkbox) pop-up trigger. RSVP → the WILD website.
