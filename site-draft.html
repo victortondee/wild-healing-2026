@@ -857,7 +857,7 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
    <=1000px hamburger menu) are unchanged.
    ============================================================ */
 @media (min-width:761px) and (max-width:1024px){
-  :root{ font-size: min(calc(100vw / 60), 16px); }
+  :root{ font-size: calc(100vw / 60); }  /* DRAFT lock-and-scale: uncapped */
 }
 
 /* ============================================================
@@ -866,8 +866,9 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
    >=1440 widescreen lock resolves to at 1440), so desktop renders at its design
    scale with no zoom-induced overflow. Above 1440 the widescreen lock zooms.
    ============================================================ */
-@media (min-width:1025px) and (max-width:1439px){
-  :root{ font-size: 16px; }
+@media (min-width:1025px){
+  :root{ font-size: calc(100vw / 90); }  /* DRAFT lock-and-scale: desktop + widescreen merged into ONE band, uncapped */
+  .loc-map-frame{ height:auto; aspect-ratio: 1.52; }
 }
 
 /* ============================================================
@@ -1619,7 +1620,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
    Above 760 the tablet lock (761-1439) takes over. (Fixed-px hairlines stay 1px.)
    ============================================================ */
 @media (max-width:760px){
-  :root{ font-size: clamp(14px, calc(100vw / 24.375), 16px); }
+  :root{ font-size: calc(100vw / 24.375); }  /* DRAFT lock-and-scale: uncapped — whole mobile band zooms as one unit */
   .loc-map-frame{ height: 21.25rem; }   /* was 340px — scale with the lock */
 }
 
@@ -1670,6 +1671,23 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 @media (min-width:761px) and (max-width:1024px){ #draft-D-01 .sb-fw-t{ display:block; } #draft-D-01 .sb-fm-t, #draft-D-01 .sb-bt-t{ display:inline; } }
 @media (min-width:1025px){ #draft-D-01 .sb-fw-d{ display:block; } #draft-D-01 .sb-fm-d, #draft-D-01 .sb-bt-d{ display:inline; } }
 
+</style>
+<style id="dsp-badge-css">
+/* DRAFT global containment: uncapped scaling lets a few not-yet-reflowed full-bleed/
+   fixed elements (header date-nav drawer, one image) bleed a few % past the viewport
+   on mobile/tablet. Clip the horizontal bleed at the root so there is no page scrollbar;
+   overflow-x:clip (not hidden) keeps position:sticky and vertical scroll working. */
+html{ overflow-x:clip; }
+
+/* DRAFT-ONLY breakpoint indicator (not on the live site). Fixed px so it stays a
+   stable dev overlay regardless of the page's now-uncapped scaling. */
+#dsp-badge{position:fixed;left:0;bottom:0;z-index:99999;display:flex;gap:.5em;align-items:baseline;background:rgba(24,18,14,.86);color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-weight:700;font-size:11px;line-height:1;letter-spacing:.13em;text-transform:uppercase;padding:8px 12px;border-top-right-radius:10px;pointer-events:none;box-shadow:0 2px 16px rgba(0,0,0,.32)}
+#dsp-badge .dsp-tag{opacity:.55;font-weight:600}
+#dsp-badge b{color:#e6a887;font-weight:800}
+#dsp-badge .dsp-b{display:none}
+@media (max-width:760px){#dsp-badge .dsp-m{display:inline}}
+@media (min-width:761px) and (max-width:1024px){#dsp-badge .dsp-t{display:inline}}
+@media (min-width:1025px){#dsp-badge .dsp-d{display:inline}}
 </style>
 </head>
 <body data-page="home">
@@ -3620,12 +3638,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           </div>
         </li>
         <li>
-          <a class="dash-link" href="site-draft.html" target="_blank" rel="noopener">
-            <span class="dash-link-title">Lock-and-scale draft <span class="dash-badge">New</span> <span class="dash-arrow">&rarr;</span></span>
-            <span class="dash-link-meta">Full-site draft with the uniform lock-and-scale philosophy applied to every page: everything sized off one unit (100vw &divide; N) per breakpoint, uncapped, so each band zooms as a single static composition. Three breakpoints &mdash; mobile / tablet / desktop. A corner badge shows the active band. Opens in a new tab.</span>
-          </a>
-        </li>
-        <li>
           <a class="dash-link" href="wild-healing-2026-v6.html" target="_blank" rel="noopener">
             <span class="dash-link-title">v6 — darker version <span class="dash-arrow">→</span></span>
             <span class="dash-link-meta">The original deep-teal build, before the brightness lift. Opens in a new tab.</span>
@@ -4116,5 +4128,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   window.addEventListener('touchstart', dismiss, {passive:true});
 })();
 </script>
+<div id="dsp-badge" aria-hidden="true"><span class="dsp-tag">Draft · lock-&amp;-scale</span><b><span class="dsp-b dsp-m">Mobile</span><span class="dsp-b dsp-t">Tablet</span><span class="dsp-b dsp-d">Desktop</span></b></div>
 </body>
 </html>
