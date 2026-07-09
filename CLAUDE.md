@@ -172,16 +172,16 @@ structural work in one chat, commit + push it, then parallel section work can
 resume on top of it. Don't start a cross-cutting edit while other chats may be
 mid-edit.
 
-## Verifying changes
+## Verifying changes — don't; ship it and let the user check
 
-**Avoid `preview_eval` (and the preview server) as much as possible — it slows
-the process a lot.** Prefer reasoning about the CSS/HTML directly and trusting a
-careful edit. Use the preview only **rarely, when verification is genuinely
-unavoidable** (e.g. you can't otherwise be confident a layout/visual change is
-correct). For most edits, skip it and just commit.
+**The user evaluates the result themselves and prefers SPEED over chats
+self-verifying.** So by default **do NOT use `preview_eval`, the preview server,
+`preview_screenshot`, or any other preview / browser tool** — they slow the
+process a lot for little gain here. Reason about the CSS/HTML directly, make a
+careful edit, commit + push, and let the user look at the live site and say if
+anything is off. **Speed over agency.**
 
-If you do need it: use the preview server (`.claude/launch.json` → `wildhealing`,
-port 8728). Note the offscreen preview freezes CSS animation clocks, so
-`getComputedStyle` may report `opacity:0` mid-animation even when a real browser
-would show the content — force a paint (screenshot) to verify, or assert on
-static (non-animated) styles.
+Only touch the preview if the **user explicitly asks** you to verify something in
+the browser. (If so: the offscreen preview blanks `background-attachment:fixed`
+sections and freezes animation clocks — measure via the DOM or a forced
+screenshot rather than trusting `getComputedStyle` mid-animation.)
