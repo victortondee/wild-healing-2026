@@ -510,8 +510,8 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
 
 /* four movements — a real sequence: the four days */
 .movements{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.4rem; }
-@media (max-width:960px){ .movements{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:520px){ .movements{ grid-template-columns:1fr; } }
+@media (min-width:761px) and (max-width:1024px){ .movements{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:760px){ .movements{ grid-template-columns:1fr; } }  /* mobile: each day its own row */
 /* v12 placeholder text — RED so unfinalized copy is obvious and replaced before launch */
 .day-mode{ color:var(--clay); }
 .mode-land{ color:var(--ember); }
