@@ -962,6 +962,7 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 .why-now .wrap{ text-shadow: 0 1px 22px rgba(4,12,8,0.5); }
 
 #page-home .why-now .prose{ margin-inline-start: 0; }
+#page-home .band.alt.why-now{ padding-block: clamp(7rem, 15vh, 13rem); }  /* clear the fixed 5rem header, like The Remembering */
 /* TABLET (761-1024px) — keep Why Now text in the left column, off the face on the right */
 @media (min-width:761px) and (max-width:1024px){
   #page-home .why-now .section-head,
@@ -1154,7 +1155,7 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
    a lower-specificity offset lost to the base 'center'. */
 .band.alt.why-now.why-now--light.wn-parallax{
   background-attachment: fixed;
-  background-position: center 5rem;
+  background-position: center 42%;
 }
 /* TABLET/iPad — no parallax for Why Now (placed after the base fixed rule so it wins) */
 @media (min-width:761px) and (max-width:1024px){
