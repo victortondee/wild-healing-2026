@@ -203,16 +203,17 @@ element must grow/shrink together, and NO word may jump to another line.** If so
 fixed size while its neighbours scale, or a line re-wraps, you have a `px`/`vw`/`clamp` leak —
 hunt it down and convert it to `rem`.
 
-### The bands (root font-size) + reference build
-`site-draft.html` (Dashboard → Versions → "Lock-and-scale draft") is the **full-site reference**
-where the root is uncapped so the whole site zooms per band — build new work to behave like it:
-- **Mobile ≤760:** `calc(100vw/24.375)` · **Tablet 761–1024:** `calc(100vw/60)` · **Desktop ≥1025:** `calc(100vw/90)`
+### The bands (root font-size) — NOW LIVE, uncapped
+As of **2026-07-09** the live `site-source.html` runs the **uncapped lock-and-scale** root — the
+whole site zooms per band, so `rem` in a section literally tracks the display width:
+- **Mobile ≤760:** `calc(100vw/24.375)` · **Tablet 761–1024:** `calc(100vw/60)` · **Desktop ≥1025:** `calc(100vw/90)` (desktop + widescreen merged)
+- A single `html{ overflow-x:clip }` contains the horizontal bleed uncapping introduces (header
+  drawer, full-bleed images); never remove it.
 
-**Live `site-source.html` today** still ships *capped* roots
-(`clamp(14px, 100vw/24.375, 16px)` / `min(100vw/60, 16px)` / `16px` / `100vw/90`) as an overflow
-safety while the site migrates to the draft's uncapped model. **Whichever root is in force, your
-section MUST be pure `rem`** so it scales with it. Do not change the live root caps inside a
-section edit — that is a solo, site-wide change (see below); just keep your section locked.
+The previous *capped* build (root pinned near 16px below 1440) is archived at
+**`wild-healing-2026-v6.2-capped.html`** (Dashboard → Versions → "v6.2 — fixed-scale (archived)").
+**Do not re-cap the root inside a section edit** — the uncapped root is the whole point; changing
+it is a solo, site-wide decision (see below). Just build your section pure `rem` and it scales.
 - Full spec = the CSS comment blocks in `site-source.html`: `v12 — MOBILE WIDTH-SCALING LOCK`,
   `TABLET WIDTH-SCALING LOCK`, `DESKTOP LOCK`, `v8 — SITEWIDE WIDTH-SCALING`.
 

@@ -191,6 +191,7 @@ body{
   text-rendering:optimizeLegibility;
   overflow-x:hidden;
 }
+html{ overflow-x:clip; }  /* LOCK-AND-SCALE: contain the horizontal bleed from uncapped scaling (keeps position:sticky + vertical scroll) */
 ::selection{ background:rgba(215,158,140,0.26); color:var(--ink); }
 :focus-visible{ outline:2px solid var(--lantern); outline-offset:3px; border-radius:2px; }
 /* page headings get programmatic focus on route change (for screen readers) — no visible ring */
@@ -857,7 +858,7 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
    <=1000px hamburger menu) are unchanged.
    ============================================================ */
 @media (min-width:761px) and (max-width:1024px){
-  :root{ font-size: min(calc(100vw / 60), 16px); }
+  :root{ font-size: calc(100vw / 60); }  /* LOCK-AND-SCALE: uncapped */
 }
 
 /* ============================================================
@@ -866,8 +867,9 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
    >=1440 widescreen lock resolves to at 1440), so desktop renders at its design
    scale with no zoom-induced overflow. Above 1440 the widescreen lock zooms.
    ============================================================ */
-@media (min-width:1025px) and (max-width:1439px){
-  :root{ font-size: 16px; }
+@media (min-width:1025px){
+  :root{ font-size: calc(100vw / 90); }  /* LOCK-AND-SCALE: desktop + widescreen merged into one band, uncapped */
+  .loc-map-frame{ height:auto; aspect-ratio: 1.52; }
 }
 
 /* ============================================================
@@ -1619,7 +1621,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
    Above 760 the tablet lock (761-1439) takes over. (Fixed-px hairlines stay 1px.)
    ============================================================ */
 @media (max-width:760px){
-  :root{ font-size: clamp(14px, calc(100vw / 24.375), 16px); }
+  :root{ font-size: calc(100vw / 24.375); }  /* LOCK-AND-SCALE: uncapped — font tracks display width so line breaks stay locked */
   .loc-map-frame{ height: 21.25rem; }   /* was 340px — scale with the lock */
 }
 
@@ -3615,14 +3617,14 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <ul class="dash-list">
         <li>
           <div class="dash-link dash-static">
-            <span class="dash-link-title">v6.2 — current <span class="dash-badge">Live</span></span>
-            <span class="dash-link-meta">The brighter build — the version you're viewing now.</span>
+            <span class="dash-link-title">Lock-and-scale — current <span class="dash-badge">Live</span></span>
+            <span class="dash-link-meta">The uniform lock-and-scale build: everything sized in rem, so within each breakpoint (mobile / tablet / desktop) the whole page zooms as one unit with the display width. This is the version you're viewing now.</span>
           </div>
         </li>
         <li>
-          <a class="dash-link" href="site-draft.html" target="_blank" rel="noopener">
-            <span class="dash-link-title">Lock-and-scale draft <span class="dash-badge">New</span> <span class="dash-arrow">&rarr;</span></span>
-            <span class="dash-link-meta">Full-site draft with the uniform lock-and-scale philosophy applied to every page: everything sized off one unit (100vw &divide; N) per breakpoint, uncapped, so each band zooms as a single static composition. Three breakpoints &mdash; mobile / tablet / desktop. A corner badge shows the active band. Opens in a new tab.</span>
+          <a class="dash-link" href="wild-healing-2026-v6.2-capped.html" target="_blank" rel="noopener">
+            <span class="dash-link-title">v6.2 — fixed-scale (archived) <span class="dash-arrow">&rarr;</span></span>
+            <span class="dash-link-meta">The previous live build, before lock-and-scale — it used capped root scaling (root pinned near 16px below 1440px). Archived 2026-07-09 by Claude chat session b43e6d18-625d-432b-9a02-72b6cd486e86, when lock-and-scale was promoted to live. Opens in a new tab.</span>
           </a>
         </li>
         <li>
