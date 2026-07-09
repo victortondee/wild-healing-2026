@@ -3034,53 +3034,33 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       .hero.hero--light.hero--mblv2t .btn-primary{ flex-grow:1.06; background:var(--lantern-hi); color:var(--ink-deep); box-shadow:none; font-weight:700; }
       .hero.hero--light.hero--mblv2t .btn-ghost{ background:transparent; -webkit-backdrop-filter:none; backdrop-filter:none; border:1.5px solid rgba(236,227,207,0.85); color:var(--cream); font-weight:700; }
     }
-    /* TABLET (761–1024px): near-square portrait bg (subject right / foliage left);
-       cream content in a left column over a left-darkening scrim. First pass —
-       refine to a tablet ref if provided. */
+    /* TABLET (761–1024px): EXACT match to the home-page tablet hero — dancer photo,
+       dark text, compact 2×2 date grid, height-locked box, content lifted, frosted ghost. */
     @media (min-width:761px) and (max-width:1024px){
-      .hero.hero--light.hero--mblv2t{
-        min-height:calc(100vw * 2003 / 2200); height:calc(100vw * 2003 / 2200);
-        aspect-ratio:auto; padding:0; justify-content:center;
-        background-color:#141a14;
-        background-image:url("images/hero-tablet-draft.jpg");
-        background-size:cover; background-position:right center; background-repeat:no-repeat;
-      }
-      .hero.hero--light.hero--mblv2t::after{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
-        background:linear-gradient(90deg, rgba(16,20,14,0.74) 0%, rgba(16,20,14,0.44) 36%, rgba(16,20,14,0.1) 60%, rgba(16,20,14,0) 80%); }
-      .hero.hero--light.hero--mblv2t .scroll-chevron{ display:none; }
-      .hero.hero--light.hero--mblv2t .hero-inner{ position:relative; z-index:2; transform:none; padding:0 0 0 6vw; max-width:57%; text-shadow:none; }
-      .hero.hero--light.hero--mblv2t .eyebrow{ color:var(--cream); font-size:1.5vw; letter-spacing:0.34em; }
-      .hero.hero--light.hero--mblv2t .orglink{ color:var(--cream); border-bottom:none; }
-      .hero.hero--light.hero--mblv2t h1{ color:var(--cream); font-size:8.6vw; line-height:0.95; letter-spacing:-0.02em; margin-top:2.6vw; white-space:nowrap; text-shadow:none; }
-      .hero.hero--light.hero--mblv2t h1 .bang{ color:var(--cream); }
-      .hero.hero--light.hero--mblv2t h1 .row2{ color:var(--cream); font-size:6.05vw; margin-top:0.1vw; white-space:nowrap; }
-      .hero.hero--light.hero--mblv2t .hero-sub{ color:var(--cream); font-size:3.15vw; line-height:1.3; margin:3.4vw 0 0; max-width:none; }
-      .hero.hero--light.hero--mblv2t .hero-loc{ color:var(--cream); margin-top:3.9vw; gap:1.1vw; font-size:2.3vw; line-height:1.3; }
-      .hero.hero--light.hero--mblv2t .hero-loc a{ color:var(--cream); border-bottom:none; }
-      .hero.hero--light.hero--mblv2t .loc-badge{ flex:none; display:inline-flex; align-items:center; justify-content:center; width:2.8vw; height:2.8vw; background:var(--cream); border-radius:50%; }
-      .hero.hero--light.hero--mblv2t .loc-badge .hl-pin{ width:1.6vw; height:1.6vw; color:var(--lantern-lo); }
-      .hero.hero--light.hero--mblv2t .hero-dates{ margin:3.7vw 0 0; gap:1vw; }
-      .hero.hero--light.hero--mblv2t .hdate:nth-of-type(1){ width:4.9vw; }
-      .hero.hero--light.hero--mblv2t .hdate:nth-of-type(2){ width:7.4vw; }
-      .hero.hero--light.hero--mblv2t .hdate:nth-of-type(3){ width:7.5vw; }
-      .hero.hero--light.hero--mblv2t .hd-tag{ color:var(--cream); font-size:1.12vw; letter-spacing:0.06em; margin-bottom:1vw; font-weight:700; }
-      .hero.hero--light.hero--mblv2t .hd-num{ color:var(--cream); font-size:6.4vw; }
-      .hero.hero--light.hero--mblv2t .hd-mon{ color:var(--cream); font-size:2.3vw; margin-top:-0.7vw; }
-      .hero.hero--light.hero--mblv2t .hdate.land .hd-tag,
-      .hero.hero--light.hero--mblv2t .hdate.land .hd-num,
-      .hero.hero--light.hero--mblv2t .hdate.land .hd-mon{ color:var(--cream); }
-      .hero.hero--light.hero--mblv2t .hd-div{ background:rgba(236,227,207,0.38); }
-      .hero.hero--light.hero--mblv2t .btn-row{ margin-top:4.6vw; display:flex; flex-wrap:nowrap; gap:1.4vw; max-width:33vw; }
-      .hero.hero--light.hero--mblv2t .btn{ flex:1 1 0; display:flex; align-items:center; justify-content:center; height:5.9vw; padding:0; font-size:1.5vw; letter-spacing:0.14em; }
-      .hero.hero--light.hero--mblv2t .btn-primary{ background:var(--lantern-hi); color:var(--ink-deep); box-shadow:none; font-weight:700; }
-      .hero.hero--light.hero--mblv2t .btn-ghost{ background:transparent; -webkit-backdrop-filter:none; backdrop-filter:none; border:1.5px solid rgba(236,227,207,0.85); color:var(--cream); font-weight:700; }
+      .hero.hero--light.hero--mblv2t{ height:calc(100vw * 700 / 768); min-height:0; aspect-ratio:auto;
+        background-color:#fff; background-image:url("images/hero-tablet.jpg");
+        background-size:cover; background-position:right center; background-repeat:no-repeat; }
+      .hero.hero--light.hero--mblv2t .hero-inner{ transform:translateY(-60px); }
+      .hero.hero--light.hero--mblv2t .hero-sub br{ display:none; }
+      .hero.hero--light.hero--mblv2t .btn-ghost{ background:rgba(255,255,255,0.82); -webkit-backdrop-filter:blur(5px); backdrop-filter:blur(5px); border-color:rgba(21,38,45,0.5); color:var(--ink-deep); box-shadow:0 10px 28px -18px rgba(11,33,42,0.55); }
+      .hero.hero--light.hero--mblv2t .btn-ghost:hover{ background:#fff; border-color:var(--ink-deep); color:var(--ink-deep); }
+      .hero.hero--light.hero--mblv2t .btn-row{ margin-top:2.6rem; }
+      .hero.hero--light.hero--mblv2t .hero-dates{ display:grid; grid-template-columns:repeat(2, minmax(5rem, max-content)); justify-content:start; gap:0; margin:2.4rem 0 0; max-width:min(46%, 26rem); }
+      .hero.hero--light.hero--mblv2t .hero-dates .hd-div{ display:none; }
+      .hero.hero--light.hero--mblv2t .hero-dates .hdate{ width:auto; padding:0 0 0 1.7rem; }
+      .hero.hero--light.hero--mblv2t .hero-dates .hdate:nth-of-type(2n+1){ padding-left:0; border-right:1px solid rgba(20,37,44,0.3); }
+      .hero.hero--light.hero--mblv2t .hero-dates .hdate:nth-of-type(1),
+      .hero.hero--light.hero--mblv2t .hero-dates .hdate:nth-of-type(2){ border-bottom:1px solid rgba(20,37,44,0.3); padding-bottom:1.1rem; }
+      .hero.hero--light.hero--mblv2t .hero-dates .hdate:nth-of-type(3),
+      .hero.hero--light.hero--mblv2t .hero-dates .hdate:nth-of-type(4){ padding-top:1.1rem; }
+      .hero.hero--light.hero--mblv2t .hero-dates .hd-num{ font-size:2.5rem; }
     }
   </style>
   <section class="hero hero--flat hero--light hero--mblv2t">
     <div class="wrap hero-inner">
       <span class="eyebrow anim a1">A <a href="https://restoreny.org" class="orglink" target="_blank" rel="noopener">Restore Forward</a> gathering</span>
       <h1 class="anim a2">WILD<span class="bang">!</span> Healing<span class="row2">A harvest of medicine</span></h1>
-      <p class="hero-sub anim a3">A refusal to<br>surrender our<br>bodies &mdash; and<br>invitation to<br>walk back and<br>get what was lost</p>
+      <p class="hero-sub anim a3">A refusal to <br>surrender our <br>bodies &mdash; and <br>invitation to <br>walk back and <br>get what was lost</p>
       <p class="hero-loc anim a4">
         <span class="loc-badge"><svg class="hl-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
         <span><a href="https://maps.app.goo.gl/PR75VYSk5743Q3dD7" target="_blank" rel="noopener">Ava, New York</a> &amp; Online</span>
