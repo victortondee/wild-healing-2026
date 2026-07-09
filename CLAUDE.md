@@ -17,6 +17,29 @@ below so chats don't overwrite or conflict with each other.
   automatically on every push to `main` (see `.github/workflows/build-gate.yml`).
   If you stage `index.html`, unstage it before committing.
 
+## Staging and live must ALWAYS be identical
+
+The local **staging** site (the cloudflared tunnel / `python -m http.server` serving
+`site-source.html` — see the `wild-healing-local-staging` memory) and the published
+**live** site (`https://wildgala.com`, served from `index.html`) **must always show the
+exact same thing.** Whatever appears on staging, a visitor must see on the live site,
+and vice-versa — including the internal Drafts page (`#/drafts`).
+
+- The live site serves **`index.html`**, which must always be a **current copy of
+  `site-source.html`**. Normally the "Publish index.html" Action keeps it in sync. **But
+  if that Action is queued/failing (GitHub Actions outages happen), live falls behind
+  staging.** When that happens, restore parity yourself: `cp site-source.html index.html`
+  and commit/push it in the same commit as your `site-source.html` change (the stuck
+  Action later no-ops because the files already match). Never leave `index.html` ≠
+  `site-source.html`. This overrides the "never commit index.html" note above **only**
+  when the Action can't keep them in sync — the staging≡live invariant wins.
+- **Syncing is copy-FORWARD only — it must NEVER lose work.** "Make them the same"
+  always means copying `site-source.html` → `index.html`; it NEVER means deleting
+  sections, drafts, or edits from either file to force a match. All drafts live inside
+  `site-source.html` and are carried into `index.html` (they stay on the live site too —
+  the Drafts page just isn't linked publicly). If the two ever differ, publish forward;
+  do not remove anything.
+
 ## Drafts page convention
 
 When adding a **new section to the Drafts page** (`#page-drafts` in
@@ -24,6 +47,17 @@ When adding a **new section to the Drafts page** (`#page-drafts` in
 directly under the page intro — not appended at the bottom. Each draft gets its
 own labeled `<div class="wrap"><span class="eyebrow">…</span></div>` header above
 the section.
+
+**Give every new draft section a unique ID so the user can point Claude at it.**
+Put the ID **visibly** in the draft's eyebrow header, in the form:
+
+`Draft · <ID> · <short description>`
+
+Use the next free `D-NN` tag (`D-01`, `D-02`, `D-03`, …) — short, and **never
+reused**, even after a draft is deleted. Also set it as an anchor on the section
+wrapper, e.g. `id="draft-D-03"`, so it's unique in the DOM. Because the ID is
+shown on the page, the user can simply say "change draft D-03" and Claude knows
+exactly which section they mean.
 
 ## Git workflow (do this yourself — the user shouldn't touch git)
 
