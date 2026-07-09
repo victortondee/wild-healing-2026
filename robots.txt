@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Internal / archived builds — keep these out of search results
+Disallow: /site-source.html
+Disallow: /wild-healing-2026-v6.2-capped.html
+Disallow: /wild-healing-2026-v10.html
+Disallow: /wild-healing-2026-v12.html
+
+Sitemap: https://wildgala.com/sitemap.xml
