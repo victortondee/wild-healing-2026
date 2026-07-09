@@ -935,6 +935,11 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 @media (min-width:1025px){
   #page-home .band--breathe .wrap p.dim{ color:#fff; }
 }
+/* HOME remembering — desktop + widescreen bg swapped to the new photo (2026-07-09).
+   Mobile keeps the forest-feast bg + inline photo; tablet keeps its square crop. */
+@media (min-width:1025px){
+  #page-home .band--breathe{ background-image: url("images/remembering-desktop.jpg"); }
+}
 
 /* v8.4 — Why Now section background image (.why-now only) */
 .band.alt.why-now{
@@ -2777,6 +2782,17 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
     </div>
     <span class="scroll-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span>
+  </section>
+
+  <!-- archived: Home remembering section — snapshot before the desktop/widescreen bg was swapped to images/remembering-desktop.jpg (2026-07-09). Mobile/tablet bg unchanged. -->
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Archived · Home remembering — forest-feast bg (before 2026-07-09 desktop bg swap)</span></div>
+  <section class="band band--breathe rem-draftfig">
+    <div class="wrap prose reveal">
+      <span class="eyebrow"><span class="tick"></span>The remembering</span>
+      <p class="kicker-quote mt-s">In the days of old, when a person lost their way, the elders would say: <span class="glow-word">"Go back to the forest. Walk with the medicines. Listen again."</span></p>
+      <p class="mt-m dim">WILD! Healing is a return to that ancient remembering. It is not simply a program. It is a pilgrimage — a medicine walk across time and continents, guided by healers, farmers, herbalists, and wisdom keepers who still remember how to call the body back to life. Across two days of virtual immersion, you travel a living landscape of ancestral healing, culminating in a third day on the land: a glorious feast and festival in the woods, where the community celebrates the miracle of healing and honors those who heal the healers.</p>
+    </div>
+      <figure class="remember-photo reveal"><img src="images/remembering-fig.jpg" alt="A feast and festival in the forest at dusk" loading="lazy"></figure>
   </section>
 
   <!-- archived: Speaker — Dr. Jesse Stoff (removed from the Speakers section 2026-07-06) -->
