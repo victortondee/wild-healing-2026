@@ -3097,8 +3097,14 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       .hero.hero--light.hero--mblv2t .hdate.land .hd-tag, .hero.hero--light.hero--mblv2t .hdate.land .hd-num, .hero.hero--light.hero--mblv2t .hdate.land .hd-mon{ color:var(--cream); }
       .hero.hero--light.hero--mblv2t .hero-dates .hd-num{ font-size:2.5rem; }
     }
+    /* DESKTOP (≥1025px): the home-page desktop hero (foliage-portrait + cream text) is
+       applied via the .hero--deskbg class on the section below. Only neutralize the
+       mobile/tablet forced sub-breaks so the sub wraps naturally like the live home hero. */
+    @media (min-width:1025px){
+      .hero.hero--light.hero--mblv2t .hero-sub br{ display:none; }
+    }
   </style>
-  <section class="hero hero--flat hero--light hero--mblv2t">
+  <section class="hero hero--flat hero--light hero--mblv2t hero--deskbg">
     <div class="wrap hero-inner">
       <span class="eyebrow anim a1">A <a href="https://restoreny.org" class="orglink" target="_blank" rel="noopener">Restore Forward</a> gathering</span>
       <h1 class="anim a2">WILD<span class="bang">!</span> Healing<span class="row2">A harvest of medicine</span></h1>
