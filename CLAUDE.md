@@ -155,32 +155,64 @@ the few shared touch-points called out below.
 > so there is no shared working tree to bundle at all. The rules above are the
 > discipline version of that for the shared-tree setup.
 
-## Breakpoints & scaling — READ before adding or editing ANY section
+## ⛔ LOCK-AND-SCALE — the scaling LAW (STRICT · MANDATORY · read before adding OR editing ANYTHING)
 
-The site scales the root font with viewport width in **locked bands**, and the band
-boundaries are **deliberately aligned to the layout breakpoints** so layout and
-scaling can never drift apart. Canonical breakpoints: **760px** (mobile ↔ tablet) and
-**1024px** (tablet ↔ desktop).
+The site is a **lock-and-scale** design: inside each breakpoint the whole page is **one
+composition that zooms as a single unit** with the display width — like a poster being
+scaled up or down. The root font-size tracks the viewport width
+(`:root{ font-size: calc(100vw/N) }` per band), so **anything sized in `rem` scales with the
+width.** That is what makes the design predictable — overlaid text stays locked over a
+background image at every width in a band, and **text never re-wraps while it scales** (line
+breaks stay proportionally fixed, so words never jump from row to row).
 
-Current bands (`:root{ font-size }`):
-- **Mobile — `≤760px`:** `clamp(14px, calc(100vw/24.375), 16px)`
-- **Tablet — `761–1024px`:** `min(calc(100vw/60), 16px)`
-- **Desktop — `1025–1439px`:** `16px` (fixed)
-- **Widescreen — `≥1440px`:** `calc(100vw/90)` (locks the 1440 layout, scales up as one unit)
+**This law is NON-NEGOTIABLE. It applies to:**
+- **every new** section, page, component, hero, card, button — anything you add;
+- **every edit** of existing code — you MUST keep it locked; never downgrade `rem` → `px`/`vw`,
+  and if you touch code that already breaks the law, fix it while you are there.
 
-**The principle EVERY chat must follow (this one and others):**
-- For any media query in a section, use ONLY the canonical boundaries:
-  `@media (max-width:760px)` (mobile), `@media (min-width:761px) and (max-width:1024px)`
-  (tablet), `@media (min-width:1025px)` (desktop). `max-width:480px` is allowed ONLY for
-  fine small-phone *layout* tweaks INSIDE the mobile band — never as a scaling change.
-- **Never add a breakpoint that falls INSIDE a band** (e.g. `max-width:600`, `min-width:900`,
-  `max-width:1200`). Splitting a scaling band is exactly what caused the past bugs (large
-  phones 481–760 shrank; desktop/tablet overflowed at 1024/1200). Snap every breakpoint to
-  760 or 1024.
-- Put a section's mobile rules under `≤760`, tablet under `761–1024`, desktop under `≥1025`
-  — they will then always render at the matching scale.
-- Do NOT remove the `clamp()`/`min()` caps or the fixed `16px` — they keep the root ≤16px below
-  1440 so content can't overflow. If a section overflows, fix the section, not the cap.
+### The rules — all of them, every time
+
+1. **Size EVERYTHING in `rem`.** `font-size`, `margin`, `padding`, `gap`, `width`, `height`,
+   `border-radius`, `inset`/`top`/`left`, **and image dimensions** — all `rem`. Because the root
+   scales with width, all of it then zooms together as one unit.
+2. **BANNED as a size value: `px`, `vw`, `vh`, and any `clamp()`/`min()`/`max()` that contains
+   `px` or `vw`.** They do NOT track the root — they scale at the wrong rate or freeze, which is
+   the direct cause of "some fonts don't scale with the width" and "words jump from row to row."
+   - **No fluid type.** Never `clamp(2rem, 5vw, 4rem)` on a font. If a heading needs a different
+     size per breakpoint, give it a **plain `rem` value per band** via the canonical media
+     queries (`≤760`, `761–1024`, `≥1025`) — never a clamp/vw.
+   - **Only** non-rem allowed: a `1px` hairline border/divider, and a genuinely fixed **dev-only**
+     overlay (e.g. a debug badge). Nothing a visitor reads or sees as content.
+   - Inherently-relative values are fine (`width:100%`, `aspect-ratio`, `%` background-position).
+     A `%`/`vw` **font-size, or a fixed `px`/`vw` box dimension, is NOT.
+3. **Never freeze the scale** — no `px` cap/min on a font or box, no fixed-px wrapper. Leave `rem`
+   free to scale.
+4. **Lock line breaks on display headings.** Scaling already keeps breaks in place, but to
+   *guarantee* a heading can never re-flow, add `white-space:nowrap` and place the breaks manually
+   with `<br>`. A heading must only ever zoom, never re-wrap.
+5. **Images/media scale too** — `width` in `rem` (or `width:100%` of a rem box) + `aspect-ratio`.
+   No fixed-px image sizes.
+6. **Canonical breakpoints ONLY: 760 & 1024.** Mobile `@media (max-width:760px)`, tablet
+   `@media (min-width:761px) and (max-width:1024px)`, desktop `@media (min-width:1025px)`.
+   **Never** a breakpoint inside a band (no 600/900/1200 — that caused past bugs). `max-width:480px`
+   is allowed ONLY for tiny-phone *layout* nudges inside the mobile band, never for scaling.
+
+### Verify before EVERY commit
+Resize the window slowly **within one breakpoint** (e.g. 1100→1400px, then 400→720px). **Every
+element must grow/shrink together, and NO word may jump to another line.** If something holds a
+fixed size while its neighbours scale, or a line re-wraps, you have a `px`/`vw`/`clamp` leak —
+hunt it down and convert it to `rem`.
+
+### The bands (root font-size) + reference build
+`site-draft.html` (Dashboard → Versions → "Lock-and-scale draft") is the **full-site reference**
+where the root is uncapped so the whole site zooms per band — build new work to behave like it:
+- **Mobile ≤760:** `calc(100vw/24.375)` · **Tablet 761–1024:** `calc(100vw/60)` · **Desktop ≥1025:** `calc(100vw/90)`
+
+**Live `site-source.html` today** still ships *capped* roots
+(`clamp(14px, 100vw/24.375, 16px)` / `min(100vw/60, 16px)` / `16px` / `100vw/90`) as an overflow
+safety while the site migrates to the draft's uncapped model. **Whichever root is in force, your
+section MUST be pure `rem`** so it scales with it. Do not change the live root caps inside a
+section edit — that is a solo, site-wide change (see below); just keep your section locked.
 - Full spec = the CSS comment blocks in `site-source.html`: `v12 — MOBILE WIDTH-SCALING LOCK`,
   `TABLET WIDTH-SCALING LOCK`, `DESKTOP LOCK`, `v8 — SITEWIDE WIDTH-SCALING`.
 
