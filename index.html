@@ -936,9 +936,14 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
   #page-home .band--breathe .wrap p.dim{ color:#fff; }
 }
 /* HOME remembering — desktop + widescreen bg swapped to the new photo (2026-07-09).
-   Mobile keeps the forest-feast bg + inline photo; tablet keeps its square crop. */
+   Mobile keeps the forest-feast bg + inline photo; tablet gets its own crop (below). */
 @media (min-width:1025px){
   #page-home .band--breathe{ background-image: url("images/remembering-desktop.jpg"); }
+}
+/* HOME remembering — tablet bg swapped to the new crop; section shortened to fit it (2026-07-09). */
+@media (min-width:761px) and (max-width:1024px){
+  #page-home .band--breathe{ background-image: url("images/remembering-tablet.jpg"); }
+  #page-home .band.band--breathe{ padding-block: 6.9rem; }  /* shortened so the section aspect matches the 1075x911 crop */
 }
 
 /* v8.4 — Why Now section background image (.why-now only) */
