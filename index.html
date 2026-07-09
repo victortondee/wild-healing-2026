@@ -2879,6 +2879,33 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 </div>
 
 <!-- ============================================================
+     WORKBENCH - sections being built right now, one block per chat.
+     Internal, not linked publicly (reachable at #/workbench). Each
+     block is OWNED by the handle it carries; only that chat edits it.
+     Rules: CLAUDE.md -> "Parallel development - the Workbench".
+     ============================================================ -->
+<div class="page" id="page-workbench" role="region" aria-label="Workbench (internal)">
+  <!-- HANDLES-IN-USE: (none yet - append your handle here when you claim a block) -->
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Internal · Workbench</span>
+    <h1>Workbench</h1>
+    <p class="lede dim">Sections being built right now — one block per chat, owned by the handle it carries. Only that chat edits its block. Not linked publicly. Rules: see CLAUDE.md, “Parallel development — the Workbench”.</p>
+  </div>
+
+  <!-- Add your WIP block ABOVE the WORKBENCH-END sentinel. Copy this template and
+       replace handle / slug / what / date. Prefix EVERY id and class inside the
+       block with  wip-YOURHANDLE-SLUG-  so nothing clashes across chats:
+
+       <div class="wrap"><span class="eyebrow"><span class="tick"></span>WIP · heron7 · Day-Three hero · started:2026-07-06</span></div>
+       <section class="band" id="wip-heron7-day3hero">
+         ... build here ...
+       </section>
+  -->
+
+  <!-- WORKBENCH-END -->
+</div>
+
+<!-- ============================================================
      DRAFTS — internal staging, not linked publicly
      ============================================================ -->
 <div class="page" id="page-drafts" role="region" aria-label="Drafts (internal)">
@@ -3049,7 +3076,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       .hero.hero--light.hero--mblv2t .orglink{ color:var(--cream); border-bottom-color:rgba(236,227,207,0.5); }
       .hero.hero--light.hero--mblv2t h1{ color:var(--cream); }
       .hero.hero--light.hero--mblv2t h1 .bang{ color:var(--cream); }
-      .hero.hero--light.hero--mblv2t h1 .row2{ color:var(--cream); }
+      .hero.hero--light.hero--mblv2t h1 .row2{ color:var(--cream); font-size:0.72em; }
       .hero.hero--light.hero--mblv2t .hero-sub{ color:var(--cream); }
       .hero.hero--light.hero--mblv2t .hero-loc{ color:var(--cream); }
       .hero.hero--light.hero--mblv2t .hero-loc a{ color:var(--cream); border-bottom-color:rgba(236,227,207,0.5); }
@@ -3563,6 +3590,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <a href="#/dashboard">Dashboard</a>
       <a href="#/archive">Archive</a>
       <a href="#/drafts">Drafts</a>
+      <a href="#/workbench">Workbench</a>
     </nav>
   </div>
 </footer>
@@ -3574,7 +3602,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- routing ---------- */
-  var routes = ["home","invitation","journey","gathering","attend","contact","info","archive","drafts","dashboard","speaker-jb"];
+  var routes = ["home","invitation","journey","gathering","attend","contact","info","archive","drafts","workbench","dashboard","speaker-jb"];
   var pages = {};
   routes.forEach(function(r){ pages[r] = document.getElementById("page-" + r); });
   var navLinks = document.querySelectorAll(".nav-links a[data-key]");
