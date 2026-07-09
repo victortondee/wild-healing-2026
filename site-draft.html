@@ -857,7 +857,7 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
    <=1000px hamburger menu) are unchanged.
    ============================================================ */
 @media (min-width:761px) and (max-width:1024px){
-  :root{ font-size: min(calc(100vw / 60), 17px); }  /* DRAFT lock-and-scale: scales with width, capped at 17px */
+  :root{ font-size: calc(100vw / 60); }  /* DRAFT lock-and-scale: uncapped */
 }
 
 /* ============================================================
@@ -867,7 +867,7 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
    scale with no zoom-induced overflow. Above 1440 the widescreen lock zooms.
    ============================================================ */
 @media (min-width:1025px){
-  :root{ font-size: max(16px, calc(100vw / 90)); }  /* DRAFT lock-and-scale: desktop+widescreen merged — 16px floor (no shrink/backward-jump below 1440), scales up above 1440 */
+  :root{ font-size: calc(100vw / 90); }  /* DRAFT lock-and-scale: desktop+widescreen merged, uncapped */
   .loc-map-frame{ height:auto; aspect-ratio: 1.52; }
 }
 
@@ -1620,7 +1620,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
    Above 760 the tablet lock (761-1439) takes over. (Fixed-px hairlines stay 1px.)
    ============================================================ */
 @media (max-width:760px){
-  :root{ font-size: clamp(14px, calc(100vw / 24.375), 16px); }  /* DRAFT lock-and-scale: gentle zoom, capped 14-16px so the mobile band never balloons */
+  :root{ font-size: calc(100vw / 24.375); }  /* DRAFT lock-and-scale: uncapped — font tracks width so line breaks stay locked (no re-wrap) */
   .loc-map-frame{ height: 21.25rem; }   /* was 340px — scale with the lock */
 }
 
