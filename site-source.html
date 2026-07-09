@@ -848,21 +848,31 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 
 
 /* ============================================================
-   TABLET WIDTH-SCALING LOCK (481-1439px)
+   TABLET WIDTH-SCALING LOCK (761-1024px)
    Locks the tablet band to one scale (design width 960px) -- same uniform-zoom
-   approach as phone (<=480 -> 390) and desktop (>=1440 -> 1440). 1rem tracks
+   approach as phone (<=760 -> 390) and desktop (>=1440 -> 1440). 1rem tracks
    viewport width so the whole band zooms as one unit:
-       481 -> 8.0px (0.5x) | 768 -> 12.8 | 960 -> 16.0 (1x) | 1024 -> 17.1 | 1439 -> 24.0 (1.5x)
+       761 -> 12.7px | 960 -> 16.0 (1x) | 1024 -> 17.1
    Only scaling is affected; structural breakpoints inside the band (e.g. the
    <=1000px hamburger menu) are unchanged.
    ============================================================ */
-@media (min-width:481px) and (max-width:1439px){
-  :root{ font-size: calc(100vw / 60); }
+@media (min-width:761px) and (max-width:1024px){
+  :root{ font-size: min(calc(100vw / 60), 16px); }
+}
+
+/* ============================================================
+   DESKTOP LOCK (1025-1439px) — aligned to the 1024px layout breakpoint.
+   Desktop LAYOUT begins at 1025; root is fixed at 16px (the same baseline the
+   >=1440 widescreen lock resolves to at 1440), so desktop renders at its design
+   scale with no zoom-induced overflow. Above 1440 the widescreen lock zooms.
+   ============================================================ */
+@media (min-width:1025px) and (max-width:1439px){
+  :root{ font-size: 16px; }
 }
 
 /* ============================================================
    v8 — SITEWIDE WIDTH-SCALING
-   At/below 1439px the site uses dedicated phone (<=480) and tablet (481-1439) scaling locks.
+   At/below 1439px the site uses dedicated phone (<=760), tablet (761-1024) and desktop (1025-1439, fixed 16px) locks.
    From 1440px up, 1rem tracks viewport width, so every route locks at
    its 1440 layout and scales as a single unit, with no upper cap:
        1440px -> 16.0px (1x) | 2880px -> 32.0px (2x) | 5120px -> 56.9px (3.56x)
@@ -1601,16 +1611,15 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   .why-now--light .dropcap::first-letter{ color:#fff; }
 }
 /* ============================================================
-   v11 — MOBILE WIDTH-SCALING (mirror of the desktop >=1440 lock).
-   Locks for PORTRAIT-PHONE widths only (<=480px) — phones held vertically top
-   out around 430-440px CSS. There the layout locks at its 390 design and
-   scales as one unit (1rem = viewport/24.375): 320 -> 13.1px | 375 -> 15.4 |
-   390 -> 16 (1x) | 430 -> 17.6 | 480 -> 19.7. Above 480 (landscape phones
-   ~667px+, tablets, desktop) the responsive/desktop layout takes over.
-   (Fixed-px hairlines stay 1px by design, as on desktop.)
+   v12 — MOBILE WIDTH-SCALING LOCK — aligned to the 760px layout breakpoint.
+   The mobile scaling band is <=760px, the SAME boundary as the mobile LAYOUT
+   rules, so mobile sections always render at the mobile scale (fixes large
+   phones 481-760 that were tablet-scaled and shrunk). Root scales off the 390
+   phone design (1rem = 100vw/24.375), clamped 14-16px: 320->14 | 375->15.4 | 390+->16.
+   Above 760 the tablet lock (761-1439) takes over. (Fixed-px hairlines stay 1px.)
    ============================================================ */
-@media (max-width:480px){
-  :root{ font-size: calc(100vw / 24.375); }
+@media (max-width:760px){
+  :root{ font-size: clamp(14px, calc(100vw / 24.375), 16px); }
   .loc-map-frame{ height: 21.25rem; }   /* was 340px — scale with the lock */
 }
 
