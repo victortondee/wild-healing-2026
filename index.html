@@ -1630,6 +1630,30 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   .brand{ font-size:1.22rem; gap:0.4ch; }
   .nav-cta-btn{ padding:0.6em 0.9em; font-size:0.64rem; letter-spacing:0.07em; }
 }
+
+/* ===== Draft D-01 — SCALING PHILOSOPHY live demo (canonical breakpoints only: 760 / 1024 / 1440) ===== */
+.sb-live{ background:var(--raise); border:1px solid var(--line-strong); border-radius:var(--radius); padding:2rem 2.2rem; margin-top:2.4rem; }
+.sb-live > div{ display:none; }
+@media (max-width:760px){ .sb-live > .sb-mobile{ display:block; } }
+@media (min-width:761px) and (max-width:1024px){ .sb-live > .sb-tablet{ display:block; } }
+@media (min-width:1025px) and (max-width:1439px){ .sb-live > .sb-desktop{ display:block; } }
+@media (min-width:1440px){ .sb-live > .sb-wide{ display:block; } }
+.sb-tag{ display:block; font-family:var(--ff-ui); font-weight:700; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--lantern-lo); }
+.sb-now{ display:block; font-family:var(--ff-display); font-weight:300; font-size:2.6rem; line-height:1; letter-spacing:-0.02em; color:var(--ink); margin:0.5rem 0 0.2rem; }
+.sb-range{ display:block; font-family:var(--ff-ui); font-size:0.8rem; letter-spacing:0.05em; color:var(--ink-2); }
+.sb-formula{ display:block; margin-top:0.9rem; font-family:var(--ff-ui); font-size:0.8rem; color:var(--sage); }
+.sb-formula code{ font-family:ui-monospace, Menlo, monospace; color:var(--lantern-lo); }
+.sb-cards{ display:grid; grid-template-columns:1fr; gap:1rem; margin-top:1.6rem; }
+@media (min-width:761px){ .sb-cards{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1025px){ .sb-cards{ grid-template-columns:repeat(4,1fr); } }
+.sb-card{ background:#FBF7ED; border:1px solid var(--line); border-radius:14px; padding:1.2rem 1.3rem; transition:border-color .3s var(--ease); }
+.sb-card .b{ display:block; font-family:var(--ff-display); font-weight:400; font-size:1.2rem; color:var(--ink); }
+.sb-card .r{ display:block; font-family:var(--ff-ui); font-size:0.66rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--sage); margin-top:0.3rem; }
+.sb-card .fx{ display:block; font-family:ui-monospace,Menlo,monospace; font-size:0.72rem; color:var(--ink-2); margin-top:0.7rem; }
+@media (max-width:760px){ .sb-card--m{ border-color:var(--lantern); box-shadow:0 0 0 1px var(--lantern) inset; } }
+@media (min-width:761px) and (max-width:1024px){ .sb-card--t{ border-color:var(--lantern); box-shadow:0 0 0 1px var(--lantern) inset; } }
+@media (min-width:1025px) and (max-width:1439px){ .sb-card--d{ border-color:var(--lantern); box-shadow:0 0 0 1px var(--lantern) inset; } }
+@media (min-width:1440px){ .sb-card--w{ border-color:var(--lantern); box-shadow:0 0 0 1px var(--lantern) inset; } }
 </style>
 </head>
 <body data-page="home">
@@ -2923,6 +2947,29 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <h1>Drafts</h1>
     <p class="lede dim">A staging area for sections in progress, before they go live. This page isn't linked publicly.</p>
   </div>
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · D-01 · Scaling philosophy — live band demo</span></div>
+  <section class="band alt" id="draft-D-01" aria-label="Scaling philosophy demo">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span class="tick"></span>How the site scales</span>
+        <h2>One lock per band — snapped to <em>760</em> &amp; <em>1024</em></h2>
+        <p class="dim mt-s">Everything below is sized in <strong>rem</strong>, so within a band the whole section zooms as one locked unit. Layout &amp; scale flip only at the canonical breakpoints — resize the window (or rotate your phone) and watch the label and the columns change.</p>
+      </div>
+      <div class="sb-live reveal d1">
+        <div class="sb-mobile"><span class="sb-tag">You are in — Mobile</span><span class="sb-now">Mobile</span><span class="sb-range">&le; 760px · layout &amp; scale share this boundary</span><span class="sb-formula">root <code>= clamp(14px, 100vw/24.375, 16px)</code></span></div>
+        <div class="sb-tablet"><span class="sb-tag">You are in — Tablet</span><span class="sb-now">Tablet</span><span class="sb-range">761 – 1024px</span><span class="sb-formula">root <code>= min(100vw/60, 16px)</code></span></div>
+        <div class="sb-desktop"><span class="sb-tag">You are in — Desktop</span><span class="sb-now">Desktop</span><span class="sb-range">1025 – 1439px</span><span class="sb-formula">root <code>= 16px (fixed)</code></span></div>
+        <div class="sb-wide"><span class="sb-tag">You are in — Widescreen</span><span class="sb-now">Widescreen</span><span class="sb-range">&ge; 1440px · locks the 1440 layout, zooms up</span><span class="sb-formula">root <code>= 100vw/90</code></span></div>
+      </div>
+      <div class="sb-cards reveal d2">
+        <div class="sb-card sb-card--m"><span class="b">Mobile</span><span class="r">&le; 760px</span><span class="fx">clamp(14, 100vw/24.375, 16)</span></div>
+        <div class="sb-card sb-card--t"><span class="b">Tablet</span><span class="r">761 – 1024px</span><span class="fx">min(100vw/60, 16)</span></div>
+        <div class="sb-card sb-card--d"><span class="b">Desktop</span><span class="r">1025 – 1439px</span><span class="fx">16px fixed</span></div>
+        <div class="sb-card sb-card--w"><span class="b">Widescreen</span><span class="r">&ge; 1440px</span><span class="fx">100vw/90</span></div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- ============================================================
        Draft · Home hero — MOBILE v2, editorial ref match.
