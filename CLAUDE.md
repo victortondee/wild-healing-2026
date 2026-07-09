@@ -155,6 +155,35 @@ the few shared touch-points called out below.
 > so there is no shared working tree to bundle at all. The rules above are the
 > discipline version of that for the shared-tree setup.
 
+## Breakpoints & scaling — READ before adding or editing ANY section
+
+The site scales the root font with viewport width in **locked bands**, and the band
+boundaries are **deliberately aligned to the layout breakpoints** so layout and
+scaling can never drift apart. Canonical breakpoints: **760px** (mobile ↔ tablet) and
+**1024px** (tablet ↔ desktop).
+
+Current bands (`:root{ font-size }`):
+- **Mobile — `≤760px`:** `clamp(14px, calc(100vw/24.375), 16px)`
+- **Tablet — `761–1024px`:** `min(calc(100vw/60), 16px)`
+- **Desktop — `1025–1439px`:** `16px` (fixed)
+- **Widescreen — `≥1440px`:** `calc(100vw/90)` (locks the 1440 layout, scales up as one unit)
+
+**The principle EVERY chat must follow (this one and others):**
+- For any media query in a section, use ONLY the canonical boundaries:
+  `@media (max-width:760px)` (mobile), `@media (min-width:761px) and (max-width:1024px)`
+  (tablet), `@media (min-width:1025px)` (desktop). `max-width:480px` is allowed ONLY for
+  fine small-phone *layout* tweaks INSIDE the mobile band — never as a scaling change.
+- **Never add a breakpoint that falls INSIDE a band** (e.g. `max-width:600`, `min-width:900`,
+  `max-width:1200`). Splitting a scaling band is exactly what caused the past bugs (large
+  phones 481–760 shrank; desktop/tablet overflowed at 1024/1200). Snap every breakpoint to
+  760 or 1024.
+- Put a section's mobile rules under `≤760`, tablet under `761–1024`, desktop under `≥1025`
+  — they will then always render at the matching scale.
+- Do NOT remove the `clamp()`/`min()` caps or the fixed `16px` — they keep the root ≤16px below
+  1440 so content can't overflow. If a section overflows, fix the section, not the cap.
+- Full spec = the CSS comment blocks in `site-source.html`: `v12 — MOBILE WIDTH-SCALING LOCK`,
+  `TABLET WIDTH-SCALING LOCK`, `DESKTOP LOCK`, `v8 — SITEWIDE WIDTH-SCALING`.
+
 ## Structural / global changes = do them SOLO
 
 Section separation only protects **localized** edits. A change is *cross-cutting*
