@@ -1609,8 +1609,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
    ~667px+, tablets, desktop) the responsive/desktop layout takes over.
    (Fixed-px hairlines stay 1px by design, as on desktop.)
    ============================================================ */
-@media (max-width:760px){
-  :root{ font-size: clamp(14px, calc(100vw / 24.375), 16px); }
+@media (max-width:480px){
+  :root{ font-size: calc(100vw / 24.375); }
   .loc-map-frame{ height: 21.25rem; }   /* was 340px — scale with the lock */
 }
 
