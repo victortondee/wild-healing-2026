@@ -1631,29 +1631,46 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   .nav-cta-btn{ padding:0.6em 0.9em; font-size:0.64rem; letter-spacing:0.07em; }
 }
 
-/* ===== Draft D-01 — SCALING PHILOSOPHY: uniform lock-and-scale poster =====
-   Each breakpoint = ONE composition that zooms as a single unit. The poster
-   font-size is a % of its own width (cqw); every element + image inside is sized
-   in em, so image and text scale together in exact proportion — like zooming a
-   static poster. Composition (aspect + scale) swaps only at 760 / 1024 / 1440. */
-.sb-stage{ container-type: inline-size; margin-top:2.4rem; }
-.sb-poster{ position:relative; overflow:hidden; color:#fff; aspect-ratio:3/4; font-size:4.4cqw; border-radius:2.4cqw; box-shadow:0 1.4cqw 4cqw -2cqw rgba(20,19,16,0.5); }
-@media (min-width:761px) and (max-width:1024px){ .sb-poster{ aspect-ratio:16/10; font-size:2.9cqw; border-radius:1.4cqw; } }
-@media (min-width:1025px) and (max-width:1439px){ .sb-poster{ aspect-ratio:21/9; font-size:2.2cqw; border-radius:1cqw; } }
-@media (min-width:1440px){ .sb-poster{ aspect-ratio:24/8; font-size:1.9cqw; border-radius:0.7cqw; } }
-.sb-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
-.sb-scrim{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(22,16,12,0.30) 0%, rgba(22,16,12,0.04) 42%, rgba(22,16,12,0.66) 100%); }
-.sb-overlay{ position:absolute; inset:0; padding:1.9em 2.2em; display:flex; flex-direction:column; justify-content:space-between; }
-.sb-row{ display:flex; justify-content:space-between; align-items:flex-start; gap:1em; }
-.sb-eyebrow{ font-family:var(--ff-ui); font-weight:700; font-size:0.7em; letter-spacing:0.22em; text-transform:uppercase; }
-.sb-band-tag{ font-family:var(--ff-ui); font-weight:600; font-size:0.66em; letter-spacing:0.14em; text-transform:uppercase; color:var(--lantern-hi); text-align:right; white-space:nowrap; }
-.sb-band-tag > span{ display:none; }
-.sb-title{ font-family:var(--ff-display); font-weight:300; font-size:3.4em; line-height:0.95; letter-spacing:-0.02em; text-shadow:0 0.05em 0.4em rgba(0,0,0,0.35); }
-.sb-cap{ font-family:var(--ff-body); font-style:italic; font-weight:300; font-size:1.02em; line-height:1.45; max-width:22em; margin-top:0.7em; text-shadow:0 0.05em 0.4em rgba(0,0,0,0.5); }
-@media (max-width:760px){ .sb-band-tag .sb-t-m{ display:inline; } }
-@media (min-width:761px) and (max-width:1024px){ .sb-band-tag .sb-t-t{ display:inline; } }
-@media (min-width:1025px) and (max-width:1439px){ .sb-band-tag .sb-t-d{ display:inline; } }
-@media (min-width:1440px){ .sb-band-tag .sb-t-w{ display:inline; } }
+/* ===== Draft D-01 — SCALING PHILOSOPHY: uniform lock-and-scale demo =====
+   ONE unit drives the whole section: --u = 100vw / N (N per breakpoint). Every
+   size below is calc(var(--u) * k), so text, image and spacing all scale in exact
+   proportion to the DISPLAY WIDTH. Within a band nothing shifts — it only zooms.
+   At 760 / 1024 / 1440 the unit (N) + composition swap; the big flag word names
+   the current band so a swap is never mistaken for a glitch. */
+#draft-D-01 .sb-inner{ --u: calc(100vw / 24); }
+@media (min-width:761px) and (max-width:1024px){ #draft-D-01 .sb-inner{ --u: calc(100vw / 52); } }
+@media (min-width:1025px) and (max-width:1439px){ #draft-D-01 .sb-inner{ --u: calc(100vw / 74); } }
+@media (min-width:1440px){ #draft-D-01 .sb-inner{ --u: calc(100vw / 90); } }
+#draft-D-01 .sb-fw, #draft-D-01 .sb-fm, #draft-D-01 .sb-bt{ display:none; }
+/* big breakpoint flag */
+#draft-D-01 .sb-flag{ margin-bottom:calc(var(--u)*1.7); padding-bottom:calc(var(--u)*0.8); border-bottom:max(1px,calc(var(--u)*0.05)) solid rgba(60,50,40,0.18); }
+#draft-D-01 .sb-fw{ font-family:var(--ff-display); font-weight:300; font-size:calc(var(--u)*4); line-height:0.84; letter-spacing:-0.02em; color:var(--lantern); }
+#draft-D-01 .sb-flag-sub{ margin-top:calc(var(--u)*0.55); }
+#draft-D-01 .sb-fm{ font-family:var(--ff-ui); font-weight:600; font-size:calc(var(--u)*0.8); letter-spacing:0.16em; text-transform:uppercase; opacity:0.6; }
+/* explanatory heading — scaled in --u so it tracks width too */
+#draft-D-01 .sb-head{ margin-bottom:calc(var(--u)*1.8); }
+#draft-D-01 .sb-eye{ display:inline-block; font-family:var(--ff-ui); font-weight:700; font-size:calc(var(--u)*0.78); letter-spacing:0.2em; text-transform:uppercase; opacity:0.6; margin-bottom:calc(var(--u)*0.7); }
+#draft-D-01 .sb-h2{ font-family:var(--ff-display); font-weight:300; font-size:calc(var(--u)*2.5); line-height:1.03; letter-spacing:-0.02em; margin:0 0 calc(var(--u)*0.8); max-width:24em; }
+#draft-D-01 .sb-p{ font-family:var(--ff-body); font-weight:300; font-size:calc(var(--u)*1.02); line-height:1.5; margin:0; max-width:40em; opacity:0.82; }
+/* poster — same --u unit, so it scales identically to the copy above */
+#draft-D-01 .sb-stage{ margin-top:calc(var(--u)*1.9); }
+#draft-D-01 .sb-poster{ position:relative; overflow:hidden; color:#fff; width:100%; aspect-ratio:3/4; border-radius:calc(var(--u)*1); box-shadow:0 calc(var(--u)*0.6) calc(var(--u)*1.8) calc(var(--u)*-0.8) rgba(20,19,16,0.5); }
+@media (min-width:761px) and (max-width:1024px){ #draft-D-01 .sb-poster{ aspect-ratio:16/10; } }
+@media (min-width:1025px) and (max-width:1439px){ #draft-D-01 .sb-poster{ aspect-ratio:21/9; } }
+@media (min-width:1440px){ #draft-D-01 .sb-poster{ aspect-ratio:24/8; } }
+#draft-D-01 .sb-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+#draft-D-01 .sb-scrim{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(22,16,12,0.30) 0%, rgba(22,16,12,0.04) 42%, rgba(22,16,12,0.66) 100%); }
+#draft-D-01 .sb-overlay{ position:absolute; inset:0; padding:calc(var(--u)*1.4) calc(var(--u)*1.6); display:flex; flex-direction:column; justify-content:space-between; }
+#draft-D-01 .sb-row{ display:flex; justify-content:space-between; align-items:flex-start; gap:calc(var(--u)*1); }
+#draft-D-01 .sb-eyebrow{ font-family:var(--ff-ui); font-weight:700; font-size:calc(var(--u)*0.72); letter-spacing:0.2em; text-transform:uppercase; }
+#draft-D-01 .sb-band-tag{ font-family:var(--ff-ui); font-weight:600; font-size:calc(var(--u)*0.68); letter-spacing:0.12em; text-transform:uppercase; color:var(--lantern-hi); text-align:right; white-space:nowrap; }
+#draft-D-01 .sb-title{ font-family:var(--ff-display); font-weight:300; font-size:calc(var(--u)*2.6); line-height:0.95; letter-spacing:-0.02em; margin:0; text-shadow:0 0.05em 0.4em rgba(0,0,0,0.35); }
+#draft-D-01 .sb-cap{ font-family:var(--ff-body); font-style:italic; font-weight:300; font-size:calc(var(--u)*0.92); line-height:1.45; max-width:26em; margin:calc(var(--u)*0.6) 0 0; text-shadow:0 0.05em 0.4em rgba(0,0,0,0.5); }
+/* per-band visibility */
+@media (max-width:760px){ #draft-D-01 .sb-fw-m{ display:block; } #draft-D-01 .sb-fm-m, #draft-D-01 .sb-bt-m{ display:inline; } }
+@media (min-width:761px) and (max-width:1024px){ #draft-D-01 .sb-fw-t{ display:block; } #draft-D-01 .sb-fm-t, #draft-D-01 .sb-bt-t{ display:inline; } }
+@media (min-width:1025px) and (max-width:1439px){ #draft-D-01 .sb-fw-d{ display:block; } #draft-D-01 .sb-fm-d, #draft-D-01 .sb-bt-d{ display:inline; } }
+@media (min-width:1440px){ #draft-D-01 .sb-fw-w{ display:block; } #draft-D-01 .sb-fm-w, #draft-D-01 .sb-bt-w{ display:inline; } }
 
 </style>
 </head>
@@ -2951,23 +2968,37 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · D-01 · Scaling philosophy — uniform lock-and-scale poster</span></div>
   <section class="band alt" id="draft-D-01" aria-label="Scaling philosophy demo">
     <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow"><span class="tick"></span>How the site scales</span>
-        <h2>Each breakpoint is one poster that <em>zooms as a unit</em></h2>
-        <p class="dim mt-s">Within a band, every element, image and word scales in exact proportion to the screen width &mdash; like zooming a static poster. A background image and its overlaid text always line up the same way at any size in that band, so the design stays predictable. Cross <strong>760</strong>, <strong>1024</strong> or <strong>1440</strong> and it swaps to that band&rsquo;s composition. Resize the window to watch it zoom.</p>
-      </div>
-      <div class="sb-stage reveal d1">
-        <div class="sb-poster">
-          <img class="sb-bg" src="images/hero-tablet.jpg" alt="" loading="lazy">
-          <div class="sb-scrim"></div>
-          <div class="sb-overlay">
-            <div class="sb-row">
-              <span class="sb-eyebrow">Locked &amp; scaling</span>
-              <span class="sb-band-tag"><span class="sb-t-m">Mobile &middot; &le;760</span><span class="sb-t-t">Tablet &middot; 761&ndash;1024</span><span class="sb-t-d">Desktop &middot; 1025&ndash;1439</span><span class="sb-t-w">Widescreen &middot; &ge;1440</span></span>
-            </div>
-            <div>
-              <h3 class="sb-title">A harvest<br>of medicine</h3>
-              <p class="sb-cap">This whole poster &mdash; image, headline and caption &mdash; zooms as one unit. Nothing shifts relative to anything else within a band.</p>
+      <div class="sb-inner reveal">
+        <div class="sb-flag">
+          <div class="sb-fw sb-fw-m">MOBILE</div>
+          <div class="sb-fw sb-fw-t">TABLET</div>
+          <div class="sb-fw sb-fw-d">DESKTOP</div>
+          <div class="sb-fw sb-fw-w">WIDESCREEN</div>
+          <div class="sb-flag-sub">
+            <span class="sb-fm sb-fm-m">Breakpoint &le; 760px &middot; unit = 100vw &divide; 24</span>
+            <span class="sb-fm sb-fm-t">Breakpoint 761&ndash;1024px &middot; unit = 100vw &divide; 52</span>
+            <span class="sb-fm sb-fm-d">Breakpoint 1025&ndash;1439px &middot; unit = 100vw &divide; 74</span>
+            <span class="sb-fm sb-fm-w">Breakpoint &ge; 1440px &middot; unit = 100vw &divide; 90</span>
+          </div>
+        </div>
+        <div class="sb-head">
+          <span class="sb-eye">How the site scales</span>
+          <h2 class="sb-h2">Everything is a multiple of one unit that tracks the display width</h2>
+          <p class="sb-p">Resize the window and every word, image and gap grows or shrinks together in exact proportion &mdash; like zooming one static poster. The big label above names the current breakpoint: while it stays the same, nothing shifts, it only scales; when it changes, the whole composition swaps. So a change you see is a real breakpoint, never a glitch.</p>
+        </div>
+        <div class="sb-stage">
+          <div class="sb-poster">
+            <img class="sb-bg" src="images/hero-tablet.jpg" alt="" loading="lazy">
+            <div class="sb-scrim"></div>
+            <div class="sb-overlay">
+              <div class="sb-row">
+                <span class="sb-eyebrow">Locked &amp; scaling</span>
+                <span class="sb-band-tag"><span class="sb-bt sb-bt-m">Mobile &middot; &le;760</span><span class="sb-bt sb-bt-t">Tablet &middot; 761&ndash;1024</span><span class="sb-bt sb-bt-d">Desktop &middot; 1025&ndash;1439</span><span class="sb-bt sb-bt-w">Widescreen &middot; &ge;1440</span></span>
+              </div>
+              <div>
+                <h3 class="sb-title">A harvest<br>of medicine</h3>
+                <p class="sb-cap">This whole poster &mdash; image, headline and caption &mdash; zooms as one unit. Nothing shifts relative to anything else within a band.</p>
+              </div>
             </div>
           </div>
         </div>
