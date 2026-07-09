@@ -93,6 +93,68 @@ A `git pull --rebase` may hit a conflict in `site-source.html`:
 - When practical, different chats should work on **different sections** of
   `site-source.html` — same-line conflicts then basically never happen.
 
+## Parallel development — the Workbench (the main anti-conflict rule)
+
+Because several chats edit `site-source.html` at once, **build every in-progress
+section inside the Workbench** — the internal `#page-workbench` page (not linked
+publicly; reachable at `#/workbench`) — in a block that only you touch. If every
+chat stays inside its own uniquely-named block, `git pull --rebase` auto-merges
+across chats (the blocks are disjoint line ranges), and conflicts survive only at
+the few shared touch-points called out below.
+
+**Claim a handle & block — once, before you build:**
+
+1. `git pull --rebase origin main`.
+2. Pick a short lowercase **handle** for this chat — a distinctive word + two
+   digits, e.g. `heron7`, `slate3`. Read the `<!-- HANDLES-IN-USE: … -->` line at
+   the top of `#page-workbench` and pick one **not** already listed.
+3. Add your handle to that `HANDLES-IN-USE` line **and** paste an empty block
+   skeleton just above the `<!-- WORKBENCH-END -->` sentinel. **Commit + push this
+   skeleton immediately, before any real work.** If the push is rejected, `git pull
+   --rebase` and retry; if the rebase shows a conflict on the `HANDLES-IN-USE` line
+   (another chat grabbed the same handle at the same instant), pick a new handle.
+
+**Your block** (id = `wip-<handle>-<slug>`):
+
+```
+<div class="wrap"><span class="eyebrow"><span class="tick"></span>WIP · heron7 · Day-Three hero · started:2026-07-06</span></div>
+<section class="band" id="wip-heron7-day3hero"> … build here … </section>
+```
+
+- The section id **must** be `wip-<yourhandle>-<slug>` (unique in the DOM).
+- **Every id AND every new class inside the block must also start
+  `wip-<yourhandle>-`**, and prefer scoped selectors (`#wip-heron7-day3hero .card`)
+  over new global classes. The SPA router/anchors use `getElementById` (first match
+  wins) — a duplicate id silently misroutes.
+- Keep work-in-progress CSS **inside the block**, in a scoped `<style>` under your
+  block id. Don't add `:root` vars or global classes for WIP.
+
+**The rules that actually prevent conflicts:**
+
+- **Only ever edit your own `wip-<yourhandle>-*` block.** Never touch a block with a
+  different handle (per *Merge conflicts* above: ask the user, never overwrite).
+- **Stage explicit paths only — never `git add -A` / `git add .` / `git add -u` /
+  `git commit -a`.** Use `git add site-source.html`. Those sweep another chat's
+  uncommitted block (and `index.html`) into your commit. **Run `git status` before
+  every commit; STOP if anything you didn't change is staged or dirty.**
+- **Commit + push after every small edit.** Never leave uncommitted work sitting.
+- **On an insertion conflict** (two chats appended a block at once): keep **both** —
+  they're independent.
+
+**Going live & cleanup — SOLO:**
+
+- Moving a finished section from the Workbench into its real page location edits
+  live/shared code and shifts line ranges file-wide → it is a **structural change:
+  do it SOLO** (tell the user; no other chats mid-edit). Then **delete your
+  Workbench block and remove your handle** from `HANDLES-IN-USE`.
+- Add `· PAUSED <date>` to your block header if you pause. Any chat may **flag** a
+  block older than ~7 days to the user or propose moving it to Drafts — but **never
+  delete or overwrite another handle's block without asking the user.**
+
+> Strongest fix if conflicts still bite: give each chat its own git worktree/clone
+> so there is no shared working tree to bundle at all. The rules above are the
+> discipline version of that for the shared-tree setup.
+
 ## Structural / global changes = do them SOLO
 
 Section separation only protects **localized** edits. A change is *cross-cutting*
