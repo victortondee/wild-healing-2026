@@ -2940,49 +2940,143 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       .hero.hero--light.hero--mblv2 .btn-primary{ flex-grow:1.06; background:var(--lantern-hi); color:var(--ink-deep); box-shadow:none; font-weight:700; }
       .hero.hero--light.hero--mblv2 .btn-ghost{ background:transparent; -webkit-backdrop-filter:none; backdrop-filter:none; border:1.5px solid rgba(236,227,207,0.85); color:var(--cream); font-weight:700; }
     }
+  </style>
+  <section class="hero hero--flat hero--light hero--mblv2">
+    <div class="wrap hero-inner">
+      <span class="eyebrow anim a1">A <a href="https://restoreny.org" class="orglink" target="_blank" rel="noopener">Restore Forward</a> gathering</span>
+      <h1 class="anim a2">WILD<span class="bang">!</span> Healing<span class="row2">A harvest of medicine</span></h1>
+      <p class="hero-sub anim a3">A refusal to<br>surrender our<br>bodies &mdash; and<br>invitation to<br>walk back and<br>get what was lost</p>
+      <p class="hero-loc anim a4">
+        <span class="loc-badge"><svg class="hl-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <span><a href="https://maps.app.goo.gl/PR75VYSk5743Q3dD7" target="_blank" rel="noopener">Ava, New York</a> &amp; Online</span>
+      </p>
+      <div class="hero-dates anim a4">
+        <a class="hdate" href="#/journey/day-one" aria-label="September 9, online — Day One">
+          <span class="hd-tag">Online</span>
+          <span class="hd-num">9</span>
+          <span class="hd-mon">Sep</span>
+        </a>
+        <span class="hd-div" aria-hidden="true"></span>
+        <a class="hdate" href="#/journey/day-two" aria-label="September 10, online — Day Two">
+          <span class="hd-tag">Online</span>
+          <span class="hd-num">10</span>
+          <span class="hd-mon">Sep</span>
+        </a>
+        <span class="hd-div" aria-hidden="true"></span>
+        <a class="hdate" href="#/journey/day-three" aria-label="September 11, travel day — Day Three">
+          <span class="hd-tag">Travel day</span>
+          <span class="hd-num">11</span>
+          <span class="hd-mon">Sep</span>
+        </a>
+        <span class="hd-div" aria-hidden="true"></span>
+        <a class="hdate land" href="#/gathering" aria-label="September 12, on the land — The Gathering">
+          <span class="hd-tag">On the land</span>
+          <span class="hd-num">12</span>
+          <span class="hd-mon">Sep</span>
+        </a>
+      </div>
+      <div class="btn-row anim a5">
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow">→</span></a>
+        <a href="#/invitation" class="btn btn-ghost">The invitation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Draft · Home hero — MOBILE v2, editorial ref match.
+       New portrait bg (images/hero-mobile-draft.jpg, 2500×4346 master) with the
+       layout matched to the client ref: all-cream type, 6-line italic sub down
+       the left, one-line "A harvest of medicine", badge pin, all-cream date
+       strip, two side-by-side buttons. The hero box is locked to the image's
+       exact ratio (173.84vw) so the photo fits edge-to-edge with zero crop, and
+       ALL sizes/spacings are in vw → the composition scales pixel-proportional
+       to the ref on any phone width. Mobile-only (≤760px); wider widths just
+       show the normal hero for context.
+       ============================================================ -->
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · Home hero — mobile v2 + tablet bg (COPY — view on phone/tablet)</span></div>
+  <style>
+    @media (max-width:760px){
+      .hero.hero--light.hero--mblv2t{
+        min-height:173.84vw; height:173.84vw;
+        aspect-ratio:auto; padding:0;
+        background-color:#141a14;
+        background-image:url("images/hero-mobile-draft.jpg");
+        background-size:cover; background-position:center top; background-repeat:no-repeat;
+      }
+      .hero.hero--light.hero--mblv2t::after{ display:none; }
+      .hero.hero--light.hero--mblv2t .scroll-chevron{ display:none; }
+      .hero.hero--light.hero--mblv2t .hero-inner{ transform:none; padding:8.35vw 6.5vw 0; text-shadow:none; }
+      .hero.hero--light.hero--mblv2t .eyebrow{ color:var(--cream); font-size:2.5vw; letter-spacing:0.44em; }
+      .hero.hero--light.hero--mblv2t .orglink{ color:var(--cream); border-bottom:none; }
+      .hero.hero--light.hero--mblv2t h1{ color:var(--cream); font-size:14vw; letter-spacing:-0.02em; line-height:0.92; margin-top:5.75vw; margin-right:0; white-space:nowrap; text-shadow:none; }
+      .hero.hero--light.hero--mblv2t h1 .bang{ color:var(--cream); }
+      .hero.hero--light.hero--mblv2t h1 .row2{ color:var(--cream); font-size:9.9vw; margin-top:-0.58vw; }
+      .hero.hero--light.hero--mblv2t .hero-sub{ color:var(--cream); font-size:5.9vw; line-height:1.26; margin:5.3vw 0 0; max-width:none; }
+      .hero.hero--light.hero--mblv2t .hero-loc{ color:var(--cream); margin-top:7.5vw; gap:2.05vw; font-size:4.01vw; line-height:1.3; }
+      .hero.hero--light.hero--mblv2t .hero-loc a{ color:var(--cream); border-bottom:none; }
+      .hero.hero--light.hero--mblv2t .loc-badge{ flex:none; display:inline-flex; align-items:center; justify-content:center; width:4.6vw; height:4.6vw; background:var(--cream); border-radius:50%; }
+      .hero.hero--light.hero--mblv2t .loc-badge .hl-pin{ width:2.6vw; height:2.6vw; color:var(--lantern-lo); }
+      .hero.hero--light.hero--mblv2t .hero-dates{ margin:6.6vw 0 0; gap:2.05vw; }
+      /* fixed tile widths reproduce the ref's exact divider rhythm */
+      .hero.hero--light.hero--mblv2t .hdate{ flex:none; }
+      .hero.hero--light.hero--mblv2t .hdate:nth-of-type(1){ width:9.03vw; }
+      .hero.hero--light.hero--mblv2t .hdate:nth-of-type(2){ width:13.7vw; }
+      .hero.hero--light.hero--mblv2t .hdate:nth-of-type(3){ width:13.9vw; }
+      .hero.hero--light.hero--mblv2t .hd-tag{ color:var(--cream); font-size:2.13vw; letter-spacing:0.08em; margin-bottom:1.9vw; font-weight:700; }
+      .hero.hero--light.hero--mblv2t .hd-num{ color:var(--cream); font-size:12vw; }
+      .hero.hero--light.hero--mblv2t .hd-mon{ color:var(--cream); font-size:4.35vw; letter-spacing:0; margin-top:-1.4vw; }
+      .hero.hero--light.hero--mblv2t .hdate.land .hd-tag,
+      .hero.hero--light.hero--mblv2t .hdate.land .hd-num,
+      .hero.hero--light.hero--mblv2t .hdate.land .hd-mon{ color:var(--cream); }
+      .hero.hero--light.hero--mblv2t .hd-div{ background:rgba(236,227,207,0.38); }
+      .hero.hero--light.hero--mblv2t .btn-row{ margin-top:13.15vw; display:flex; flex-wrap:nowrap; gap:2.56vw; margin-left:-1.35vw; margin-right:-1.6vw; }
+      .hero.hero--light.hero--mblv2t .btn{ flex:1 1 0; display:flex; align-items:center; justify-content:center; height:11.54vw; padding:0; font-size:2.95vw; letter-spacing:0.14em; }
+      .hero.hero--light.hero--mblv2t .btn-primary{ flex-grow:1.06; background:var(--lantern-hi); color:var(--ink-deep); box-shadow:none; font-weight:700; }
+      .hero.hero--light.hero--mblv2t .btn-ghost{ background:transparent; -webkit-backdrop-filter:none; backdrop-filter:none; border:1.5px solid rgba(236,227,207,0.85); color:var(--cream); font-weight:700; }
+    }
     /* TABLET (761–1024px): near-square portrait bg (subject right / foliage left);
        cream content in a left column over a left-darkening scrim. First pass —
        refine to a tablet ref if provided. */
     @media (min-width:761px) and (max-width:1024px){
-      .hero.hero--light.hero--mblv2{
+      .hero.hero--light.hero--mblv2t{
         min-height:calc(100vw * 2003 / 2200); height:calc(100vw * 2003 / 2200);
         aspect-ratio:auto; padding:0; justify-content:center;
         background-color:#141a14;
         background-image:url("images/hero-tablet-draft.jpg");
         background-size:cover; background-position:right center; background-repeat:no-repeat;
       }
-      .hero.hero--light.hero--mblv2::after{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+      .hero.hero--light.hero--mblv2t::after{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
         background:linear-gradient(90deg, rgba(16,20,14,0.74) 0%, rgba(16,20,14,0.44) 36%, rgba(16,20,14,0.1) 60%, rgba(16,20,14,0) 80%); }
-      .hero.hero--light.hero--mblv2 .scroll-chevron{ display:none; }
-      .hero.hero--light.hero--mblv2 .hero-inner{ position:relative; z-index:2; transform:none; padding:0 0 0 6vw; max-width:57%; text-shadow:none; }
-      .hero.hero--light.hero--mblv2 .eyebrow{ color:var(--cream); font-size:1.5vw; letter-spacing:0.34em; }
-      .hero.hero--light.hero--mblv2 .orglink{ color:var(--cream); border-bottom:none; }
-      .hero.hero--light.hero--mblv2 h1{ color:var(--cream); font-size:8.6vw; line-height:0.95; letter-spacing:-0.02em; margin-top:2.6vw; white-space:nowrap; text-shadow:none; }
-      .hero.hero--light.hero--mblv2 h1 .bang{ color:var(--cream); }
-      .hero.hero--light.hero--mblv2 h1 .row2{ color:var(--cream); font-size:6.05vw; margin-top:0.1vw; white-space:nowrap; }
-      .hero.hero--light.hero--mblv2 .hero-sub{ color:var(--cream); font-size:3.15vw; line-height:1.3; margin:3.4vw 0 0; max-width:none; }
-      .hero.hero--light.hero--mblv2 .hero-loc{ color:var(--cream); margin-top:3.9vw; gap:1.1vw; font-size:2.3vw; line-height:1.3; }
-      .hero.hero--light.hero--mblv2 .hero-loc a{ color:var(--cream); border-bottom:none; }
-      .hero.hero--light.hero--mblv2 .loc-badge{ flex:none; display:inline-flex; align-items:center; justify-content:center; width:2.8vw; height:2.8vw; background:var(--cream); border-radius:50%; }
-      .hero.hero--light.hero--mblv2 .loc-badge .hl-pin{ width:1.6vw; height:1.6vw; color:var(--lantern-lo); }
-      .hero.hero--light.hero--mblv2 .hero-dates{ margin:3.7vw 0 0; gap:1vw; }
-      .hero.hero--light.hero--mblv2 .hdate:nth-of-type(1){ width:4.9vw; }
-      .hero.hero--light.hero--mblv2 .hdate:nth-of-type(2){ width:7.4vw; }
-      .hero.hero--light.hero--mblv2 .hdate:nth-of-type(3){ width:7.5vw; }
-      .hero.hero--light.hero--mblv2 .hd-tag{ color:var(--cream); font-size:1.12vw; letter-spacing:0.06em; margin-bottom:1vw; font-weight:700; }
-      .hero.hero--light.hero--mblv2 .hd-num{ color:var(--cream); font-size:6.4vw; }
-      .hero.hero--light.hero--mblv2 .hd-mon{ color:var(--cream); font-size:2.3vw; margin-top:-0.7vw; }
-      .hero.hero--light.hero--mblv2 .hdate.land .hd-tag,
-      .hero.hero--light.hero--mblv2 .hdate.land .hd-num,
-      .hero.hero--light.hero--mblv2 .hdate.land .hd-mon{ color:var(--cream); }
-      .hero.hero--light.hero--mblv2 .hd-div{ background:rgba(236,227,207,0.38); }
-      .hero.hero--light.hero--mblv2 .btn-row{ margin-top:4.6vw; display:flex; flex-wrap:nowrap; gap:1.4vw; max-width:33vw; }
-      .hero.hero--light.hero--mblv2 .btn{ flex:1 1 0; display:flex; align-items:center; justify-content:center; height:5.9vw; padding:0; font-size:1.5vw; letter-spacing:0.14em; }
-      .hero.hero--light.hero--mblv2 .btn-primary{ background:var(--lantern-hi); color:var(--ink-deep); box-shadow:none; font-weight:700; }
-      .hero.hero--light.hero--mblv2 .btn-ghost{ background:transparent; -webkit-backdrop-filter:none; backdrop-filter:none; border:1.5px solid rgba(236,227,207,0.85); color:var(--cream); font-weight:700; }
+      .hero.hero--light.hero--mblv2t .scroll-chevron{ display:none; }
+      .hero.hero--light.hero--mblv2t .hero-inner{ position:relative; z-index:2; transform:none; padding:0 0 0 6vw; max-width:57%; text-shadow:none; }
+      .hero.hero--light.hero--mblv2t .eyebrow{ color:var(--cream); font-size:1.5vw; letter-spacing:0.34em; }
+      .hero.hero--light.hero--mblv2t .orglink{ color:var(--cream); border-bottom:none; }
+      .hero.hero--light.hero--mblv2t h1{ color:var(--cream); font-size:8.6vw; line-height:0.95; letter-spacing:-0.02em; margin-top:2.6vw; white-space:nowrap; text-shadow:none; }
+      .hero.hero--light.hero--mblv2t h1 .bang{ color:var(--cream); }
+      .hero.hero--light.hero--mblv2t h1 .row2{ color:var(--cream); font-size:6.05vw; margin-top:0.1vw; white-space:nowrap; }
+      .hero.hero--light.hero--mblv2t .hero-sub{ color:var(--cream); font-size:3.15vw; line-height:1.3; margin:3.4vw 0 0; max-width:none; }
+      .hero.hero--light.hero--mblv2t .hero-loc{ color:var(--cream); margin-top:3.9vw; gap:1.1vw; font-size:2.3vw; line-height:1.3; }
+      .hero.hero--light.hero--mblv2t .hero-loc a{ color:var(--cream); border-bottom:none; }
+      .hero.hero--light.hero--mblv2t .loc-badge{ flex:none; display:inline-flex; align-items:center; justify-content:center; width:2.8vw; height:2.8vw; background:var(--cream); border-radius:50%; }
+      .hero.hero--light.hero--mblv2t .loc-badge .hl-pin{ width:1.6vw; height:1.6vw; color:var(--lantern-lo); }
+      .hero.hero--light.hero--mblv2t .hero-dates{ margin:3.7vw 0 0; gap:1vw; }
+      .hero.hero--light.hero--mblv2t .hdate:nth-of-type(1){ width:4.9vw; }
+      .hero.hero--light.hero--mblv2t .hdate:nth-of-type(2){ width:7.4vw; }
+      .hero.hero--light.hero--mblv2t .hdate:nth-of-type(3){ width:7.5vw; }
+      .hero.hero--light.hero--mblv2t .hd-tag{ color:var(--cream); font-size:1.12vw; letter-spacing:0.06em; margin-bottom:1vw; font-weight:700; }
+      .hero.hero--light.hero--mblv2t .hd-num{ color:var(--cream); font-size:6.4vw; }
+      .hero.hero--light.hero--mblv2t .hd-mon{ color:var(--cream); font-size:2.3vw; margin-top:-0.7vw; }
+      .hero.hero--light.hero--mblv2t .hdate.land .hd-tag,
+      .hero.hero--light.hero--mblv2t .hdate.land .hd-num,
+      .hero.hero--light.hero--mblv2t .hdate.land .hd-mon{ color:var(--cream); }
+      .hero.hero--light.hero--mblv2t .hd-div{ background:rgba(236,227,207,0.38); }
+      .hero.hero--light.hero--mblv2t .btn-row{ margin-top:4.6vw; display:flex; flex-wrap:nowrap; gap:1.4vw; max-width:33vw; }
+      .hero.hero--light.hero--mblv2t .btn{ flex:1 1 0; display:flex; align-items:center; justify-content:center; height:5.9vw; padding:0; font-size:1.5vw; letter-spacing:0.14em; }
+      .hero.hero--light.hero--mblv2t .btn-primary{ background:var(--lantern-hi); color:var(--ink-deep); box-shadow:none; font-weight:700; }
+      .hero.hero--light.hero--mblv2t .btn-ghost{ background:transparent; -webkit-backdrop-filter:none; backdrop-filter:none; border:1.5px solid rgba(236,227,207,0.85); color:var(--cream); font-weight:700; }
     }
   </style>
-  <section class="hero hero--flat hero--light hero--mblv2">
+  <section class="hero hero--flat hero--light hero--mblv2t">
     <div class="wrap hero-inner">
       <span class="eyebrow anim a1">A <a href="https://restoreny.org" class="orglink" target="_blank" rel="noopener">Restore Forward</a> gathering</span>
       <h1 class="anim a2">WILD<span class="bang">!</span> Healing<span class="row2">A harvest of medicine</span></h1>
