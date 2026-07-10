@@ -4126,21 +4126,27 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     if(e.shiftKey && act === first){ e.preventDefault(); last.focus(); }
     else if(!e.shiftKey && act === last){ e.preventDefault(); first.focus(); }
   }
-  function setMenu(open){
+  function setMenu(open, focusFirst){
     navList.classList.toggle("open", open);
     document.body.classList.toggle("menu-open", open);
     menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
     menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     if(open){
       document.addEventListener("keydown", onMenuKey);
-      var firstLink = navList.querySelector("a");
-      if(firstLink){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ firstLink.focus(); }); }); }
+      /* Only pull focus into the menu when opened via keyboard. On touch, a
+         programmatic focus() lights up the :focus-visible ring on the first
+         item ("The Invitation"), so it looks preselected. Skip it for pointer. */
+      if(focusFirst){
+        var firstLink = navList.querySelector("a");
+        if(firstLink){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ firstLink.focus(); }); }); }
+      }
     } else {
       document.removeEventListener("keydown", onMenuKey);
     }
   }
-  menuToggle.addEventListener("click", function(){
-    setMenu(!navList.classList.contains("open"));
+  menuToggle.addEventListener("click", function(e){
+    /* e.detail===0 → keyboard (Enter/Space) activation; >0 → pointer/touch */
+    setMenu(!navList.classList.contains("open"), e.detail === 0);
   });
 
   /* ---------- header scroll state + suspend :hover while scrolling (keeps scroll smooth) ---------- */
