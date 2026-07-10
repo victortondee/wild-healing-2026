@@ -316,7 +316,8 @@ section.band{ padding-block:var(--pad); position:relative; }
 .site-header{ position:sticky; top:0; z-index:155;
   backdrop-filter:blur(14px) saturate(1.1); -webkit-backdrop-filter:blur(14px) saturate(1.1);
   background:rgba(8,20,14,0.4); border-bottom:1px solid transparent;
-  transition:background .4s var(--ease), border-color .4s var(--ease); }
+  transition:transform .38s var(--ease), background .4s var(--ease), border-color .4s var(--ease); }
+.site-header.header-hidden{ transform:translateY(calc(-100% - 4rem)); }
 .site-header.scrolled{ background:rgba(7,17,11,0.9); border-bottom-color:var(--line); }
 .nav{ display:flex; align-items:center; gap:1.4rem; height:5rem; }
 .brand{ display:inline-flex; align-items:baseline; gap:0.55ch; font-family:var(--ff-display); color:var(--ink); font-size:1.4rem; letter-spacing:-0.015em; flex:none; }
@@ -4072,9 +4073,16 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   var header = document.getElementById("header");
   var docEl = document.documentElement;
   var hoverTimer;
+  var lastY = window.scrollY;
   function onScroll(){
-    if(window.scrollY > 24){ header.classList.add("scrolled"); }
+    var y = window.scrollY;
+    if(y > 24){ header.classList.add("scrolled"); }
     else{ header.classList.remove("scrolled"); }
+    /* hide header (+ its RF tab) on scroll-down; reveal on scroll-up; always visible near top or with menu open */
+    if(document.body.classList.contains("menu-open") || y < 80){ header.classList.remove("header-hidden"); }
+    else if(y > lastY + 4){ header.classList.add("header-hidden"); }
+    else if(y < lastY - 4){ header.classList.remove("header-hidden"); }
+    lastY = y;
     if(!docEl.classList.contains("is-scrolling")){ docEl.classList.add("is-scrolling"); }
     clearTimeout(hoverTimer);
     hoverTimer = setTimeout(function(){ docEl.classList.remove("is-scrolling"); }, 100);
