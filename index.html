@@ -1405,6 +1405,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   .site-header{ z-index:210; }
   .menu-toggle{ position:relative; z-index:211; color:var(--ink); }
   .brand, .nav-cta-btn{ position:relative; z-index:211; }
+  body.menu-open .nav-cta-btn{ display:none; }  /* hide the ticket CTA while the menu is open so the ✕ close is the clear, uncrowded control */
 
   .nav-links{
     position:fixed; inset:0; z-index:200;
@@ -1447,9 +1448,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 
   /* hamburger -> X when open */
   .menu-toggle[aria-expanded="true"] svg{ opacity:0; }
+  .menu-toggle[aria-expanded="true"]{ border-color:var(--ink-2); background:rgba(21,38,45,0.05); }
   .menu-toggle[aria-expanded="true"]::before,
   .menu-toggle[aria-expanded="true"]::after{
-    content:""; position:absolute; left:50%; top:50%; width:1.15rem; height:1.7px;
+    content:""; position:absolute; left:50%; top:50%; width:1.3rem; height:2px;
     background:var(--ink); border-radius:2px; }
   .menu-toggle[aria-expanded="true"]::before{ transform:translate(-50%,-50%) rotate(45deg); }
   .menu-toggle[aria-expanded="true"]::after{ transform:translate(-50%,-50%) rotate(-45deg); }
