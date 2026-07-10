@@ -254,6 +254,7 @@ em,.italic{ font-style:italic; }
 a{ color:var(--lantern); text-decoration:none; }
 .orglink{ color:inherit; border-bottom:1px solid rgba(215,158,140,0.5); padding-bottom:0.5px; transition:color .2s var(--ease), border-color .2s var(--ease); }
 .orglink:hover{ color:var(--lantern-hi); border-bottom-color:var(--lantern-hi); }
+.orglink[href^="https://restoreny.org"]::after{ content:"↗"; font-size:0.78em; opacity:0.72; margin-left:0.06em; }
 .footer-col a.orglink{ display:inline; margin:0; }
 .dim{ color:var(--ink-2); }
 .glow-word{ color:var(--lantern); }
