@@ -803,6 +803,23 @@ body[data-page="invitation"]{ --lantern:#e2a25e; }
 .footer-col a:hover{ color:var(--lantern); }
 .footer-brand{ font-family:var(--ff-display); font-size:1.6rem; color:var(--ink); }
 .footer-brand .bang{ color:var(--lantern); }
+/* footer newsletter — email collection (posts to a Google Apps Script Web App) */
+.footer-newsletter{ margin-top:3.2rem; padding-top:2.6rem; border-top:1px solid var(--line); display:grid; grid-template-columns:1.4fr 1fr; gap:1.6rem 3rem; align-items:start; }
+@media (max-width:760px){ .footer-newsletter{ grid-template-columns:1fr; gap:1.3rem; } }
+.footer-newsletter h5{ font-family:var(--ff-ui); font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage); margin:0 0 0.7rem; font-weight:600; }
+.footer-newsletter .fn-copy p{ color:var(--ink-2); font-size:0.96rem; line-height:1.6; margin:0; max-width:26rem; }
+.fn-row{ display:flex; gap:0.6rem; }
+.fn-form input[type=email]{ flex:1 1 auto; min-width:0; font-family:var(--ff-ui); font-size:0.95rem; color:var(--ink); background:rgba(255,255,255,0.55); border:1px solid var(--line-strong); border-radius:999px; padding:0.8em 1.2em; transition:border-color .2s var(--ease); }
+.fn-form input[type=email]::placeholder{ color:var(--sage-dim); }
+.fn-form input[type=email]:focus{ outline:none; border-color:var(--lantern); }
+.fn-btn{ flex:none; font-family:var(--ff-ui); font-weight:700; font-size:0.76rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-deep); background:var(--lantern-hi); border:none; border-radius:999px; padding:0 1.5em; cursor:pointer; transition:background .25s var(--ease); }
+.fn-btn:hover{ background:var(--lantern); }
+.fn-btn:disabled{ opacity:0.55; cursor:default; }
+.fn-consent{ display:flex; align-items:flex-start; gap:0.5rem; margin-top:0.85rem; font-family:var(--ff-ui); font-size:0.76rem; line-height:1.5; color:var(--ink-2); }
+.fn-consent input{ margin-top:0.18rem; flex:none; accent-color:var(--lantern); }
+.fn-consent a{ color:var(--lantern); }
+.fn-msg{ margin:0.7rem 0 0; font-family:var(--ff-ui); font-size:0.82rem; color:var(--sage); min-height:1.1em; }
+.fn-msg.err{ color:var(--ember); }
 .footer-col a.footer-org-link{ display:inline-flex; align-items:center; gap:0.4rem; margin:0.6rem 0 0; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--lantern); border-bottom:1px solid transparent; padding-bottom:1px; transition:color .25s var(--ease), border-color .25s var(--ease); }
 .footer-col a.footer-org-link:hover{ color:var(--lantern-hi); border-bottom-color:var(--lantern-hi); }
 .footer-bottom{ margin-top:3.4rem; padding-top:1.7rem; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.8rem; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.05em; color:var(--sage-dim); }
@@ -3810,6 +3827,20 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <a href="#/contact">Contact us</a>
       </div>
     </div>
+    <div class="footer-newsletter reveal">
+      <div class="fn-copy">
+        <h5>Stay in the circle</h5>
+        <p>Leave your email for occasional word on WILD! Healing &mdash; the program, tickets, and the gathering on the land. No noise, just what matters.</p>
+      </div>
+      <form class="fn-form" id="nlForm" novalidate>
+        <div class="fn-row">
+          <input type="email" id="nlEmail" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
+          <button type="submit" class="fn-btn" id="nlBtn">Join</button>
+        </div>
+        <label class="fn-consent"><input type="checkbox" id="nlConsent" required> I agree to receive occasional updates and accept the <a href="privacy.html">Privacy Policy</a>.</label>
+        <p class="fn-msg" id="nlMsg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
     <div class="footer-bottom">
       <span>September 9–12, 2026 · Online &amp; on the land</span>
       <span>© 2026 <a href="https://restoreny.org" class="orglink" target="_blank" rel="noopener">Restore Forward</a> · WILD! Healing</span>
@@ -4251,6 +4282,30 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   window.addEventListener('keydown', dismiss);
   window.addEventListener('wheel', dismiss, {passive:true});
   window.addEventListener('touchstart', dismiss, {passive:true});
+})();
+</script>
+<script>
+/* Newsletter email collection -> Google Apps Script Web App.
+   Paste your deployed /exec URL between the quotes below to activate it. */
+(function(){
+  var ENDPOINT = "PASTE_APPS_SCRIPT_WEB_APP_URL_HERE";
+  var form=document.getElementById("nlForm"); if(!form) return;
+  var email=document.getElementById("nlEmail"), consent=document.getElementById("nlConsent"),
+      msg=document.getElementById("nlMsg"), btn=document.getElementById("nlBtn");
+  var re=/^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  function say(text,err){ msg.textContent=text; msg.className="fn-msg"+(err?" err":""); }
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var val=email.value.trim();
+    if(!re.test(val)){ say("Please enter a valid email address.",true); return; }
+    if(!consent.checked){ say("Please tick the box to receive updates.",true); return; }
+    if(ENDPOINT.indexOf("http")!==0){ say("Sign-up is being set up \u2014 please check back soon.",true); return; }
+    btn.disabled=true; say("Adding you\u2026",false);
+    fetch(ENDPOINT,{method:"POST",mode:"no-cors",body:new URLSearchParams({email:val,source:"wildgala.com"})})
+      .then(function(){ form.reset(); say("Thank you \u2014 you\u2019re on the list.",false); })
+      .catch(function(){ say("Something went wrong. Please try again.",true); })
+      .finally(function(){ btn.disabled=false; });
+  });
 })();
 </script>
 </body>
