@@ -14,6 +14,9 @@ When communicating with the user, be brief. Short answers and status messages â€
 just what changed and what's next, no long recaps or walls of text. The user
 prefers speed and terse replies over thorough explanations.
 
+**Start every message with a creative three-word greeting** (exactly three words),
+then the reply.
+
 ## What to edit
 
 - **Edit only `site-source.html`** (and other source files like CSS/JS/images).
