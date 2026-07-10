@@ -1114,6 +1114,8 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 .info-hero .btn-ghost:hover{ background:var(--cream); border-color:var(--cream); color:var(--ink-deep); }
 /* black-bg variant for the drafts alignment copy (same layout, no photo) */
 .band.info-hero.info-hero--black{ background-color:#000; background-image:none; }
+.band.info-hero.info-hero--draftimg{ background-color:#000; background-image:url("images/info-hero-draft.jpg"); background-size:cover; background-position:center center; background-repeat:no-repeat; }
+@media (min-width:761px){ .band.info-hero.info-hero--draftimg{ aspect-ratio:2692/1199; min-height:0; } }
 @media (min-width:761px){ .band.info-hero{ display:flex; flex-direction:column; justify-content:flex-start; min-height:40rem; } }
 
 /* The Journey header — full-bleed background image only. */
@@ -3303,11 +3305,11 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <p class="lede dim">A staging area for sections in progress, before they go live. This page isn't linked publicly.</p>
   </div>
 
-  <!-- Draft · D-02 · Info hero — black bg. Identical layout to the live Info hero
-       (same 40rem height, text positions, fonts); photo swapped for solid #000 so
-       the client can align a replacement image to the letters pixel-perfectly. -->
-  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · D-02 · Info hero — black bg (Photoshop alignment reference)</span></div>
-  <section class="band info-hero info-hero--black" id="draft-D-02">
+  <!-- Draft · D-02 · Info hero — desktop bg image. Box aspect-ratio locked to the
+       image (2692×1199 = 2.2452) so the artwork the client aligned to the letters
+       lands pixel-perfect at every width (lock-and-scale keeps positions constant). -->
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · D-02 · Info hero — desktop bg image (aspect-locked 2692×1199)</span></div>
+  <section class="band info-hero info-hero--draftimg" id="draft-D-02">
     <div class="wrap page-intro">
       <span class="eyebrow"><span class="tick"></span>Plan your visit · Sept 12 · On the land</span>
       <h1>Info</h1>
