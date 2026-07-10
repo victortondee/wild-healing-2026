@@ -352,6 +352,7 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
 .nav-links a:hover{ opacity:0.78; }
 .nav-cta-btn{ flex:none; }
 .nav-back-rf{ display:none; }  /* mobile-menu only — see @media (max-width:1000px) */
+.nav-mob-home{ display:none; }  /* shown only in the mobile/tablet menu — desktop uses the logo as home */
 .menu-toggle{ display:none; background:none; border:1px solid var(--line-strong); border-radius:999px; color:var(--ink); width:2.8rem; height:2.8rem; cursor:pointer; align-items:center; justify-content:center; flex:none; }
 .menu-toggle svg{ width:1.2rem; height:1.2rem; }
 #day-one, #day-two{ scroll-margin-top:5.5rem; }
@@ -368,6 +369,7 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
   .nav-links a{ flex-direction:row; align-items:baseline; justify-content:flex-start; min-height:0; gap:0.5ch; padding:1rem 0.25rem; font-size:0.95rem; border-bottom:1px solid var(--line); }
   .nav-links .nl-mode{ font-size:0.74rem; }
   .nav-links a::after{ display:none; }
+  .nav-mob-home{ display:block; }
   /* Restore Forward credit in the mobile menu — mirrors the pinned pill */
   .nav-back-rf{ display:block; margin-top:1.4rem; padding-top:1.25rem; border-top:1px solid var(--line); }
   .nav-links .nav-back-rf a{ display:flex; align-items:center; gap:0.7rem; padding:0.1rem 0.25rem; min-height:0; border-bottom:none; }
@@ -1437,6 +1439,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   .nav-links.open li:nth-child(5) a{ animation-delay:.29s; }
   .nav-links.open li:nth-child(6) a{ animation-delay:.35s; }
   .nav-links.open li:nth-child(7) a{ animation-delay:.41s; }
+  .nav-links.open li:nth-child(8) a{ animation-delay:.47s; }
   .nav-links a .nl-date{ font-weight:300; }
   .nav-links a .nl-mode{ font-family:var(--ff-ui); font-style:normal; font-weight:500;
     font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--sage); align-self:center; }
@@ -1809,6 +1812,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <span><b>WILD<span class="bang">!</span></b> Healing</span>
     </a>
     <ul class="nav-links" id="navLinks">
+      <li class="nav-mob-home"><a href="#/home" data-key="home">Home</a></li>
       <li><a href="#/invitation" data-key="invitation">The Invitation</a></li>
       <li><a href="#/info" data-key="info">Info</a></li>
       <li><a href="#/journey/day-one" data-key="journey/day-one"><span class="nl-date">Sep 9</span><span class="nl-mode">(Online)</span></a></li>
