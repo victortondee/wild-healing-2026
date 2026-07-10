@@ -3168,6 +3168,65 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <h1>Drafts</h1>
     <p class="lede dim">A staging area for sections in progress, before they go live. This page isn't linked publicly.</p>
   </div>
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft &middot; D-02 &middot; Header "by Restore Forward" tag &mdash; compare v1&ndash;v4</span></div>
+  <section class="band" id="draft-D-02">
+    <style>
+    #draft-D-02 .d2-lab{ font-family:var(--ff-ui); font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--lantern); margin:2.2rem 0 0.55rem; }
+    #draft-D-02 .d2-bar{ display:flex; align-items:center; gap:1.4rem; min-height:4.6rem; padding:0 1.3rem; border:1px solid var(--line); border-radius:14px; background:rgba(244,239,228,0.6); }
+    #draft-D-02 .d2-brand{ display:inline-flex; align-items:center; gap:0.55ch; flex:none; }
+    #draft-D-02 .d2-logo{ width:2.4rem; height:2.4rem; border-radius:50%; background:radial-gradient(circle at 34% 30%, var(--lantern-hi), var(--clay) 80%); flex:none; }
+    #draft-D-02 .d2-name{ font-family:var(--ff-display); font-size:1.4rem; color:var(--ink); letter-spacing:-0.015em; line-height:1; }
+    #draft-D-02 .d2-name .bang{ color:var(--lantern); }
+    #draft-D-02 .d2-tag{ font-family:var(--ff-ui); text-decoration:none; white-space:nowrap; color:var(--sage); transition:color .2s var(--ease); }
+    #draft-D-02 .d2-tag:hover{ color:var(--lantern); }
+    #draft-D-02 .d2-nav{ flex:1 1 auto; text-align:center; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.05em; color:var(--ink-2); opacity:0.42; white-space:nowrap; }
+    #draft-D-02 .d2-cta{ flex:none; font-family:var(--ff-ui); font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--cream); background:var(--lantern); padding:0.7em 1.1em; border-radius:100px; }
+    #draft-D-02 .d2-v1 .d2-tag{ font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; opacity:0.85; }
+    #draft-D-02 .d2-v2 .d2-brand{ flex-direction:column; align-items:flex-start; gap:0.16rem; }
+    #draft-D-02 .d2-v2 .d2-brandrow{ display:inline-flex; align-items:center; gap:0.55ch; }
+    #draft-D-02 .d2-v2 .d2-tag{ font-size:0.66rem; letter-spacing:0.02em; opacity:0.85; margin-left:2.75rem; }
+    #draft-D-02 .d2-v3 .d2-tag{ font-size:0.78rem; letter-spacing:0.01em; }
+    #draft-D-02 .d2-v3 .d2-div{ color:var(--line-strong); }
+    @media (max-width:760px){ #draft-D-02 .d2-nav{ display:none; } #draft-D-02 .d2-bar{ gap:0.8rem; flex-wrap:wrap; min-height:auto; padding:1rem; } }
+    </style>
+    <div class="wrap">
+      <p class="dim">Four ways to show the &ldquo;by Restore Forward &#8599;&rdquo; attribution in the header. <strong>v1</strong> is live now &mdash; tell me a number and I'll swap the real header to it.</p>
+
+      <div class="d2-lab">v1 &middot; current &mdash; uppercase, floats right of the brand</div>
+      <div class="d2-bar d2-v1">
+        <span class="d2-brand"><span class="d2-logo"></span><span class="d2-name">WILD<span class="bang">!</span> Healing</span></span>
+        <a class="d2-tag" href="https://restoreny.org" target="_blank" rel="noopener">by Restore Forward &#8599;</a>
+        <span class="d2-nav">The Invitation &middot; Info &middot; Sep 9 &middot; Sep 10 &middot; Sep 11 &middot; Sep 12</span>
+        <span class="d2-cta">Get tickets</span>
+      </div>
+
+      <div class="d2-lab">v2 &middot; tagline tucked under the brand</div>
+      <div class="d2-bar d2-v2">
+        <span class="d2-brand">
+          <span class="d2-brandrow"><span class="d2-logo"></span><span class="d2-name">WILD<span class="bang">!</span> Healing</span></span>
+          <a class="d2-tag" href="https://restoreny.org" target="_blank" rel="noopener">by Restore Forward &#8599;</a>
+        </span>
+        <span class="d2-nav">The Invitation &middot; Info &middot; Sep 9 &middot; Sep 10 &middot; Sep 11 &middot; Sep 12</span>
+        <span class="d2-cta">Get tickets</span>
+      </div>
+
+      <div class="d2-lab">v3 &middot; tight beside the brand, with a divider</div>
+      <div class="d2-bar d2-v3">
+        <span class="d2-brand"><span class="d2-logo"></span><span class="d2-name">WILD<span class="bang">!</span> Healing</span><span class="d2-div">&middot;</span><a class="d2-tag" href="https://restoreny.org" target="_blank" rel="noopener">by Restore Forward &#8599;</a></span>
+        <span class="d2-nav">The Invitation &middot; Info &middot; Sep 9 &middot; Sep 10 &middot; Sep 11 &middot; Sep 12</span>
+        <span class="d2-cta">Get tickets</span>
+      </div>
+
+      <div class="d2-lab">v4 &middot; right side, next to the CTA</div>
+      <div class="d2-bar d2-v4">
+        <span class="d2-brand"><span class="d2-logo"></span><span class="d2-name">WILD<span class="bang">!</span> Healing</span></span>
+        <span class="d2-nav">The Invitation &middot; Info &middot; Sep 9 &middot; Sep 10 &middot; Sep 11 &middot; Sep 12</span>
+        <a class="d2-tag" style="font-size:0.66rem;letter-spacing:0.06em;text-transform:uppercase;opacity:0.85;" href="https://restoreny.org" target="_blank" rel="noopener">by Restore Forward &#8599;</a>
+        <span class="d2-cta">Get tickets</span>
+      </div>
+    </div>
+  </section>
+
   <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · D-01 · Scaling philosophy — uniform lock-and-scale poster</span></div>
   <section class="band alt" id="draft-D-01" aria-label="Scaling philosophy demo">
     <div class="wrap">
