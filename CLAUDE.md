@@ -8,6 +8,12 @@ gate** (the gate was removed; `index.html` is now just a plain copy of
 **This repo is edited by several Claude chats in parallel.** Follow the rules
 below so chats don't overwrite or conflict with each other.
 
+## Keep replies short
+
+When communicating with the user, be brief. Short answers and status messages —
+just what changed and what's next, no long recaps or walls of text. The user
+prefers speed and terse replies over thorough explanations.
+
 ## What to edit
 
 - **Edit only `site-source.html`** (and other source files like CSS/JS/images).
