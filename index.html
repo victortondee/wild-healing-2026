@@ -191,7 +191,7 @@ body{
   letter-spacing:0.004em;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
-  overflow-x:hidden;
+  overflow-x:clip;  /* clip (not hidden) so body is NOT a scroll container -> window vertical scroll + sticky work */
 }
 html{ overflow-x:clip; }  /* LOCK-AND-SCALE: contain the horizontal bleed from uncapped scaling (keeps position:sticky + vertical scroll) */
 ::selection{ background:rgba(215,158,140,0.26); color:var(--ink); }
@@ -4130,7 +4130,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   var hoverTimer;
   var lastY = window.scrollY;
   function onScroll(){
-    var y = window.scrollY;
+    var y = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
     if(y > 24){ header.classList.add("scrolled"); }
     else{ header.classList.remove("scrolled"); }
     /* hide header (+ its RF tab) on scroll-down; reveal on scroll-up; always visible near top or with menu open */
