@@ -825,6 +825,16 @@ body[data-page="invitation"]{ --lantern:#e2a25e; }
 .fn-consent a{ color:var(--lantern); }
 .fn-msg{ margin:0.7rem 0 0; font-family:var(--ff-ui); font-size:0.82rem; color:var(--sage); min-height:1.1em; }
 .fn-msg.err{ color:var(--ember); }
+/* subscribe section (home) + ticket strips — marketing CTAs added 2026-07-10 */
+.home-subscribe .fn-form{ max-width:32rem; margin:2.4rem auto 0; }
+.home-subscribe .fn-consent{ justify-content:center; }
+.home-subscribe .fn-msg{ text-align:center; }
+.band.ticket-strip{ padding-block:2.3rem; background:linear-gradient(180deg, rgba(195,126,105,0.12), rgba(195,126,105,0.06)); border-block:1px solid var(--line); }
+.ticket-strip-inner{ display:flex; align-items:center; justify-content:space-between; gap:1.1rem 2rem; flex-wrap:wrap; }
+.ticket-strip-copy{ margin:0; font-family:var(--ff-ui); font-size:1rem; line-height:1.5; color:var(--ink-2); max-width:40rem; }
+.ticket-strip-copy strong{ color:var(--ink); font-weight:700; }
+.ticket-strip .btn{ flex:none; }
+@media (max-width:760px){ .ticket-strip-inner{ flex-direction:column; align-items:flex-start; } }
 .footer-col a.footer-org-link{ display:inline-flex; align-items:center; gap:0.4rem; margin:0.6rem 0 0; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--lantern); border-bottom:1px solid transparent; padding-bottom:1px; transition:color .25s var(--ease), border-color .25s var(--ease); }
 .footer-col a.footer-org-link:hover{ color:var(--lantern-hi); border-bottom-color:var(--lantern-hi); }
 .footer-bottom{ margin-top:3.4rem; padding-top:1.7rem; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.8rem; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.05em; color:var(--sage-dim); }
@@ -2056,6 +2066,25 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     </div>
   </section>
 
+  <!-- subscribe (home tail) — shares the Google Sheets backend with the footer form -->
+  <section class="band alt home-subscribe" id="subscribe">
+    <div class="wrap">
+      <div class="section-head reveal" style="text-align:center; margin-inline:auto; max-width:44rem">
+        <span class="eyebrow"><span class="tick"></span>Stay close</span>
+        <h2 class="mt-s">Keep the gathering in view</h2>
+        <p class="dim mt-s">Leave your email for occasional word on WILD! Healing — the program, the speakers, and the gathering on the land. No noise, only what matters.</p>
+      </div>
+      <form class="fn-form js-subscribe reveal d1" data-source="wildgala.com (home)" novalidate>
+        <div class="fn-row">
+          <input type="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
+          <button type="submit" class="fn-btn">Join</button>
+        </div>
+        <label class="fn-consent"><input type="checkbox" required> I agree to receive occasional updates and accept the <a href="privacy.html">Privacy Policy</a>.</label>
+        <p class="fn-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
 </div>
 
 <!-- ============================================================
@@ -2343,6 +2372,13 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <h2 class="mt-s">When the virtual journey ends, you are invited to the woods on September 12.</h2>
       <p>As dusk settles over the forest, lanterns glow between the trees. This is not a gala. It is a ceremony of gratitude.</p>
       <a href="#/gathering" class="btn btn-primary">Enter The Gathering <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <section class="band ticket-strip">
+    <div class="wrap ticket-strip-inner">
+      <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join us online and on the land — September 9–12, 2026.</p>
+      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow">→</span></a>
     </div>
   </section>
 </div>
@@ -2719,6 +2755,13 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
     </div>
   </section>
+
+  <section class="band ticket-strip">
+    <div class="wrap ticket-strip-inner">
+      <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
+      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow">→</span></a>
+    </div>
+  </section>
 </div>
 
 <!-- ============================================================
@@ -2748,6 +2791,13 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="band ticket-strip">
+    <div class="wrap ticket-strip-inner">
+      <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
+      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow">→</span></a>
     </div>
   </section>
 </div>
@@ -2806,6 +2856,13 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <p class="lede dim">Lodges, hotels, treehouses, and grottos</p>
         <p>Located in the foothills of the Adirondack Mountains, the location boasts more than 2,000 miles of hiking trails, over 3,000 lakes and ponds and 1,200 miles of rivers. Restore Forward's land features pavilions and hammocks, meditation yurts, an open meadow, and a 12,000 square foot event space. If you walk to the edge of the forest you will find a peaceful point. We are a preservation space for the natural world, including wetlands and Monarch butterflies. The land lends guests to hours of sun and forest bathing. The Gala will take place in the Woods at Restore Forward.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="band ticket-strip">
+    <div class="wrap ticket-strip-inner">
+      <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Ready to join us? September 9–12, 2026 — online &amp; on the land.</p>
+      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow">→</span></a>
     </div>
   </section>
 </div>
@@ -3915,7 +3972,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <h5>Stay in the circle</h5>
         <p>Leave your email for occasional word on WILD! Healing &mdash; the program, tickets, and the gathering on the land. No noise, just what matters.</p>
       </div>
-      <form class="fn-form" id="nlForm" novalidate>
+      <form class="fn-form js-subscribe" id="nlForm" data-source="wildgala.com (footer)" novalidate>
         <div class="fn-row">
           <input type="email" id="nlEmail" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
           <button type="submit" class="fn-btn" id="nlBtn">Join</button>
@@ -4375,26 +4432,31 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 })();
 </script>
 <script>
-/* Newsletter email collection -> Google Apps Script Web App.
-   Paste your deployed /exec URL between the quotes below to activate it. */
+/* Newsletter / subscribe email collection -> Google Apps Script Web App.
+   Handles every form with class "js-subscribe" (footer + home section). */
 (function(){
   var ENDPOINT = "https://script.google.com/macros/s/AKfycbw2voD3325zEybINDtL3kl-6DrURE9Y7F6DncPRtVJ5MmvE8IqGgoGzENWY3AoRhKpd/exec";
-  var form=document.getElementById("nlForm"); if(!form) return;
-  var email=document.getElementById("nlEmail"), consent=document.getElementById("nlConsent"),
-      msg=document.getElementById("nlMsg"), btn=document.getElementById("nlBtn");
   var re=/^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-  function say(text,err){ msg.textContent=text; msg.className="fn-msg"+(err?" err":""); }
-  form.addEventListener("submit",function(e){
-    e.preventDefault();
-    var val=email.value.trim();
-    if(!re.test(val)){ say("Please enter a valid email address.",true); return; }
-    if(!consent.checked){ say("Please tick the box to receive updates.",true); return; }
-    if(ENDPOINT.indexOf("http")!==0){ say("Sign-up is being set up \u2014 please check back soon.",true); return; }
-    btn.disabled=true; say("Adding you\u2026",false);
-    fetch(ENDPOINT,{method:"POST",mode:"no-cors",body:new URLSearchParams({email:val,source:"wildgala.com"})})
-      .then(function(){ form.reset(); say("Thank you \u2014 you\u2019re on the list.",false); })
-      .catch(function(){ say("Something went wrong. Please try again.",true); })
-      .finally(function(){ btn.disabled=false; });
+  var forms=document.querySelectorAll(".js-subscribe");
+  Array.prototype.forEach.call(forms,function(form){
+    var email=form.querySelector('input[type=email]'),
+        consent=form.querySelector('input[type=checkbox]'),
+        msg=form.querySelector('.fn-msg'),
+        btn=form.querySelector('button[type=submit]');
+    function say(text,err){ if(msg){ msg.textContent=text; msg.className="fn-msg"+(err?" err":""); } }
+    form.addEventListener("submit",function(e){
+      e.preventDefault();
+      var val=email?email.value.trim():"";
+      if(!re.test(val)){ say("Please enter a valid email address.",true); return; }
+      if(consent && !consent.checked){ say("Please tick the box to receive updates.",true); return; }
+      if(ENDPOINT.indexOf("http")!==0){ say("Sign-up is being set up — please check back soon.",true); return; }
+      if(btn) btn.disabled=true; say("Adding you…",false);
+      var source=form.getAttribute("data-source")||"wildgala.com";
+      fetch(ENDPOINT,{method:"POST",mode:"no-cors",body:new URLSearchParams({email:val,source:source})})
+        .then(function(){ form.reset(); say("Thank you — you’re on the list.",false); })
+        .catch(function(){ say("Something went wrong. Please try again.",true); })
+        .finally(function(){ if(btn) btn.disabled=false; });
+    });
   });
 })();
 </script>
