@@ -331,7 +331,13 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
 .rf-tab-logo{ width:2.2rem; height:2.2rem; display:block; flex:none; }
 .rf-tab-name{ font-family:var(--ff-ui); font-size:0.82rem; font-weight:600; line-height:1.08; letter-spacing:0.01em; color:var(--ink-deep); transition:color .2s var(--ease); }
 .rf-tab:hover .rf-tab-name{ color:var(--lantern-lo); }
-@media (max-width:1000px){ .rf-tab{ display:none; } }
+@media (max-width:1000px){
+    .rf-tab{ gap:0.5rem; padding:0.4rem 1.05rem 0.5rem clamp(0.9rem,4vw,1.4rem); border-radius:0 0 14px 0; box-shadow:0 12px 22px -18px rgba(30,20,10,0.55); }
+    .rf-tab-by{ font-size:0.82rem; }
+    .rf-tab-logo{ width:1.75rem; height:1.75rem; }
+    .rf-tab-name{ font-size:0.72rem; }
+    body.menu-open .rf-tab{ display:none; }  /* keep it out of the way when the mobile menu is open */
+  }
 .brand .leaf{ width:1.05em; height:1.05em; transform:translateY(0.12em); color:var(--lantern); }
 .nav-links{ flex:1 1 auto; display:flex; align-items:center; justify-content:space-evenly; gap:1rem; list-style:none; margin:0; padding:0; }
 .nav-links a{ font-family:var(--ff-ui); font-weight:500; font-size:0.76rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--ink); text-decoration:none;
