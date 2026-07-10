@@ -1114,9 +1114,9 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 .info-hero .btn-ghost:hover{ background:var(--lantern-lo); border-color:var(--lantern-lo); color:var(--cream); }
 /* black-bg variant for the drafts alignment copy (same layout, no photo) */
 .band.info-hero.info-hero--black{ background-color:#000; background-image:none; }
-.band.info-hero.info-hero--draftimg{ background-color:#000; background-image:url("images/info-hero-draft.jpg"); background-size:cover; background-position:center center; background-repeat:no-repeat; }
-@media (min-width:761px){ .band.info-hero.info-hero--draftimg{ aspect-ratio:2692/1199; min-height:0; } }
-@media (max-width:760px){ .band.info-hero.info-hero--draftimg{ background-image:url("images/info-hero-draft-mobile.jpg"); aspect-ratio:1608/1942; min-height:0; } }
+.band.info-hero.info-hero--photo{ background-color:#000; background-image:url("images/info-hero-draft.jpg"); background-size:cover; background-position:center center; background-repeat:no-repeat; }
+@media (min-width:761px){ .band.info-hero.info-hero--photo{ aspect-ratio:2692/1199; min-height:0; } }
+@media (max-width:760px){ .band.info-hero.info-hero--photo{ background-image:url("images/info-hero-draft-mobile.jpg"); aspect-ratio:1608/1942; min-height:0; } }
 @media (min-width:761px){ .band.info-hero{ display:flex; flex-direction:column; justify-content:flex-start; min-height:40rem; } }
 
 /* The Journey header — full-bleed background image only. */
@@ -2829,15 +2829,17 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 
 <!-- ===================== INFO — getting there ===================== -->
 <div class="page" id="page-info" role="region" aria-label="Getting there">
-  <div class="wrap page-intro">
-    <span class="eyebrow"><span class="tick"></span>Plan your visit · Sept 12 · On the land</span>
-    <h1>Info</h1>
-    <p class="lede dim">Everything you need for your visit — how to reach the land, and where to stay.</p>
-    <div class="btn-row" style="margin-top:1.9rem;">
-      <a href="#/info/getting-there" class="btn btn-ghost">Getting there</a>
-      <a href="#/info/wild-stays" class="btn btn-ghost">WILD! Stays</a>
+  <section class="band info-hero info-hero--photo">
+    <div class="wrap page-intro">
+      <span class="eyebrow"><span class="tick"></span>Plan your visit · Sept 12 · On the land</span>
+      <h1>Info</h1>
+      <p class="lede dim">Everything you need for your visit — how to reach the land, and where to stay.</p>
+      <div class="btn-row" style="margin-top:1.9rem;">
+        <a href="#/info/getting-there" class="btn btn-ghost">Getting there</a>
+        <a href="#/info/wild-stays" class="btn btn-ghost">WILD! Stays</a>
+      </div>
     </div>
-  </div>
+  </section>
 
   <section class="band" id="getting-there">
     <div class="wrap">
@@ -2895,6 +2897,19 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <span class="eyebrow"><span class="tick"></span>Internal · Archive</span>
     <h1>Archive</h1>
     <p class="lede dim">Retired sections, kept here for reference. This page isn't linked publicly.</p>
+  </div>
+
+  <!-- archived: Info hero — plain light intro, no bg image (2026-07-10). The live Info
+       page briefly used this solid-light version; retired when the aspect-locked photo hero went live. -->
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Archived · Info hero — plain light intro, no bg (2026-07-10)</span></div>
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Plan your visit · Sept 12 · On the land</span>
+    <h1>Info</h1>
+    <p class="lede dim">Everything you need for your visit — how to reach the land, and where to stay.</p>
+    <div class="btn-row" style="margin-top:1.9rem;">
+      <a href="#/info/getting-there" class="btn btn-ghost">Getting there</a>
+      <a href="#/info/wild-stays" class="btn btn-ghost">WILD! Stays</a>
+    </div>
   </div>
 
   <!-- archived: Info hero — forest-banquet photo version (2026-07-10). Removed from the live Info page (now no bg image); kept for reference. Image via inline style since the live .info-hero no longer sets one. -->
@@ -3313,7 +3328,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
        image (2692×1199 = 2.2452) so the artwork the client aligned to the letters
        lands pixel-perfect at every width (lock-and-scale keeps positions constant). -->
   <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · D-02 · Info hero — desktop bg image (aspect-locked 2692×1199)</span></div>
-  <section class="band info-hero info-hero--draftimg" id="draft-D-02">
+  <section class="band info-hero info-hero--photo" id="draft-D-02">
     <div class="wrap page-intro">
       <span class="eyebrow"><span class="tick"></span>Plan your visit · Sept 12 · On the land</span>
       <h1>Info</h1>
