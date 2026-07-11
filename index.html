@@ -1094,6 +1094,9 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 .invitation-hero--light.invitation-hero--black .eyebrow .tick{ background:var(--cream); }
 .invitation-hero--light.invitation-hero--black h1{ color:var(--cream); }
 .invitation-hero--light.invitation-hero--black .lede{ color:var(--cream); }
+/* D-03 draft: per-breakpoint aligned bg images (id beats --black background-image:none; size/pos inherit from --light) */
+@media (min-width:1025px){ #draft-D-03{ background-image:url("images/invitation-hero-draft.jpg"); } }
+@media (max-width:760px){ #draft-D-03{ background-image:url("images/invitation-hero-draft-mobile.jpg"); } }
 /* draft variant: The Remembering on a solid white background (drop the photo, dark type) */
 .band--breathe.band--breathe--white{ background-color:#fff; background-image:none; }
 .band--breathe.band--breathe--white::after{ display:none; }
@@ -3342,7 +3345,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
        section's content-driven desktop aspect). Cream type over the dark image; box stays
        content-driven so the letters land where the image was aligned. cover = no crop. -->
   <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · D-03 · The Invitation header — desktop bg image (2940×1438)</span></div>
-  <section class="band invitation-hero invitation-hero--light invitation-hero--black" id="draft-D-03" style="background-image:url('images/invitation-hero-draft.jpg')">
+  <section class="band invitation-hero invitation-hero--light invitation-hero--black" id="draft-D-03">
     <div class="wrap page-intro">
       <span class="eyebrow"><span class="tick"></span>The Invitation</span>
       <h1>A love letter to those<br>who survived illness</h1>
