@@ -1087,17 +1087,15 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 .invitation-hero--light .lede{ color:var(--ink-deep-2); }
 /* draft variant: invitation header on a solid white background (drop the photo) */
 .invitation-hero--light.invitation-hero--white{ background-color:#fff; background-image:none; }
-/* draft variant: The Invitation header on solid #000 — type flipped to cream so the
-   letters stay visible for Photoshop-aligning a replacement background image (draft D-03) */
-.invitation-hero--light.invitation-hero--black{ background-color:#000; background-image:none; }
-.invitation-hero--light.invitation-hero--black .eyebrow{ color:var(--cream); }
-.invitation-hero--light.invitation-hero--black .eyebrow .tick{ background:var(--cream); }
-.invitation-hero--light.invitation-hero--black h1{ color:var(--cream); }
-.invitation-hero--light.invitation-hero--black .lede{ color:var(--cream); }
-/* D-03 draft: per-breakpoint aligned bg images (id beats --black background-image:none; size/pos inherit from --light) */
-@media (min-width:1025px){ #draft-D-03{ background-image:url("images/invitation-hero-draft.jpg"); } }
-@media (max-width:760px){ #draft-D-03{ background-image:url("images/invitation-hero-draft-mobile.jpg"); } }
-@media (min-width:761px) and (max-width:1024px){ #draft-D-03{ background-image:url("images/invitation-hero-draft-tablet.jpg"); } }
+/* The Invitation header — LIVE 2026 photo hero: aligned per-breakpoint images + cream type
+   (promoted from draft D-03, 2026-07-11). Overrides --light's base photo + dark type. */
+.invitation-hero--light.invitation-hero--photo{ background-color:#000; background-image:url("images/invitation-hero-draft.jpg"); }
+.invitation-hero--light.invitation-hero--photo .eyebrow{ color:var(--cream); }
+.invitation-hero--light.invitation-hero--photo .eyebrow .tick{ background:var(--cream); }
+.invitation-hero--light.invitation-hero--photo h1{ color:var(--cream); }
+.invitation-hero--light.invitation-hero--photo .lede{ color:var(--cream); }
+@media (min-width:761px) and (max-width:1024px){ .invitation-hero--light.invitation-hero--photo{ background-image:url("images/invitation-hero-draft-tablet.jpg"); } }
+@media (max-width:760px){ .invitation-hero--light.invitation-hero--photo{ background-image:url("images/invitation-hero-draft-mobile.jpg"); } }
 /* draft variant: The Remembering on a solid white background (drop the photo, dark type) */
 .band--breathe.band--breathe--white{ background-color:#fff; background-image:none; }
 .band--breathe.band--breathe--white::after{ display:none; }
@@ -2136,8 +2134,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
      THE INVITATION (love letter)
      ============================================================ -->
 <div class="page" id="page-invitation" role="region" aria-label="The Invitation">
-  <!-- header: hand-in-water photo, dark type (shipped from drafts) -->
-  <section class="band invitation-hero invitation-hero--light">
+  <!-- header: aligned photo hero (desktop/tablet/mobile) + cream type — promoted from draft D-03 (2026-07-11) -->
+  <section class="band invitation-hero invitation-hero--light invitation-hero--photo">
     <div class="wrap page-intro">
       <span class="eyebrow"><span class="tick"></span>The Invitation</span>
       <h1>A love letter to those<br>who survived illness</h1>
@@ -2919,6 +2917,18 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <p class="lede dim">Retired sections, kept here for reference. This page isn't linked publicly.</p>
   </div>
 
+  <!-- archived: The Invitation header — hand-in-water photo, dark type (live until 2026-07-11).
+       Replaced by the aligned photo hero (cream type) promoted from draft D-03. Uses the unchanged
+       .invitation-hero--light class, which still carries the original base64 photos. -->
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Archived · The Invitation — hand-in-water photo, dark type (2026-07-11)</span></div>
+  <section class="band invitation-hero invitation-hero--light">
+    <div class="wrap page-intro">
+      <span class="eyebrow"><span class="tick"></span>The Invitation</span>
+      <h1>A love letter to those<br>who survived illness</h1>
+      <p class="lede dim">Read it slowly. It was written for you.</p>
+    </div>
+  </section>
+
   <!-- archived: Info hero — plain light intro, no bg image (2026-07-10). The live Info
        page briefly used this solid-light version; retired when the aspect-locked photo hero went live. -->
   <div class="wrap"><span class="eyebrow"><span class="tick"></span>Archived · Info hero — plain light intro, no bg (2026-07-10)</span></div>
@@ -3357,18 +3367,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <a href="#/info/getting-there" class="btn btn-ghost">Getting there</a>
         <a href="#/info/wild-stays" class="btn btn-ghost">WILD! Stays</a>
       </div>
-    </div>
-  </section>
-
-  <!-- Draft · D-03 · The Invitation header — desktop bg image (2940×1438 ≈ 2.045:1, the
-       section's content-driven desktop aspect). Cream type over the dark image; box stays
-       content-driven so the letters land where the image was aligned. cover = no crop. -->
-  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · D-03 · The Invitation header — desktop bg image (2940×1438)</span></div>
-  <section class="band invitation-hero invitation-hero--light invitation-hero--black" id="draft-D-03">
-    <div class="wrap page-intro">
-      <span class="eyebrow"><span class="tick"></span>The Invitation</span>
-      <h1>A love letter to those<br>who survived illness</h1>
-      <p class="lede dim">Read it slowly. It was written for you.</p>
     </div>
   </section>
 
