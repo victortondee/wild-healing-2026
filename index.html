@@ -1128,7 +1128,8 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 /* black-bg variant for the drafts alignment copy (same layout, no photo) */
 .band.info-hero.info-hero--black{ background-color:#000; background-image:none; }
 .band.info-hero.info-hero--photo{ background-color:#000; background-image:url("images/info-hero-draft.jpg"); background-size:cover; background-position:center center; background-repeat:no-repeat; }
-@media (min-width:761px){ .band.info-hero.info-hero--photo{ aspect-ratio:2.0455; min-height:0; } } /* ~2.05:1 = same height/proportion as the other page heroes (invitation/gathering); photo is a scenic bg so the minor side-crop is fine */
+@media (min-width:761px){ .band.info-hero.info-hero--photo{ aspect-ratio:2.0455; min-height:0; } }
+@media (min-width:761px){ #draft-D-04{ aspect-ratio:2.033; } } /* D-04: avg of the other page heroes (invitation 704 + journey 717 + gathering 704 = 708px @1440) */ /* ~2.05:1 = same height/proportion as the other page heroes (invitation/gathering); photo is a scenic bg so the minor side-crop is fine */
 @media (max-width:760px){ .band.info-hero.info-hero--photo{ background-image:url("images/info-hero-draft-mobile.jpg"); aspect-ratio:1608/1942; min-height:0; } }
 @media (min-width:761px){ .band.info-hero{ display:flex; flex-direction:column; justify-content:flex-start; min-height:40rem; } }
 @media (max-width:760px){ .ih-eb-sep{ display:none; } .ih-eb-land{ display:block; } }
@@ -3341,6 +3342,22 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <h1>Drafts</h1>
     <p class="lede dim">A staging area for sections in progress, before they go live. This page isn't linked publicly.</p>
   </div>
+
+  <!-- Draft · D-04 · Info hero — height matched to the AVERAGE of the other page heroes
+       (invitation 704 + journey 717 + gathering 704 = avg 708px @1440 → aspect ≈2.033),
+       vs the live Info hero (2.0455 ≈ 704px). Copy of the live Info hero: image + cream type. -->
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · D-04 · Info hero — average hero height (aspect ≈2.033 ≈ 708px @1440)</span></div>
+  <section class="band info-hero info-hero--photo" id="draft-D-04">
+    <div class="wrap page-intro">
+      <span class="eyebrow"><span class="tick"></span>Plan your visit · Sept 12 <span class="ih-eb-sep">· </span><span class="ih-eb-land">On the land</span></span>
+      <h1>Info</h1>
+      <p class="lede dim">Everything you need for your visit — how to reach the land, and where to stay.</p>
+      <div class="btn-row" style="margin-top:1.9rem;">
+        <a href="#/info/getting-there" class="btn btn-ghost">Getting there</a>
+        <a href="#/info/wild-stays" class="btn btn-ghost">WILD! Stays</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Draft · D-03 · The Invitation header — desktop bg image (2940×1438 ≈ 2.045:1, the
        section's content-driven desktop aspect). Cream type over the dark image; box stays
