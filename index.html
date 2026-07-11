@@ -1128,8 +1128,9 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 /* black-bg variant for the drafts alignment copy (same layout, no photo) */
 .band.info-hero.info-hero--black{ background-color:#000; background-image:none; }
 .band.info-hero.info-hero--photo{ background-color:#000; background-image:url("images/info-hero-draft.jpg"); background-size:cover; background-position:center center; background-repeat:no-repeat; }
-@media (min-width:761px){ .band.info-hero.info-hero--photo{ aspect-ratio:2.0455; min-height:0; } }
-@media (min-width:761px){ #draft-D-04{ aspect-ratio:2.033; } } /* D-04: avg of the other page heroes (invitation 704 + journey 717 + gathering 704 = 708px @1440) */ /* ~2.05:1 = same height/proportion as the other page heroes (invitation/gathering); photo is a scenic bg so the minor side-crop is fine */
+@media (min-width:1025px){ .band.info-hero.info-hero--photo{ aspect-ratio:2692/1199; min-height:0; } } /* desktop: locked to the image aspect (pixel-aligned) */
+@media (min-width:761px) and (max-width:1024px){ .band.info-hero.info-hero--photo{ aspect-ratio:1.3636; min-height:0; } } /* tablet: match The Gathering hero (~1.36:1) */
+@media (min-width:761px){ #draft-D-04{ aspect-ratio:2.033; } } /* D-04: avg of the other page heroes (invitation 704 + journey 717 + gathering 704 = 708px @1440) */
 @media (max-width:760px){ .band.info-hero.info-hero--photo{ background-image:url("images/info-hero-draft-mobile.jpg"); aspect-ratio:1608/1942; min-height:0; } }
 @media (min-width:761px){ .band.info-hero{ display:flex; flex-direction:column; justify-content:flex-start; min-height:40rem; } }
 @media (max-width:760px){ .ih-eb-sep{ display:none; } .ih-eb-land{ display:block; } }
