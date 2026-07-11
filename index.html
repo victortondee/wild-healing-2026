@@ -1087,6 +1087,13 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 .invitation-hero--light .lede{ color:var(--ink-deep-2); }
 /* draft variant: invitation header on a solid white background (drop the photo) */
 .invitation-hero--light.invitation-hero--white{ background-color:#fff; background-image:none; }
+/* draft variant: The Invitation header on solid #000 — type flipped to cream so the
+   letters stay visible for Photoshop-aligning a replacement background image (draft D-03) */
+.invitation-hero--light.invitation-hero--black{ background-color:#000; background-image:none; }
+.invitation-hero--light.invitation-hero--black .eyebrow{ color:var(--cream); }
+.invitation-hero--light.invitation-hero--black .eyebrow .tick{ background:var(--cream); }
+.invitation-hero--light.invitation-hero--black h1{ color:var(--cream); }
+.invitation-hero--light.invitation-hero--black .lede{ color:var(--cream); }
 /* draft variant: The Remembering on a solid white background (drop the photo, dark type) */
 .band--breathe.band--breathe--white{ background-color:#fff; background-image:none; }
 .band--breathe.band--breathe--white::after{ display:none; }
@@ -3330,6 +3337,18 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <h1>Drafts</h1>
     <p class="lede dim">A staging area for sections in progress, before they go live. This page isn't linked publicly.</p>
   </div>
+
+  <!-- Draft · D-03 · The Invitation header — black bg (Photoshop alignment reference).
+       Same layout/type as the live Invitation hero; photo swapped for solid #000 and the
+       type flipped to cream so the letters are visible for aligning a replacement image. -->
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft · D-03 · The Invitation header — black bg (Photoshop alignment reference)</span></div>
+  <section class="band invitation-hero invitation-hero--light invitation-hero--black" id="draft-D-03">
+    <div class="wrap page-intro">
+      <span class="eyebrow"><span class="tick"></span>The Invitation</span>
+      <h1>A love letter to those<br>who survived illness</h1>
+      <p class="lede dim">Read it slowly. It was written for you.</p>
+    </div>
+  </section>
 
   <!-- Draft · D-02 · Info hero — desktop bg image. Box aspect-ratio locked to the
        image (2692×1199 = 2.2452) so the artwork the client aligned to the letters
