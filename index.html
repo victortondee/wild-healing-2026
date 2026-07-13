@@ -2005,6 +2005,76 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     </div>
   </section>
 
+  <!-- Past Luminaries — honoring supporters & partners of The Reconciliation Center (moved live from draft D-05, 2026-07-13) -->
+  <section class="band" id="past-luminaries">
+    <style>
+    #past-luminaries .lum-head{ max-width:46rem; margin:0 auto 3.4rem; text-align:center; }
+    #past-luminaries .lum-eyebrow{ font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--lantern-lo); }
+    #past-luminaries .lum-head h2{ font-family:var(--ff-display); font-weight:300; font-size:3.1rem; line-height:1.06; letter-spacing:-0.01em; color:var(--ink-deep); margin:0.85rem 0 0; }
+    #past-luminaries .lum-intro{ font-family:var(--ff-body); font-size:1.06rem; line-height:1.5; color:var(--ink-2); margin:1.4rem auto 0; max-width:38rem; }
+    #past-luminaries .lum-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:1.5rem; }
+    #past-luminaries .lum-card{ margin:0; position:relative; overflow:hidden; border-radius:0.55rem; background:#241d19; box-shadow:0 1.1rem 2.6rem -1.5rem rgba(20,14,8,0.55); }
+    #past-luminaries .lum-photo{ aspect-ratio:3/4; width:100%; }
+    #past-luminaries .lum-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
+    #past-luminaries .lum-card--ph .lum-photo{ display:flex; align-items:center; justify-content:center; padding-bottom:32%; background:radial-gradient(circle at 50% 34%, var(--lantern-lo), #241d19 80%); }
+    #past-luminaries .lum-mono{ font-family:var(--ff-display); font-size:3.6rem; color:rgba(236,227,207,0.9); letter-spacing:0.03em; }
+    #past-luminaries .lum-cap{ position:absolute; inset:auto 0 0 0; padding:2.6rem 0.9rem 0.95rem; text-align:center; background:linear-gradient(to top, rgba(16,11,7,0.94) 8%, rgba(16,11,7,0.6) 52%, transparent); }
+    #past-luminaries .lum-name{ display:block; font-family:var(--ff-display); font-size:1.15rem; line-height:1.12; color:var(--cream); overflow-wrap:break-word; }
+    #past-luminaries .lum-space{ display:block; font-family:var(--ff-body); font-style:italic; font-size:0.9rem; line-height:1.18; color:var(--lantern-hi); margin-top:0.22rem; overflow-wrap:break-word; }
+    @media (min-width:1025px){ #past-luminaries .wrap{ padding-left:1.5rem; padding-right:1.5rem; } } /* edge margins == inter-portrait gap -> wider composition */
+    @media (min-width:761px) and (max-width:1024px){ #past-luminaries .lum-head h2{ font-size:2.5rem; } #past-luminaries .lum-grid{ grid-template-columns:repeat(3,1fr); gap:1.1rem; } #past-luminaries .lum-mono{ font-size:3rem; } }
+    @media (max-width:760px){ #past-luminaries .wrap{ padding-left:0.5rem; padding-right:0.5rem; } #past-luminaries .lum-head{ margin-bottom:2.4rem; padding:0 1rem; } #past-luminaries .lum-head h2{ font-size:2rem; } #past-luminaries .lum-intro{ font-size:0.98rem; } #past-luminaries .lum-grid{ grid-template-columns:repeat(2,1fr); gap:0.5rem; } #past-luminaries .lum-photo{ border-radius:0.5rem 0.5rem 0 0; overflow:hidden; } #past-luminaries .lum-cap{ position:static; inset:auto; background:none; padding:0.6rem 0.4rem 0.8rem; } #past-luminaries .lum-name{ font-size:0.95rem; line-height:1.14; } #past-luminaries .lum-space{ font-size:0.78rem; margin-top:0.15rem; } }
+    </style>
+    <div class="wrap">
+      <div class="lum-head">
+        <h2>Meet Our Past Luminaries</h2>
+        <p class="lum-intro">Honoring the supporters and partners of The Reconciliation Center, whose extraordinary work and enduring legacies enrich our lives.</p>
+      </div>
+      <div class="lum-grid">
+        <figure class="lum-card">
+          <div class="lum-photo"><img src="images/lum-burgdorf.jpg" alt="Robert Burgdorf" loading="lazy"></div>
+          <figcaption class="lum-cap"><span class="lum-name">Robert Burgdorf</span><span class="lum-space">Legacy Library</span></figcaption>
+        </figure>
+        <figure class="lum-card">
+          <div class="lum-photo"><img src="images/lum-nussbaum.jpg" alt="Carolyn Nussbaum" loading="lazy"></div>
+          <figcaption class="lum-cap"><span class="lum-name">Carolyn Nussbaum</span><span class="lum-space">Women&rsquo;s Freedom Lounge</span></figcaption>
+        </figure>
+        <figure class="lum-card">
+          <div class="lum-photo"><img src="images/lum-fantuzzo.jpg" alt="Stephen Fantuzzo" loading="lazy"></div>
+          <figcaption class="lum-cap"><span class="lum-name">Stephen Fantuzzo</span><span class="lum-space">Fountain of Equality</span></figcaption>
+        </figure>
+        <figure class="lum-card">
+          <div class="lum-photo"><img src="images/lum-stolzenburg.jpg" alt="Nan Stolzenburg" loading="lazy"></div>
+          <figcaption class="lum-cap"><span class="lum-name">Nan Stolzenburg</span><span class="lum-space">Peaceful Edge</span></figcaption>
+        </figure>
+        <figure class="lum-card">
+          <div class="lum-photo"><img src="images/lum-garrow.jpg" alt="Minnie Garrow" loading="lazy"></div>
+          <figcaption class="lum-cap"><span class="lum-name">Minnie Garrow</span><span class="lum-space">Forest of Herbs and Botanicals</span></figcaption>
+        </figure>
+        <figure class="lum-card">
+          <div class="lum-photo"><img src="images/lum-minas.jpg" alt="Rebecca Minas" loading="lazy"></div>
+          <figcaption class="lum-cap"><span class="lum-name">Rebecca Minas</span><span class="lum-space">Universal Design Lab</span></figcaption>
+        </figure>
+        <figure class="lum-card">
+          <div class="lum-photo"><img src="images/lum-weber.jpg" alt="Cheyenna Weber" loading="lazy"></div>
+          <figcaption class="lum-cap"><span class="lum-name">Cheyenna Weber</span><span class="lum-space">Cooperative Trails</span></figcaption>
+        </figure>
+        <figure class="lum-card">
+          <div class="lum-photo"><img src="images/lum-johnson.jpg" alt="Jim Johnson" loading="lazy"></div>
+          <figcaption class="lum-cap"><span class="lum-name">Jim Johnson</span><span class="lum-space">Cooperative Trails</span></figcaption>
+        </figure>
+        <figure class="lum-card">
+          <div class="lum-photo"><img src="images/lum-lesniak.jpg" alt="Greg Lesniak" loading="lazy"></div>
+          <figcaption class="lum-cap"><span class="lum-name">Greg Lesniak</span><span class="lum-space">Guardians of Hidden Waters</span></figcaption>
+        </figure>
+        <figure class="lum-card">
+          <div class="lum-photo"><img src="images/lum-lynn.jpg" alt="Robinson Lynn" loading="lazy"></div>
+          <figcaption class="lum-cap"><span class="lum-name">Robinson Lynn</span><span class="lum-space">Clearing of Infinite Pathways</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- four movements -->
   <section class="band medicine-walk">
     <div class="wrap">
@@ -3353,79 +3423,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <h1>Drafts</h1>
     <p class="lede dim">A staging area for sections in progress, before they go live. This page isn't linked publicly.</p>
   </div>
-
-  <!-- Draft · D-05 · Past Luminaries grid — original 10 roster from the older site, restyled to WILD.
-       6 photos supplied (Burgdorf, Stolzenburg, Weber, Johnson, Lesniak, Lynn); 4 are initial-monogram
-       placeholders pending photos (Nussbaum, Fantuzzo, Garrow, Minas). NOTE: Jim Johnson photo is very low-res (121x180). -->
-  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft &middot; D-05 &middot; Past Luminaries &mdash; original 10 roster (4 photos pending)</span></div>
-  <section class="band" id="draft-D-05">
-    <style>
-    #draft-D-05 .lum-head{ max-width:46rem; margin:0 auto 3.4rem; text-align:center; }
-    #draft-D-05 .lum-eyebrow{ font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--lantern-lo); }
-    #draft-D-05 .lum-head h2{ font-family:var(--ff-display); font-weight:300; font-size:3.1rem; line-height:1.06; letter-spacing:-0.01em; color:var(--ink-deep); margin:0.85rem 0 0; }
-    #draft-D-05 .lum-intro{ font-family:var(--ff-body); font-size:1.06rem; line-height:1.5; color:var(--ink-2); margin:1.4rem auto 0; max-width:38rem; }
-    #draft-D-05 .lum-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:1.5rem; }
-    #draft-D-05 .lum-card{ margin:0; position:relative; overflow:hidden; border-radius:0.55rem; background:#241d19; box-shadow:0 1.1rem 2.6rem -1.5rem rgba(20,14,8,0.55); }
-    #draft-D-05 .lum-photo{ aspect-ratio:3/4; width:100%; }
-    #draft-D-05 .lum-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
-    #draft-D-05 .lum-card--ph .lum-photo{ display:flex; align-items:center; justify-content:center; padding-bottom:32%; background:radial-gradient(circle at 50% 34%, var(--lantern-lo), #241d19 80%); }
-    #draft-D-05 .lum-mono{ font-family:var(--ff-display); font-size:3.6rem; color:rgba(236,227,207,0.9); letter-spacing:0.03em; }
-    #draft-D-05 .lum-cap{ position:absolute; inset:auto 0 0 0; padding:2.6rem 0.9rem 0.95rem; text-align:center; background:linear-gradient(to top, rgba(16,11,7,0.94) 8%, rgba(16,11,7,0.6) 52%, transparent); }
-    #draft-D-05 .lum-name{ display:block; font-family:var(--ff-display); font-size:1.15rem; line-height:1.12; color:var(--cream); overflow-wrap:break-word; }
-    #draft-D-05 .lum-space{ display:block; font-family:var(--ff-body); font-style:italic; font-size:0.9rem; line-height:1.18; color:var(--lantern-hi); margin-top:0.22rem; overflow-wrap:break-word; }
-    @media (min-width:1025px){ #draft-D-05 .wrap{ padding-left:1.5rem; padding-right:1.5rem; } } /* edge margins == inter-portrait gap -> wider composition */
-    @media (min-width:761px) and (max-width:1024px){ #draft-D-05 .lum-head h2{ font-size:2.5rem; } #draft-D-05 .lum-grid{ grid-template-columns:repeat(3,1fr); gap:1.1rem; } #draft-D-05 .lum-mono{ font-size:3rem; } }
-    @media (max-width:760px){ #draft-D-05 .wrap{ padding-left:0.5rem; padding-right:0.5rem; } #draft-D-05 .lum-head{ margin-bottom:2.4rem; padding:0 1rem; } #draft-D-05 .lum-head h2{ font-size:2rem; } #draft-D-05 .lum-intro{ font-size:0.98rem; } #draft-D-05 .lum-grid{ grid-template-columns:repeat(2,1fr); gap:0.5rem; } #draft-D-05 .lum-photo{ border-radius:0.5rem 0.5rem 0 0; overflow:hidden; } #draft-D-05 .lum-cap{ position:static; inset:auto; background:none; padding:0.6rem 0.4rem 0.8rem; } #draft-D-05 .lum-name{ font-size:0.95rem; line-height:1.14; } #draft-D-05 .lum-space{ font-size:0.78rem; margin-top:0.15rem; } }
-    </style>
-    <div class="wrap">
-      <div class="lum-head">
-        <h2>Meet Our Past Luminaries</h2>
-        <p class="lum-intro">Honoring the supporters and partners of The Reconciliation Center, whose extraordinary work and enduring legacies enrich our lives.</p>
-      </div>
-      <div class="lum-grid">
-        <figure class="lum-card">
-          <div class="lum-photo"><img src="images/lum-burgdorf.jpg" alt="Robert Burgdorf" loading="lazy"></div>
-          <figcaption class="lum-cap"><span class="lum-name">Robert Burgdorf</span><span class="lum-space">Legacy Library</span></figcaption>
-        </figure>
-        <figure class="lum-card">
-          <div class="lum-photo"><img src="images/lum-nussbaum.jpg" alt="Carolyn Nussbaum" loading="lazy"></div>
-          <figcaption class="lum-cap"><span class="lum-name">Carolyn Nussbaum</span><span class="lum-space">Women&rsquo;s Freedom Lounge</span></figcaption>
-        </figure>
-        <figure class="lum-card">
-          <div class="lum-photo"><img src="images/lum-fantuzzo.jpg" alt="Stephen Fantuzzo" loading="lazy"></div>
-          <figcaption class="lum-cap"><span class="lum-name">Stephen Fantuzzo</span><span class="lum-space">Fountain of Equality</span></figcaption>
-        </figure>
-        <figure class="lum-card">
-          <div class="lum-photo"><img src="images/lum-stolzenburg.jpg" alt="Nan Stolzenburg" loading="lazy"></div>
-          <figcaption class="lum-cap"><span class="lum-name">Nan Stolzenburg</span><span class="lum-space">Peaceful Edge</span></figcaption>
-        </figure>
-        <figure class="lum-card">
-          <div class="lum-photo"><img src="images/lum-garrow.jpg" alt="Minnie Garrow" loading="lazy"></div>
-          <figcaption class="lum-cap"><span class="lum-name">Minnie Garrow</span><span class="lum-space">Forest of Herbs and Botanicals</span></figcaption>
-        </figure>
-        <figure class="lum-card">
-          <div class="lum-photo"><img src="images/lum-minas.jpg" alt="Rebecca Minas" loading="lazy"></div>
-          <figcaption class="lum-cap"><span class="lum-name">Rebecca Minas</span><span class="lum-space">Universal Design Lab</span></figcaption>
-        </figure>
-        <figure class="lum-card">
-          <div class="lum-photo"><img src="images/lum-weber.jpg" alt="Cheyenna Weber" loading="lazy"></div>
-          <figcaption class="lum-cap"><span class="lum-name">Cheyenna Weber</span><span class="lum-space">Cooperative Trails</span></figcaption>
-        </figure>
-        <figure class="lum-card">
-          <div class="lum-photo"><img src="images/lum-johnson.jpg" alt="Jim Johnson" loading="lazy"></div>
-          <figcaption class="lum-cap"><span class="lum-name">Jim Johnson</span><span class="lum-space">Cooperative Trails</span></figcaption>
-        </figure>
-        <figure class="lum-card">
-          <div class="lum-photo"><img src="images/lum-lesniak.jpg" alt="Greg Lesniak" loading="lazy"></div>
-          <figcaption class="lum-cap"><span class="lum-name">Greg Lesniak</span><span class="lum-space">Guardians of Hidden Waters</span></figcaption>
-        </figure>
-        <figure class="lum-card">
-          <div class="lum-photo"><img src="images/lum-lynn.jpg" alt="Robinson Lynn" loading="lazy"></div>
-          <figcaption class="lum-cap"><span class="lum-name">Robinson Lynn</span><span class="lum-space">Clearing of Infinite Pathways</span></figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
 
   <!-- Draft · D-04 · Info hero — height matched to the AVERAGE of the other page heroes
        (invitation 704 + journey 717 + gathering 704 = avg 708px @1440 → aspect ≈2.033),
