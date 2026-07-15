@@ -3471,8 +3471,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     #draft-D-07 .lum-eyebrow{ font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--lantern-lo); }
     #draft-D-07 .lum-head h2{ font-family:var(--ff-display); font-weight:300; font-size:3.1rem; line-height:1.06; letter-spacing:-0.01em; color:var(--ink-deep); margin:0.85rem 0 0; }
     #draft-D-07 .lum-intro{ font-family:var(--ff-body); font-size:1.06rem; line-height:1.5; color:var(--ink-2); margin:1.4rem auto 0; max-width:38rem; }
-    #draft-D-07 .lum-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:1.5rem; }
-    #draft-D-07 .lum-card{ margin:0; position:relative; overflow:hidden; border-radius:0.55rem; background:#241d19; box-shadow:0 1.1rem 2.6rem -1.5rem rgba(20,14,8,0.55); }
+    #draft-D-07 .lum-grid{ display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; }
+    #draft-D-07 .lum-card{ margin:0; flex:0 1 calc(20% - 1.2rem); max-width:calc(20% - 1.2rem); position:relative; overflow:hidden; border-radius:0.55rem; background:#241d19; box-shadow:0 1.1rem 2.6rem -1.5rem rgba(20,14,8,0.55); }
     #draft-D-07 .lum-photo{ aspect-ratio:3/4; width:100%; }
     #draft-D-07 .lum-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
     #draft-D-07 .lum-card--ph .lum-photo{ display:flex; align-items:center; justify-content:center; padding-bottom:32%; background:radial-gradient(circle at 50% 34%, var(--lantern-lo), #241d19 80%); }
@@ -3482,7 +3482,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     #draft-D-07 .lum-space{ display:block; font-family:var(--ff-body); font-style:italic; font-size:0.9rem; line-height:1.18; color:var(--lantern-hi); margin-top:0.22rem; overflow-wrap:break-word; }
     @media (min-width:761px){ #draft-D-07 .wrap{ padding-left:1.5rem; padding-right:1.5rem; } } /* edge margins == inter-portrait gap -> wider composition */
     @media (min-width:761px) and (max-width:1024px){ #draft-D-07 .lum-head h2{ font-size:2.5rem; } #draft-D-07 .lum-grid{ grid-template-columns:repeat(5,1fr); gap:1.5rem; } #draft-D-07 .lum-mono{ font-size:3rem; } }
-    @media (max-width:760px){ #draft-D-07 .wrap{ padding-left:0.5rem; padding-right:0.5rem; } #draft-D-07 .lum-head{ margin-bottom:2.4rem; padding:0 1rem; } #draft-D-07 .lum-head h2{ font-size:2rem; } #draft-D-07 .lum-intro{ font-size:0.98rem; } #draft-D-07 .lum-grid{ grid-template-columns:repeat(2,1fr); gap:0.5rem; } #draft-D-07 .lum-photo{ border-radius:0.5rem 0.5rem 0 0; overflow:hidden; } #draft-D-07 .lum-cap{ position:static; inset:auto; background:none; padding:0.6rem 0.4rem 0.8rem; } #draft-D-07 .lum-name{ font-size:0.95rem; line-height:1.14; } #draft-D-07 .lum-space{ font-size:0.78rem; margin-top:0.15rem; } }
+    @media (max-width:760px){ #draft-D-07 .wrap{ padding-left:0.5rem; padding-right:0.5rem; } #draft-D-07 .lum-head{ margin-bottom:2.4rem; padding:0 1rem; } #draft-D-07 .lum-head h2{ font-size:2rem; } #draft-D-07 .lum-intro{ font-size:0.98rem; } #draft-D-07 .lum-grid{ gap:0.5rem; } #draft-D-07 .lum-card{ flex-basis:calc(50% - 0.25rem); max-width:calc(50% - 0.25rem); } #draft-D-07 .lum-photo{ border-radius:0.5rem 0.5rem 0 0; overflow:hidden; } #draft-D-07 .lum-cap{ position:static; inset:auto; background:none; padding:0.6rem 0.4rem 0.8rem; } #draft-D-07 .lum-name{ font-size:0.95rem; line-height:1.14; } #draft-D-07 .lum-space{ font-size:0.78rem; margin-top:0.15rem; } }
     
     #draft-D-07 .sp-head{ text-align:center; margin:0 auto 2.4rem; }
     #draft-D-07 .sp-eyebrow{ font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--lantern-lo); }
