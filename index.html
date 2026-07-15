@@ -3618,6 +3618,60 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <p class="lede dim">A staging area for sections in progress, before they go live. This page isn't linked publicly.</p>
   </div>
 
+  <!-- Draft · D-08 · Dedicated-site clarity — 3 options for distinguishing a luminary's name
+       from the site dedicated in their honor. Same portrait (Robert Burgdorf) so only the treatment differs. -->
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft &middot; D-08 &middot; Naming the dedicated sites &mdash; 3 options</span></div>
+  <section class="band" id="draft-D-08">
+    <style>
+    #draft-D-08 .ds-head{ max-width:44rem; margin:0 auto 2.6rem; text-align:center; }
+    #draft-D-08 .ds-head h2{ font-family:var(--ff-display); font-weight:300; font-size:2.4rem; color:var(--ink-deep); margin:0 0 0.7rem; letter-spacing:-0.01em; }
+    #draft-D-08 .ds-head p{ font-family:var(--ff-body); font-size:1.02rem; line-height:1.5; color:var(--ink-2); margin:0; }
+    #draft-D-08 .ds-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:2.2rem; }
+    #draft-D-08 .ds-opt{ flex:0 1 15rem; max-width:16rem; text-align:center; }
+    #draft-D-08 .ds-tag{ display:block; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--clay); font-weight:700; margin-bottom:0.9rem; }
+    #draft-D-08 .ds-card{ background:#241d19; border-radius:0.55rem; overflow:hidden; box-shadow:0 1.1rem 2.6rem -1.5rem rgba(20,14,8,0.55); }
+    #draft-D-08 .ds-photo{ aspect-ratio:3/4; }
+    #draft-D-08 .ds-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
+    #draft-D-08 .ds-cap{ padding:1rem 0.9rem 1.25rem; }
+    #draft-D-08 .ds-name{ display:block; font-family:var(--ff-display); font-size:1.4rem; line-height:1.08; color:var(--cream); }
+    #draft-D-08 .ds-site{ display:block; font-family:var(--ff-body); font-style:italic; font-size:1rem; line-height:1.2; color:var(--lantern-hi); margin-top:0.28rem; }
+    /* opt 1 */
+    #draft-D-08 .ds-eyebrow{ display:block; font-family:var(--ff-ui); font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--lantern); margin-top:0.7rem; }
+    /* opt 3 */
+    #draft-D-08 .ds-rule{ display:block; width:2.4rem; height:1px; background:rgba(236,227,207,0.35); margin:0.75rem auto 0.6rem; }
+    #draft-D-08 .ds-place{ display:block; font-family:var(--ff-ui); font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--lantern-hi); }
+    #draft-D-08 .ds-orn{ color:var(--lantern); font-style:normal; margin:0 0.35rem; }
+    #draft-D-08 .ds-desc{ font-family:var(--ff-body); font-size:0.86rem; color:var(--ink-2); line-height:1.4; margin:1rem 0 0; }
+    @media (max-width:760px){ #draft-D-08 .ds-opt{ flex-basis:100%; max-width:20rem; } #draft-D-08 .ds-head h2{ font-size:1.9rem; } }
+    </style>
+    <div class="wrap">
+      <div class="ds-head">
+        <h2>Naming the dedicated sites</h2>
+        <p>Right now the subtitle (a space dedicated in the luminary&rsquo;s honor) reads like it&rsquo;s their own title or organization. Three ways to make the relationship clear:</p>
+      </div>
+      <div class="ds-row">
+        <div class="ds-opt">
+          <span class="ds-tag">Option 1 &middot; Labeled</span>
+          <figure class="ds-card"><div class="ds-photo"><img src="images/lum-burgdorf.jpg" alt="Robert Burgdorf"></div>
+            <figcaption class="ds-cap"><span class="ds-name">Robert Burgdorf</span><span class="ds-eyebrow">In their honor</span><span class="ds-site">The Legacy Library</span></figcaption></figure>
+          <p class="ds-desc">A tiny label sets the site apart from a job title. Minimal, and easy to read at a glance.</p>
+        </div>
+        <div class="ds-opt">
+          <span class="ds-tag">Option 2 &middot; Rephrased</span>
+          <figure class="ds-card"><div class="ds-photo"><img src="images/lum-burgdorf.jpg" alt="Robert Burgdorf"></div>
+            <figcaption class="ds-cap"><span class="ds-name">Robert Burgdorf</span><span class="ds-site">Honored by the Legacy Library</span></figcaption></figure>
+          <p class="ds-desc">No extra label &mdash; the wording itself carries the meaning. Cleanest, but each line gets a little longer.</p>
+        </div>
+        <div class="ds-opt">
+          <span class="ds-tag">Option 3 &middot; Place marker</span>
+          <figure class="ds-card"><div class="ds-photo"><img src="images/lum-burgdorf.jpg" alt="Robert Burgdorf"></div>
+            <figcaption class="ds-cap"><span class="ds-name">Robert Burgdorf</span><span class="ds-rule"></span><span class="ds-place"><span class="ds-orn">&#10086;</span>Legacy Library</span></figcaption></figure>
+          <p class="ds-desc">A divider and small-caps set the site as a named place / plaque, distinct from a title. Most decorative.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Draft · D-04 · Info hero — height matched to the AVERAGE of the other page heroes
        (invitation 704 + journey 717 + gathering 704 = avg 708px @1440 → aspect ≈2.033),
        vs the live Info hero (2.0455 ≈ 704px). Copy of the live Info hero: image + cream type. -->
