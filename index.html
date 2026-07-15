@@ -3618,6 +3618,52 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <p class="lede dim">A staging area for sections in progress, before they go live. This page isn't linked publicly.</p>
   </div>
 
+  <!-- Draft · D-09 · Featured luminaries + "View all" — a curated 6 on the home section, with a button
+       to a dedicated page listing everyone. Button links to #/luminaries (page to be built on go-live). -->
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft &middot; D-09 &middot; Featured luminaries + View all button</span></div>
+  <section class="band" id="draft-D-09">
+    <style>
+    #draft-D-09 .fl-head{ max-width:46rem; margin:0 auto 3rem; text-align:center; }
+    #draft-D-09 .fl-head h2{ font-family:var(--ff-display); font-weight:300; font-size:3.1rem; line-height:1.06; letter-spacing:-0.01em; color:var(--ink-deep); margin:0; }
+    #draft-D-09 .fl-intro{ font-family:var(--ff-body); font-size:1.06rem; line-height:1.5; color:var(--ink-2); margin:1.4rem auto 0; max-width:38rem; }
+    #draft-D-09 .fl-grid{ display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; }
+    #draft-D-09 .fl-card{ margin:0; flex:0 1 calc(16.666% - 1.25rem); max-width:calc(16.666% - 1.25rem); background:#241d19; border-radius:0.55rem; overflow:hidden; box-shadow:0 1.1rem 2.6rem -1.5rem rgba(20,14,8,0.55); }
+    #draft-D-09 .fl-photo{ aspect-ratio:3/4; }
+    #draft-D-09 .fl-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
+    #draft-D-09 .fl-cap{ padding:0.7rem 0.55rem 0.85rem; text-align:center; }
+    #draft-D-09 .fl-name{ display:block; font-family:var(--ff-display); font-size:1rem; line-height:1.12; color:var(--cream); }
+    #draft-D-09 .fl-site{ display:block; font-family:var(--ff-body); font-style:italic; font-size:0.8rem; line-height:1.2; color:var(--lantern-hi); margin-top:0.2rem; }
+    #draft-D-09 .fl-more{ text-align:center; margin-top:2.8rem; }
+    #draft-D-09 .fl-btn{ display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--ff-ui); font-size:0.78rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--clay); background:transparent; border:1.5px solid var(--clay); border-radius:100px; padding:0.9em 2em; text-decoration:none; transition:background .3s var(--ease), color .3s var(--ease); }
+    #draft-D-09 .fl-btn:hover{ background:var(--clay); color:var(--cream); }
+    #draft-D-09 .fl-btn .arrow{ transition:transform .3s var(--ease); }
+    #draft-D-09 .fl-btn:hover .arrow{ transform:translateX(4px); }
+    @media (min-width:761px) and (max-width:1024px){ #draft-D-09 .fl-card{ flex-basis:calc(33.333% - 1rem); max-width:calc(33.333% - 1rem); } #draft-D-09 .fl-head h2{ font-size:2.5rem; } }
+    @media (max-width:760px){ #draft-D-09 .fl-head h2{ font-size:2rem; } #draft-D-09 .fl-grid{ gap:0.6rem; } #draft-D-09 .fl-card{ flex-basis:calc(50% - 0.3rem); max-width:calc(50% - 0.3rem); } #draft-D-09 .fl-name{ font-size:0.95rem; } #draft-D-09 .fl-site{ font-size:0.78rem; } }
+    </style>
+    <div class="wrap">
+      <div class="fl-head">
+        <h2>Meet Our Past Luminaries</h2>
+        <p class="fl-intro">Honoring the supporters and partners of The Reconciliation Center, whose extraordinary work and enduring legacies enrich our lives.</p>
+      </div>
+      <div class="fl-grid">
+        <figure class="fl-card"><div class="fl-photo"><img src="images/lum-garrow.jpg" alt="Minnie Garrow" loading="lazy"></div>
+          <figcaption class="fl-cap"><span class="fl-name">Minnie Garrow</span><span class="fl-site">Forest of Herbs and Botanicals</span></figcaption></figure>
+        <figure class="fl-card"><div class="fl-photo"><img src="images/lum-disney.jpg" alt="Abigail Disney" loading="lazy"></div>
+          <figcaption class="fl-cap"><span class="fl-name">Abigail Disney</span><span class="fl-site">Legacy Theater</span></figcaption></figure>
+        <figure class="fl-card"><div class="fl-photo"><img src="images/lum-burke.jpg" alt="Tarana Burke" loading="lazy"></div>
+          <figcaption class="fl-cap"><span class="fl-name">Tarana Burke</span><span class="fl-site">Centers for Recy Taylor</span></figcaption></figure>
+        <figure class="fl-card"><div class="fl-photo"><img src="images/lum-jacobson.jpg" alt="Ariel Jacobson" loading="lazy"></div>
+          <figcaption class="fl-cap"><span class="fl-name">Ariel Jacobson</span><span class="fl-site">Children's Natural Playscape</span></figcaption></figure>
+        <figure class="fl-card"><div class="fl-photo"><img src="images/lum-cooper.jpg" alt="Dara Cooper" loading="lazy"></div>
+          <figcaption class="fl-cap"><span class="fl-name">Dara Cooper</span><span class="fl-site">Food Sovereignty Farm</span></figcaption></figure>
+        <figure class="fl-card"><div class="fl-photo"><img src="images/lum-burgdorf.jpg" alt="Robert Burgdorf" loading="lazy"></div>
+          <figcaption class="fl-cap"><span class="fl-name">Robert Burgdorf</span><span class="fl-site">Legacy Library</span></figcaption></figure>
+      </div>
+      <div class="fl-more"><a href="#/luminaries" class="fl-btn">View all luminaries <span class="arrow">&rarr;</span></a></div>
+    </div>
+  </section>
+
   <!-- Draft · D-08 · Dedicated-site clarity — 3 options for distinguishing a luminary's name
        from the site dedicated in their honor. Same portrait (Robert Burgdorf) so only the treatment differs. -->
   <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft &middot; D-08 &middot; Naming the dedicated sites &mdash; 3 options</span></div>
