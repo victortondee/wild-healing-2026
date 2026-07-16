@@ -2008,6 +2008,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <!-- Past Luminaries — honoring supporters & partners of The Reconciliation Center (moved live from draft D-05, 2026-07-13) -->
   <section class="band" id="luminaries-featured">
     <style>
+    /* full-bleed: outer margin = the card gap, so the row fills the width (mobile already computes to 1.5rem) */
+    #luminaries-featured > .wrap{ padding-inline:1.5rem; }
     #luminaries-featured .fl-head{ max-width:46rem; margin:0 auto 3rem; text-align:center; }
     #luminaries-featured .fl-head h2{ font-family:var(--ff-display); font-weight:300; font-size:3.1rem; line-height:1.06; letter-spacing:-0.01em; color:var(--ink-deep); margin:0; }
     #luminaries-featured .fl-intro{ font-family:var(--ff-body); font-size:1.06rem; line-height:1.5; color:var(--ink-2); margin:1.4rem auto 0; max-width:38rem; }
