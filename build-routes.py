@@ -35,49 +35,49 @@ SOURCE = pathlib.Path("site-source.html")
 # route: (title, meta description)
 ROUTES = {
     "invitation": (
-        "The Invitation — WILD! Healing 2026",
+        "The Invitation — WILD! Healing Gala 2026",
         "A love letter to those who have survived illness and those who stand "
         "beside them. WILD! Healing — A Harvest of Medicine, September 9–12, 2026.",
     ),
     "info": (
-        "Info — WILD! Healing 2026",
+        "Info — WILD! Healing Gala 2026 | Dates & Location",
         "Dates, location, travel and lodging for WILD! Healing — A Harvest of "
         "Medicine. Online September 9–10, 2026; on the land at Restore Forward, "
         "Ava, New York, September 12.",
     ),
     "journey": (
-        "The Journey — WILD! Healing 2026",
+        "The Journey — WILD! Healing Gala 2026",
         "The medicine walk begins: two days of virtual immersion across a living "
         "landscape of ancestral healing, September 9–10, 2026, leading to the land.",
     ),
     "gathering": (
-        "The Gathering — WILD! Healing 2026",
+        "The Gathering — WILD! Healing Gala 2026",
         "Feast and festival in the woods on the land at Restore Forward, Ava, New "
         "York — September 12, 2026. Long tables beneath the trees, and the "
         "honoring of those who heal.",
     ),
     "attend": (
-        "Attend — WILD! Healing 2026",
+        "Tickets & Attend — WILD! Healing Gala 2026",
         "Come walk with us. Tickets, lodging and how to arrive for WILD! Healing — "
         "A Harvest of Medicine, September 9–12, 2026, Ava, New York.",
     ),
     "contact": (
-        "Contact — WILD! Healing 2026",
+        "Contact — WILD! Healing Gala 2026",
         "Reach the circle. Get in touch about WILD! Healing — A Harvest of "
         "Medicine, presented by Restore Forward.",
     ),
     "luminaries": (
-        "Past Luminaries — WILD! Healing 2026",
+        "Past Luminaries — WILD! Healing Gala 2026",
         "Honoring the supporters and partners whose extraordinary work and "
         "enduring legacies enrich our lives.",
     ),
     "speaker-jb": (
-        "Dr. Dieudonné Jean-Baptiste — WILD! Healing 2026",
+        "Dr. Dieudonné Jean-Baptiste — WILD! Healing Gala 2026",
         "Dr. Dieudonné Jean-Baptiste at WILD! Healing — A Harvest of Medicine, "
         "September 9–12, 2026.",
     ),
     "speaker-stoff": (
-        "Dr. Jesse Stoff — WILD! Healing 2026",
+        "Dr. Jesse Stoff — WILD! Healing Gala 2026",
         "Dr. Jesse Stoff at WILD! Healing — A Harvest of Medicine, "
         "September 9–12, 2026.",
     ),
