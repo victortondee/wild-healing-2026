@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Every asset in this file is referenced relatively ("images/…"). The build also
+     publishes this same document at /info/, /gathering/, … so each route has a real
+     crawlable URL — and from those subdirectories "images/…" would resolve to
+     /info/images/… and 404, leaving the page with no images. Pinning the base to the
+     site root keeps one relative path correct from every location. Must stay above
+     the first asset reference below. -->
+<base href="/" />
 <title>Past Luminaries — WILD! Healing Gala 2026</title>
 <meta name="description" content="Honoring the supporters and partners whose extraordinary work and enduring legacies enrich our lives." />
 
