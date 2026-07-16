@@ -4754,6 +4754,17 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   })();
 
   /* ---------- init ---------- */
+  /* Search engines ignore the #fragment, so a hash-only SPA is a single URL to a
+     crawler — every page below /#/ is invisible. The build therefore emits a real
+     page per route (/info/, /gathering/, …) that serves this same app. When we
+     boot on one, translate its path into the hash route the router already speaks
+     and normalise the URL back to the site root, so in-app links keep working. */
+  (function(){
+    if(window.location.hash) return;
+    var p = window.location.pathname.replace(/^\/+|\/+$/g, "").toLowerCase();
+    if(!p || routes.indexOf(p.split("/")[0]) === -1) return;
+    history.replaceState(null, "", "/#/" + p);
+  })();
   if(!window.location.hash){ window.location.replace("#/home"); }
   render();
 })();

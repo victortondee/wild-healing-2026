@@ -1,14 +1,21 @@
 name: Publish index.html
 
-# Publishes index.html from site-source.html on every push (no password gate).
-# Chats only ever edit site-source.html; this workflow keeps index.html in sync so
-# the generated file never causes merge conflicts between parallel chats.
+# Publishes index.html from site-source.html on every push (no password gate), plus a
+# real crawlable page per SPA route (/info/, /gathering/, …) and the sitemap.
+#
+# Why the route pages: the site is hash-routed and search engines ignore the
+# #fragment, so without a real file at each path the whole site collapses into one
+# indexable URL. See build-routes.py for the full reasoning.
+#
+# Chats only ever edit site-source.html; this workflow keeps every generated file in
+# sync so they never cause merge conflicts between parallel chats.
 
 on:
   push:
     branches: [main]
     paths:
       - "site-source.html"
+      - "build-routes.py"
   workflow_dispatch: {}   # allow manual runs from the Actions tab
 
 permissions:
@@ -24,19 +31,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Publish index.html (ungated copy of site-source.html)
-        run: cp site-source.html index.html
+      - name: Build index.html + per-route pages + sitemap
+        run: python3 build-routes.py
 
-      - name: Commit index.html if it changed
+      - name: Commit generated files if they changed
         run: |
-          if git diff --quiet -- index.html; then
-            echo "index.html unchanged — nothing to commit."
+          # Explicit paths only — never `git add -A`, so a stray file can't ride along.
+          PATHS="index.html sitemap.xml invitation info journey gathering attend contact luminaries speaker-jb speaker-stoff"
+          if git diff --quiet -- $PATHS && [ -z "$(git ls-files --others --exclude-standard -- $PATHS)" ]; then
+            echo "generated files unchanged — nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
-          git commit -m "ci: publish index.html from site-source.html"
+          git add $PATHS
+          git commit -m "ci: publish index.html + route pages from site-source.html"
           for i in 1 2 3 4 5; do
             if git push; then echo "pushed."; exit 0; fi
             echo "push rejected, rebasing and retrying ($i)…"
