@@ -26,6 +26,32 @@ then the reply.
   automatically on every push to `main` (see `.github/workflows/build-gate.yml`).
   If you stage `index.html`, unstage it before committing.
 
+### Generated files — never hand-edit (the Action writes all of these)
+
+`build-routes.py` runs in CI on every push and generates, from `site-source.html`:
+
+- `index.html`
+- **one real page per public route** — `invitation/`, `info/`, `journey/`,
+  `gathering/`, `attend/`, `contact/`, `luminaries/`, `speaker-jb/`,
+  `speaker-stoff/` (each an `index.html`)
+- `sitemap.xml`
+
+**Why the route folders exist:** the site is hash-routed, and search engines ignore
+the `#fragment` — so `/#/info` is not a URL to a crawler and the whole site would
+collapse into a single indexable page. Each generated folder gives a route a real
+200 URL with its own title/description/canonical. On boot, an init block in
+`site-source.html` turns the path into the hash route and normalises the URL back to
+the site root, so the SPA behaves exactly as before.
+
+Rules:
+- Editing copy? Edit `site-source.html` — the route pages regenerate themselves.
+- Adding/renaming a route? Update the `routes` array in `site-source.html`, the
+  `ROUTES` dict in `build-routes.py`, **and** the `PATHS` list in the workflow.
+  Keep internal routes (archive, drafts, workbench, dashboard) **out** of
+  `ROUTES` so they never get a crawlable URL.
+- Don't delete `404.html` — it catches legacy 2025 URLs (`/gala`, …) that still
+  rank and bounces them to a live route instead of a dead end.
+
 ## Staging and live must ALWAYS be identical
 
 The local **staging** site (the cloudflared tunnel / `python -m http.server` serving
