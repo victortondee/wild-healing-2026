@@ -1964,25 +1964,27 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       /* ---- Gala Day hand-mark (red circle + script) -------------------------
          Anchored inside the "12" cell so it stays locked to the date at every
          width; sized/offset in rem so it zooms with the composition.
-         screen needs the hero photo as backdrop: .hero already isolates the
-         group, but .hero-inner (.wrap z-index:2 + .hero-inner z-index:5) would
-         trap the blend, so drop it to auto. Safe -- .hero-inner is this hero's
-         only child, so there is nothing for it to stack against. */
-      #page-home .hero.hero--light .hero-inner{ z-index:auto; }
+         NOTE: do NOT touch .hero-inner's z-index to make screen reach the photo.
+         Each band paints a legibility scrim at .hero::after z-index:1, and
+         .hero-inner's z-index is what keeps the copy above it -- dropping it
+         let the scrim cover the headline. The mark therefore composites inside
+         .hero-inner's stacking context, which keeps the red vivid (as per the
+         reference) while the vector's own screen groups still apply. */
       #page-home .hdate.land{ position:relative; }
       #page-home .hero-mark{ position:absolute; pointer-events:none; mix-blend-mode:screen; display:none; }
       /* Placement is held as ratios of the "12" glyph box (from the desktop ref):
-         width = 4.128x its width, left = -0.813x, top = -1.394x from the number.
+         width = 4.188x its width, left = -0.711x, top = -1.361x from the number
+         (least-squares fit of scale+offset across the circle AND script extents).
          Resolved to plain rem per band -- no clamp/vw -- so the mark zooms with
          the composition and stays locked over the date at every width. */
       @media (max-width:760px){
-        #page-home .hero-mark{ display:block; left:-2.52rem; top:-2.94rem; width:12.82rem; }
+        #page-home .hero-mark{ display:block; left:-2.21rem; top:-2.84rem; width:13rem; }
       }
       @media (min-width:761px) and (max-width:1024px){
-        #page-home .hero-mark{ display:block; left:-0.39rem; top:-0.82rem; width:10.59rem; }
+        #page-home .hero-mark{ display:block; left:-1.82rem; top:-0.74rem; width:10.74rem; }
       }
       @media (min-width:1025px){
-        #page-home .hero-mark{ display:block; left:-3.35rem; top:-4.09rem; width:17rem; }
+        #page-home .hero-mark{ display:block; left:-2.93rem; top:-3.95rem; width:17.25rem; }
       }
   </style>
   <section class="hero hero--flat hero--light hero--mblv2t hero--deskbg">
