@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<title>Redirecting — WILD! Healing</title>
+<!--
+  GitHub Pages serves this file for any path it can't find.
+
+  The site is a hash-routed single-page app (every page lives at /#/route), but
+  the previous "WILD! Miracles" site used real paths (/info, /gala, ...) that are
+  still indexed by Google and still get clicked. Without this file those visitors
+  hit a dead end. Here we translate a real path back into its hash route when it
+  matches a live route, and send everything else to the homepage.
+
+  Keep `routes` in sync with the router's array in site-source.html.
+-->
+<script>
+(function () {
+  var routes = ["home","invitation","journey","gathering","attend","contact",
+                "info","archive","drafts","workbench","dashboard",
+                "speaker-jb","speaker-stoff"];
+  var path = window.location.pathname.replace(/^\/+|\/+$/g, "").toLowerCase();
+  var first = path.split("/")[0];
+  var target = (path && routes.indexOf(first) !== -1) ? "/#/" + path : "/";
+  window.location.replace(target + window.location.search);
+})();
+</script>
+<style>
+  body{ margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+        background:#ECE3CF; color:#25322F; text-align:center; padding:2rem;
+        font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; }
+  a{ color:#B0654A; }
+</style>
+</head>
+<body>
+  <p>Taking you to <a href="/">wildgala.com</a>&hellip;</p>
+</body>
+</html>
