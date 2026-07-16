@@ -1960,6 +1960,30 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     @media (min-width:1025px){
       .hero.hero--light.hero--mblv2t .hero-sub br{ display:none; }
     }
+
+      /* ---- Gala Day hand-mark (red circle + script) -------------------------
+         Anchored inside the "12" cell so it stays locked to the date at every
+         width; sized/offset in rem so it zooms with the composition.
+         screen needs the hero photo as backdrop: .hero already isolates the
+         group, but .hero-inner (.wrap z-index:2 + .hero-inner z-index:5) would
+         trap the blend, so drop it to auto. Safe -- .hero-inner is this hero's
+         only child, so there is nothing for it to stack against. */
+      #page-home .hero.hero--light .hero-inner{ z-index:auto; }
+      #page-home .hdate.land{ position:relative; }
+      #page-home .hero-mark{ position:absolute; pointer-events:none; mix-blend-mode:screen; display:none; }
+      /* Placement is held as ratios of the "12" glyph box (from the desktop ref):
+         width = 4.128x its width, left = -0.813x, top = -1.394x from the number.
+         Resolved to plain rem per band -- no clamp/vw -- so the mark zooms with
+         the composition and stays locked over the date at every width. */
+      @media (max-width:760px){
+        #page-home .hero-mark{ display:block; left:-2.52rem; top:-2.94rem; width:12.82rem; }
+      }
+      @media (min-width:761px) and (max-width:1024px){
+        #page-home .hero-mark{ display:block; left:-0.39rem; top:-0.82rem; width:10.59rem; }
+      }
+      @media (min-width:1025px){
+        #page-home .hero-mark{ display:block; left:-3.35rem; top:-4.09rem; width:17rem; }
+      }
   </style>
   <section class="hero hero--flat hero--light hero--mblv2t hero--deskbg">
     <div class="wrap hero-inner">
@@ -1990,6 +2014,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         </a>
         <span class="hd-div" aria-hidden="true"></span>
         <a class="hdate land" href="/gathering/" aria-label="September 12, on the land — The Gathering">
+          <img class="hero-mark" src="images/gala-mark.svg" alt="" aria-hidden="true">
           <span class="hd-tag">On the land</span>
           <span class="hd-num">12</span>
           <span class="hd-mon">Sep</span>
