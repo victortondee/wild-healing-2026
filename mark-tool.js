@@ -129,15 +129,22 @@
   }
 
   // Emit ONLY what actually changed, so the rule stays paste-safe.
+  function decls() {
+    if (!el) return null;
+    var R = rootPx(), d = {}, f = function (v) { return parseFloat(v.toFixed(3)) + 'rem'; };
+    if (!base.positioned) d['position'] = 'relative';
+    if (Math.abs(cur.L - base.L / R) > 1e-4 || !base.positioned) d['left'] = f(cur.L);
+    if (Math.abs(cur.T - base.T / R) > 1e-4 || !base.positioned) d['top'] = f(cur.T);
+    if (Math.abs(cur.W - base.W / R) > 1e-4) d['width'] = f(cur.W);
+    return d;
+  }
+
   function cssRule() {
     if (!el) return '(nothing picked)';
-    var R = rootPx(), d = [], f = function (v) { return parseFloat(v.toFixed(3)) + 'rem'; };
-    if (!base.positioned) d.push('position:relative');
-    if (Math.abs(cur.L - base.L / R) > 1e-4 || !base.positioned) d.push('left:' + f(cur.L));
-    if (Math.abs(cur.T - base.T / R) > 1e-4 || !base.positioned) d.push('top:' + f(cur.T));
-    if (Math.abs(cur.W - base.W / R) > 1e-4) d.push('width:' + f(cur.W));
-    if (!d.length) return '/* unchanged */';
-    return band().q + '{\n  ' + base.sel + '{ ' + d.join('; ') + '; }\n}';
+    var d = decls(), keys = Object.keys(d);
+    if (!keys.length) return '/* unchanged */';
+    var body = keys.map(function (k) { return k + ':' + d[k]; }).join('; ');
+    return band().q + '{\n  ' + base.sel + '{ ' + body + '; }\n}';
   }
 
   /* ---------- HUD ---------- */
@@ -172,9 +179,11 @@
       '<button data-sz="-10">−10</button><button data-sz="10">+10</button>' +
     '</div>' +
     '<div style="display:flex;gap:5px">' +
-      '<button id="mt-copy" style="flex:1">Copy CSS</button>' +
+      '<button id="mt-save" style="flex:1;background:#3d5c43">Save</button>' +
+      '<button id="mt-copy">Copy</button>' +
       '<button id="mt-reset">Reset</button><button id="mt-off">✕</button>' +
-    '</div>';
+    '</div>' +
+    '<div id="mt-status" style="margin-top:6px;font-size:10px;opacity:.7;min-height:12px"></div>';
   document.body.appendChild(hud);
   Array.prototype.forEach.call(hud.querySelectorAll('button'), function (b) {
     b.style.cssText = 'font:11px/1 ui-monospace,Menlo,monospace;padding:6px 8px;background:#2a332c;' +
@@ -187,6 +196,44 @@
     $('#mt-meta').textContent = innerWidth + 'px · root ' + rootPx().toFixed(2);
     $('#mt-sel').textContent = el ? base.sel : 'nothing picked — hit “Pick element”';
     $('#mt-css').textContent = cssRule();
+  }
+
+  /* ---------- save ----------------------------------------------------------
+     POSTs the diff to staging-server.py, which validates it again server-side
+     and rewrites the MT-EDITS block in site-source.html. The token is kept in
+     sessionStorage rather than read from the URL: the router's rewrite strips
+     the query (see the <head> note), so a URL-read token would vanish on the
+     first navigation. Only works against the local staging server — the live
+     site is static Pages and has nothing to save to. */
+  function token() {
+    try { return sessionStorage.getItem('markToken') || ''; } catch (e) { return ''; }
+  }
+  function status(msg, bad) {
+    var s = $('#mt-status');
+    s.textContent = msg;
+    s.style.color = bad ? '#ff8f70' : '#9fd0a5';
+  }
+  function save(btn) {
+    if (!el) return status('pick something first', true);
+    var d = decls();
+    if (!Object.keys(d).length) return status('nothing changed', true);
+    if (!token()) return status('no token — reopen via the ?t=… staging link', true);
+    btn.disabled = true; status('saving…');
+    fetch('/__mt-save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token(), band: band().name, selector: base.sel, decls: d })
+    })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error(res.j.error || 'save failed');
+        status('saved → site-source.html (' + res.j.rules + ' rule' + (res.j.rules === 1 ? '' : 's') + ')');
+        // The rule now lives in the stylesheet, so re-seed: this becomes the new
+        // baseline and the inline styles stop masking it.
+        base.inline = el.getAttribute('style') || '';
+      })
+      .catch(function (e) { status(String(e.message || e), true); })
+      .then(function () { btn.disabled = false; });
   }
 
   /* ---------- picker ---------- */
@@ -270,6 +317,8 @@
           ta.remove();
         })
         .then(function () { setTimeout(function () { t.textContent = 'Copy CSS'; }, 1400); });
+    } else if (t.id === 'mt-save') {
+      save(t);
     } else if (t.id === 'mt-reset') {
       el.setAttribute('style', base.inline);
       seed(el);
