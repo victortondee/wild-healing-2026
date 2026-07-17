@@ -23,7 +23,7 @@
       sessionStorage.removeItem('markEdit'); sessionStorage.removeItem('markToken');
     } else if (location.search.indexOf('mark=edit') > -1) {
       sessionStorage.setItem('markEdit', '1');
-      var t = (location.search.match(/[?&]t=([A-Za-z0-9_\-]+)/) || [])[1];
+      var t = (location.search.match(/[?&](?:amp;)?t=([A-Za-z0-9_\-]+)/) || [])[1];
       if (t) sessionStorage.setItem('markToken', t);   // enables Save against local staging
     }
   } catch (e) {}
