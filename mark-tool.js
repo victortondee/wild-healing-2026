@@ -178,10 +178,13 @@
       '<button data-sz="-1">−</button><button data-sz="1">+</button>' +
       '<button data-sz="-10">−10</button><button data-sz="10">+10</button>' +
     '</div>' +
-    '<div style="display:flex;gap:5px">' +
+    '<div style="display:flex;gap:5px;margin-bottom:5px">' +
       '<button id="mt-save" style="flex:1;background:#3d5c43">Save</button>' +
       '<button id="mt-copy">Copy</button>' +
       '<button id="mt-reset">Reset</button><button id="mt-off">✕</button>' +
+    '</div>' +
+    '<div style="display:flex;gap:5px">' +
+      '<button id="mt-publish" style="flex:1;background:#7a4230">Publish → live</button>' +
     '</div>' +
     // Token field: the link carrying ?t= is fragile (it gets HTML-escaped in
     // transit, and the flag is sticky so an older tokenless tab keeps working
@@ -244,6 +247,23 @@
         // baseline and the inline styles stop masking it.
         base.inline = el.getAttribute('style') || '';
       })
+      .catch(function (e) { status(String(e.message || e), true); })
+      .then(function () { btn.disabled = false; });
+  }
+
+  /* Save only writes site-source.html, which is what staging serves. The live
+     site serves index.html from GitHub Pages, so publishing is a separate step:
+     sync index.html, commit, push. Without it a save never leaves this Mac. */
+  function publish(btn) {
+    if (!token()) { $('#mt-token').focus(); return status('paste the token below first', true); }
+    btn.disabled = true; status('publishing…');
+    fetch('/__mt-publish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token() })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (j) { status(j.message || (j.ok ? 'published' : 'failed'), !j.ok); })
       .catch(function (e) { status(String(e.message || e), true); })
       .then(function () { btn.disabled = false; });
   }
@@ -331,6 +351,8 @@
         .then(function () { setTimeout(function () { t.textContent = 'Copy CSS'; }, 1400); });
     } else if (t.id === 'mt-save') {
       save(t);
+    } else if (t.id === 'mt-publish') {
+      publish(t);
     } else if (t.id === 'mt-reset') {
       el.setAttribute('style', base.inline);
       seed(el);

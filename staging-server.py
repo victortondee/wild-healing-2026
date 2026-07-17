@@ -21,7 +21,7 @@ defences, both required:
 Source of truth for saved rules is mark-edits.json. The <style id="mt-edits">
 block in site-source.html is regenerated from it wholesale on each save.
 """
-import http.server, json, os, re, secrets, socketserver, sys, threading
+import http.server, json, os, re, secrets, socketserver, subprocess, sys, threading
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "site-source.html")
@@ -92,6 +92,42 @@ def write_source(css):
     os.replace(tmp, SRC)
 
 
+def git(*args, **kw):
+    return subprocess.run(("git",) + args, cwd=ROOT, capture_output=True, text=True, timeout=90, **kw)
+
+
+def publish():
+    """Sync index.html and push, so a save actually reaches the live site.
+
+    Save alone only writes site-source.html, which is what staging serves —
+    live serves index.html off GitHub Pages, so without this the two drift and
+    a save silently never goes live.
+
+    Stages EXPLICIT paths only. Several Claude chats edit site-source.html in
+    parallel (see CLAUDE.md); `git add -A` here would sweep another chat's
+    half-finished work into this commit.
+    """
+    r = git("pull", "--rebase", "--autostash", "origin", "main")
+    if r.returncode:
+        return False, "pull failed: " + (r.stderr or r.stdout).strip()[:300]
+    with open(SRC, encoding="utf-8") as f:
+        src = f.read()
+    with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
+        f.write(src)                                   # staging≡live invariant
+    git("add", "site-source.html", "index.html", "mark-edits.json")
+    if not git("diff", "--cached", "--quiet").returncode:
+        return True, "nothing to publish (already up to date)"
+    r = git("commit", "-m", "Home hero: element placement set via mark-tool\n\nSaved from the staging positioner.")
+    if r.returncode:
+        return False, "commit failed: " + (r.stderr or r.stdout).strip()[:300]
+    for _ in range(3):
+        r = git("push")
+        if r.returncode == 0:
+            return True, "pushed → live (rebuild takes ~1 min)"
+        git("pull", "--rebase", "--autostash", "origin", "main")   # another chat pushed first
+    return False, "push failed: " + (r.stderr or r.stdout).strip()[:300]
+
+
 class H(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *a, **kw):
         super().__init__(*a, directory=ROOT, **kw)
@@ -120,8 +156,20 @@ class H(http.server.SimpleHTTPRequestHandler):
         self._json(200, {"ok": True})
 
     def do_POST(self):
-        if self.path.split("?")[0] != "/__mt-save":
+        route = self.path.split("?")[0]
+        if route not in ("/__mt-save", "/__mt-publish"):
             return self._json(404, {"error": "not found"})
+        if route == "/__mt-publish":
+            try:
+                n = int(self.headers.get("Content-Length") or 0)
+                req = json.loads(self.rfile.read(n) or b"{}")
+            except Exception:
+                return self._json(400, {"error": "bad json"})
+            if not secrets.compare_digest(str(req.get("token", "")), TOKEN):
+                return self._json(403, {"error": "bad token"})
+            with LOCK:
+                ok, msg = publish()
+            return self._json(200 if ok else 500, {"ok": ok, "message": msg})
         try:
             n = int(self.headers.get("Content-Length") or 0)
             if n > 20000:
