@@ -183,6 +183,15 @@
       '<button id="mt-copy">Copy</button>' +
       '<button id="mt-reset">Reset</button><button id="mt-off">✕</button>' +
     '</div>' +
+    // Token field: the link carrying ?t= is fragile (it gets HTML-escaped in
+    // transit, and the flag is sticky so an older tokenless tab keeps working
+    // for everything except Save). Let it be pasted in directly instead.
+    '<div id="mt-tokrow" style="display:flex;gap:5px;align-items:center;margin-top:6px">' +
+      '<span style="opacity:.55;font-size:10px;width:32px">token</span>' +
+      '<input id="mt-token" placeholder="paste token to enable Save" ' +
+        'style="flex:1;font:10px/1 ui-monospace,Menlo,monospace;padding:5px 6px;background:#1b211d;' +
+        'color:#ECE3CF;border:1px solid rgba(236,227,207,0.28);border-radius:5px;min-width:0">' +
+    '</div>' +
     '<div id="mt-status" style="margin-top:6px;font-size:10px;opacity:.7;min-height:12px"></div>';
   document.body.appendChild(hud);
   Array.prototype.forEach.call(hud.querySelectorAll('button'), function (b) {
@@ -208,6 +217,9 @@
   function token() {
     try { return sessionStorage.getItem('markToken') || ''; } catch (e) { return ''; }
   }
+  function setToken(v) {
+    try { v ? sessionStorage.setItem('markToken', v) : sessionStorage.removeItem('markToken'); } catch (e) {}
+  }
   function status(msg, bad) {
     var s = $('#mt-status');
     s.textContent = msg;
@@ -217,7 +229,7 @@
     if (!el) return status('pick something first', true);
     var d = decls();
     if (!Object.keys(d).length) return status('nothing changed', true);
-    if (!token()) return status('no token — reopen via the ?t=… staging link', true);
+    if (!token()) { $('#mt-token').focus(); return status('paste the token below to enable Save', true); }
     btn.disabled = true; status('saving…');
     fetch('/__mt-save', {
       method: 'POST',
@@ -348,6 +360,18 @@
   window.addEventListener('resize', function () {
     if (band().name !== last && el) { last = band().name; el.setAttribute('style', base.inline); seed(el); }
     paint();
+  });
+
+  // Token field: seed from storage, persist on edit, and don't let keystrokes
+  // inside it nudge the selected element.
+  var tok = $('#mt-token');
+  tok.value = token();
+  tok.addEventListener('input', function () {
+    setToken(tok.value.trim());
+    status(tok.value.trim() ? 'token set — Save enabled' : 'token cleared');
+  });
+  ['keydown', 'pointerdown'].forEach(function (t) {
+    tok.addEventListener(t, function (e) { e.stopPropagation(); });
   });
 
   // Default target: the Gala Day mark, so the common case needs no picking.
