@@ -13,6 +13,16 @@
      site root keeps one relative path correct from every location. Must stay above
      the first asset reference below. -->
 <base href="/" />
+<script>
+  /* Dev-only: remember ?mark=edit before the router can rewrite the URL.
+     <base href="/"> makes the router's location.replace("#/home") resolve to
+     "/#/home", which drops the query AND reloads -- so a window flag would not
+     survive. sessionStorage does; it clears when the tab closes, or via ?mark=off. */
+  try {
+    if (location.search.indexOf('mark=off') > -1) sessionStorage.removeItem('markEdit');
+    else if (location.search.indexOf('mark=edit') > -1) sessionStorage.setItem('markEdit', '1');
+  } catch (e) {}
+</script>
 <title>Past Luminaries — WILD! Healing Gala 2026</title>
 <meta name="description" content="Honoring the supporters and partners whose extraordinary work and enduring legacies enrich our lives." />
 
@@ -5019,11 +5029,13 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 })();
 </script>
 <!-- Dev-only: drag/scale the Gala Day mark and read out its rem values.
-     Fetches mark-tool.js ONLY when the URL carries ?mark=edit, so a normal
-     visit downloads nothing extra. Absolute path so it also resolves from the
-     generated route folders (/gathering/, /invitation/, ...). -->
+     Fetches mark-tool.js only when ?mark=edit was seen (flag set in <head>, as
+     the router's URL rewrite destroys the query), so a normal visit downloads
+     nothing extra. Turn it off with ?mark=off or by closing the tab. -->
 <script>
-  if (location.search.indexOf('mark=edit') > -1) {
+  var wantMark = false;
+  try { wantMark = sessionStorage.getItem('markEdit') === '1'; } catch (e) {}
+  if (wantMark) {
     var mt = document.createElement('script');
     mt.src = '/mark-tool.js';
     document.body.appendChild(mt);
