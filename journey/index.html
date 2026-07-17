@@ -5039,6 +5039,9 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
      proper home in the CSS above and drop it from the json. It sits last and is
      id-anchored, so it wins on cascade order without needing !important. -->
 <style id="mt-edits">/* MT-EDITS:START */
+@media (min-width:761px) and (max-width:1024px){
+  #page-home img.hero-mark{ left:-1.6rem; }
+}
 /* MT-EDITS:END */</style>
 
 <!-- Dev-only: drag/scale the Gala Day mark and read out its rem values.
