@@ -300,6 +300,7 @@ a{ color:var(--lantern); text-decoration:none; }
   text-transform:uppercase; letter-spacing:0.3em; color:var(--sage);
   display:inline-flex; align-items:center; gap:0.85em;
 }
+.gh-eb-date{ white-space:nowrap; }
 .eyebrow .tick{ width:1.9rem; height:1px; background:var(--line-strong); display:inline-block; }
 
 .lede{ font-family:var(--ff-display); font-weight:300; font-size:clamp(1.3rem,1.5vw + 0.9rem,1.75rem); line-height:1.45; color:var(--ink); letter-spacing:-0.01em; }
@@ -1557,6 +1558,15 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 @media (max-width:760px){
   .gathering-hero .glow-word{ color:#ffffff; font-weight:600; }
   .journey-hero .glow-word{ color:#fff; font-weight:600; }
+
+  /* The eyebrow is an inline-flex row, so "Sept 12" was a sibling flex item and
+     parked itself beside the wrapping text — leaving a dangling separator. Wrap
+     the row and give the date a full-width basis so it takes its own line:
+       The Gathering · In person
+       Sept 12                                                                */
+  #page-gathering .eyebrow{ flex-wrap:wrap; }
+  #page-gathering .gh-eb-sep{ display:none; }
+  #page-gathering .gh-eb-date{ flex-basis:100%; }
 }
 
 /* header brand logo (full-colour emblem) */
@@ -2541,7 +2551,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 <div class="page" id="page-gathering" role="region" aria-label="The Gathering">
   <section class="band gathering-hero">
   <div class="wrap page-intro">
-    <span class="eyebrow"><span class="tick"></span>The Gathering · In person · <span style="white-space:nowrap">Sept 12</span></span>
+    <span class="eyebrow"><span class="tick"></span><span class="gh-eb-txt">The Gathering · In person</span><span class="gh-eb-sep"> · </span><span class="gh-eb-date">Sept 12</span></span>
     <h1>Feast &amp; festival in the woods</h1>
     <p class="lede dim">As dusk settles over the forest, lanterns glow between the trees. Tables are set beneath the canopy. Wildflowers and branches decorate the space. The air fills with the sound of drums. This is not a gala — this is a <span class="glow-word" style="color:#fff;font-weight:400;">ceremony of gratitude</span>.</p>
     <p class="hero-loc">
