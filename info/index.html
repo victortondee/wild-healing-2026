@@ -19,8 +19,13 @@
      "/#/home", which drops the query AND reloads -- so a window flag would not
      survive. sessionStorage does; it clears when the tab closes, or via ?mark=off. */
   try {
-    if (location.search.indexOf('mark=off') > -1) sessionStorage.removeItem('markEdit');
-    else if (location.search.indexOf('mark=edit') > -1) sessionStorage.setItem('markEdit', '1');
+    if (location.search.indexOf('mark=off') > -1) {
+      sessionStorage.removeItem('markEdit'); sessionStorage.removeItem('markToken');
+    } else if (location.search.indexOf('mark=edit') > -1) {
+      sessionStorage.setItem('markEdit', '1');
+      var t = (location.search.match(/[?&]t=([A-Za-z0-9_\-]+)/) || [])[1];
+      if (t) sessionStorage.setItem('markToken', t);   // enables Save against local staging
+    }
   } catch (e) {}
 </script>
 <title>Info — WILD! Healing Gala 2026 | Dates &amp; Location</title>
@@ -5028,6 +5033,14 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   });
 })();
 </script>
+<!-- Rules written by mark-tool.js's Save button. This region is TOOL-MANAGED:
+     it is regenerated wholesale from mark-edits.json on every save, so do not
+     hand-edit between the markers -- edit that file, or promote a rule into its
+     proper home in the CSS above and drop it from the json. It sits last and is
+     id-anchored, so it wins on cascade order without needing !important. -->
+<style id="mt-edits">/* MT-EDITS:START */
+/* MT-EDITS:END */</style>
+
 <!-- Dev-only: drag/scale the Gala Day mark and read out its rem values.
      Fetches mark-tool.js only when ?mark=edit was seen (flag set in <head>, as
      the router's URL rewrite destroys the query), so a normal visit downloads
