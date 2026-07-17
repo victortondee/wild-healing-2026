@@ -5018,5 +5018,16 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   });
 })();
 </script>
+<!-- Dev-only: drag/scale the Gala Day mark and read out its rem values.
+     Fetches mark-tool.js ONLY when the URL carries ?mark=edit, so a normal
+     visit downloads nothing extra. Absolute path so it also resolves from the
+     generated route folders (/gathering/, /invitation/, ...). -->
+<script>
+  if (location.search.indexOf('mark=edit') > -1) {
+    var mt = document.createElement('script');
+    mt.src = '/mark-tool.js';
+    document.body.appendChild(mt);
+  }
+</script>
 </body>
 </html>
