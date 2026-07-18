@@ -3045,9 +3045,25 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     </div>
   </section>
 
-  <!-- WILD! Stays (Info) — 2026: lodging intro only. Client dropped last year's Hampton Inn
+  <!-- WILD! Stays (Info) — 2026: lodging intro + nearby hotels/lodging list (added 2026-07-10 from client doc). Client dropped last year's Hampton Inn
        block-of-rooms / "Book the hotel" button / address / "other lodges" note. -->
   <section class="band alt" id="wild-stays">
+    <style>
+    /* scoped to this section; all sizes in rem per the lock-and-scale law */
+    #wild-stays .stay-note{ font-family:var(--ff-ui); font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--sage); margin:2.9rem 0 1.2rem; }
+    #wild-stays .stay-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+    #wild-stays .stay-card{ border:1px solid var(--line); border-radius:var(--radius); padding:1.5rem 1.4rem; background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent); display:flex; flex-direction:column; gap:0.45rem; }
+    #wild-stays .stay-top{ display:flex; align-items:baseline; justify-content:space-between; gap:0.8rem; }
+    #wild-stays .stay-name{ font-family:var(--ff-display); font-weight:400; font-size:1.25rem; line-height:1.15; color:var(--ink-deep); margin:0; }
+    #wild-stays .stay-drive{ flex:none; font-family:var(--ff-ui); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--clay); }
+    #wild-stays .stay-meta{ font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--sage); }
+    #wild-stays .stay-addr{ font-family:var(--ff-body); font-size:0.95rem; line-height:1.45; color:var(--ink-2); margin:0; }
+    #wild-stays .stay-links{ display:flex; flex-wrap:wrap; gap:0.35rem 1.1rem; margin-top:0.35rem; }
+    #wild-stays .stay-links a{ font-family:var(--ff-ui); font-size:0.8rem; color:var(--clay); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .25s var(--ease); }
+    #wild-stays .stay-links a:hover{ border-bottom-color:var(--clay); }
+    @media (min-width:761px) and (max-width:1024px){ #wild-stays .stay-grid{ grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:760px){ #wild-stays .stay-grid{ grid-template-columns:1fr; gap:0.9rem; } }
+    </style>
     <div class="wrap">
       <div class="section-head reveal">
         <h2>WILD<span class="bang" style="color:var(--clay); text-shadow:none">!</span> Stays</h2>
@@ -3056,6 +3072,69 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <p class="lede dim">Lodges, hotels, treehouses, and grottos</p>
         <p>Located in the foothills of the Adirondack Mountains, the location boasts more than 2,000 miles of hiking trails, over 3,000 lakes and ponds and 1,200 miles of rivers. Restore Forward's land features pavilions and hammocks, meditation yurts, an open meadow, and a 12,000 square foot event space. If you walk to the edge of the forest you will find a peaceful point. We are a preservation space for the natural world, including wetlands and Monarch butterflies. The land lends guests to hours of sun and forest bathing. The Gala will take place in the Woods at Restore Forward.</p>
       </div>
+      <p class="stay-note">Nearby hotels, lodges &amp; rentals &mdash; approximate drive times from Boonville, NY</p>
+      <div class="stay-grid reveal d2">
+        <article class="stay-card">
+          <div class="stay-top">
+            <h3 class="stay-name">American Hotel</h3>
+            <span class="stay-drive">~2–3 min</span>
+          </div>
+          <span class="stay-meta">Hotel &middot; 4.5 ★ (63)</span>
+          <p class="stay-addr">113 Ann St, Boonville, NY 13309</p>
+          <div class="stay-links">
+            <a href="tel:+13159424927">(315) 942-4927</a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=American+Hotel+113+Ann+St+Boonville+NY+13309" target="_blank" rel="noopener">Directions</a>
+          </div>
+        </article>
+        <article class="stay-card">
+          <div class="stay-top">
+            <h3 class="stay-name">The Lodge at Headwaters</h3>
+            <span class="stay-drive">~5 min</span>
+          </div>
+          <span class="stay-meta">Hotel &middot; 4.7 ★ (196)</span>
+          <p class="stay-addr">13524 NY-12, Boonville, NY 13309</p>
+          <div class="stay-links">
+            <a href="tel:+13159422027">(315) 942-2027</a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=The+Lodge+at+Headwaters+13524+NY-12+Boonville+NY+13309" target="_blank" rel="noopener">Directions</a>
+          </div>
+        </article>
+        <article class="stay-card">
+          <div class="stay-top">
+            <h3 class="stay-name">North Country Manor</h3>
+            <span class="stay-drive">~10 min</span>
+          </div>
+          <span class="stay-meta">Vacation home rental &middot; 5.0 ★ (25)</span>
+          <p class="stay-addr">4173 NY-12D, Boonville, NY 13309</p>
+          <div class="stay-links">
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=North+Country+Manor+4173+NY-12D+Boonville+NY+13309" target="_blank" rel="noopener">Directions</a>
+          </div>
+        </article>
+        <article class="stay-card">
+          <div class="stay-top">
+            <h3 class="stay-name">Edge Hotel</h3>
+            <span class="stay-drive">~15 min</span>
+          </div>
+          <span class="stay-meta">Hotel &middot; 4.6 ★ (344)</span>
+          <p class="stay-addr">3952 NY-12, Lyons Falls, NY 13368</p>
+          <div class="stay-links">
+            <a href="tel:+13153484211">(315) 348-4211</a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Edge+Hotel+3952+NY-12+Lyons+Falls+NY+13368" target="_blank" rel="noopener">Directions</a>
+          </div>
+        </article>
+        <article class="stay-card">
+          <div class="stay-top">
+            <h3 class="stay-name">Brantingham Inn Motel</h3>
+            <span class="stay-drive">~25 min</span>
+          </div>
+          <span class="stay-meta">Motel &middot; 4.6 ★ (48)</span>
+          <p class="stay-addr">7791 Brantingham Rd, Brantingham, NY 13312</p>
+          <div class="stay-links">
+            <a href="tel:+13153488125">(315) 348-8125</a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Brantingham+Inn+Motel+7791+Brantingham+Rd+Brantingham+NY+13312" target="_blank" rel="noopener">Directions</a>
+          </div>
+        </article>
+      </div>
+
     </div>
   </section>
 
