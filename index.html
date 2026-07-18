@@ -3186,9 +3186,51 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <li>Network with professionals and community leaders.</li>
           <li>Enjoy the beautiful setting of The Clearing at Restore Forward.</li>
         </ul>
-        <div class="btn-row vol-cta">
-          <a href="#/contact/contactForm" class="btn btn-primary">Volunteer now <span class="arrow">&rarr;</span></a>
-        </div>
+        <form id="volunteerForm" class="vol-form" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="vName">Name</label>
+              <input type="text" id="vName" name="name" placeholder="Your name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="vEmail">Email</label>
+              <input type="email" id="vEmail" name="email" placeholder="you@email.com" autocomplete="email" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="vPhone">Phone (optional)</label>
+              <input type="tel" id="vPhone" name="phone" placeholder="For day-of coordination" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="vRole">Where would you like to help?</label>
+              <select id="vRole" name="role">
+                <option>Wherever I'm needed most</option>
+                <option>Event Setup and Breakdown</option>
+                <option>Registration and Guest Services</option>
+                <option>Food and Beverage Service</option>
+                <option>Parking and Transportation Assistance</option>
+                <option>Performance Support</option>
+                <option>General Support</option>
+                <option>Logistics Coordinators</option>
+                <option>Technical Support</option>
+                <option>Hospitality Hosts</option>
+                <option>Environmental Stewards</option>
+                <option>Medical and Safety Support</option>
+                <option>Runners</option>
+                <option>Social Media and Photography</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="vNote">Anything we should know? (optional)</label>
+            <textarea id="vNote" name="note" placeholder="Availability, skills, questions"></textarea>
+          </div>
+          <div class="btn-row vol-cta">
+            <button type="submit" class="btn btn-primary">Volunteer now <span class="arrow">&rarr;</span></button>
+          </div>
+          <div class="form-msg" id="volunteerMsg" role="status" aria-live="polite"></div>
+        </form>
         <p class="lede dim vol-close">Join us at WILD! Healing and make a difference in our community. We look forward to seeing you there!</p>
       </div>
     </div>
@@ -5232,6 +5274,40 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   });
 })();
 </script>
+<script>
+/* Volunteer sign-ups -> the SAME Google Apps Script Web App as the newsletter.
+   Sends type=volunteer so the Web App can append to a separate "Volunteers" tab.
+   With no type parameter the Web App keeps its existing newsletter behaviour, so
+   this cannot disturb the mailing list. Note: mode:"no-cors" means the response
+   is opaque -- as with the newsletter, we cannot read a server-side failure, so
+   the confirmation is optimistic. */
+(function(){
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbw2voD3325zEybINDtL3kl-6DrURE9Y7F6DncPRtVJ5MmvE8IqGgoGzENWY3AoRhKpd/exec";  /* keep in sync with the subscribe endpoint above */
+  var form = document.getElementById("volunteerForm");
+  if(!form) return;
+  var msg = document.getElementById("volunteerMsg");
+  var btn = form.querySelector("button[type=submit]");
+  var re  = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  function say(t, err){ if(msg){ msg.textContent = t; msg.className = "form-msg" + (err ? " err" : ""); } }
+  function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ""; }
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var name = val("vName"), email = val("vEmail");
+    if(!name){ say("Please tell us your name.", true); document.getElementById("vName").focus(); return; }
+    if(!re.test(email)){ say("Please enter an email we can reach you at.", true); document.getElementById("vEmail").focus(); return; }
+    if(btn) btn.disabled = true;
+    say("Sending\u2026", false);
+    fetch(ENDPOINT, { method:"POST", mode:"no-cors", body:new URLSearchParams({
+      type:"volunteer", name:name, email:email, phone:val("vPhone"),
+      role:val("vRole"), note:val("vNote"), source:"wildgala.com (volunteers)"
+    })})
+    .then(function(){ form.reset(); say("Thank you \u2014 you\u2019re on the volunteer list. We\u2019ll be in touch with details.", false); })
+    .catch(function(){ say("Something went wrong. Please try again, or reach us on the contact page.", true); })
+    .finally(function(){ if(btn) btn.disabled = false; });
+  });
+})();
+</script>
+
 <!-- Rules written by mark-tool.js's Save button. This region is TOOL-MANAGED:
      it is regenerated wholesale from mark-edits.json on every save, so do not
      hand-edit between the markers -- edit that file, or promote a rule into its
