@@ -4478,6 +4478,22 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
      DASHBOARD — internal control panel, not linked publicly.
      Reachable via #/dashboard or the hidden footer "Internal" cluster.
      ============================================================ -->
+<div class="page" id="page-terminal" role="region" aria-label="Terminal (internal)">
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Internal &middot; Terminal</span>
+    <h1>Visitor Ledger</h1>
+    <p class="lede dim">Live traffic for wildgala.com &mdash; visits, top pages, referrers, and reach.
+      The dashboard is private: it opens in your Claude workspace, and only you &mdash; signed in &mdash;
+      can see the numbers. This page holds no data and no keys.</p>
+  </div>
+  <div class="wrap" style="padding-top:0;">
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://claude.ai/code/artifact/19a80a50-4e50-42bf-89bb-035e0cb2042e" target="_blank" rel="noopener">Open dashboard <span class="arrow">&rarr;</span></a>
+    </div>
+    <p class="lede dim" style="font-size:0.95rem; margin-top:1.4rem;">Opens claude.ai in a new tab &mdash; sign in as yourself to view. Ask Claude to &ldquo;refresh the dashboard&rdquo; for the latest figures.</p>
+  </div>
+</div>
+
 <div class="page" id="page-dashboard" role="region" aria-label="Dashboard (internal)">
   <div class="wrap page-intro">
     <span class="eyebrow"><span class="tick"></span>Internal · Dashboard</span>
@@ -4599,7 +4615,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- routing ---------- */
-  var routes = ["home","invitation","journey","gathering","attend","contact","info","luminaries","archive","drafts","workbench","dashboard","speaker-jb","speaker-stoff"];
+  var routes = ["home","invitation","journey","gathering","attend","contact","info","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-stoff"];
   var pages = {};
   routes.forEach(function(r){ pages[r] = document.getElementById("page-" + r); });
   var navLinks = document.querySelectorAll(".nav-links a[data-key]");
