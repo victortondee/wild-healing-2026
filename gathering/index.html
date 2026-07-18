@@ -5308,17 +5308,19 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       var r = location.hash.replace(/^#\/?/, "").split("/")[0] || "home";
       return PUBLIC[r] || null;               // internal route -> not tracked
     }
-    function canonical() {                    // read live, never a stale snapshot
-      return "/" + location.search + location.hash;
+    // Swap ONLY the pathname, always carrying the current search + hash. Passing a
+    // bare path to replaceState would replace the whole URL and silently drop the
+    // #/route — which sent anyone deep-linking to /info/ back to Home.
+    function setPath(base) {
+      try { history.replaceState(history.state, "", base + location.search + location.hash); } catch (e) {}
     }
-    function setPath(v) { try { history.replaceState(history.state, "", v); } catch (e) {} }
 
     // Landing attribution: put the real route in the pathname BEFORE the beacon
     // initialises, so a direct hit on /info/ isn't recorded as Home. Restored as
     // soon as the beacon has read it. The timeout guarantees restoration even if
     // the script never loads, so the URL can't get stuck.
     var boot = routePath(), restored = false;
-    function restore() { if (!restored) { restored = true; setPath(canonical()); } }
+    function restore() { if (!restored) { restored = true; setPath("/"); } }
     if (boot && boot !== "/") setPath(boot);
 
     var b = document.createElement("script");
@@ -5333,10 +5335,9 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     window.addEventListener("hashchange", function () {
       var next = routePath();
       if (!next || next === last) return;
-      var back = canonical();
       setPath(next);
       window.dispatchEvent(new PopStateEvent("popstate"));
-      setPath(back);
+      setPath("/");
       last = next;
     });
   })();
