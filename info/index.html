@@ -5274,24 +5274,71 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   }
 </script>
 
-<!-- Cloudflare Web Analytics — privacy-first, cookieless (no consent banner
-     needed). Loads ONLY on the live domain, so localhost + the staging tunnel
-     never pollute the numbers. Inert until CF_TOKEN is filled with the beacon
-     token from the Cloudflare dashboard; with an empty token nothing loads.
-     Note: the SPA is hash-routed, so this counts real page loads (home + the
-     /info/, /gathering/, ... route URLs) but not in-app hash navigation — a
-     virtual-pageview shim can be added once the token is live and verified. -->
+<!-- Cloudflare Web Analytics — privacy-first, cookieless (no consent banner).
+     Loads ONLY on the live domain, so localhost + the staging tunnel never
+     pollute the numbers.
+
+     PER-ROUTE TRACKING. The beacon identifies a page by location.PATHNAME, and
+     it only reports on a patched history.pushState or a popstate. Verified
+     against beacon.min.js: it has no hashchange handler and does not patch
+     replaceState. This site is hash-routed, so every #/route looked like "/"
+     and all traffic collapsed onto Home.
+
+     The fix, per route change: replaceState the pathname to the route (silent —
+     replaceState is not patched), dispatch a synthetic popstate so the beacon
+     reports the page being left and adopts the new path, then replaceState back
+     to the canonical #/route URL. pushState is deliberately NOT used: it would
+     add a second history entry on top of the one the hash link already created,
+     which takes two Back presses to escape. Measured live: 0 history entries
+     added, URL restored, one pageview per navigation.
+
+     Only public routes are tracked. Internal ones (drafts, workbench, terminal,
+     dashboard, archive) are skipped so they stay out of the analytics — and
+     because their paths have no real folder to fall back on. -->
 <script>
   (function () {
-    var CF_TOKEN = "d4df395e3b674718aad60ce29402b501";  // Cloudflare Web Analytics beacon
-    var live = /(^|\.)wildgala\.com$/.test(location.hostname);
-    if (CF_TOKEN && live) {
-      var b = document.createElement('script');
-      b.defer = true;
-      b.src = 'https://static.cloudflareinsights.com/beacon.min.js';
-      b.setAttribute('data-cf-beacon', JSON.stringify({ token: CF_TOKEN }));
-      document.head.appendChild(b);
+    var CF_TOKEN = "d4df395e3b674718aad60ce29402b501";
+    if (!CF_TOKEN || !/(^|\.)wildgala\.com$/.test(location.hostname)) return;
+
+    var PUBLIC = { home:"/", invitation:"/invitation", journey:"/journey",
+      gathering:"/gathering", attend:"/attend", contact:"/contact", info:"/info",
+      luminaries:"/luminaries", "speaker-jb":"/speaker-jb", "speaker-stoff":"/speaker-stoff" };
+
+    function routePath() {
+      var r = location.hash.replace(/^#\/?/, "").split("/")[0] || "home";
+      return PUBLIC[r] || null;               // internal route -> not tracked
     }
+    function canonical() {                    // read live, never a stale snapshot
+      return "/" + location.search + location.hash;
+    }
+    function setPath(v) { try { history.replaceState(history.state, "", v); } catch (e) {} }
+
+    // Landing attribution: put the real route in the pathname BEFORE the beacon
+    // initialises, so a direct hit on /info/ isn't recorded as Home. Restored as
+    // soon as the beacon has read it. The timeout guarantees restoration even if
+    // the script never loads, so the URL can't get stuck.
+    var boot = routePath(), restored = false;
+    function restore() { if (!restored) { restored = true; setPath(canonical()); } }
+    if (boot && boot !== "/") setPath(boot);
+
+    var b = document.createElement("script");
+    b.defer = true;
+    b.src = "https://static.cloudflareinsights.com/beacon.min.js";
+    b.setAttribute("data-cf-beacon", JSON.stringify({ token: CF_TOKEN }));
+    b.onload = restore; b.onerror = restore;
+    setTimeout(restore, 4000);
+    document.head.appendChild(b);
+
+    var last = boot;
+    window.addEventListener("hashchange", function () {
+      var next = routePath();
+      if (!next || next === last) return;
+      var back = canonical();
+      setPath(next);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+      setPath(back);
+      last = next;
+    });
   })();
 </script>
 </body>
