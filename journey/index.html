@@ -3197,9 +3197,13 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <li>Network with professionals and community leaders.</li>
           <li>Enjoy the beautiful setting of The Clearing at Restore Forward.</li>
         </ul>
-        <!-- Volunteer sign-up form removed 2026-07-18 at the client's request;
-             the Apps Script tab routing is not deployed yet. Markup + handler are in
-             git history at 7e16ebf and can be restored verbatim. -->
+        <!-- Sign-ups run through a Google Form (created by an Apps Script that also
+             lands responses in the "WILD! Healing — Subscribers" sheet and emails each
+             one to info@restoreny.org). Keeping it off-site means no public endpoint in
+             this page for bots to hit. -->
+        <div class="btn-row vol-cta">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSda1jhc9rMUqRA7X8S8n0QpxIamzPIvlWC3czLZQg7A_WQWiw/viewform" target="_blank" rel="noopener" class="btn btn-primary">Volunteer now <span class="arrow">&rarr;</span></a>
+        </div>
         <p class="lede dim vol-close">Join us at WILD! Healing and make a difference in our community. We look forward to seeing you there!</p>
       </div>
     </div>
