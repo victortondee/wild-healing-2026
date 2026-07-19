@@ -28,6 +28,17 @@
     }
   } catch (e) {}
 </script>
+<script>
+  /* Personal opt-out from analytics. Visit ?analytics=off ONCE on a device and
+     that browser stops being counted for good (?analytics=on re-enables).
+     Captured here in <head> for the same reason as the flag above: the router's
+     location.replace() drops the query string before any later script runs.
+     localStorage, not sessionStorage -- this must outlive the tab. */
+  try {
+    if (location.search.indexOf('analytics=off') > -1) localStorage.setItem('wgNoAnalytics', '1');
+    else if (location.search.indexOf('analytics=on') > -1) localStorage.removeItem('wgNoAnalytics');
+  } catch (e) {}
+</script>
 <title>WILD! Healing Gala 2026 — A Harvest of Medicine | Restore Forward</title>
 <meta name="description" content="The WILD Gala returns: WILD! Healing 2026 — A Harvest of Medicine, presented by Restore Forward. Online Sept 9–10; on the land in Ava, New York, Sept 12." />
 
@@ -5299,6 +5310,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   (function () {
     var CF_TOKEN = "d4df395e3b674718aad60ce29402b501";
     if (!CF_TOKEN || !/(^|\.)wildgala\.com$/.test(location.hostname)) return;
+    /* opted-out device (set via ?analytics=off) -> never load the beacon at all */
+    try { if (localStorage.getItem('wgNoAnalytics') === '1') return; } catch (e) {}
 
     var PUBLIC = { home:"/", invitation:"/invitation", journey:"/journey",
       gathering:"/gathering", attend:"/attend", contact:"/contact", info:"/info",
