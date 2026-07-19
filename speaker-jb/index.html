@@ -2872,6 +2872,14 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <h3>Write to us</h3>
           <p>Tell us a little about why you're reaching out — we'll write back.</p>
           <form id="contactForm" novalidate>
+            <!-- Bot traps. "company" is hidden from people but bots fill it in;
+                 cTime lets the server reject submissions faster than a human can
+                 type. Both are re-checked server-side, since this endpoint is
+                 public and anything enforced here alone could just be skipped. -->
+            <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
+              <label>Company <input type="text" id="cCompany" name="company" tabindex="-1" autocomplete="off"></label>
+            </div>
+            <input type="hidden" id="cTime" value="">
             <div class="form-row">
               <div class="field">
                 <label for="cName">Name</label>
@@ -4931,7 +4939,38 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   }
 
   wireForm("joinForm", "joinEmail", "joinMsg", "Word received. We'll keep you posted on the gathering.");
-  wireForm("contactForm", "cEmail", "contactMsg", "Message received. A real person reads every note — we'll write back soon.");
+
+  /* Contact form -> the same Apps Script Web App the newsletter uses, tagged
+     type=contact so it lands on the "Contact" tab and emails the team.
+     Replaces a stub that showed "Message received" and sent nothing. */
+  (function(){
+    var ENDPOINT = "https://script.google.com/macros/s/AKfycbw2voD3325zEybINDtL3kl-6DrURE9Y7F6DncPRtVJ5MmvE8IqGgoGzENWY3AoRhKpd/exec";
+    var form = document.getElementById("contactForm");
+    if(!form) return;
+    var msg = document.getElementById("contactMsg");
+    var btn = form.querySelector('button[type=submit], .btn');
+    var t0  = document.getElementById("cTime");
+    if(t0) t0.value = String(Date.now());
+    function say(t, err){ if(msg){ msg.textContent = t; msg.className = "form-msg" + (err ? " err" : ""); } }
+    function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ""; }
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var email = val("cEmail"), message = val("cMsg");
+      if(!isEmail(email)){ say("Please enter an email we can reach you at.", true); document.getElementById("cEmail").focus(); return; }
+      if(!message){ say("Please add a short message.", true); document.getElementById("cMsg").focus(); return; }
+      if(btn) btn.disabled = true;
+      say("Sending\u2026", false);
+      fetch(ENDPOINT, { method:"POST", mode:"no-cors", body:new URLSearchParams({
+        type:"contact", name:val("cName"), email:email, topic:val("cTopic"),
+        message:message, company:val("cCompany"),
+        elapsed:String(Date.now() - (parseInt(t0 && t0.value, 10) || 0)),
+        source:"wildgala.com (contact)"
+      })})
+      .then(function(){ form.innerHTML = '<p class="form-success">Message received. A real person reads every note \u2014 we\u2019ll write back soon.</p>'; })
+      .catch(function(){ say("Something went wrong. Please try again, or email info@restoreny.org.", true); if(btn) btn.disabled = false; });
+    });
+  })();
 
   /* ---------- tickets order form ---------- */
   (function(){
