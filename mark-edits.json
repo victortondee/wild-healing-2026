@@ -1,1 +1,8 @@
-{}
+{
+  "mobile": {
+    "#page-home img.hero-mark": {
+      "left": "-2.459rem",
+      "top": "-2.84rem"
+    }
+  }
+}
