@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WILD! Healing Gala 2026 — A Harvest of Medicine | Restore Forward</title>
+<!--
+  HAND-WRITTEN — not generated. The build workflow only stages the paths listed in
+  PATHS (index.html sitemap.xml invitation info journey ...), and "home" is not one
+  of them, so build-routes.py will never overwrite or delete this file.
+
+  Why it exists: the 2025 "WILD! Miracles" site lived at /home, and Google still has
+  that URL indexed and ranking (it surfaced on page 1 for "wild gala"). GitHub Pages
+  cannot issue a server-side 301, and without this file /home falls through to
+  404.html — which is `noindex` and returns HTTP 404, so Google would simply DROP the
+  URL and its accumulated ranking signals along with it.
+
+  This page returns 200 instead and declares the homepage as canonical, so Google
+  consolidates /home's ranking into https://wildgala.com/ rather than discarding it.
+  The meta refresh + JS replace move real visitors along immediately.
+
+  Do not add /home to sitemap.xml — a redirecting URL should never be submitted as a
+  canonical destination.
+-->
+<link rel="canonical" href="https://wildgala.com/">
+<meta http-equiv="refresh" content="0; url=/">
+<script>window.location.replace("/" + window.location.search);</script>
+<style>
+  body{ margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+        background:#ECE3CF; color:#25322F; text-align:center; padding:2rem;
+        font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; }
+  a{ color:#B0654A; }
+</style>
+</head>
+<body>
+  <p>WILD! Healing has moved to <a href="/">wildgala.com</a>&hellip;</p>
+</body>
+</html>
