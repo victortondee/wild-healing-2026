@@ -37,7 +37,7 @@ jobs:
       - name: Commit generated files if they changed
         run: |
           # Explicit paths only — never `git add -A`, so a stray file can't ride along.
-          PATHS="index.html sitemap.xml invitation info journey gathering attend contact luminaries speaker-jb speaker-stoff"
+          PATHS="index.html sitemap.xml invitation info journey gathering contact luminaries speaker-jb speaker-stoff"
           if git diff --quiet -- $PATHS && [ -z "$(git ls-files --others --exclude-standard -- $PATHS)" ]; then
             echo "generated files unchanged — nothing to commit."
             exit 0

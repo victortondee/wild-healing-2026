@@ -3540,11 +3540,14 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     </div>
   </section>
 
-  <!-- archived: Attend / "Join the circle" page — retired 2026-07-10. Removed from the public footer + the two "Walk with us" / "Join us on the land" CTAs (repointed to the external tickets page). Kept internal for reference; not linked publicly, excluded from search. -->
-  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Archived · Attend / “Join the circle” page (retired 2026-07-10)</span></div>
+  <!-- archived: Attend / "Join the circle" page — retired 2026-07-10, fully locked 2026-07-23.
+       The #page-attend markup is kept in source for reference but is now UNREACHABLE:
+       removed from the router's routes array, its crawlable /attend/ route page deleted,
+       dropped from sitemap.xml + build-routes ROUTES + the workflow PATHS + 404.html routes.
+       No "view" link here anymore — the page can no longer be rendered. See the Dashboard note. -->
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Archived · Attend / “Join the circle” page (retired 2026-07-10 · locked 2026-07-23)</span></div>
   <div class="wrap" style="margin-bottom:3.5rem">
-    <p class="dim" style="max-width:44rem">The old “Come walk with us” attend page — ticket tiers plus the email-capture “Join the circle” form. Retired once the footer newsletter took over email capture and ticketing moved to the external page. Kept here for reference only; it is no longer linked from the public site or seen by search engines.</p>
-    <a href="/attend/" rel="nofollow" style="display:inline-block; margin-top:1rem; color:var(--lantern); font-family:var(--ff-ui); font-size:0.9rem; letter-spacing:0.02em">View the retired Attend page →</a>
+    <p class="dim" style="max-width:44rem">The old “Come walk with us” attend page — ticket tiers plus the email-capture “Join the circle” form. Retired once the footer newsletter took over email capture and ticketing moved to the external page. Its markup is still in this source file for reference, but the page is now fully locked: it is unreachable from any URL and excluded from search.</p>
   </div>
 
   <!-- archived: Home hero — current version snapshot (2026-07-08). Verbatim copy of the live #page-home hero; kept for reference / rollback. -->
@@ -4688,6 +4691,18 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         </li>
       </ul>
     </section>
+
+    <section class="dash-card">
+      <h2 class="dash-h">Locked pages</h2>
+      <ul class="dash-list">
+        <li>
+          <div class="dash-link dash-static">
+            <span class="dash-link-title">Attend / “Join the circle” <span class="dash-badge">Locked</span></span>
+            <span class="dash-link-meta">The retired Attend page (ticket tiers + “Join the circle” email form) still exists in the source as <code>#page-attend</code>, but is deliberately unreachable — no route, no crawlable URL, not in the sitemap, not shown in search. Locked 2026-07-23. To bring it back: re-add <code>"attend"</code> to the router’s <code>routes</code> array (and, if a public URL is wanted, to build-routes ROUTES + the workflow PATHS). A read-only snapshot is also kept on the Archive page.</span>
+          </div>
+        </li>
+      </ul>
+    </section>
   </div>
 </div>
 
@@ -4778,7 +4793,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- routing ---------- */
-  var routes = ["home","invitation","journey","gathering","attend","contact","info","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-stoff"];
+  /* "attend" is intentionally NOT a route: the retired Attend page (#page-attend)
+     is kept in source for reference but is unreachable. Any unknown route (incl.
+     #/attend) falls back to "home" below. See the Dashboard "Locked pages" note. */
+  var routes = ["home","invitation","journey","gathering","contact","info","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-stoff"];
   var pages = {};
   routes.forEach(function(r){ pages[r] = document.getElementById("page-" + r); });
   var navLinks = document.querySelectorAll(".nav-links a[data-key]");
@@ -5364,7 +5382,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     try { if (localStorage.getItem('wgNoAnalytics') === '1') return; } catch (e) {}
 
     var PUBLIC = { home:"/", invitation:"/invitation", journey:"/journey",
-      gathering:"/gathering", attend:"/attend", contact:"/contact", info:"/info",
+      gathering:"/gathering", contact:"/contact", info:"/info",
       luminaries:"/luminaries", "speaker-jb":"/speaker-jb", "speaker-stoff":"/speaker-stoff" };
 
     function routePath() {

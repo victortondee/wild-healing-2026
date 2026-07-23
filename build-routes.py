@@ -56,11 +56,9 @@ ROUTES = {
         "York — September 12, 2026. Long tables beneath the trees, and the "
         "honoring of those who heal.",
     ),
-    "attend": (
-        "Tickets & Attend — WILD! Healing Gala 2026",
-        "Come walk with us. Tickets, lodging and how to arrive for WILD! Healing — "
-        "A Harvest of Medicine, September 9–12, 2026, Ava, New York.",
-    ),
+    # "attend" is intentionally omitted: the Attend page was retired and fully
+    # locked 2026-07-23 (unreachable, no crawlable URL). Do NOT re-add it here
+    # unless a real /attend/ page is wanted back. See the Dashboard "Locked pages".
     "contact": (
         "Contact — WILD! Healing Gala 2026",
         "Reach the circle. Get in touch about WILD! Healing — A Harvest of "

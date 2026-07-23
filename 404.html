@@ -18,7 +18,8 @@
 -->
 <script>
 (function () {
-  var routes = ["home","invitation","journey","gathering","attend","contact",
+  // "attend" intentionally omitted (page locked 2026-07-23) so /attend[/] falls to "/".
+  var routes = ["home","invitation","journey","gathering","contact",
                 "info","archive","drafts","workbench","dashboard",
                 "speaker-jb","speaker-stoff"];
   var path = window.location.pathname.replace(/^\/+|\/+$/g, "").toLowerCase();
