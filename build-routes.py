@@ -64,6 +64,12 @@ ROUTES = {
         "Reach the circle. Get in touch about WILD! Healing — A Harvest of "
         "Medicine, presented by Restore Forward.",
     ),
+    "sponsor": (
+        "Sponsorship — WILD! Healing Gala 2026 | Become a Founding Steward",
+        "Sponsor WILD! Healing: A Harvest of Medicine. Five giving levels from "
+        "Seed ($2,500) to Legacy ($100,000), plus ways to underwrite a medicine "
+        "walk, harvest feast, or the virtual summit. Become a Founding Steward.",
+    ),
     "luminaries": (
         "Past Luminaries — WILD! Healing Gala 2026",
         "Honoring the supporters and partners whose extraordinary work and "
