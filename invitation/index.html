@@ -194,7 +194,7 @@
   --ink:      #2D2A21;
   --ink-2:    #6B6253;
   --sage:     #7C7A5C;
-  --sage-dim: #9A937C;
+  --sage-dim: #6E6653;
 
   /* the lantern — deep ochre-gold */
   --lantern:    #C37E69;
@@ -357,11 +357,17 @@ section.band{ padding-block:var(--pad); position:relative; }
 }
 .btn .arrow{ transition:transform .4s var(--ease); }
 .btn:hover .arrow{ transform:translateX(5px); }
-.btn-primary{ background:linear-gradient(180deg, var(--lantern-hi), var(--lantern)); color:var(--cream); box-shadow:0 1px 0 rgba(255,243,222,0.22) inset, 0 10px 30px -14px var(--glow); }
+.btn-primary{ background:linear-gradient(180deg, #994E33, #8A4632); color:var(--cream); box-shadow:0 1px 0 rgba(255,243,222,0.22) inset, 0 10px 30px -14px var(--glow); }
 .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 1px 0 rgba(255,243,222,0.26) inset, 0 18px 46px -16px var(--glow); }
 .btn-ghost{ background:transparent; color:var(--lantern); border-color:var(--line-strong); }
 .btn-ghost:hover{ border-color:var(--lantern); color:var(--lantern-hi); transform:translateY(-2px); box-shadow:0 12px 34px -20px var(--glow); }
 .btn-row{ display:flex; flex-wrap:wrap; gap:1rem; align-items:center; }
+
+/* skip link — the first focusable element; visible only on keyboard focus (WCAG 2.4.1) */
+.skip-link{ position:fixed; left:1rem; top:-4rem; z-index:300; background:var(--ink); color:var(--cream);
+  font-family:var(--ff-ui); font-weight:600; font-size:0.85rem; letter-spacing:0.04em;
+  padding:0.7rem 1.1rem; border-radius:0.6rem; text-decoration:none; transition:top .2s var(--ease); }
+.skip-link:focus{ top:1rem; outline:2px solid var(--cream); outline-offset:2px; }
 
 /* ============================================================
    HEADER / NAV
@@ -392,6 +398,7 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
     body.menu-open .rf-tab{ display:none; }  /* keep it out of the way when the mobile menu is open */
   }
 .brand .leaf{ width:1.05em; height:1.05em; transform:translateY(0.12em); color:var(--lantern); }
+.nav-primary{ display:contents; }   /* landmark wrapper — no layout effect, keeps the nav flex row intact */
 .nav-links{ flex:1 1 auto; display:flex; align-items:center; justify-content:space-evenly; gap:1rem; list-style:none; margin:0; padding:0; }
 .nav-links a{ font-family:var(--ff-ui); font-weight:500; font-size:0.76rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--ink); text-decoration:none;
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.12rem; min-height:2.6rem; line-height:1.15; padding:0.2rem; position:relative; white-space:nowrap; transition:opacity .25s var(--ease); }
@@ -1271,7 +1278,7 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 .hero.hero--light .hdate.land .hd-tag, .hero.hero--light .hdate.land .hd-num, .hero.hero--light .hdate.land .hd-mon{ color:var(--lantern-lo); }
 .hero.hero--light a.hdate:hover .hd-num, .hero.hero--light a.hdate:hover .hd-tag, .hero.hero--light a.hdate:hover .hd-mon{ color:var(--lantern-lo); }
 .hero.hero--light a.hdate::after{ background:var(--lantern-lo); }
-.hero.hero--light .btn-primary{ background:linear-gradient(180deg, var(--lantern-hi), var(--lantern)); color:var(--cream); box-shadow:0 1px 0 rgba(255,243,222,0.22) inset, 0 10px 30px -14px var(--glow); }
+.hero.hero--light .btn-primary{ background:linear-gradient(180deg, #994E33, #8A4632); color:var(--cream); box-shadow:0 1px 0 rgba(255,243,222,0.22) inset, 0 10px 30px -14px var(--glow); }
 .hero.hero--light .btn-primary:hover{ box-shadow:0 18px 44px -18px rgba(11,33,42,0.6); }
 .hero.hero--light .btn-ghost{ color:var(--ink-deep); border-color:var(--line-deep-2); }
 .hero.hero--light .btn-ghost:hover{ color:var(--ink-deep); border-color:var(--ink-deep); }
@@ -1861,6 +1868,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 </style>
 </head>
 <body data-page="home">
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="preloader" id="preloader" role="presentation">
   <div class="pl-mark">
     <img class="pl-logo" src="images/restore-forward.svg" alt="" aria-hidden="true">
@@ -1884,6 +1892,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <a href="/" class="brand" aria-label="WILD! Healing home">
       <span><b>WILD<span class="bang">!</span></b> Healing</span>
     </a>
+    <nav class="nav-primary" aria-label="Primary">
     <ul class="nav-links" id="navLinks">
       <li class="nav-mob-home"><a href="/" data-key="home">Home</a></li>
       <li><a href="/invitation/" data-key="invitation">The Invitation</a></li>
@@ -1899,6 +1908,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <span class="nav-rf-arrow" aria-hidden="true">&#8599;</span>
       </a></li>
     </ul>
+    </nav>
     <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary nav-cta-btn">Get tickets</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -1912,7 +1922,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     </a>
 
 
-<main id="main">
+<main id="main" tabindex="-1">
 
 <!-- ============================================================
      HOME
@@ -4822,6 +4832,21 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
      is kept in source for reference but is unreachable. Any unknown route (incl.
      #/attend) falls back to "home" below. See the Dashboard "Locked pages" note. */
   var routes = ["home","invitation","journey","gathering","contact","info","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-stoff","speaker-riley"];
+  /* per-route <title> for in-app (hash) navigation — screen readers announce the new title,
+     and browser history/tabs stay meaningful. Mirrors the crawlable route pages' titles. */
+  var DEFAULT_TITLE = "WILD! Healing Gala 2026 — A Harvest of Medicine | Restore Forward";
+  var ROUTE_TITLES = {
+    home: DEFAULT_TITLE,
+    invitation: "The Invitation — WILD! Healing Gala 2026",
+    journey: "The Journey — WILD! Healing Gala 2026",
+    gathering: "The Gathering — WILD! Healing Gala 2026",
+    info: "Info — WILD! Healing Gala 2026 | Dates & Location",
+    contact: "Contact — WILD! Healing Gala 2026",
+    luminaries: "Past Luminaries — WILD! Healing Gala 2026",
+    "speaker-stoff": "Dr. Jesse Stoff — WILD! Healing Gala 2026",
+    "speaker-jb": "Dr. Dieudonné Jean-Baptiste — WILD! Healing Gala 2026",
+    "speaker-riley": "Dr. Nathan Riley — WILD! Healing Gala 2026"
+  };
   var pages = {};
   routes.forEach(function(r){ pages[r] = document.getElementById("page-" + r); });
   var navLinks = document.querySelectorAll(".nav-links a[data-key]");
@@ -4883,6 +4908,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       setupReveals(pages[st.route]);
       var h1 = pages[st.route].querySelector("h1");
       if(h1){ h1.setAttribute("tabindex","-1"); h1.focus({ preventScroll:true }); }
+      document.title = ROUTE_TITLES[st.route] || DEFAULT_TITLE;
       // page transition: blur the screen briefly, then fully remove the layer so it never composites while idle
       document.body.classList.remove("is-navigating");
       void document.body.offsetWidth;
@@ -4908,6 +4934,14 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   }
 
   window.addEventListener("hashchange", render);
+
+  /* skip link → move focus to <main> WITHOUT letting the hash router treat "#main" as a route */
+  var skipLink = document.querySelector(".skip-link");
+  if(skipLink){ skipLink.addEventListener("click", function(e){
+    e.preventDefault();
+    var m = document.getElementById("main");
+    if(m){ m.focus(); m.scrollIntoView(); }
+  }); }
 
   /* ---------- mobile menu ---------- */
   function onMenuKey(e){
