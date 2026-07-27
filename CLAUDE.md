@@ -252,6 +252,44 @@ it is a solo, site-wide decision (see below). Just build your section pure `rem`
 - Full spec = the CSS comment blocks in `site-source.html`: `v12 — MOBILE WIDTH-SCALING LOCK`,
   `TABLET WIDTH-SCALING LOCK`, `DESKTOP LOCK`, `v8 — SITEWIDE WIDTH-SCALING`.
 
+## ♿ ACCESSIBILITY & SCREEN-READER / TTS — assess on EVERY change (MANDATORY)
+
+The site must stay usable by keyboard-only and blind (screen-reader / TTS) visitors.
+**Before every commit, review what you added or changed against this checklist** — and fix
+issues in the same commit, or, if you deliberately defer one, say so in your reply.
+
+This is not a one-off audit; it applies to *every* new section, component, copy edit, image,
+button, or form — exactly like the lock-and-scale law. When you touch code that already breaks
+a rule below, fix it while you're there.
+
+**Visual / low-vision**
+- **Contrast:** any text or meaningful UI must clear **4.5:1** (normal text) / **3:1** (large text
+  ≥ ~24px, and non-text like focus rings, icons, input borders) against its actual background.
+  Compute it — don't eyeball. The accessible tokens already exist: body `--ink`, labels darker than
+  `--sage` (which fails at 3.4:1), CTAs use the deep terracotta `#994E33` gradient, focus uses
+  `--focus` (#994E33). Never introduce text in `--sage` / `--sage-dim` / `--lantern` on light.
+- **Focus visible:** every interactive element must show a clear focus indicator on keyboard Tab
+  (global `:focus-visible` outline uses `--focus`; don't add `outline:none` without an equal-or-better
+  replacement).
+- **Zoom:** never add `maximum-scale`/`user-scalable=no` to the viewport.
+
+**Screen-reader / TTS (how it *sounds* read aloud)**
+- **Images:** every `<img>` needs `alt`. Meaningful → describe it; **decorative, or a name already in
+  adjacent text (speaker/luminary portraits) → `alt=""`** so it isn't read (or read twice).
+- **Decorative glyphs are silent:** arrows (`→ ↗`, `.arrow`/`.go` spans), dividers, and inline
+  **`<svg>` icons must be `aria-hidden="true"`** (`focusable="false"` on SVG). A control's name comes
+  from its visible text or `aria-label`, never from a decorative icon.
+- **Headings:** exactly **one `<h1>` per page/route**, no skipped levels. The SPA router focuses the
+  new page's `<h1>` on navigation — a page with no `<h1>` silently loses that announcement.
+- **Forms:** every field has an associated `<label>` (or `aria-label`); status/validation messages
+  live in a `role="status" aria-live="polite"` region.
+- **Foreign phrases** (French, Indigenous names, etc.) get a `lang` attribute so TTS pronounces them.
+- **Landmarks & order:** keep `header`/`nav`/`main`/`footer`; DOM order = reading order; the skip
+  link and per-route `<title>` update must keep working.
+
+Quick checks: `grep '<img' | grep -v 'alt='` (missing alt), `grep '<svg ' | grep -vc aria-hidden`
+(unhidden icons), and compute contrast for any new colour pair. See prior a11y commits for patterns.
+
 ## Structural / global changes = do them SOLO
 
 Section separation only protects **localized** edits. A change is *cross-cutting*
