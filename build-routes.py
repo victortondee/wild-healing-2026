@@ -79,6 +79,11 @@ ROUTES = {
         "Dr. Jesse Stoff at WILD! Healing — A Harvest of Medicine, "
         "September 9–12, 2026.",
     ),
+    "speaker-riley": (
+        "Dr. Nathan Riley — WILD! Healing Gala 2026",
+        "Dr. Nathan Riley at WILD! Healing — A Harvest of Medicine, "
+        "September 9–12, 2026.",
+    ),
 }
 
 # Static pages that already live at a real path and should stay in the sitemap.

@@ -93,7 +93,8 @@
   },
   "performer": [
     { "@type": "Person", "name": "Dr. Jesse Stoff", "url": "https://wildgala.com/speaker-stoff/" },
-    { "@type": "Person", "name": "Dr. Dieudonné Jean-Baptiste", "url": "https://wildgala.com/speaker-jb/" }
+    { "@type": "Person", "name": "Dr. Dieudonné Jean-Baptiste", "url": "https://wildgala.com/speaker-jb/" },
+    { "@type": "Person", "name": "Dr. Nathan Riley", "url": "https://wildgala.com/speaker-riley/" }
   ],
   "location": [
     {
@@ -600,8 +601,8 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
 .day-mode{ color:var(--clay); }
 .mode-land{ color:var(--ember); }
 /* speakers (v12) — Home page: blank photo frames + name + placeholder role */
-.speakers{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(1.4rem,2.5vw,2.2rem); margin-top:2.8rem; max-width:34rem; margin-inline:auto; }
-@media (max-width:860px){ .speakers{ grid-template-columns:repeat(2,1fr); } }
+.speakers{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.9rem; margin-top:2.8rem; max-width:52rem; margin-inline:auto; }
+@media (max-width:760px){ .speakers{ grid-template-columns:repeat(2,1fr); } }
 .speaker-photo{ aspect-ratio:3/4; background:var(--cream); border:1px solid var(--line-strong); border-radius:var(--radius); margin-bottom:1rem; }
 .speaker-photo{ overflow:hidden; }
 .speaker-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block; mix-blend-mode:multiply; }
@@ -2230,6 +2231,11 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <div class="speaker-name">Dr. Dieudonné Jean-Baptiste</div>
           <div class="speaker-role">Functional &amp; Integrative Medicine</div>
         </a>
+        <a class="speaker" href="/speaker-riley/">
+          <div class="speaker-photo"><picture><source srcset="images/dr-nathan-riley.webp" type="image/webp"><img src="images/dr-nathan-riley.jpg" alt="Dr. Nathan Riley" loading="lazy"></picture></div>
+          <div class="speaker-name">Dr. Nathan Riley</div>
+          <div class="speaker-role">Holistic OB/GYN &amp; Palliative Medicine</div>
+        </a>
       </div>
     </div>
   </section>
@@ -3012,6 +3018,49 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
             <li>Practices functional / integrative / longevity (&ldquo;root-cause&rdquo;) medicine</li>
             <li>Public advocate for functional medicine in Haitian media (Juno7; LE POINT / Métropole Télé)</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ticket-strip">
+    <div class="wrap ticket-strip-inner">
+      <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
+      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow">→</span></a>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     SPEAKER — Dr. Nathan Riley  (added 2026-07-27)
+     ============================================================ -->
+<div class="page" id="page-speaker-riley" role="region" aria-label="Dr. Nathan Riley">
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Speaker</span>
+    <h1>Dr. Nathan Riley</h1>
+    <p class="spk-cred">MD &middot; Dual board-certified in OB/GYN and Hospice &amp; Palliative Medicine</p>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="spk-grid reveal">
+        <figure class="spk-photo"><picture><source srcset="images/dr-nathan-riley.webp" type="image/webp"><img src="images/dr-nathan-riley.jpg" alt="Dr. Nathan Riley" loading="lazy"></picture></figure>
+        <div class="spk-body">
+          <p>Dr. Nathan Riley is a dual board-certified obstetrician&ndash;gynecologist and hospice &amp; palliative medicine physician who practices holistic women&rsquo;s health in Louisville, Kentucky. He earned his MD from Temple University, completed his OB/GYN residency at Kaiser in Los Angeles, and his fellowship in Hospice &amp; Palliative Medicine at UC San Diego &mdash; a rare pairing that lets him care for people across the full arc of life.</p>
+          <p>Through his practice, Beloved Holistics, he serves women and families looking for more than the conventional model &mdash; drawing on allopathic medicine alongside functional medicine, herbalism, traditional Chinese medicine, Ayurveda, and nutrition. His care runs from pre-conception and fertility through home birth and the whole of reproductive life, working with the body&rsquo;s own intelligence rather than against it.</p>
+          <p>Having accompanied families through both birth and loss, Dr. Riley brings uncommon depth to fertility, perinatal care, and health optimization at every stage. A vocal advocate for physiologic birth, midwifery collaboration, and personal agency in health, he shares this work widely as host of <em>The Holistic OBGYN</em> podcast.</p>
+          <ul class="spk-facts">
+            <li>Dual board-certified: Obstetrics &amp; Gynecology; Hospice &amp; Palliative Medicine</li>
+            <li>MD, Temple University</li>
+            <li>OB/GYN residency, Kaiser (Los Angeles)</li>
+            <li>Fellowship, Hospice &amp; Palliative Medicine, UC San Diego</li>
+            <li>Founder, Beloved Holistics &mdash; holistic women&rsquo;s health, Louisville, KY</li>
+            <li>Focus: fertility, home birth, perinatal care, health optimization</li>
+            <li>Modalities: functional medicine, herbalism, Chinese medicine, Ayurveda, nutrition</li>
+          </ul>
+          <div class="spk-works">
+            <span class="lbl">Podcast</span>
+            <span class="titles">The Holistic OBGYN</span>
+          </div>
         </div>
       </div>
     </div>
@@ -4796,7 +4845,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   /* "attend" is intentionally NOT a route: the retired Attend page (#page-attend)
      is kept in source for reference but is unreachable. Any unknown route (incl.
      #/attend) falls back to "home" below. See the Dashboard "Locked pages" note. */
-  var routes = ["home","invitation","journey","gathering","contact","info","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-stoff"];
+  var routes = ["home","invitation","journey","gathering","contact","info","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-stoff","speaker-riley"];
   var pages = {};
   routes.forEach(function(r){ pages[r] = document.getElementById("page-" + r); });
   var navLinks = document.querySelectorAll(".nav-links a[data-key]");

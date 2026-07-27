@@ -21,7 +21,7 @@
   // "attend" intentionally omitted (page locked 2026-07-23) so /attend[/] falls to "/".
   var routes = ["home","invitation","journey","gathering","contact",
                 "info","archive","drafts","workbench","dashboard",
-                "speaker-jb","speaker-stoff"];
+                "speaker-jb","speaker-stoff","speaker-riley"];
   var path = window.location.pathname.replace(/^\/+|\/+$/g, "").toLowerCase();
   var first = path.split("/")[0];
   var target = (path && routes.indexOf(first) !== -1) ? "/#/" + path : "/";
