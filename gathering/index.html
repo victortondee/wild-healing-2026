@@ -200,6 +200,7 @@
   --lantern:    #C37E69;
   --lantern-lo: #A8654F;
   --lantern-hi: #D79E8C;
+  --focus:      #994E33;   /* keyboard-focus outline + field focus — ~5:1 on light bg (WCAG 2.4.11) */
 
   /* the heart — terracotta */
   --clay:     #B0654A;
@@ -247,7 +248,7 @@ body{
 }
 html{ overflow-x:clip; }  /* LOCK-AND-SCALE: contain the horizontal bleed from uncapped scaling (keeps position:sticky + vertical scroll) */
 ::selection{ background:rgba(215,158,140,0.26); color:var(--ink); }
-:focus-visible{ outline:2px solid var(--lantern); outline-offset:3px; border-radius:2px; }
+:focus-visible{ outline:2px solid var(--focus); outline-offset:3px; border-radius:2px; }
 /* page headings get programmatic focus on route change (for screen readers) — no visible ring */
 h1:focus, h1:focus-visible{ outline:none; }
 
@@ -818,11 +819,11 @@ body[data-page="invitation"]{ --lantern:#e2a25e; }
 .field label{ font-family:var(--ff-ui); font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage); }
 .field input{ font-family:var(--ff-body); font-size:1.05rem; color:var(--ink); background:rgba(0,0,0,0.25); border:1px solid var(--line-strong); border-radius:var(--radius); padding:0.9rem 1.05rem; transition:border-color .25s var(--ease), box-shadow .25s var(--ease); }
 .field input::placeholder{ color:var(--sage-dim); }
-.field input:focus{ outline:none; border-color:var(--lantern); box-shadow:0 0 0 3px rgba(215,158,140,0.18); }
+.field input:focus{ outline:none; border-color:var(--focus); box-shadow:0 0 0 3px rgba(153,78,51,0.30); }
 .field textarea, .field select{ font-family:var(--ff-body); font-size:1.05rem; color:var(--ink); background:rgba(0,0,0,0.25); border:1px solid var(--line-strong); border-radius:var(--radius); padding:0.9rem 1.05rem; width:100%; transition:border-color .25s var(--ease), box-shadow .25s var(--ease); }
 .field textarea{ resize:vertical; min-height:7rem; line-height:1.6; }
 .field select{ -webkit-appearance:none; appearance:none; cursor:pointer; padding-right:2.6rem; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a9b39c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1rem center; }
-.field textarea:focus, .field select:focus{ outline:none; border-color:var(--lantern); box-shadow:0 0 0 3px rgba(215,158,140,0.18); }
+.field textarea:focus, .field select:focus{ outline:none; border-color:var(--focus); box-shadow:0 0 0 3px rgba(153,78,51,0.30); }
 .field input::placeholder, .field textarea::placeholder{ color:rgba(236,227,207,0.4); }
 .field select option{ background:#15231a; color:var(--ink); }
 .form-row{ display:flex; gap:0.7rem; align-items:flex-end; flex-wrap:wrap; }
@@ -891,7 +892,7 @@ body[data-page="invitation"]{ --lantern:#e2a25e; }
 .fn-row{ display:flex; gap:0.6rem; }
 .fn-form input[type=email]{ flex:1 1 auto; min-width:0; font-family:var(--ff-ui); font-size:0.95rem; color:var(--ink); background:rgba(255,255,255,0.55); border:1px solid var(--line-strong); border-radius:999px; padding:0.8em 1.2em; transition:border-color .2s var(--ease); }
 .fn-form input[type=email]::placeholder{ color:var(--sage-dim); }
-.fn-form input[type=email]:focus{ outline:none; border-color:var(--lantern); }
+.fn-form input[type=email]:focus{ outline:none; border-color:var(--focus); box-shadow:0 0 0 3px rgba(153,78,51,0.22); }
 .fn-btn{ flex:none; font-family:var(--ff-ui); font-weight:700; font-size:0.76rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-deep); background:var(--lantern-hi); border:none; border-radius:999px; padding:0 1.5em; cursor:pointer; transition:background .25s var(--ease); }
 .fn-btn:hover{ background:var(--lantern); }
 .fn-btn:disabled{ opacity:0.55; cursor:default; }
