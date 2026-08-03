@@ -70,6 +70,12 @@ ROUTES = {
         "Seed ($2,500) to Legacy ($100,000), plus ways to underwrite a medicine "
         "walk, harvest feast, or the virtual summit. Become a Founding Steward.",
     ),
+    "founding": (
+        "Founding 100 — WILD! Healing Gala 2026",
+        "Become one of the Founding 100: one hundred people standing at the very "
+        "beginning of WILD! Healing — A Harvest of Medicine, September 9–12, 2026, "
+        "online and on the land in Ava, New York.",
+    ),
     "luminaries": (
         "Past Luminaries — WILD! Healing Gala 2026",
         "Honoring the supporters and partners whose extraordinary work and "

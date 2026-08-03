@@ -3637,6 +3637,192 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   </section>
 </div>
 
+<!-- ============================================================
+     FOUNDING 100 — campaign landing page (added 2026-08-03)
+     Destination for Farah's LinkedIn "Founding 100" posts. Structure is
+     deliberate: the ask (how to join + claim form) sits ABOVE her letter, and
+     the CTA repeats after it — people arrive already sold by the post, so the
+     story is the payoff, not the gate.
+     ============================================================ -->
+<div class="page" id="page-founding" role="region" aria-label="Founding 100">
+    <style>
+    /* Founding 100 — scoped; every size in rem per the lock-and-scale law */
+    #page-founding .f100-lede{ margin-top:1.3rem; max-width:44rem; }
+    #page-founding .f100-count{ font-family:var(--ff-ui); font-size:0.74rem; letter-spacing:0.16em;
+      text-transform:uppercase; color:var(--clay); font-weight:700; margin-top:1.5rem; }
+    #page-founding .f100-ways{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.1rem; margin-top:0.5rem; }
+    #page-founding .f100-way{ border:1px solid var(--line); border-radius:var(--radius);
+      padding:1.5rem 1.35rem 1.6rem; background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+      display:flex; flex-direction:column; }
+    #page-founding .f100-way h3{ font-family:var(--ff-display); font-weight:400; font-size:1.28rem;
+      line-height:1.12; color:var(--ink-deep); margin:0; }
+    #page-founding .f100-way p{ font-family:var(--ff-body); font-size:0.94rem; line-height:1.45;
+      color:var(--ink-2); margin:0.6rem 0 0; }
+    #page-founding .f100-claim{ border:1px solid var(--line-strong); border-radius:var(--radius);
+      padding:2rem 1.9rem 2.1rem; background:linear-gradient(180deg, rgba(215,158,140,0.07), rgba(255,255,255,0.006));
+      max-width:38rem; }
+    #page-founding .f100-claim h2{ margin-top:0.4rem; }
+    #page-founding .f100-note{ font-family:var(--ff-body); font-size:0.92rem; line-height:1.5;
+      color:var(--ink-2); margin-top:1rem; }
+    #page-founding .f100-letter{ max-width:38rem; }
+    #page-founding .f100-letter p{ font-family:var(--ff-body); font-size:1.06rem; line-height:1.62;
+      color:var(--ink); margin:0 0 1.15rem; }
+    #page-founding .f100-letter .f100-q{ font-style:italic; color:var(--ink-deep); }
+    #page-founding .f100-sign{ font-family:var(--ff-ui); font-size:0.76rem; letter-spacing:0.14em;
+      text-transform:uppercase; color:var(--ink-2); margin-top:1.6rem; }
+    #page-founding .f100-marks{ list-style:none; margin:1.4rem 0 0; padding:0;
+      display:flex; flex-direction:column; gap:0.75rem; max-width:34rem; }
+    #page-founding .f100-marks li{ position:relative; padding-left:1.4rem; font-family:var(--ff-body);
+      font-size:1rem; line-height:1.45; color:var(--ink-2); }
+    #page-founding .f100-marks li::before{ content:""; position:absolute; left:0.1rem; top:0.6rem;
+      width:0.42rem; height:0.42rem; border-radius:50%; background:var(--lantern); }
+    #page-founding .f100-bday{ border:1px solid var(--line); border-left:0.22rem solid var(--clay);
+      border-radius:var(--radius); padding:1.6rem 1.7rem; max-width:40rem; }
+    #page-founding .f100-bday h3{ font-family:var(--ff-display); font-weight:400; font-size:1.4rem;
+      line-height:1.14; color:var(--ink-deep); margin:0.4rem 0 0; }
+    #page-founding .f100-bday p{ font-family:var(--ff-body); font-size:0.98rem; line-height:1.5;
+      color:var(--ink-2); margin:0.7rem 0 0; }
+    #page-founding .f100-when{ font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.16em;
+      text-transform:uppercase; color:var(--clay); font-weight:700; }
+    @media (min-width:761px) and (max-width:1024px){ #page-founding .f100-ways{ grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:760px){ #page-founding .f100-ways{ grid-template-columns:1fr; }
+      #page-founding .f100-claim{ padding:1.6rem 1.3rem 1.7rem; } }
+    </style>
+
+  <section class="band">
+    <div class="wrap page-intro">
+      <span class="eyebrow"><span class="tick"></span>An invitation from Farah Tanis</span>
+      <h1>Become one of the Founding 100</h1>
+      <p class="lede dim f100-lede">One hundred people to stand at the very beginning of WILD<span class="bang">!</span> Healing &mdash; and help shape what this community becomes. Not simply attendees.</p>
+      <div class="btn-row" style="margin-top:1.9rem">
+        <a href="#/founding/claim" class="btn btn-primary">Claim your place <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-ghost">See tickets</a>
+      </div>
+      <!-- Turn this line into a real count ("37 of 100 claimed") only once it clears ~30.
+           A number stalled in single digits reads as anti-proof. -->
+      <p class="f100-count">September 9&ndash;12, 2026 &middot; Online &amp; on the land</p>
+    </div>
+  </section>
+
+  <!-- THE ASK FIRST — people arrive already persuaded by the post -->
+  <section class="band alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span class="tick"></span>Choose how you'll join</span>
+        <h2>You don't have to be there all four days</h2>
+        <p class="lede dim" style="margin-top:1rem; max-width:42rem">Every one of these counts you among the Founding 100. Come the way that fits your life.</p>
+      </div>
+      <div class="f100-ways reveal d1">
+        <article class="f100-way">
+          <h3>The virtual sessions</h3>
+          <p>Two days of online immersion &mdash; September 9 and 10, from wherever you are.</p>
+        </article>
+        <article class="f100-way">
+          <h3>A day on the land</h3>
+          <p>One day in person at The Reconciliation Center in Ava, New York.</p>
+        </article>
+        <article class="f100-way">
+          <h3>The Gala</h3>
+          <p>The feast and festival in the woods &mdash; lanterns, long tables, drums.</p>
+        </article>
+        <article class="f100-way">
+          <h3>The full immersion</h3>
+          <p>All four days, online and on the land, from the first ritual to the closing fire.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="claim">
+    <div class="wrap">
+      <div class="f100-claim reveal">
+        <span class="eyebrow"><span class="tick"></span>Claim your place</span>
+        <h2>Join the Founding 100</h2>
+        <p class="f100-note">Leave your name and Farah will personally welcome you in and share how to join &mdash; usually within a day or two.</p>
+        <form id="f100Form" novalidate style="margin-top:1.5rem">
+          <!-- honeypot: hidden from people, catches bots -->
+          <div style="position:absolute;left:-9999px" aria-hidden="true">
+            <label>Company <input type="text" id="fCompany" name="company" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <input type="hidden" id="fTime" value="">
+          <div class="form-row">
+            <div class="field">
+              <label for="fName">Name</label>
+              <input type="text" id="fName" name="name" placeholder="Your name" autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="fEmail">Email</label>
+              <input type="email" id="fEmail" name="email" placeholder="you@email.com" autocomplete="email" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="fWay">How you'd like to join</label>
+            <select id="fWay" name="way">
+              <option>The virtual sessions (Sept 9&ndash;10)</option>
+              <option>A day on the land</option>
+              <option>The Gala</option>
+              <option>The full immersion &mdash; all four days</option>
+              <option>Not sure yet &mdash; tell me more</option>
+            </select>
+          </div>
+          <div class="form-msg" id="f100Msg" role="status" aria-live="polite"></div>
+          <button type="submit" class="btn btn-primary" style="margin-top:0.7rem">Count me among the Founding 100 <span class="arrow" aria-hidden="true">&rarr;</span></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PAYOFF — her letter, after the ask -->
+  <section class="band alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span class="tick"></span>Why I'm asking</span>
+      </div>
+      <div class="f100-letter reveal d1">
+        <p>For more than thirty years, I've worked at the intersection of healing justice, trauma recovery, and community transformation.</p>
+        <p>After my own journey with breast cancer, one question became impossible to ignore:</p>
+        <p class="f100-q">What would happen if we brought together physicians, Indigenous knowledge keepers, herbalists, farmers, nutrition leaders, trauma experts, and communities &mdash; not to debate healing, but to experience it together?</p>
+        <p>That question became WILD<span class="bang">!</span> Healing: A Harvest of Medicine.</p>
+        <p>This September, we gather on regenerative land in Upstate New York &mdash; and online &mdash; to explore food as medicine, integrative health, environmental wellbeing, trauma recovery, and our relationship with the Earth and one another.</p>
+        <p>Today, I'm looking for the Founding 100. Not simply attendees &mdash; one hundred people willing to be part of the very first WILD<span class="bang">!</span> Healing gathering, and to help shape what this community becomes.</p>
+        <p class="f100-sign">Farah Tanis &middot; Founder, Restore Forward</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span class="tick"></span>What it means</span>
+        <h2>The first circle</h2>
+        <p class="lede dim" style="margin-top:1rem; max-width:42rem">The Founding 100 are the ones who arrive while a thing is still becoming. Your presence helps set the tone, the culture, and the spirit of every gathering that follows.</p>
+      </div>
+      <ul class="f100-marks reveal d1">
+        <li>Your name among the very first</li>
+        <li>A hand in shaping what this community becomes</li>
+        <li>A standing welcome at the gatherings to come</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="wrap">
+      <div class="f100-bday reveal">
+        <span class="f100-when">Wednesday, August 12 &middot; 7&ndash;8pm ET</span>
+        <h3>The Life I Have Been Given</h3>
+        <p>The Founding 100 begins on Farah's birthday. Join her live for one hour as she shares the next chapter of her life and her work &mdash; on Instagram and Facebook Live. This year she isn't asking for gifts; her birthday wish is these first hundred people.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ticket-strip">
+    <div class="wrap ticket-strip-inner">
+      <p class="ticket-strip-copy"><strong>Stand at the beginning.</strong> One hundred people, September 9&ndash;12, 2026 — online &amp; on the land.</p>
+      <a href="#/founding/claim" class="btn btn-primary">Claim your place <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+</div>
+
 <div class="page" id="page-archive" role="region" aria-label="Archive (internal)">
   <div class="wrap page-intro">
     <span class="eyebrow"><span class="tick"></span>Internal · Archive</span>
@@ -5049,7 +5235,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   /* "attend" is intentionally NOT a route: the retired Attend page (#page-attend)
      is kept in source for reference but is unreachable. Any unknown route (incl.
      #/attend) falls back to "home" below. See the Dashboard "Locked pages" note. */
-  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-stoff","speaker-riley"];
+  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","founding","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-stoff","speaker-riley"];
   /* per-route <title> for in-app (hash) navigation — screen readers announce the new title,
      and browser history/tabs stay meaningful. Mirrors the crawlable route pages' titles. */
   var DEFAULT_TITLE = "WILD! Healing Gala 2026 — A Harvest of Medicine | Restore Forward";
@@ -5060,6 +5246,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     gathering: "The Gathering — WILD! Healing Gala 2026",
     info: "Info — WILD! Healing Gala 2026 | Dates & Location",
     sponsor: "Sponsorship — WILD! Healing Gala 2026 | Become a Founding Steward",
+    founding: "Founding 100 — WILD! Healing Gala 2026",
     contact: "Contact — WILD! Healing Gala 2026",
     luminaries: "Past Luminaries — WILD! Healing Gala 2026",
     "speaker-stoff": "Dr. Jesse Stoff — WILD! Healing Gala 2026",
@@ -5268,6 +5455,42 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         source:"wildgala.com (contact)"
       })})
       .then(function(){ form.innerHTML = '<p class="form-success">Message received. A real person reads every note \u2014 we\u2019ll write back soon.</p>'; })
+      .catch(function(){ say("Something went wrong. Please try again, or email info@restoreny.org.", true); if(btn) btn.disabled = false; });
+    });
+  })();
+
+  /* ---------- Founding 100 claim form ----------
+     Posts to the SAME Apps Script endpoint as the contact form, as type "contact"
+     with topic "Founding 100 — <how they'll join>". That's deliberate: it lands in
+     the Subscribers sheet tab that already emails a notification, so a claim reaches
+     a human the moment it's made — no Apps Script change, no new plumbing to break.
+     Filter the sheet/inbox on "Founding 100" to see just this campaign. */
+  (function(){
+    var ENDPOINT = "https://script.google.com/macros/s/AKfycbw2voD3325zEybINDtL3kl-6DrURE9Y7F6DncPRtVJ5MmvE8IqGgoGzENWY3AoRhKpd/exec";
+    var form = document.getElementById("f100Form");
+    if(!form) return;
+    var msg = document.getElementById("f100Msg");
+    var btn = form.querySelector('button[type=submit]');
+    var t0  = document.getElementById("fTime");
+    if(t0) t0.value = String(Date.now());
+    function say(t, err){ if(msg){ msg.textContent = t; msg.className = "form-msg" + (err ? " err" : ""); } }
+    function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ""; }
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var email = val("fEmail"), name = val("fName"), way = val("fWay");
+      if(!isEmail(email)){ say("Please enter an email we can reach you at.", true); document.getElementById("fEmail").focus(); return; }
+      if(btn) btn.disabled = true;
+      say("Sending…", false);
+      fetch(ENDPOINT, { method:"POST", mode:"no-cors", body:new URLSearchParams({
+        type:"contact", name:name, email:email,
+        topic:"Founding 100 — " + way,
+        message:"Wants to join the Founding 100. Preferred way: " + way,
+        company:val("fCompany"),
+        elapsed:String(Date.now() - (parseInt(t0 && t0.value, 10) || 0)),
+        source:"wildgala.com (founding 100)"
+      })})
+      .then(function(){ form.innerHTML = '<p class="form-success">You’re counted. Farah will personally welcome you in and share how to join — usually within a day or two.</p>'; })
       .catch(function(){ say("Something went wrong. Please try again, or email info@restoreny.org.", true); if(btn) btn.disabled = false; });
     });
   })();
