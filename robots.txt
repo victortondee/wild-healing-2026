@@ -6,5 +6,6 @@ Disallow: /site-source.html
 Disallow: /wild-healing-2026-v6.2-capped.html
 Disallow: /wild-healing-2026-v10.html
 Disallow: /wild-healing-2026-v12.html
+Disallow: /wild-healing-2026-breeze-aug4.html
 
 Sitemap: https://wildgala.com/sitemap.xml
