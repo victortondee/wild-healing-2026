@@ -46,12 +46,13 @@ ROUTES = {
         "Ava, New York, September 12.",
     ),
     "journey": (
-        "The Journey — WILD! Healing Gala 2026",
-        "The medicine walk begins: two days of virtual immersion across a living "
-        "landscape of ancestral healing, September 9–10, 2026, leading to the land.",
+        "The Walk — WILD! Healing Gala 2026",
+        "The walk begins: The Reckoning, The Resurrection and The Reclamation — "
+        "virtual immersion across a living landscape of ancestral healing, "
+        "September 9–11, 2026, leading to the land.",
     ),
     "gathering": (
-        "The Gathering — WILD! Healing Gala 2026",
+        "The Restoration — WILD! Healing Gala 2026",
         "Feast and festival in the woods on the land at Restore Forward, Ava, New "
         "York — September 12, 2026. Long tables beneath the trees, and the "
         "honoring of those who heal.",
