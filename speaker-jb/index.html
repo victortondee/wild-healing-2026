@@ -3690,8 +3690,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <h1>Become one of the Founding 100</h1>
       <p class="lede dim f100-lede">One hundred people to stand at the very beginning of WILD<span class="bang">!</span> Healing &mdash; and help shape what this community becomes. Not simply attendees.</p>
       <div class="btn-row" style="margin-top:1.9rem">
-        <a href="#/founding/claim" class="btn btn-primary">Claim your place <span class="arrow" aria-hidden="true">&rarr;</span></a>
-        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-ghost">See tickets</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get your pass &mdash; $159 <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="#/founding/claim" class="btn btn-ghost">What you get</a>
       </div>
       <!-- Turn this line into a real count ("37 of 100 claimed") only once it clears ~30.
            A number stalled in single digits reads as anti-proof. -->
@@ -3733,36 +3733,11 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <div class="f100-claim reveal">
         <span class="eyebrow"><span class="tick"></span>Claim your place</span>
         <h2>Join the Founding 100</h2>
-        <p class="f100-note">Leave your name and Farah will personally welcome you in and share how to join &mdash; usually within a day or two.</p>
-        <form id="f100Form" novalidate style="margin-top:1.5rem">
-          <!-- honeypot: hidden from people, catches bots -->
-          <div style="position:absolute;left:-9999px" aria-hidden="true">
-            <label>Company <input type="text" id="fCompany" name="company" tabindex="-1" autocomplete="off"></label>
-          </div>
-          <input type="hidden" id="fTime" value="">
-          <div class="form-row">
-            <div class="field">
-              <label for="fName">Name</label>
-              <input type="text" id="fName" name="name" placeholder="Your name" autocomplete="name" />
-            </div>
-            <div class="field">
-              <label for="fEmail">Email</label>
-              <input type="email" id="fEmail" name="email" placeholder="you@email.com" autocomplete="email" required />
-            </div>
-          </div>
-          <div class="field">
-            <label for="fWay">How you'd like to join</label>
-            <select id="fWay" name="way">
-              <option>The virtual sessions (Sept 9&ndash;10)</option>
-              <option>A day on the land</option>
-              <option>The Gala</option>
-              <option>The full immersion &mdash; all four days</option>
-              <option>Not sure yet &mdash; tell me more</option>
-            </select>
-          </div>
-          <div class="form-msg" id="f100Msg" role="status" aria-live="polite"></div>
-          <button type="submit" class="btn btn-primary" style="margin-top:0.7rem">Count me among the Founding 100 <span class="arrow" aria-hidden="true">&rarr;</span></button>
-        </form>
+        <p class="f100-note">One pass covers all four days &mdash; September 9&ndash;12, online and on the land. Attend just one day, a few, or all of them; either way you are one of the Founding 100.</p>
+        <div class="btn-row" style="margin-top:1.7rem">
+          <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get your pass &mdash; $159 <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        </div>
+        <p class="f100-note" style="font-size:0.9rem; margin-top:1.2rem">Not ready yet? <a href="#/home/subscribe">Leave your email</a> and we&rsquo;ll keep you posted.</p>
       </div>
     </div>
   </section>
@@ -3813,7 +3788,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Stand at the beginning.</strong> One hundred people, September 9&ndash;12, 2026 — online &amp; on the land.</p>
-      <a href="#/founding/claim" class="btn btn-primary">Claim your place <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get your pass &mdash; $159 <span class="arrow" aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
 </div>
@@ -5461,42 +5436,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         source:"wildgala.com (contact)"
       })})
       .then(function(){ form.innerHTML = '<p class="form-success">Message received. A real person reads every note \u2014 we\u2019ll write back soon.</p>'; })
-      .catch(function(){ say("Something went wrong. Please try again, or email info@restoreny.org.", true); if(btn) btn.disabled = false; });
-    });
-  })();
-
-  /* ---------- Founding 100 claim form ----------
-     Posts to the SAME Apps Script endpoint as the contact form, as type "contact"
-     with topic "Founding 100 — <how they'll join>". That's deliberate: it lands in
-     the Subscribers sheet tab that already emails a notification, so a claim reaches
-     a human the moment it's made — no Apps Script change, no new plumbing to break.
-     Filter the sheet/inbox on "Founding 100" to see just this campaign. */
-  (function(){
-    var ENDPOINT = "https://script.google.com/macros/s/AKfycbw2voD3325zEybINDtL3kl-6DrURE9Y7F6DncPRtVJ5MmvE8IqGgoGzENWY3AoRhKpd/exec";
-    var form = document.getElementById("f100Form");
-    if(!form) return;
-    var msg = document.getElementById("f100Msg");
-    var btn = form.querySelector('button[type=submit]');
-    var t0  = document.getElementById("fTime");
-    if(t0) t0.value = String(Date.now());
-    function say(t, err){ if(msg){ msg.textContent = t; msg.className = "form-msg" + (err ? " err" : ""); } }
-    function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ""; }
-
-    form.addEventListener("submit", function(e){
-      e.preventDefault();
-      var email = val("fEmail"), name = val("fName"), way = val("fWay");
-      if(!isEmail(email)){ say("Please enter an email we can reach you at.", true); document.getElementById("fEmail").focus(); return; }
-      if(btn) btn.disabled = true;
-      say("Sending…", false);
-      fetch(ENDPOINT, { method:"POST", mode:"no-cors", body:new URLSearchParams({
-        type:"contact", name:name, email:email,
-        topic:"Founding 100 — " + way,
-        message:"Wants to join the Founding 100. Preferred way: " + way,
-        company:val("fCompany"),
-        elapsed:String(Date.now() - (parseInt(t0 && t0.value, 10) || 0)),
-        source:"wildgala.com (founding 100)"
-      })})
-      .then(function(){ form.innerHTML = '<p class="form-success">You’re counted. Farah will personally welcome you in and share how to join — usually within a day or two.</p>'; })
       .catch(function(){ say("Something went wrong. Please try again, or email info@restoreny.org.", true); if(btn) btn.disabled = false; });
     });
   })();
