@@ -92,7 +92,6 @@
     "priceCurrency": "USD"
   },
   "performer": [
-    { "@type": "Person", "name": "Dr. Jesse Stoff", "url": "https://wildgala.com/speaker-stoff/" },
     { "@type": "Person", "name": "Dr. Dieudonné Jean-Baptiste", "url": "https://wildgala.com/speaker-jb/" },
     { "@type": "Person", "name": "Dr. Nathan Riley", "url": "https://wildgala.com/speaker-riley/" }
   ],
@@ -630,7 +629,7 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
 .day-mode{ color:var(--clay); }
 .mode-land{ color:var(--ember); }
 /* speakers (v12) — Home page: blank photo frames + name + placeholder role */
-.speakers{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.9rem; margin-top:2.8rem; max-width:52rem; margin-inline:auto; }
+.speakers{ display:grid; grid-template-columns:repeat(2,1fr); gap:1.9rem; margin-top:2.8rem; max-width:36rem; margin-inline:auto; }
 @media (max-width:760px){ .speakers{ grid-template-columns:repeat(2,1fr); } }
 .speaker-photo{ aspect-ratio:3/4; background:var(--cream); border:1px solid var(--line-strong); border-radius:var(--radius); margin-bottom:1rem; }
 .speaker-photo{ overflow:hidden; }
@@ -2253,11 +2252,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <span class="eyebrow"><span class="tick"></span>Speakers</span>
       </div>
       <div class="speakers reveal d1">
-        <a class="speaker" href="/speaker-stoff/">
-          <div class="speaker-photo"><picture><source srcset="images/dr-jesse-stoff.webp" type="image/webp"><img src="images/dr-jesse-stoff.jpg" alt="" loading="lazy"></picture></div>
-          <div class="speaker-name">Dr. Jesse Stoff</div>
-          <div class="speaker-role">Integrative Medicine &amp; Immunology</div>
-        </a>
         <a class="speaker" href="/speaker-jb/">
           <div class="speaker-photo"><picture><source srcset="images/dr-jean-baptiste.webp" type="image/webp"><img src="images/dr-jean-baptiste.jpg" alt="" loading="lazy"></picture></div>
           <div class="speaker-name">Dr. Dieudonné Jean-Baptiste</div>
@@ -2977,7 +2971,14 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
      ARCHIVE — internal, not linked publicly
      ============================================================ -->
 <!-- ============================================================
-     SPEAKER — Dr. Jesse Stoff  (restored to live 2026-07-10)
+     SPEAKER — Dr. Jesse Stoff  —  WITHDRAWN 2026-08-05, PAGE UNROUTED
+     Client: Dr. Stoff will not take part in the virtual programme (he only does
+     face-to-face), and asked for his photo to be removed from the presenters.
+     His photo files were deleted and this page was unrouted — the bio is kept so
+     it can be restored quickly if a face-to-face slot is arranged. To restore:
+     re-add "speaker-stoff" to the router routes array, ROUTE_TITLES, build-routes
+     ROUTES and the workflow PATHS, re-add the photo, and delete the redirect stub
+     at speaker-stoff/index.html.
      ============================================================ -->
 <div class="page" id="page-speaker-stoff" role="region" aria-label="Dr. Jesse Stoff">
   <div class="wrap page-intro">
@@ -2988,7 +2989,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band">
     <div class="wrap">
       <div class="spk-grid reveal">
-        <figure class="spk-photo"><picture><source srcset="images/dr-jesse-stoff.webp" type="image/webp"><img src="images/dr-jesse-stoff.jpg" alt="" loading="lazy"></picture></figure>
         <div class="spk-body">
           <p>Dr. Jesse A. Stoff is an integrative physician and clinical immunologist who has spent more than three decades focused on the immune system and its role in healing. He earned his BA in biology, cum laude, from Adelphi University, and his MD from New York Medical College in 1981 &mdash; followed by postgraduate training that included a family-practice residency year and a fellowship in emergency medicine, and postdoctoral study in clinical medicine and homeopathy at the Royal London Homeopathic Hospital in London, England.</p>
           <p>He is founder and Medical Director of Integrative Medicine of New York (formerly Linchitz Medical Wellness) on Long Island, where the work centers on immunotherapy for autoimmune disease, onco-immunology for cancer, and preventative medicine. His approach draws on clinical immunology and the principle of biochemical individuality, integrating conventional and holistic modalities to help restore immune function and the body&rsquo;s own capacity to heal. He has taught integrative immunology within Dr. Andrew Weil&rsquo;s Integrative Medicine Fellowship at the University of Arizona and consulted for Cancer Treatment Centers of America.</p>
@@ -5234,7 +5234,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   /* "attend" is intentionally NOT a route: the retired Attend page (#page-attend)
      is kept in source for reference but is unreachable. Any unknown route (incl.
      #/attend) falls back to "home" below. See the Dashboard "Locked pages" note. */
-  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","founding","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-stoff","speaker-riley"];
+  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","founding","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-riley"];
   /* per-route <title> for in-app (hash) navigation — screen readers announce the new title,
      and browser history/tabs stay meaningful. Mirrors the crawlable route pages' titles. */
   var DEFAULT_TITLE = "WILD! Healing Gala 2026 — A Harvest of Medicine | Restore Forward";
@@ -5248,7 +5248,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     founding: "Founding 100 — WILD! Healing Gala 2026",
     contact: "Contact — WILD! Healing Gala 2026",
     luminaries: "Past Luminaries — WILD! Healing Gala 2026",
-    "speaker-stoff": "Dr. Jesse Stoff — WILD! Healing Gala 2026",
     "speaker-jb": "Dr. Dieudonné Jean-Baptiste — WILD! Healing Gala 2026",
     "speaker-riley": "Dr. Nathan Riley — WILD! Healing Gala 2026"
   };
@@ -5883,7 +5882,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 
     var PUBLIC = { home:"/", invitation:"/invitation", journey:"/journey",
       gathering:"/gathering", contact:"/contact", info:"/info",
-      luminaries:"/luminaries", "speaker-jb":"/speaker-jb", "speaker-stoff":"/speaker-stoff" };
+      luminaries:"/luminaries", "speaker-jb":"/speaker-jb" };
 
     function routePath() {
       var r = location.hash.replace(/^#\/?/, "").split("/")[0] || "home";

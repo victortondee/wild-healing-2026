@@ -85,11 +85,10 @@ ROUTES = {
         "Dr. Dieudonné Jean-Baptiste at WILD! Healing — A Harvest of Medicine, "
         "September 9–12, 2026.",
     ),
-    "speaker-stoff": (
-        "Dr. Jesse Stoff — WILD! Healing Gala 2026",
-        "Dr. Jesse Stoff at WILD! Healing — A Harvest of Medicine, "
-        "September 9–12, 2026.",
-    ),
+    # "speaker-stoff" removed 2026-08-05: Dr. Stoff withdrew from the virtual
+    # programme (face-to-face only) and asked for his photo to come down. The old
+    # /speaker-stoff/ URL is an indexed page, so a hand-written redirect stub lives
+    # there instead — do NOT re-add this key unless the real page returns.
     "speaker-riley": (
         "Dr. Nathan Riley — WILD! Healing Gala 2026",
         "Dr. Nathan Riley at WILD! Healing — A Harvest of Medicine, "
