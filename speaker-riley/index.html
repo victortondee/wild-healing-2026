@@ -4377,6 +4377,53 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <p class="lede dim">A staging area for sections in progress, before they go live. This page isn't linked publicly.</p>
   </div>
 
+  <!-- Draft · D-09 · Hero button label for the Founding 100 CTA — the live wording
+       against a verb-led alternative. Added 2026-08-07. -->
+  <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft &middot; D-09 &middot; Hero button label &mdash; 2 options</span></div>
+  <section class="band" id="draft-D-09">
+    <style>
+    /* scoped to this draft; all sizes in rem per the lock-and-scale law */
+    #draft-D-09 .d9-opt{ border:1px solid var(--line); border-radius:var(--radius);
+      padding:1.6rem 1.7rem 1.8rem; margin-top:1.3rem;
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent); }
+    #draft-D-09 .d9-lab{ font-family:var(--ff-ui); font-size:0.68rem; font-weight:700;
+      letter-spacing:0.18em; text-transform:uppercase; color:var(--clay); margin:0 0 0.95rem; }
+    #draft-D-09 .d9-note{ font-family:var(--ff-body); font-size:0.95rem; line-height:1.5;
+      color:var(--ink-2); margin:1.05rem 0 0; max-width:34rem; }
+    #draft-D-09 .d9-row{ display:flex; flex-wrap:wrap; gap:1rem; align-items:center; }
+    /* mirror the live hero at phone width, where the row is nowrap and buttons share the space */
+    @media (max-width:760px){
+      #draft-D-09 .d9-row{ flex-wrap:nowrap; gap:0.7rem; }
+      #draft-D-09 .d9-row .btn{ flex:1 1 0; justify-content:center; padding-inline:0.5rem; font-size:0.72rem; }
+    }
+    </style>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span class="tick"></span>Hero call to action</span>
+        <h2>Which label for the Founding 100 button?</h2>
+        <p class="lede dim" style="margin-top:1rem; max-width:42rem">Both use the real hero button styling. On the live hero they sit over a photo; here they are on the page background, so judge the wording and the width rather than the colour. Narrow the window to phone size to see the width question.</p>
+      </div>
+
+      <div class="d9-opt reveal">
+        <p class="d9-lab">Option A &mdash; live now</p>
+        <div class="d9-row">
+          <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <a href="#/founding" class="btn btn-founding">The Founding 100</a>
+        </div>
+        <p class="d9-note">A signpost: it names the destination, in the same voice as &ldquo;Get tickets&rdquo; beside it. Shortest, and safest at narrow widths.</p>
+      </div>
+
+      <div class="d9-opt reveal d1">
+        <p class="d9-lab">Option B</p>
+        <div class="d9-row">
+          <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <a href="#/founding" class="btn btn-founding">Join the Founding 100</a>
+        </div>
+        <p class="d9-note">A verb, so it invites rather than points &mdash; closer to the ask in Farah&rsquo;s message. Five characters longer, which is the whole question at phone width.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Draft · D-08 · Dedicated-site clarity — 3 options for distinguishing a luminary's name
        from the site dedicated in their honor. Same portrait (Robert Burgdorf) so only the treatment differs. -->
   <div class="wrap"><span class="eyebrow"><span class="tick"></span>Draft &middot; D-08 &middot; Naming the dedicated sites &mdash; 3 options</span></div>
