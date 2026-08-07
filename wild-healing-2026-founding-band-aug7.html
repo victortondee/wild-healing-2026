@@ -6,16 +6,27 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<!-- ============================================================
+     ARCHIVED SNAPSHOT — Founding 100 band on the home page (7 Aug 2026)
+     The full-width Founding 100 band as it stood directly under the hero,
+     before it was removed at the client's request ("the basic button is enough
+     ... this really breaks the website up"). Kept so the wording and layout can
+     be seen or restored if the campaign ever wants it back.
+     NOT the live site. Unlisted: noindex below, blocked in robots.txt, absent
+     from sitemap.xml, linked only from the internal Dashboard.
+     ============================================================ -->
+<meta name="robots" content="noindex, nofollow" />
+
 <!-- Every asset in this file is referenced relatively ("images/…"). The build also
      publishes this same document at /info/, /gathering/, … so each route has a real
      crawlable URL — and from those subdirectories "images/…" would resolve to
      /info/images/… and 404, leaving the page with no images. Pinning the base to the
      site root keeps one relative path correct from every location. Must stay above
      the first asset reference below. -->
-<base href="/" />
+<!-- ARCHIVE: <base href="#/home"> removed so hash routing stays inside this file. -->
 <script>
   /* Dev-only: remember ?mark=edit before the router can rewrite the URL.
-     <base href="/"> makes the router's location.replace("#/home") resolve to
+     <base href="#/home"> makes the router's location.replace("#/home") resolve to
      "/#/home", which drops the query AND reloads -- so a window flag would not
      survive. sessionStorage does; it clears when the tab closes, or via ?mark=off. */
   try {
@@ -39,24 +50,24 @@
     else if (location.search.indexOf('analytics=on') > -1) localStorage.removeItem('wgNoAnalytics');
   } catch (e) {}
 </script>
-<title>Past Luminaries — WILD! Healing Gala 2026</title>
-<meta name="description" content="Honoring the supporters and partners whose extraordinary work and enduring legacies enrich our lives." />
+<title>[ARCHIVED · Founding 100 band] WILD! Healing Gala 2026 — A Harvest of Medicine | Restore Forward</title>
+<meta name="description" content="The WILD Gala returns: WILD! Healing 2026 — A Harvest of Medicine, presented by Restore Forward. Online Sept 9–10; on the land in Ava, New York, Sept 12." />
 
 <!-- Favicon (inline leaf mark — no hosting needed) + browser theme color -->
 <link rel="icon" type="image/svg+xml" href="images/restore-forward.svg" />
 <meta name="theme-color" content="#0B212A" />
 
 <!-- Live site: wildgala.com — host the 1200x630 share image (share.jpg) at the og:image URL so link previews render -->
-<link rel="canonical" href="https://wildgala.com/luminaries/" />
+<link rel="canonical" href="https://wildgala.com/" />
 <meta name="google-site-verification" content="u8zXSBgkuPhFVfTM-x73c5zr6fxn1jsguFy-FGUCiRM" />
 <!-- Google Search Console ownership (property owner: victor.tongdee@gmail.com).
      Must stay in <head> permanently -- removing it un-verifies the property. -->
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="WILD Gala" />
-<meta property="og:title" content="Past Luminaries — WILD! Healing Gala 2026" />
-<meta property="og:description" content="Honoring the supporters and partners whose extraordinary work and enduring legacies enrich our lives." />
-<meta property="og:url" content="https://wildgala.com/luminaries/" />
+<meta property="og:title" content="WILD! Healing Gala 2026 — A Harvest of Medicine | Restore Forward" />
+<meta property="og:description" content="The WILD Gala returns: WILD! Healing 2026 — A Harvest of Medicine, presented by Restore Forward. A communal journey of ancestral wisdom and health sovereignty, culminating in embodied healing on the land." />
+<meta property="og:url" content="https://wildgala.com/" />
 <meta property="og:image" content="https://wildgala.com/share.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -64,8 +75,8 @@
 <meta property="og:image:alt" content="WILD! Healing 2026 — A Harvest of Medicine · September 9–12, 2026" />
 <meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Past Luminaries — WILD! Healing Gala 2026" />
-<meta name="twitter:description" content="Honoring the supporters and partners whose extraordinary work and enduring legacies enrich our lives." />
+<meta name="twitter:title" content="WILD! Healing Gala 2026 — A Harvest of Medicine | Restore Forward" />
+<meta name="twitter:description" content="The WILD Gala returns: WILD! Healing 2026 — A Harvest of Medicine, presented by Restore Forward. A communal journey of ancestral wisdom and health sovereignty, culminating in embodied healing on the land." />
 <meta name="twitter:image" content="https://wildgala.com/share.jpg" />
 
 <!-- Event structured data — helps Google show rich results (dates, location) -->
@@ -1910,18 +1921,18 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 <!-- ===================== HEADER ===================== -->
 <header class="site-header" id="header">
   <div class="wrap nav">
-    <a href="/" class="brand" aria-label="WILD! Healing home">
+    <a href="#/home" class="brand" aria-label="WILD! Healing home">
       <span><b>WILD<span class="bang">!</span></b> Healing</span>
     </a>
     <nav class="nav-primary" aria-label="Primary">
     <ul class="nav-links" id="navLinks">
-      <li class="nav-mob-home"><a href="/" data-key="home">Home</a></li>
-      <li><a href="/invitation/" data-key="invitation">The Invitation</a></li>
-      <li><a href="/info/" data-key="info">Info</a></li>
+      <li class="nav-mob-home"><a href="#/home" data-key="home">Home</a></li>
+      <li><a href="#/invitation" data-key="invitation">The Invitation</a></li>
+      <li><a href="#/info" data-key="info">Info</a></li>
       <li><a href="#/journey/day-one" data-key="journey/day-one"><span class="nl-date">Sep 9</span><span class="nl-mode">(Online)</span></a></li>
       <li><a href="#/journey/day-two" data-key="journey/day-two"><span class="nl-date">Sep 10</span><span class="nl-mode">(Online)</span></a></li>
       <li><a href="#/journey/day-three" data-key="journey/day-three"><span class="nl-date">Sep 11</span><span class="nl-mode">(Travel day)</span></a></li>
-      <li><a href="/gathering/" data-key="gathering" class="land"><span class="nl-date">Sep 12</span><span class="nl-mode">(On the land)</span></a></li>
+      <li><a href="#/gathering" data-key="gathering" class="land"><span class="nl-date">Sep 12</span><span class="nl-mode">(On the land)</span></a></li>
       <li class="nav-back-rf"><a href="https://restoreny.org" target="_blank" rel="noopener" aria-label="A Restore Forward gathering — visit Restore Forward">
         <span class="nav-rf-by">by</span>
         <img class="nav-rf-logo" src="images/restore-forward.svg" alt="">
@@ -2124,7 +2135,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <span class="hd-mon">Sep</span>
         </a>
         <span class="hd-div" aria-hidden="true"></span>
-        <a class="hdate land" href="/gathering/" aria-label="September 12, on the land — The Gathering">
+        <a class="hdate land" href="#/gathering" aria-label="September 12, on the land — The Gathering">
           <img class="hero-mark" src="images/gala-mark.svg" alt="" aria-hidden="true">
           <span class="hd-tag">On the land</span>
           <span class="hd-num">12</span>
@@ -2133,8 +2144,45 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
       <div class="btn-row anim a5">
         <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
-        <a href="/invitation/" class="btn btn-ghost">The invitation</a>
-        <a href="#/founding" class="btn btn-ghost">The Founding 100</a>
+        <a href="#/invitation" class="btn btn-ghost">The invitation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Founding 100 band — home page (live 2026-08-05) =====
+       Sits directly under the hero so the founding ask is the first thing a
+       visitor sees after arriving from Farah's DM or LinkedIn post, with the full
+       event laid out beneath it. Promoted from the staging preview after review.
+       Scoped styles, pure rem per the lock-and-scale law; canonical breakpoints. -->
+  <section class="band alt f100-band">
+    <style>
+    .f100-band .f100-inner{ max-width:44rem; margin-inline:auto; text-align:center; }
+    .f100-band .f100-h{ font-family:var(--ff-display); font-weight:400; font-size:2.5rem;
+      line-height:1.08; letter-spacing:-0.01em; color:var(--ink-deep); margin:0.9rem 0 0; }
+    .f100-band .f100-copy{ font-family:var(--ff-body); font-size:1.06rem; line-height:1.55;
+      color:var(--ink-2); margin:1.2rem auto 0; max-width:38rem; }
+    .f100-band .f100-marks{ list-style:none; margin:1.5rem auto 0; padding:0; max-width:34rem;
+      display:flex; flex-direction:column; gap:0.6rem; text-align:left; }
+    .f100-band .f100-marks li{ position:relative; padding-left:1.45rem; font-family:var(--ff-body);
+      font-size:1rem; line-height:1.45; color:var(--ink-2); }
+    .f100-band .f100-marks li::before{ content:""; position:absolute; left:0.1rem; top:0.6rem;
+      width:0.42rem; height:0.42rem; border-radius:50%; background:var(--lantern); }
+    .f100-band .btn-row{ justify-content:center; margin-top:2rem; }
+    @media (min-width:761px) and (max-width:1024px){ .f100-band .f100-h{ font-size:2.1rem; } }
+    @media (max-width:760px){ .f100-band .f100-h{ font-size:1.8rem; }
+      .f100-band .f100-copy{ font-size:0.99rem; } }
+    </style>
+    <div class="wrap f100-inner reveal">
+      <span class="eyebrow"><span class="tick"></span>An invitation from Farah Tanis</span>
+      <h2 class="f100-h">Become one of the Founding 100</h2>
+      <p class="f100-copy">A hundred people who will build this with us &mdash; not simply attend it. This September is the very first WILD<span class="bang">!</span> Healing, and the first hundred in are the ones who shape what it becomes.</p>
+      <ul class="f100-marks">
+        <li>Founders set the tone of this first gathering</li>
+        <li>A real say in what comes after it</li>
+        <li>Your name stays at the root of this community as it grows</li>
+      </ul>
+      <div class="btn-row">
+        <a href="#/founding" class="btn btn-primary">Claim your place <span class="arrow" aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
@@ -2205,7 +2253,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <figure class="fl-card"><div class="fl-photo"><picture><source srcset="images/lum-burgdorf.webp" type="image/webp"><img src="images/lum-burgdorf.jpg" alt="" loading="lazy"></picture></div>
           <figcaption class="fl-cap"><span class="fl-name">Robert Burgdorf</span><span class="fl-site">Legacy Library</span></figcaption></figure>
       </div>
-      <div class="fl-more"><a href="/luminaries/" class="fl-btn">View all luminaries <span class="arrow" aria-hidden="true">&rarr;</span></a></div>
+      <div class="fl-more"><a href="#/luminaries" class="fl-btn">View all luminaries <span class="arrow" aria-hidden="true">&rarr;</span></a></div>
     </div>
   </section>
 
@@ -2236,7 +2284,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <p>The journey to the land is as sacred as the gathering — so travel gently, and bring something, if you wish, in honor of someone lost, someone healing, or yourself.</p>
           <span class="go">Walk Day Three <span aria-hidden="true">→</span></span>
         </a>
-        <a href="/gathering/" class="movement reveal d4 gold" data-num="12">
+        <a href="#/gathering" class="movement reveal d4 gold" data-num="12">
           <span class="num">Day Four · <span class="mode-land" style="white-space:nowrap">On the land</span></span>
           <h3>The Restoration</h3>
           <p>Onto the land at dusk — lanterns between the trees, a feast of medicines, drums and dancers, and the honoring of those who heal the healers.</p>
@@ -2255,12 +2303,12 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <span class="eyebrow"><span class="tick"></span>Speakers</span>
       </div>
       <div class="speakers reveal d1">
-        <a class="speaker" href="/speaker-jb/">
+        <a class="speaker" href="#/speaker-jb">
           <div class="speaker-photo"><picture><source srcset="images/dr-jean-baptiste.webp" type="image/webp"><img src="images/dr-jean-baptiste.jpg" alt="" loading="lazy"></picture></div>
           <div class="speaker-name">Dr. Dieudonné Jean-Baptiste</div>
           <div class="speaker-role">Functional &amp; Integrative Medicine</div>
         </a>
-        <a class="speaker" href="/speaker-riley/">
+        <a class="speaker" href="#/speaker-riley">
           <div class="speaker-photo"><picture><source srcset="images/dr-nathan-riley.webp" type="image/webp"><img src="images/dr-nathan-riley.jpg" alt="" loading="lazy"></picture></div>
           <div class="speaker-name">Dr. Nathan Riley</div>
           <div class="speaker-role">Holistic OB/GYN &amp; Palliative Medicine</div>
@@ -2275,7 +2323,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <span class="eyebrow" style="color:var(--clay)"><span class="tick"></span>A love letter to those who have survived illness</span>
       <h2 class="mt-s">You were never meant to heal alone.</h2>
       <p>For the ones who know the language of symptoms, who have heard the word <em>diagnosis</em> spoken aloud, who live with the quiet vigilance of survival — this letter is for you.</p>
-      <a href="/invitation/" class="btn btn-ghost">Read the love letter <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="#/invitation" class="btn btn-ghost">Read the love letter <span class="arrow" aria-hidden="true">→</span></a>
     </div>
   </section>
 
@@ -2290,7 +2338,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 
       <div class="btn-row reveal d1" style="justify-content:center; margin-top:2.6rem">
         <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
-        <a href="/sponsor/" class="btn btn-ghost">Become a sponsor <span class="arrow" aria-hidden="true">→</span></a>
+        <a href="#/sponsor" class="btn btn-ghost">Become a sponsor <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -2614,7 +2662,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <span class="eyebrow"><span class="tick"></span>And then — onto the land · Sept 12</span>
       <h2 class="mt-s">When the virtual journey ends, you are invited to the woods on September 12.</h2>
       <p>As dusk settles over the forest, lanterns glow between the trees. This is not a gala. It is a ceremony of gratitude.</p>
-      <a href="/gathering/" class="btn btn-primary">Enter The Gathering <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="#/gathering" class="btn btn-primary">Enter The Gathering <span class="arrow" aria-hidden="true">→</span></a>
     </div>
   </section>
 
@@ -2881,7 +2929,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         </div>
       </div>
 
-      <p class="note-soft maxnarrow reveal d2">Bringing a group, an elder, a healer to honor, or hoping to partner with us? <a href="/contact/">Get in touch</a> or write to <a href="mailto:info@restoreny.org">info@restoreny.org</a>, and tell us who you'd walk in with.</p>
+      <p class="note-soft maxnarrow reveal d2">Bringing a group, an elder, a healer to honor, or hoping to partner with us? <a href="#/contact">Get in touch</a> or write to <a href="mailto:info@restoreny.org">info@restoreny.org</a>, and tell us who you'd walk in with.</p>
     </div>
   </section>
 </div>
@@ -3995,7 +4043,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <span class="hd-mon">Sep</span>
         </a>
         <span class="hd-div" aria-hidden="true"></span>
-        <a class="hdate land" href="/gathering/" aria-label="September 12, on the land — The Gathering">
+        <a class="hdate land" href="#/gathering" aria-label="September 12, on the land — The Gathering">
           <span class="hd-tag">On the land</span>
           <span class="hd-num">12</span>
           <span class="hd-mon">Sep</span>
@@ -4003,7 +4051,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
       <div class="btn-row anim a5">
         <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
-        <a href="/invitation/" class="btn btn-ghost">Read the invitation</a>
+        <a href="#/invitation" class="btn btn-ghost">Read the invitation</a>
       </div>
     </div>
     <span class="scroll-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span>
@@ -4045,7 +4093,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <span class="hd-mon">Sep</span>
         </a>
         <span class="hd-div" aria-hidden="true"></span>
-        <a class="hdate land" href="/gathering/" aria-label="September 12, on the land — The Gathering">
+        <a class="hdate land" href="#/gathering" aria-label="September 12, on the land — The Gathering">
           <span class="hd-tag">On the land</span>
           <span class="hd-num">12</span>
           <span class="hd-mon">Sep</span>
@@ -4053,7 +4101,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
       <div class="btn-row anim a5">
         <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
-        <a href="/invitation/" class="btn btn-ghost">Read the invitation</a>
+        <a href="#/invitation" class="btn btn-ghost">Read the invitation</a>
       </div>
     </div>
     <span class="scroll-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span>
@@ -4194,7 +4242,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <span class="hd-mon">Sep</span>
         </a>
         <span class="hd-div" aria-hidden="true"></span>
-        <a class="hdate land" href="/gathering/" aria-label="September 19, on the land — The Gathering">
+        <a class="hdate land" href="#/gathering" aria-label="September 19, on the land — The Gathering">
           <span class="hd-tag">On the land</span>
           <span class="hd-num">19</span>
           <span class="hd-mon">Sep</span>
@@ -4202,7 +4250,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
       <div class="btn-row anim a5">
         <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
-        <a href="/invitation/" class="btn btn-ghost">Read the invitation</a>
+        <a href="#/invitation" class="btn btn-ghost">Read the invitation</a>
       </div>
     </div>
     <span class="scroll-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span>
@@ -4219,7 +4267,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
       <div class="btn-row reveal d2" style="margin-top:2.6rem">
         <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
-        <a href="/journey/" class="btn btn-ghost">See the full journey</a>
+        <a href="#/journey" class="btn btn-ghost">See the full journey</a>
       </div>
     </div>
   </section>
@@ -4669,7 +4717,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <span class="hd-mon">Sep</span>
         </a>
         <span class="hd-div" aria-hidden="true"></span>
-        <a class="hdate land" href="/gathering/" aria-label="September 12, on the land — The Gathering">
+        <a class="hdate land" href="#/gathering" aria-label="September 12, on the land — The Gathering">
           <span class="hd-tag">On the land</span>
           <span class="hd-num">12</span>
           <span class="hd-mon">Sep</span>
@@ -4677,7 +4725,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
       <div class="btn-row anim a5">
         <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
-        <a href="/invitation/" class="btn btn-ghost">The invitation</a>
+        <a href="#/invitation" class="btn btn-ghost">The invitation</a>
       </div>
     </div>
   </section>
@@ -4926,7 +4974,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <span class="hd-mon">Sep</span>
         </a>
         <span class="hd-div" aria-hidden="true"></span>
-        <a class="hdate land" href="/gathering/" aria-label="September 12, on the land — The Gathering">
+        <a class="hdate land" href="#/gathering" aria-label="September 12, on the land — The Gathering">
           <span class="hd-tag">On the land</span>
           <span class="hd-num">12</span>
           <span class="hd-mon">Sep</span>
@@ -4934,7 +4982,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
       <div class="btn-row anim a5">
         <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
-        <a href="/invitation/" class="btn btn-ghost">Read the invitation</a>
+        <a href="#/invitation" class="btn btn-ghost">Read the invitation</a>
       </div>
     </div>
     <span class="scroll-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span>
@@ -4975,7 +5023,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <span class="hd-mon">Sep</span>
         </a>
         <span class="hd-div" aria-hidden="true"></span>
-        <a class="hdate land" href="/gathering/" aria-label="September 12, on the land — The Gathering">
+        <a class="hdate land" href="#/gathering" aria-label="September 12, on the land — The Gathering">
           <span class="hd-tag">On the land</span>
           <span class="hd-num">12</span>
           <span class="hd-mon">Sep</span>
@@ -4983,7 +5031,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
       <div class="btn-row anim a5">
         <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
-        <a href="/invitation/" class="btn btn-ghost">Read the invitation</a>
+        <a href="#/invitation" class="btn btn-ghost">Read the invitation</a>
       </div>
     </div>
     <span class="scroll-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span>
@@ -5024,7 +5072,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <span class="hd-mon">Sep</span>
         </a>
         <span class="hd-div" aria-hidden="true"></span>
-        <a class="hdate land" href="/gathering/" aria-label="September 12, on the land — The Gathering">
+        <a class="hdate land" href="#/gathering" aria-label="September 12, on the land — The Gathering">
           <span class="hd-tag">On the land</span>
           <span class="hd-num">12</span>
           <span class="hd-mon">Sep</span>
@@ -5032,7 +5080,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
       <div class="btn-row anim a5">
         <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
-        <a href="/invitation/" class="btn btn-ghost">Read the invitation</a>
+        <a href="#/invitation" class="btn btn-ghost">Read the invitation</a>
       </div>
     </div>
     <span class="scroll-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span>
@@ -5085,12 +5133,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
             <span class="dash-link-title">Lock-and-scale — current <span class="dash-badge">Live</span></span>
             <span class="dash-link-meta">The uniform lock-and-scale build: everything sized in rem, so within each breakpoint (mobile / tablet / desktop) the whole page zooms as one unit with the display width. This is the version you're viewing now.</span>
           </div>
-        </li>
-        <li>
-          <a class="dash-link" href="wild-healing-2026-founding-band-aug7.html" target="_blank" rel="noopener nofollow">
-            <span class="dash-link-title">Founding 100 band — 7 Aug 2026 (archived) <span class="dash-arrow">&rarr;</span></span>
-            <span class="dash-link-meta">The full-width Founding 100 band as it stood directly under the home hero, before it was removed at the client&rsquo;s request &mdash; &ldquo;the basic button is enough &hellip; this really breaks the website up.&rdquo; The home page now carries a quiet <em>The Founding 100</em> button in the hero instead. Kept so the wording and layout can be restored if the campaign ever wants it back. Unlisted: noindex, blocked in robots.txt, out of the sitemap. Opens in a new tab.</span>
-          </a>
         </li>
         <li>
           <a class="dash-link" href="wild-healing-2026-breeze-aug4.html" target="_blank" rel="noopener nofollow">
@@ -5156,19 +5198,19 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
       <div class="footer-col">
         <h5>The journey</h5>
-        <a href="/invitation/">The Invitation</a>
+        <a href="#/invitation">The Invitation</a>
         <a href="#/journey/day-one">Sep 9 (Online)</a>
         <a href="#/journey/day-two">Sep 10 (Online)</a>
         <a href="#/journey/day-three">Sep 11 (Travel day)</a>
-        <a href="/gathering/" style="color:var(--lantern)">Sep 12 (On the land)</a>
+        <a href="#/gathering" style="color:var(--lantern)">Sep 12 (On the land)</a>
       </div>
       <div class="footer-col">
         <h5>Stay close</h5>
         <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener">Get tickets</a>
         <a href="mailto:info@restoreny.org">info@restoreny.org</a>
-        <a href="/info/">Info</a>
-        <a href="/contact/">Contact us</a>
-        <a href="/sponsor/">Become a sponsor</a>
+        <a href="#/info">Info</a>
+        <a href="#/contact">Contact us</a>
+        <a href="#/sponsor">Become a sponsor</a>
       </div>
     </div>
     <div class="footer-newsletter">
@@ -5823,7 +5865,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
      because their paths have no real folder to fall back on. -->
 <script>
   (function () {
-    var CF_TOKEN = "d4df395e3b674718aad60ce29402b501";
+    var CF_TOKEN = "";   /* ARCHIVE: analytics disabled. */
     if (!CF_TOKEN || !/(^|\.)wildgala\.com$/.test(location.hostname)) return;
     /* opted-out device (set via ?analytics=off) -> never load the beacon at all */
     try { if (localStorage.getItem('wgNoAnalytics') === '1') return; } catch (e) {}
