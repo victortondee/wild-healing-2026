@@ -2009,6 +2009,9 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       .hero.hero--light.hero--mblv2t .btn{ flex:1 1 0; display:flex; align-items:center; justify-content:center; height:11.54vw; padding:0; font-size:2.95vw; letter-spacing:0.14em; }
       .hero.hero--light.hero--mblv2t .btn-primary{ flex-grow:1.06; background:linear-gradient(180deg, var(--lantern-hi), var(--lantern)); color:var(--cream); box-shadow:0 1px 0 rgba(255,243,222,0.22) inset, 0 10px 30px -14px var(--glow); font-weight:700; }
       .hero.hero--light.hero--mblv2t .btn-ghost{ background:var(--cream); -webkit-backdrop-filter:none; backdrop-filter:none; border:1.5px solid var(--cream); color:var(--ink-deep); font-weight:700; box-shadow:0 1px 0 rgba(255,255,255,0.55) inset, 0 10px 30px -14px rgba(11,20,14,0.42); }
+      /* "Join the Founding 100" is the longest label in the row; at this width the
+         text ran ~2px past its box, so tighten its tracking rather than shrink it. */
+      .hero.hero--light.hero--mblv2t .btn-founding{ letter-spacing:0.09em; }
       /* photo hero here too — invert the link so it is not dark-on-dark */
       .hero.hero--light.hero--mblv2t .hero-textlink{ margin-top:0.75rem; }
       .hero.hero--light.hero--mblv2t .hero-textlink a{ color:var(--cream); border-bottom-color:rgba(236,227,207,0.55); }
@@ -2160,7 +2163,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
       <div class="btn-row anim a5">
         <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
-        <a href="#/founding" class="btn btn-founding">The Founding 100</a>
+        <a href="#/founding" class="btn btn-founding">Join the Founding 100</a>
       </div>
       <p class="hero-textlink anim a5"><a href="/invitation/">The invitation <span class="arrow" aria-hidden="true">→</span></a></p>
     </div>
