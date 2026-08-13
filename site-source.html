@@ -645,12 +645,23 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
 .day-mode{ color:var(--clay); }
 .mode-land{ color:var(--ember); }
 /* speakers (v12) — Home page: blank photo frames + name + placeholder role */
-.speakers{ display:grid; grid-template-columns:repeat(2,1fr); gap:1.9rem; margin-top:2.8rem; max-width:36rem; margin-inline:auto; }
-@media (max-width:760px){ .speakers{ grid-template-columns:repeat(2,1fr); } }
+/* Five speakers as of 2026-08-13. The grid was built for exactly two (2 cols capped at
+   36rem); left alone, five would stack 2+2+1 inside a narrow column with an orphan on
+   its own row. Column count is set per band so the row always fills: 5 across on
+   desktop, 3 on tablet (3+2), 2 on mobile. All rem, so the whole block still scales
+   with the viewport as one unit. */
+.speakers{ display:grid; grid-template-columns:repeat(5,1fr); gap:1.6rem; margin-top:2.8rem; max-width:74rem; margin-inline:auto; }
+@media (min-width:761px) and (max-width:1024px){ .speakers{ grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:48rem; } }
+@media (max-width:760px){ .speakers{ grid-template-columns:repeat(2,1fr); gap:1.4rem; max-width:none; } }
 .speaker-photo{ aspect-ratio:3/4; background:var(--cream); border:1px solid var(--line-strong); border-radius:var(--radius); margin-bottom:1rem; }
 .speaker-photo{ overflow:hidden; }
 .speaker-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block; mix-blend-mode:multiply; }
-.speaker-name{ font-family:var(--ff-display); font-weight:400; font-size:clamp(1.15rem,1.6vw,1.4rem); color:var(--ink); line-height:1.15; }
+/* Plain rem per band, not a vw clamp: a clamp with vw in it scales at a different rate
+   from the root, so the name drifted out of step with the card it sits under. Sizes are
+   tuned to the new column counts (5 across desktop, 3 tablet, 2 mobile). */
+.speaker-name{ font-family:var(--ff-display); font-weight:400; font-size:1.05rem; color:var(--ink); line-height:1.15; }
+@media (min-width:761px) and (max-width:1024px){ .speaker-name{ font-size:1.2rem; } }
+@media (max-width:760px){ .speaker-name{ font-size:1.15rem; } }
 .speaker-role{ font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--sage); margin-top:0.45rem; }
 
 /* speaker cards → links to profile pages (v12) */
@@ -2316,18 +2327,18 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         </a>
         <a class="speaker speaker--ph" href="/speaker-cook/">
           <div class="speaker-photo"><span class="speaker-mono" aria-hidden="true">TC</span></div>
-          <div class="speaker-name"><span lang="moh">Katsitsienhawi Iakoskarewake</span> (Tiffany Cook)</div>
-          <div class="speaker-role">Food as Medicine &middot; <span lang="moh">Kanien&rsquo;keh&aacute;:ka</span>, Bear Clan</div>
+          <div class="speaker-name">Tiffany Cook</div>
+          <div class="speaker-role">Food as Medicine</div>
         </a>
         <a class="speaker speaker--ph" href="/speaker-gray/">
           <div class="speaker-photo"><span class="speaker-mono" aria-hidden="true">EG</span></div>
           <div class="speaker-name">Eddie Gray</div>
-          <div class="speaker-role">Traditional Medicine &middot; <span lang="moh">Kanien&rsquo;keh&aacute;:ka</span>, Turtle Clan</div>
+          <div class="speaker-role">Traditional Medicine</div>
         </a>
         <a class="speaker speaker--ph" href="/speaker-adams/">
           <div class="speaker-photo"><span class="speaker-mono" aria-hidden="true">DA</span></div>
           <div class="speaker-name">Della Adams</div>
-          <div class="speaker-role">Traditional Medicine &middot; <span lang="moh">Kanien&rsquo;keh&aacute;:ka</span>, Snipe Clan</div>
+          <div class="speaker-role">Traditional Medicine</div>
         </a>
       </div>
     </div>
