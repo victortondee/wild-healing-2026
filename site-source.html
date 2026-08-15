@@ -645,12 +645,12 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
 .day-mode{ color:var(--clay); }
 .mode-land{ color:var(--ember); }
 /* speakers (v12) — Home page: blank photo frames + name + placeholder role */
-/* Five speakers as of 2026-08-13. The grid was built for exactly two (2 cols capped at
+/* Eight speakers as of 2026-08-15. The grid was built for exactly two (2 cols capped at
    36rem); left alone, five would stack 2+2+1 inside a narrow column with an orphan on
-   its own row. Column count is set per band so the row always fills: 5 across on
-   desktop, 3 on tablet (3+2), 2 on mobile. All rem, so the whole block still scales
+   its own row. Column count is set per band so the row always fills: 4 across on
+   desktop (4+4), 3 on tablet, 2 on mobile. All rem, so the whole block still scales
    with the viewport as one unit. */
-.speakers{ display:grid; grid-template-columns:repeat(5,1fr); gap:1.6rem; margin-top:2.8rem; max-width:74rem; margin-inline:auto; }
+.speakers{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.6rem; margin-top:2.8rem; max-width:62rem; margin-inline:auto; }
 @media (min-width:761px) and (max-width:1024px){ .speakers{ grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:48rem; } }
 @media (max-width:760px){ .speakers{ grid-template-columns:repeat(2,1fr); gap:1.4rem; max-width:none; } }
 .speaker-photo{ aspect-ratio:3/4; background:var(--cream); border:1px solid var(--line-strong); border-radius:var(--radius); margin-bottom:1rem; }
@@ -2340,6 +2340,21 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <div class="speaker-name">Della Adams</div>
           <div class="speaker-role">Traditional Medicine</div>
         </a>
+        <a class="speaker" href="/speaker-oakes/">
+          <div class="speaker-photo"><picture><source srcset="images/iakowi-oakes.webp" type="image/webp"><img src="images/iakowi-oakes.jpg" alt="" loading="lazy"></picture></div>
+          <div class="speaker-name"><span lang="moh">Iakowi:he&rsquo;ne&rsquo;</span> Oakes</div>
+          <div class="speaker-role">Indigenous Sovereignty</div>
+        </a>
+        <a class="speaker" href="/speaker-brown/">
+          <div class="speaker-photo"><picture><source srcset="images/sevonna-brown.webp" type="image/webp"><img src="images/sevonna-brown.jpg" alt="" loading="lazy"></picture></div>
+          <div class="speaker-name">Sevonna Brown</div>
+          <div class="speaker-role">Maternal Health</div>
+        </a>
+        <a class="speaker" href="/speaker-zombek/">
+          <div class="speaker-photo"><picture><source srcset="images/alicia-zombek.webp" type="image/webp"><img src="images/alicia-zombek.jpg" alt="" loading="lazy"></picture></div>
+          <div class="speaker-name">Alicia Luhrssen-Zombek</div>
+          <div class="speaker-role">Regenerative Agriculture</div>
+        </a>
       </div>
     </div>
   </section>
@@ -3268,6 +3283,92 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
             <li>22 years with the Traditional Medicine Program, Mohawk Council of Akwesasne (retired 2021)</li>
             <li>Co-founder, <span lang="moh">Haudenosaunee</span> Everlasting Academy of Learnings (HEAL), 2022</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ticket-strip">
+    <div class="wrap ticket-strip-inner">
+      <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
+      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     SPEAKERS — Oakes, Brown, Luhrssen-Zombek (added 2026-08-15)
+     Bios verbatim from the client's "Speaker Bios" doc; no fact lists, since
+     the doc supplies prose only and summarising it would put words in their
+     mouths. Photos from the same Drive folder.
+     ============================================================ -->
+<div class="page" id="page-speaker-oakes" role="region" aria-label="Iakowi:he’ne’ Oakes">
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Speaker</span>
+    <h1><span lang="moh">Iakowi:he&rsquo;ne&rsquo;</span> Oakes</h1>
+    <p class="spk-cred"><span lang="moh">Kanien&rsquo;keh&aacute;:ka</span> (Mohawk) &middot; Founder &amp; Director, North American Indigenous Center of New York</p>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="spk-grid reveal">
+        <figure class="spk-photo"><picture><source srcset="images/iakowi-oakes.webp" type="image/webp"><img src="images/iakowi-oakes.jpg" alt="" loading="lazy"></picture></figure>
+        <div class="spk-body">
+          <p><span lang="moh">Iakowi:he&rsquo;ne&rsquo;</span> Oakes is a <span lang="moh">Kanien&rsquo;keh&aacute;:ka</span> (Mohawk) multidisciplinary artist, leader, and advocate dedicated to advancing Indigenous sovereignty and land stewardship. Born and raised in Akwesasne Mohawk Territory, she has spent her career focused on nation-building and cultural revitalization through a diverse range of artistic and athletic endeavors. An inaugural Lortel Indigenous Theatermaker awardee in 2023, Oakes integrates performance, design, and advocacy to strengthen Indigenous presence and social justice across bicultural landscapes.</p>
+          <p>As the founder and director of the North American Indigenous Center of New York (NAIC-NY), Oakes has established a vital community hub in downtown Manhattan. Her leadership has spearheaded numerous initiatives, including the Northeastern Native Arts Festival, Native Census NYC, and Indigenous language forums, alongside wellness programming like the FIT Native workout series. Through traditional gatherings, empowerment workshops, and contemporary arts seminars, she continues to foster cultural advocacy and provide essential platforms for Indigenous programming and community connection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ticket-strip">
+    <div class="wrap ticket-strip-inner">
+      <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
+      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</div>
+
+<div class="page" id="page-speaker-brown" role="region" aria-label="Sevonna Brown">
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Speaker</span>
+    <h1>Sevonna Brown</h1>
+    <p class="spk-cred">Birth worker &middot; Founder, Sanctuary for Integrative Medicine</p>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="spk-grid reveal">
+        <figure class="spk-photo"><picture><source srcset="images/sevonna-brown.webp" type="image/webp"><img src="images/sevonna-brown.jpg" alt="" loading="lazy"></picture></figure>
+        <div class="spk-body">
+          <p>Sevonna Brown is a maternal health visionary, birth worker, and founder of Sanctuary for Integrative Medicine, a community-rooted model of maternal wellness integrating clinical care, ancestral wisdom, childbirth education, birth support, and holistic healing. For more than 15 years, Sevonna has worked at the intersection of maternal health, reproductive justice, and systems transformation. Her work centers on health sovereignty and the belief that every person deserves to experience pregnancy, birth, and parenthood with dignity, safety, cultural connection, and care.</p>
+          <p>Sevonna also serves as Treasurer of Restore Forward, where she supports the organization&rsquo;s financial stewardship and long-term sustainability as it advances racial, reproductive, and health justice through community-rooted wellness and systems change. A Gates Millennium Scholar and NGen Fellow, Sevonna has contributed to maternal health research, policy, and community-based initiatives nationally and internationally. Her work has been featured in <em>Aftershock</em> and <em>The Business of Birth Control</em>. Through Sanctuary for Integrative Medicine, she continues to build a more sacred, integrative, and equitable future for birthing people, families, and communities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ticket-strip">
+    <div class="wrap ticket-strip-inner">
+      <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
+      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</div>
+
+<div class="page" id="page-speaker-zombek" role="region" aria-label="Alicia Luhrssen-Zombek">
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Speaker</span>
+    <h1>Alicia Luhrssen-Zombek</h1>
+    <p class="spk-cred">Educator, restorative grower &amp; community program developer</p>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="spk-grid reveal">
+        <figure class="spk-photo"><picture><source srcset="images/alicia-zombek.webp" type="image/webp"><img src="images/alicia-zombek.jpg" alt="" loading="lazy"></picture></figure>
+        <div class="spk-body">
+          <p>Alicia Zombek is an educator, restorative grower, and community-based program developer whose work connects plant and soil science, food systems, community engagement, and social justice.</p>
+          <p>With more than twenty years of experience in community-based program development, agricultural education, and food systems, Alicia draws on her background in sustainability and soil science to inform her teaching and practice. Her work explores soil health, biodiversity, regenerative agriculture, food justice, food sovereignty, and the connections among diet, human health, agriculture, and environmental sustainability. Her experience includes Cornell University, Restore Forward, Hamilton College, Northeast Organic Farming Association, Mohawk Valley Community College, and community-led agricultural initiatives throughout New York and Massachusetts.</p>
+          <p>Alicia brings principles of restorative justice into her relationship with land and growing systems, exploring what repair, fairness, participation, and care can mean when the environment is understood as part of the community. Her approach makes space for soil, plants, water, people, and the living systems that sustain us. It also recognizes that whether someone is encountering the land for the first time or carrying knowledge passed through generations, everyone has a place to learn, contribute, and belong.</p>
+          <p>Her work centers restorative, land-based practices that strengthen biodiversity, climate resilience, food sovereignty, and our relationships with the living world.</p>
         </div>
       </div>
     </div>
@@ -5473,7 +5574,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   /* "attend" is intentionally NOT a route: the retired Attend page (#page-attend)
      is kept in source for reference but is unreachable. Any unknown route (incl.
      #/attend) falls back to "home" below. See the Dashboard "Locked pages" note. */
-  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","founding","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-riley","speaker-cook","speaker-gray","speaker-adams"];
+  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","founding","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-riley","speaker-cook","speaker-gray","speaker-adams","speaker-oakes","speaker-brown","speaker-zombek"];
   /* per-route <title> for in-app (hash) navigation — screen readers announce the new title,
      and browser history/tabs stay meaningful. Mirrors the crawlable route pages' titles. */
   var DEFAULT_TITLE = "WILD! Healing Gala 2026 — A Harvest of Medicine | Restore Forward";
@@ -5491,7 +5592,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     "speaker-riley": "Dr. Nathan Riley — WILD! Healing Gala 2026",
     "speaker-cook": "Katsitsienhawi Iakoskarewake (Tiffany Cook) — WILD! Healing Gala 2026",
     "speaker-gray": "Eddie Gray — WILD! Healing Gala 2026",
-    "speaker-adams": "Della Adams — WILD! Healing Gala 2026"
+    "speaker-adams": "Della Adams — WILD! Healing Gala 2026",
+    "speaker-oakes": "Iakowi:he’ne’ Oakes — WILD! Healing Gala 2026",
+    "speaker-brown": "Sevonna Brown — WILD! Healing Gala 2026",
+    "speaker-zombek": "Alicia Luhrssen-Zombek — WILD! Healing Gala 2026"
   };
   var pages = {};
   routes.forEach(function(r){ pages[r] = document.getElementById("page-" + r); });

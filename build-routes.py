@@ -111,6 +111,24 @@ ROUTES = {
         "Della Adams, Kanien’kehá:ka Snipe Clan traditional medicine holder and "
         "co-founder of HEAL, at WILD! Healing — A Harvest of Medicine, September 9–12, 2026.",
     ),
+    "speaker-oakes": (
+        "Iakowi:he’ne’ Oakes — WILD! Healing Gala 2026",
+        "Iakowi:he’ne’ Oakes, Kanien’kehá:ka artist and founder of the North American "
+        "Indigenous Center of New York, at WILD! Healing — A Harvest of Medicine, "
+        "September 9–12, 2026.",
+    ),
+    "speaker-brown": (
+        "Sevonna Brown — WILD! Healing Gala 2026",
+        "Sevonna Brown, birth worker and founder of Sanctuary for Integrative Medicine, "
+        "on maternal health and reproductive justice at WILD! Healing — A Harvest of "
+        "Medicine, September 9–12, 2026.",
+    ),
+    "speaker-zombek": (
+        "Alicia Luhrssen-Zombek — WILD! Healing Gala 2026",
+        "Alicia Luhrssen-Zombek, educator and restorative grower, on soil health, "
+        "regenerative agriculture and food sovereignty at WILD! Healing — A Harvest of "
+        "Medicine, September 9–12, 2026.",
+    ),
 }
 
 # Static pages that already live at a real path and should stay in the sitemap.
