@@ -2330,16 +2330,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <div class="speaker-name">Tiffany Cook</div>
           <div class="speaker-role">Food as Medicine</div>
         </a>
-        <a class="speaker" href="/speaker-gray/">
-          <div class="speaker-photo"><picture><source srcset="images/eddie-gray.webp" type="image/webp"><img src="images/eddie-gray.jpg" alt="" loading="lazy"></picture></div>
-          <div class="speaker-name">Eddie Gray</div>
-          <div class="speaker-role">Traditional Medicine</div>
-        </a>
-        <a class="speaker" href="/speaker-adams/">
-          <div class="speaker-photo"><picture><source srcset="images/della-adams.webp" type="image/webp"><img src="images/della-adams.jpg" alt="" loading="lazy"></picture></div>
-          <div class="speaker-name">Della Adams</div>
-          <div class="speaker-role">Traditional Medicine</div>
-        </a>
         <a class="speaker" href="/speaker-oakes/">
           <div class="speaker-photo"><picture><source srcset="images/iakowi-oakes.webp" type="image/webp"><img src="images/iakowi-oakes.jpg" alt="" loading="lazy"></picture></div>
           <div class="speaker-name"><span lang="moh">Iakowi:he&rsquo;ne&rsquo;</span> Oakes</div>
@@ -3247,6 +3237,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   </section>
 </div>
 
+<!-- UNLISTED 2026-08-18: the client renamed Eddie Gray's photo "Not Confirmed_" in the
+     speaker folder after we published, so the card and route were pulled. The page is
+     kept intact and unrouted; re-add "speaker-gray" to the routes array, ROUTE_TITLES,
+     build-routes.py and the workflow PATHS to bring it back. -->
 <div class="page" id="page-speaker-gray" role="region" aria-label="Eddie Gray">
   <div class="wrap page-intro">
     <span class="eyebrow"><span class="tick"></span>Speaker</span>
@@ -3280,6 +3274,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   </section>
 </div>
 
+<!-- UNLISTED 2026-08-18: the client renamed Della Adams's photo "Not Confirmed_" in the
+     speaker folder after we published, so the card and route were pulled. The page is
+     kept intact and unrouted; re-add "speaker-adams" to the routes array, ROUTE_TITLES,
+     build-routes.py and the workflow PATHS to bring it back. -->
 <div class="page" id="page-speaker-adams" role="region" aria-label="Della Adams">
   <div class="wrap page-intro">
     <span class="eyebrow"><span class="tick"></span>Speaker</span>
@@ -5646,7 +5644,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   /* "attend" is intentionally NOT a route: the retired Attend page (#page-attend)
      is kept in source for reference but is unreachable. Any unknown route (incl.
      #/attend) falls back to "home" below. See the Dashboard "Locked pages" note. */
-  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","founding","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-riley","speaker-cook","speaker-gray","speaker-adams","speaker-oakes","speaker-brown","speaker-zombek","speaker-motsei"];
+  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","founding","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-riley","speaker-cook","speaker-oakes","speaker-brown","speaker-zombek","speaker-motsei"];
   /* per-route <title> for in-app (hash) navigation — screen readers announce the new title,
      and browser history/tabs stay meaningful. Mirrors the crawlable route pages' titles. */
   var DEFAULT_TITLE = "WILD! Healing Gala 2026 — A Harvest of Medicine | Restore Forward";
@@ -5663,8 +5661,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     "speaker-jb": "Dr. Dieudonné Jean-Baptiste — WILD! Healing Gala 2026",
     "speaker-riley": "Dr. Nathan Riley — WILD! Healing Gala 2026",
     "speaker-cook": "Katsitsienhawi Iakoskarewake (Tiffany Cook) — WILD! Healing Gala 2026",
-    "speaker-gray": "Eddie Gray — WILD! Healing Gala 2026",
-    "speaker-adams": "Della Adams — WILD! Healing Gala 2026",
     "speaker-oakes": "Iakowi:he’ne’ Oakes — WILD! Healing Gala 2026",
     "speaker-brown": "Sevonna Brown — WILD! Healing Gala 2026",
     "speaker-zombek": "Alicia Luhrssen-Zombek — WILD! Healing Gala 2026",
