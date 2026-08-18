@@ -129,6 +129,12 @@ ROUTES = {
         "regenerative agriculture and food sovereignty at WILD! Healing — A Harvest of "
         "Medicine, September 9–12, 2026.",
     ),
+    "speaker-motsei": (
+        "Dr. Mmatshilo Motsei — WILD! Healing Gala 2026",
+        "Dr. Mmatshilo Motsei, South African healer, Indigenous midwife and founder of "
+        "Afrika Ikalafe, on healing justice and decolonising childbirth at WILD! Healing "
+        "— A Harvest of Medicine, September 9–12, 2026.",
+    ),
 }
 
 # Static pages that already live at a real path and should stay in the sitemap.
