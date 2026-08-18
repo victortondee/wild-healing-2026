@@ -171,6 +171,11 @@ def build_page(source: str, route: str, title: str, description: str) -> str:
          f'<meta name="twitter:description" content="{d}"', "twitter:description"),
     ]:
         html = retag(html, pat, rep, f"{route}: {label}")
+
+    # The home hero preload only helps the home page. On every other route that hero
+    # sits in a display:none page, so preloading it is ~250KB of pure waste — strip it.
+    html = re.sub(r"<!-- HERO-PRELOAD-START -->.*?<!-- HERO-PRELOAD-END -->\n?",
+                  "", html, flags=re.S)
     return html
 
 
