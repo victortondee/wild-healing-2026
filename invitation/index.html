@@ -47,6 +47,12 @@
 <meta name="theme-color" content="#0B212A" />
 
 <!-- Live site: wildgala.com — host the 1200x630 share image (share.jpg) at the og:image URL so link previews render -->
+<!-- Preload the home hero. It is a CSS background, so the browser cannot discover it
+     until the stylesheet is parsed - which delays the largest paint on the page most
+     people land on. The media attributes mean exactly one of these is ever fetched.
+     build-routes.py strips this block from every non-home route, where the home hero
+     is display:none and preloading it would waste ~250KB. -->
+
 <link rel="canonical" href="https://wildgala.com/invitation/" />
 <meta name="google-site-verification" content="u8zXSBgkuPhFVfTM-x73c5zr6fxn1jsguFy-FGUCiRM" />
 <!-- Google Search Console ownership (property owner: victor.tongdee@gmail.com).
