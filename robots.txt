@@ -9,5 +9,6 @@ Disallow: /wild-healing-2026-v12.html
 Disallow: /wild-healing-2026-breeze-aug4.html
 Disallow: /wild-healing-2026-founding-band-aug7.html
 Disallow: /wild-healing-2026-speakers-aug15.html
+Disallow: /wild-healing-2026-daylineup-aug18.html
 
 Sitemap: https://wildgala.com/sitemap.xml
