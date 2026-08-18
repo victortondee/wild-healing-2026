@@ -94,22 +94,13 @@ ROUTES = {
         "Dr. Nathan Riley at WILD! Healing — A Harvest of Medicine, "
         "September 9–12, 2026.",
     ),
-    # Akwesasne Mohawk faculty, added 2026-08-13. Headshots still to come; the
-    # pages use the initials placeholder until then.
+    # Akwesasne Mohawk faculty, added 2026-08-13. "speaker-gray" and "speaker-adams"
+    # were pulled 2026-08-18 — the client marked those two photos "Not Confirmed_"
+    # after publication. Their page divs are still in site-source.html, unrouted.
     "speaker-cook": (
         "Katsitsienhawi Iakoskarewake (Tiffany Cook) — WILD! Healing Gala 2026",
         "Katsitsienhawi Iakoskarewake (Tiffany Cook), Kanien’kehá:ka Bear Clan, on "
         "food as medicine at WILD! Healing — A Harvest of Medicine, September 9–12, 2026.",
-    ),
-    "speaker-gray": (
-        "Eddie Gray — WILD! Healing Gala 2026",
-        "Eddie Gray, Kanien’kehá:ka Turtle Clan medicine man and co-founder of HEAL, "
-        "at WILD! Healing — A Harvest of Medicine, September 9–12, 2026.",
-    ),
-    "speaker-adams": (
-        "Della Adams — WILD! Healing Gala 2026",
-        "Della Adams, Kanien’kehá:ka Snipe Clan traditional medicine holder and "
-        "co-founder of HEAL, at WILD! Healing — A Harvest of Medicine, September 9–12, 2026.",
     ),
     "speaker-oakes": (
         "Iakowi:he’ne’ Oakes — WILD! Healing Gala 2026",
