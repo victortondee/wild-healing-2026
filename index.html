@@ -656,12 +656,13 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
 .day-mode{ color:var(--clay); }
 .mode-land{ color:var(--ember); }
 /* speakers (v12) — Home page: blank photo frames + name + placeholder role */
-/* Eleven speakers as of 2026-08-18. The grid was built for exactly two (2 cols capped at
+/* Nine speakers as of 2026-08-19. The grid was built for exactly two (2 cols capped at
    36rem); left alone, five would stack 2+2+1 inside a narrow column with an orphan on
-   its own row. Column count is set per band so the row always fills: 4 across on
-   desktop (4+4), 3 on tablet, 2 on mobile. All rem, so the whole block still scales
+   its own row. Column count is set per band so the row always fills: 5 across on
+   desktop so nine land as 5+4 rather than trailing a single card onto a third
+   row, 3 on tablet, 2 on mobile. All rem, so the whole block still scales
    with the viewport as one unit. */
-.speakers{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.6rem; margin-top:2.8rem; max-width:62rem; margin-inline:auto; }
+.speakers{ display:grid; grid-template-columns:repeat(5,1fr); gap:1.6rem; margin-top:2.8rem; max-width:74rem; margin-inline:auto; }
 @media (min-width:761px) and (max-width:1024px){ .speakers{ grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:48rem; } }
 @media (max-width:760px){ .speakers{ grid-template-columns:repeat(2,1fr); gap:1.4rem; max-width:none; } }
 .speaker-photo{ aspect-ratio:3/4; background:var(--cream); border:1px solid var(--line-strong); border-radius:var(--radius); margin-bottom:1rem; }
