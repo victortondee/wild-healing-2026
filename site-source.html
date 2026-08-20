@@ -4741,6 +4741,23 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         border-radius:var(--radius); border:1px solid var(--line-strong); background:var(--cream); }
       #wip-grove4-landmarkmap .wip-grove4-stage img.wip-grove4-base{ width:100%; height:100%;
         object-fit:cover; display:block; }
+      /* One transformable layer holds the map and its pins, so pinching moves both
+         together and a pin never drifts off the mark it belongs to. */
+      #wip-grove4-landmarkmap .wip-grove4-zoom{ position:absolute; inset:0;
+        transform-origin:0 0; will-change:transform; }
+      #wip-grove4-landmarkmap .wip-grove4-zoom.is-animating{ transition:transform .22s var(--ease); }
+      /* Only claim the gesture once zoomed in; at rest a finger swipe still scrolls the
+         page, which is what someone expects when a map is just part of a longer page. */
+      #wip-grove4-landmarkmap .wip-grove4-frame.is-zoomed{ touch-action:none; cursor:grab; }
+      #wip-grove4-landmarkmap .wip-grove4-reset{ position:absolute; z-index:30; right:0.6rem; bottom:0.6rem;
+        background:var(--cream); border:1px solid var(--line-strong); border-radius:2rem;
+        font-family:var(--ff-ui); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase;
+        padding:0.42rem 0.9rem; cursor:pointer; color:var(--ink); box-shadow:0 0.5rem 1.4rem -0.7rem rgba(20,19,16,.6); }
+      #wip-grove4-landmarkmap .wip-grove4-reset[hidden]{ display:none; }
+      #wip-grove4-landmarkmap .wip-grove4-zoomhint{ position:absolute; z-index:30; left:0.6rem; bottom:0.6rem;
+        font-family:var(--ff-ui); font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase;
+        color:var(--cream); background:rgba(12,16,13,0.55); border-radius:2rem; padding:0.35rem 0.8rem; }
+      @media (min-width:761px){ #wip-grove4-landmarkmap .wip-grove4-zoomhint{ display:none; } }
 
       /* The pins are already drawn into the map artwork, so a hotspot is a transparent
          button sitting exactly on top of one — no second set of markers to keep aligned. */
@@ -4771,7 +4788,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         border-bottom:1px solid var(--line-strong); }
       #wip-grove4-landmarkmap .wip-grove4-pop--right::after{ left:-0.34rem; top:var(--wip-grove4-arrow,50%); margin-top:-0.31rem; transform:rotate(45deg); }
       #wip-grove4-landmarkmap .wip-grove4-pop--left::after{ right:-0.34rem; top:var(--wip-grove4-arrow,50%); margin-top:-0.31rem; transform:rotate(225deg); }
-      #wip-grove4-landmarkmap .wip-grove4-pop--below::after{ top:-0.34rem; left:var(--wip-grove4-arrow,50%); margin-left:-0.31rem; transform:rotate(135deg); }
+      #wip-grove4-landmarkmap .wip-grove4-pop--below::after{ top:-0.34rem; left:1rem; transform:rotate(135deg); }
       #wip-grove4-landmarkmap .wip-grove4-pop--above::after{ bottom:-0.34rem; left:var(--wip-grove4-arrow,50%); margin-left:-0.31rem; transform:rotate(315deg); }
       #wip-grove4-landmarkmap .wip-grove4-popico{ width:2.6rem; height:2.6rem; margin:0 0 0.6rem;
         display:flex; align-items:center; justify-content:center; background:#fff;
@@ -4833,12 +4850,14 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <a class="wip-grove4-skip" href="#wip-grove4-after">Skip the map pins</a>
 
       <div class="wip-grove4-stage">
-        <div class="wip-grove4-frame"><picture>
+        <div class="wip-grove4-frame">
+          <div class="wip-grove4-zoom">
+            <picture>
           <source srcset="images/land/map.webp" type="image/webp">
           <img class="wip-grove4-base" src="images/land/map.jpg"
                alt="Aerial plan of the Restore Forward land showing the named spaces."
                width="1080" height="1080" loading="lazy">
-        </picture></div>
+        </picture>
         <button type="button" class="wip-grove4-pin" style="left:40.0%; top:8.889%; width:4.444%;" data-space="legacy-forest-north" data-cx="40.0" data-cy="8.889" aria-label="Legacy Forest North"><span class="wip-grove4-ring"></span></button>
         <button type="button" class="wip-grove4-pin" style="left:65.741%; top:22.037%; width:7.408%;" data-space="feminist-sanctuary-cabins" data-cx="65.741" data-cy="22.037" aria-label="Feminist Sanctuary Cabins"><span class="wip-grove4-ring"></span></button>
         <button type="button" class="wip-grove4-pin" style="left:19.444%; top:32.593%; width:5.926%;" data-space="sacred-heavens" data-cx="19.444" data-cy="32.593" aria-label="Sacred Heavens"><span class="wip-grove4-ring"></span></button>
@@ -4863,13 +4882,17 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <button type="button" class="wip-grove4-pin" style="left:49.63%; top:88.148%; width:5.186%;" data-space="library" data-cx="49.63" data-cy="88.148" aria-label="Library"><span class="wip-grove4-ring"></span></button>
         <button type="button" class="wip-grove4-pin" style="left:31.852%; top:91.296%; width:4.26%;" data-space="orchard-muses" data-cx="31.852" data-cy="91.296" aria-label="Orchard of Muses"><span class="wip-grove4-ring"></span></button>
         <button type="button" class="wip-grove4-pin" style="left:71.111%; top:91.481%; width:8.148%;" data-space="matriarchal-village" data-cx="71.111" data-cy="91.481" aria-label="Matriarchal Village"><span class="wip-grove4-ring"></span></button>
-      </div>
+          </div>
+        </div>
+        <button type="button" class="wip-grove4-reset" hidden>Reset</button>
+        <span class="wip-grove4-zoomhint" aria-hidden="true">Pinch to zoom</span>
 
         <div class="wip-grove4-pop" id="wip-grove4-pop" role="dialog"
              aria-labelledby="wip-grove4-pop-t" hidden>
           <button type="button" class="wip-grove4-x" aria-label="Close">&times;</button>
           <div class="wip-grove4-pop-body"></div>
         </div>
+      </div>
 
       <p class="wip-grove4-sr" role="status" aria-live="polite"></p>
 
@@ -4915,36 +4938,20 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       var sr    = root.querySelector(".wip-grove4-sr");
       var open  = null;
 
-      /* Anchor the bubble by its EDGE, never its centre, so the pin it belongs to stays
-         visible next to it. Percentages of the stage are converted to rem-free offsets
-         via calc, so the whole thing still scales with the band. */
+      /* The bubble always opens down-and-right of its pin — one fixed direction, never
+         flipped, never nudged back inside. Any rule that repositions to stay in bounds can
+         end up putting the bubble over the very pin you clicked, which was the whole
+         complaint; letting it spill past the map instead is the cheaper trade. */
       function place(pin){
         var cx = parseFloat(pin.dataset.cx), cy = parseFloat(pin.dataset.cy);
-        var rad = parseFloat(pin.style.width) / 2;        /* pin radius, % of stage */
-        var gap = 1.4;                                     /* breathing room, % of stage */
-        var side = cx > 55 ? "left" : "right";
-        pop.style.left = pop.style.right = pop.style.top = pop.style.bottom = "auto";
-
-        if (side === "right") pop.style.left  = (cx + rad + gap) + "%";
-        else                  pop.style.right = (100 - cx + rad + gap) + "%";
-
-        /* vertically centre on the pin, then keep the whole bubble on screen */
-        pop.style.top = cy + "%";
-        pop.style.transform = "translateY(-50%)";
-        pop.className = "wip-grove4-pop wip-grove4-pop--" + side;
-
-        /* nudge back inside if centring would push it off the top or bottom, and move the
-           arrow to keep pointing at the pin */
-        var sr_ = stage.getBoundingClientRect(), pr = pop.getBoundingClientRect();
-        var shift = 0;
-        if (pr.top < sr_.top)          shift = sr_.top - pr.top + 8;
-        else if (pr.bottom > sr_.bottom) shift = sr_.bottom - pr.bottom - 8;
-        if (shift) {
-          pop.style.transform = "translateY(calc(-50% + " + shift + "px))";
-          pop.style.setProperty("--wip-grove4-arrow", "calc(50% - " + shift + "px)");
-        } else {
-          pop.style.removeProperty("--wip-grove4-arrow");
-        }
+        var rad = parseFloat(pin.style.width) / 2;
+        var gap = 0.6;
+        pop.style.right = pop.style.bottom = "auto";
+        pop.style.left = (cx + rad * 0.7 + gap) + "%";
+        pop.style.top  = (cy + rad * 0.7 + gap) + "%";
+        pop.style.transform = "none";
+        pop.className = "wip-grove4-pop wip-grove4-pop--below";
+        pop.style.removeProperty("--wip-grove4-arrow");
       }
 
       function show(id, pin){
@@ -4997,6 +5004,83 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         if (open && !e.target.closest("#wip-grove4-landmarkmap")) close();
       });
       addEventListener("resize", function(){ if (open) close(); });
+
+      /* ---- pinch-zoom and drag, phones only -------------------------------------
+         Desktop keeps a still map: the anchored bubble positions itself from measured
+         geometry, and a transformed parent would silently throw that maths off. */
+      var frame = root.querySelector(".wip-grove4-frame");
+      var zoom  = root.querySelector(".wip-grove4-zoom");
+      var reset = root.querySelector(".wip-grove4-reset");
+      var sc = 1, tx = 0, ty = 0, MIN = 1, MAX = 4;
+      var st = null, moved = false, lastTap = 0;
+
+      function apply(anim){
+        zoom.classList.toggle("is-animating", !!anim);
+        zoom.style.transform = "translate(" + tx + "px," + ty + "px) scale(" + sc + ")";
+        frame.classList.toggle("is-zoomed", sc > 1.01);
+        reset.hidden = sc <= 1.01;
+        if (anim) setTimeout(function(){ zoom.classList.remove("is-animating"); }, 240);
+      }
+      function clamp(){
+        /* never let the map pull away from its own frame */
+        var w = frame.clientWidth, h = frame.clientHeight;
+        var maxX = w * (sc - 1), maxY = h * (sc - 1);
+        tx = Math.min(0, Math.max(-maxX, tx));
+        ty = Math.min(0, Math.max(-maxY, ty));
+      }
+      function zoomAt(px, py, next){
+        next = Math.min(MAX, Math.max(MIN, next));
+        var k = next / sc;
+        tx = px - k * (px - tx);      /* keep the point under the fingers fixed */
+        ty = py - k * (py - ty);
+        sc = next; clamp();
+      }
+      function dist(t){ return Math.hypot(t[0].clientX-t[1].clientX, t[0].clientY-t[1].clientY); }
+      function mid(t, r){ return [ (t[0].clientX+t[1].clientX)/2 - r.left,
+                                   (t[0].clientY+t[1].clientY)/2 - r.top ]; }
+
+      frame.addEventListener("touchstart", function(e){
+        if (!matchMedia("(max-width:760px)").matches) return;
+        moved = false;
+        var r = frame.getBoundingClientRect();
+        if (e.touches.length === 2){
+          st = {d: dist(e.touches), sc: sc, m: mid(e.touches, r)};
+        } else if (e.touches.length === 1){
+          st = {x: e.touches[0].clientX, y: e.touches[0].clientY, tx: tx, ty: ty};
+          var now = Date.now();
+          if (now - lastTap < 300){        /* double-tap toggles between fit and 2x */
+            var lx = e.touches[0].clientX - r.left, ly = e.touches[0].clientY - r.top;
+            zoomAt(lx, ly, sc > 1.01 ? 1 : 2.2);
+            if (sc <= 1.01){ tx = ty = 0; }
+            apply(true); moved = true;
+          }
+          lastTap = now;
+        }
+      }, {passive:true});
+
+      frame.addEventListener("touchmove", function(e){
+        if (!st || !matchMedia("(max-width:760px)").matches) return;
+        var r = frame.getBoundingClientRect();
+        if (e.touches.length === 2 && st.d){
+          e.preventDefault(); moved = true;
+          var m = mid(e.touches, r);
+          sc = st.sc; zoomAt(m[0], m[1], st.sc * (dist(e.touches) / st.d));
+          apply(false);
+        } else if (e.touches.length === 1 && sc > 1.01 && st.tx !== undefined){
+          e.preventDefault();
+          var dx = e.touches[0].clientX - st.x, dy = e.touches[0].clientY - st.y;
+          if (Math.hypot(dx, dy) > 6) moved = true;
+          tx = st.tx + dx; ty = st.ty + dy; clamp(); apply(false);
+        }
+      }, {passive:false});
+
+      frame.addEventListener("touchend", function(){ st = null; }, {passive:true});
+      /* a drag that ended over a pin should not also open it */
+      frame.addEventListener("click", function(e){ if (moved){ e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+
+      reset.addEventListener("click", function(e){
+        e.stopPropagation(); sc = 1; tx = ty = 0; apply(true);
+      });
     })();
     </script>
   </section>
