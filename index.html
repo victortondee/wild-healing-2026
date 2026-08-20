@@ -4832,7 +4832,21 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         #wip-grove4-landmarkmap .wip-grove4-list{ grid-template-columns:repeat(2,1fr); } }
       @media (max-width:760px){
         #wip-grove4-landmarkmap .wip-grove4-list{ grid-template-columns:1fr; }
-        #wip-grove4-landmarkmap .wip-grove4-stage{ max-width:none; }
+        /* Full-bleed: the map is the point of the section and every rem of width buys
+           a bigger pin. Escaping the wrap's padding gains about 45px here. */
+        #wip-grove4-landmarkmap .wip-grove4-stage{ max-width:none;
+          margin-left:calc(var(--wrap-pad, 1.5rem) * -1); margin-right:calc(var(--wrap-pad, 1.5rem) * -1);
+          width:auto; }
+        #wip-grove4-landmarkmap .wip-grove4-frame{ border-radius:0; border-left:0; border-right:0; }
+        /* A drawn pin is 14-27px across — well under a finger. An invisible square keeps
+           the artwork the size it is while giving each pin a proper target. */
+        #wip-grove4-landmarkmap .wip-grove4-pin::before{ content:""; position:absolute;
+          left:50%; top:50%; transform:translate(-50%,-50%);
+          width:2.6rem; height:2.6rem; min-width:100%; min-height:100%; border-radius:50%; }
+        #wip-grove4-landmarkmap .wip-grove4-zoomhint{ font-size:0.52rem; padding:0.26rem 0.6rem;
+          left:0.4rem; bottom:0.4rem; opacity:0.85; transition:opacity .3s var(--ease); }
+        #wip-grove4-landmarkmap .wip-grove4-frame.is-zoomed ~ .wip-grove4-zoomhint{ opacity:0; }
+        #wip-grove4-landmarkmap .wip-grove4-reset{ font-size:0.6rem; padding:0.36rem 0.8rem; }
         /* Below the map, not over it: at phone width an anchored bubble is wider than the
            gap between pins, so it would always hide something. */
         #wip-grove4-landmarkmap .wip-grove4-pop{ position:static; width:auto; margin-top:0.8rem; }
@@ -4844,11 +4858,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <h3>The land, space by space</h3>
         <p>Every named place on the Restore Forward land. Tap a pin on the map, or pick from
            the list underneath.</p>
-        <p class="wip-grove4-note"><strong>Internal draft.</strong> Names here come from the
-           landmark artwork, not the dedication legend &mdash; that list carries donor names we
-           have not confirmed are public, so none of them appear in this page or its source.
-           Four pins have no artwork yet and read as &ldquo;Space to be named&rdquo;. Pricing and
-           availability slot in without a rebuild once Farah confirms them.</p>
       </div>
 
       <a class="wip-grove4-skip" href="#wip-grove4-after">Skip the map pins</a>
@@ -4928,6 +4937,12 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <li><button type="button" class="wip-grove4-item" data-space="matriarchal-village"><span class="wip-grove4-ico"><img src="images/land/matriarchal-village.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Matriarchal Village</span></span></button></li>
       </ul>
       <span id="wip-grove4-after"></span>
+      <p class="wip-grove4-note"><strong>Internal draft.</strong> Names here come from the
+         landmark artwork, not the dedication legend &mdash; that list carries donor names we
+         have not confirmed are public, so none of them appear in this page or its source.
+         Four pins have no artwork yet and read as &ldquo;Space to be named&rdquo;. Pricing and
+         availability slot in without a rebuild once Farah confirms them.</p>
+
     </div>
 
     <script>
