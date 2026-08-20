@@ -4845,7 +4845,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         #wip-grove4-landmarkmap .wip-grove4-reset{ font-size:0.6rem; padding:0.36rem 0.8rem; }
         /* Below the map, not over it: at phone width an anchored bubble is wider than the
            gap between pins, so it would always hide something. */
-        #wip-grove4-landmarkmap .wip-grove4-pop{ position:static; width:auto;
+        /* relative, not static: it still flows under the map, but the close button has a
+           positioning context again — as static it anchored to the wrapper and floated
+           over the top-right of the map. */
+        #wip-grove4-landmarkmap .wip-grove4-pop{ position:relative; width:auto;
           margin:0.9rem var(--wrap-pad, 1.5rem) 0; }
         #wip-grove4-landmarkmap .wip-grove4-pop::after{ display:none; } }
     </style>
