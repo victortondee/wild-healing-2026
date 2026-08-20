@@ -4788,7 +4788,11 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         border-bottom:1px solid var(--line-strong); }
       #wip-grove4-landmarkmap .wip-grove4-pop--right::after{ left:-0.34rem; top:var(--wip-grove4-arrow,50%); margin-top:-0.31rem; transform:rotate(45deg); }
       #wip-grove4-landmarkmap .wip-grove4-pop--left::after{ right:-0.34rem; top:var(--wip-grove4-arrow,50%); margin-top:-0.31rem; transform:rotate(225deg); }
-      #wip-grove4-landmarkmap .wip-grove4-pop--below::after{ top:-0.34rem; left:1rem; transform:rotate(135deg); }
+      /* The arrow is the bubble's own top-left corner pushed out along the diagonal, so it
+         points back up-left at the pin. An unrotated square already has its vertices on the
+         diagonals — rotating one by 45deg would aim it straight up, not at the pin. */
+      #wip-grove4-landmarkmap .wip-grove4-pop--below::after{ top:-0.37rem; left:-0.37rem;
+        border-top:1px solid var(--line-strong); border-bottom:0; transform:none; }
       #wip-grove4-landmarkmap .wip-grove4-pop--above::after{ bottom:-0.34rem; left:var(--wip-grove4-arrow,50%); margin-left:-0.31rem; transform:rotate(315deg); }
       #wip-grove4-landmarkmap .wip-grove4-popico{ width:2.6rem; height:2.6rem; margin:0 0 0.6rem;
         display:flex; align-items:center; justify-content:center; background:#fff;
