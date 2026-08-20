@@ -4732,9 +4732,13 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       #wip-grove4-landmarkmap .wip-grove4-note{ font-size:0.82rem; color:var(--sage-dim);
         border-left:2px solid var(--line-strong); padding-left:0.8rem; margin-top:1rem; }
 
+      /* The stage deliberately does NOT clip: the popover is allowed to spill past the
+         map edge onto the page, which is what stops edge pins opening a cramped bubble.
+         The rounded corners live on an inner frame around the image instead. */
       #wip-grove4-landmarkmap .wip-grove4-stage{ position:relative; width:100%; max-width:52rem;
-        margin:2rem auto 0; aspect-ratio:1/1; border-radius:var(--radius); overflow:hidden;
-        border:1px solid var(--line-strong); background:var(--cream); }
+        margin:2rem auto 0; aspect-ratio:1/1; }
+      #wip-grove4-landmarkmap .wip-grove4-frame{ position:absolute; inset:0; overflow:hidden;
+        border-radius:var(--radius); border:1px solid var(--line-strong); background:var(--cream); }
       #wip-grove4-landmarkmap .wip-grove4-stage img.wip-grove4-base{ width:100%; height:100%;
         object-fit:cover; display:block; }
 
@@ -4752,32 +4756,36 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         box-shadow:0 0 0 0.22rem #994E33, 0 0 2.2rem 0.5rem rgba(153,78,51,0.35); }
       #wip-grove4-landmarkmap .wip-grove4-pin--tbd .wip-grove4-ring{ box-shadow:0 0 0 0.14rem rgba(110,102,83,0.55); }
 
-      /* The description covers the page rather than sitting inside the map. Anchored to
-         a pin it was clipped by the map's own overflow and, on a phone, landed under the
-         thumb that had just tapped it. A dimmed overlay also makes this read as a proper
-         "tell me about this space" moment, which is what it is for. */
-      #wip-grove4-landmarkmap .wip-grove4-scrim{ position:fixed; inset:0; z-index:80;
-        background:rgba(12,16,13,0.62); display:flex; align-items:center; justify-content:center;
-        padding:1.5rem; opacity:0; transition:opacity .22s var(--ease); }
-      #wip-grove4-landmarkmap .wip-grove4-scrim[hidden]{ display:none; }
-      #wip-grove4-landmarkmap .wip-grove4-scrim.is-open{ opacity:1; }
-      #wip-grove4-landmarkmap .wip-grove4-pop{ position:relative; width:100%; max-width:26rem;
+      /* Anchored to the pin, but anchored by its EDGE rather than its centre: the pin
+         stays visible beside the bubble instead of underneath it, which was the one thing
+         wrong with the first version. Placement comes from the pin's own percentage
+         coordinates, so it is right on first paint without measuring anything. */
+      #wip-grove4-landmarkmap .wip-grove4-pop{ position:absolute; z-index:40; width:17rem;
         background:var(--cream); border:1px solid var(--line-strong); border-radius:var(--radius);
-        box-shadow:0 2rem 5rem -1.5rem rgba(8,10,8,0.7); padding:2rem 2rem 1.8rem; text-align:center;
-        transform:translateY(0.6rem) scale(.985); transition:transform .22s var(--ease); }
-      #wip-grove4-landmarkmap .wip-grove4-scrim.is-open .wip-grove4-pop{ transform:none; }
-      #wip-grove4-landmarkmap .wip-grove4-popico{ width:5rem; height:5rem; margin:0 auto 1rem;
+        box-shadow:0 1.4rem 3.4rem -1.2rem rgba(20,19,16,0.6); padding:1rem 1.1rem 1.1rem;
+        opacity:0; transition:opacity .18s var(--ease); }
+      #wip-grove4-landmarkmap .wip-grove4-pop[hidden]{ display:none; }
+      #wip-grove4-landmarkmap .wip-grove4-pop.is-open{ opacity:1; }
+      #wip-grove4-landmarkmap .wip-grove4-pop::after{ content:""; position:absolute; width:0.62rem;
+        height:0.62rem; background:var(--cream); border-left:1px solid var(--line-strong);
+        border-bottom:1px solid var(--line-strong); }
+      #wip-grove4-landmarkmap .wip-grove4-pop--right::after{ left:-0.34rem; top:var(--wip-grove4-arrow,50%); margin-top:-0.31rem; transform:rotate(45deg); }
+      #wip-grove4-landmarkmap .wip-grove4-pop--left::after{ right:-0.34rem; top:var(--wip-grove4-arrow,50%); margin-top:-0.31rem; transform:rotate(225deg); }
+      #wip-grove4-landmarkmap .wip-grove4-pop--below::after{ top:-0.34rem; left:var(--wip-grove4-arrow,50%); margin-left:-0.31rem; transform:rotate(135deg); }
+      #wip-grove4-landmarkmap .wip-grove4-pop--above::after{ bottom:-0.34rem; left:var(--wip-grove4-arrow,50%); margin-left:-0.31rem; transform:rotate(315deg); }
+      #wip-grove4-landmarkmap .wip-grove4-popico{ width:2.6rem; height:2.6rem; margin:0 0 0.6rem;
         display:flex; align-items:center; justify-content:center; background:#fff;
         border:1px solid var(--line); border-radius:50%; overflow:hidden; }
       #wip-grove4-landmarkmap .wip-grove4-popico img{ width:78%; height:78%; object-fit:contain; }
-      #wip-grove4-landmarkmap .wip-grove4-pop h4{ margin:0 0 0.5rem; font-size:1.5rem; line-height:1.2; }
-      #wip-grove4-landmarkmap .wip-grove4-pop p{ margin:0; font-size:0.95rem; color:var(--ink); }
-      #wip-grove4-landmarkmap .wip-grove4-x{ position:absolute; top:0.5rem; right:0.7rem;
-        background:none; border:0; font-size:1.6rem; line-height:1; color:var(--sage-dim);
-        cursor:pointer; padding:0.2rem 0.4rem; }
+      #wip-grove4-landmarkmap .wip-grove4-pop h4{ margin:0 0 0.3rem; font-size:1.1rem; line-height:1.2; padding-right:1.1rem; }
+      #wip-grove4-landmarkmap .wip-grove4-pop p{ margin:0; font-size:0.85rem; color:var(--ink); }
+      #wip-grove4-landmarkmap .wip-grove4-x{ position:absolute; top:0.3rem; right:0.45rem;
+        background:none; border:0; font-size:1.3rem; line-height:1; color:var(--sage-dim);
+        cursor:pointer; padding:0.15rem 0.3rem; }
       #wip-grove4-landmarkmap .wip-grove4-x:hover{ color:var(--ink); }
       #wip-grove4-landmarkmap .wip-grove4-hint{ color:var(--sage-dim); font-style:italic; }
-      #wip-grove4-landmarkmap .wip-grove4-cta{ margin-top:1.2rem; }
+      #wip-grove4-landmarkmap .wip-grove4-cta{ margin-top:0.85rem; }
+      #wip-grove4-landmarkmap .wip-grove4-cta .btn{ font-size:0.7rem; padding:0 1rem; height:2.1rem; line-height:2.1rem; }
       #wip-grove4-landmarkmap .wip-grove4-sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
 
       /* A list beside the map: the pins cluster tightly round the pond and are too small
@@ -4803,7 +4811,11 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         #wip-grove4-landmarkmap .wip-grove4-list{ grid-template-columns:repeat(2,1fr); } }
       @media (max-width:760px){
         #wip-grove4-landmarkmap .wip-grove4-list{ grid-template-columns:1fr; }
-        #wip-grove4-landmarkmap .wip-grove4-stage{ max-width:none; } }
+        #wip-grove4-landmarkmap .wip-grove4-stage{ max-width:none; }
+        /* Below the map, not over it: at phone width an anchored bubble is wider than the
+           gap between pins, so it would always hide something. */
+        #wip-grove4-landmarkmap .wip-grove4-pop{ position:static; width:auto; margin-top:0.8rem; }
+        #wip-grove4-landmarkmap .wip-grove4-pop::after{ display:none; } }
     </style>
 
     <div class="wrap">
@@ -4821,12 +4833,12 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <a class="wip-grove4-skip" href="#wip-grove4-after">Skip the map pins</a>
 
       <div class="wip-grove4-stage">
-        <picture>
+        <div class="wip-grove4-frame"><picture>
           <source srcset="images/land/map.webp" type="image/webp">
           <img class="wip-grove4-base" src="images/land/map.jpg"
                alt="Aerial plan of the Restore Forward land showing the named spaces."
                width="1080" height="1080" loading="lazy">
-        </picture>
+        </picture></div>
         <button type="button" class="wip-grove4-pin" style="left:40.0%; top:8.889%; width:4.444%;" data-space="legacy-forest-north" data-cx="40.0" data-cy="8.889" aria-label="Legacy Forest North"><span class="wip-grove4-ring"></span></button>
         <button type="button" class="wip-grove4-pin" style="left:65.741%; top:22.037%; width:7.408%;" data-space="feminist-sanctuary-cabins" data-cx="65.741" data-cy="22.037" aria-label="Feminist Sanctuary Cabins"><span class="wip-grove4-ring"></span></button>
         <button type="button" class="wip-grove4-pin" style="left:19.444%; top:32.593%; width:5.926%;" data-space="sacred-heavens" data-cx="19.444" data-cy="32.593" aria-label="Sacred Heavens"><span class="wip-grove4-ring"></span></button>
@@ -4853,12 +4865,11 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <button type="button" class="wip-grove4-pin" style="left:71.111%; top:91.481%; width:8.148%;" data-space="matriarchal-village" data-cx="71.111" data-cy="91.481" aria-label="Matriarchal Village"><span class="wip-grove4-ring"></span></button>
       </div>
 
-      <div class="wip-grove4-scrim" id="wip-grove4-scrim" hidden>
-        <div class="wip-grove4-pop" role="dialog" aria-modal="true" aria-labelledby="wip-grove4-pop-t">
+        <div class="wip-grove4-pop" id="wip-grove4-pop" role="dialog"
+             aria-labelledby="wip-grove4-pop-t" hidden>
           <button type="button" class="wip-grove4-x" aria-label="Close">&times;</button>
           <div class="wip-grove4-pop-body"></div>
         </div>
-      </div>
 
       <p class="wip-grove4-sr" role="status" aria-live="polite"></p>
 
@@ -4898,13 +4909,45 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       if (!root) return;
       var SPACES = {"legacy-forest-north": {"name": "Legacy Forest North", "honoree": null, "unnamed": false}, "feminist-sanctuary-cabins": {"name": "Feminist Sanctuary Cabins", "honoree": null, "unnamed": false}, "sacred-heavens": {"name": "Sacred Heavens", "honoree": null, "unnamed": false}, "freedom-trail": {"name": "Freedom Trail for Harriet Tubman", "honoree": null, "unnamed": false}, "legacy-forest-east": {"name": "Legacy Forest East", "honoree": null, "unnamed": false}, "the-v-temple": {"name": "The V Temple", "honoree": null, "unnamed": false}, "sacred-sites-of-concience": {"name": "Sacred Sites of Conscience", "honoree": null, "unnamed": false}, "visual-arts-center": {"name": "Visual Arts Center", "honoree": null, "unnamed": false}, "unnamed-9": {"name": "Space to be named", "honoree": null, "unnamed": true}, "unnamed-10": {"name": "Space to be named", "honoree": null, "unnamed": true}, "running-through-the-trees": {"name": "Running Through the Trees", "honoree": null, "unnamed": false}, "birth-center": {"name": "Birth Center", "honoree": null, "unnamed": false}, "unnamed-13": {"name": "Space to be named", "honoree": null, "unnamed": true}, "legacy-forest-south": {"name": "Legacy Forest South", "honoree": "Ntozake Shange", "unnamed": false}, "healing-center": {"name": "Healing Center", "honoree": null, "unnamed": false}, "legacy-theater": {"name": "Legacy Theater", "honoree": "Abigail Disney", "unnamed": false}, "peace-garden": {"name": "Peace Garden", "honoree": null, "unnamed": false}, "center-for-earth-and-technology": {"name": "Center for Earth &amp; Technology", "honoree": null, "unnamed": false}, "reflecting-pools": {"name": "Reflecting Pools", "honoree": null, "unnamed": false}, "unnamed-20": {"name": "Space to be named", "honoree": null, "unnamed": true}, "dreamers-meeting-point": {"name": "Dreamers&rsquo; Meeting Point", "honoree": null, "unnamed": false}, "library": {"name": "Library", "honoree": null, "unnamed": false}, "orchard-muses": {"name": "Orchard of Muses", "honoree": null, "unnamed": false}, "matriarchal-village": {"name": "Matriarchal Village", "honoree": null, "unnamed": false}};
       var ICONS = {"legacy-forest-north": "images/land/legacy-forest-north.jpg", "feminist-sanctuary-cabins": "images/land/feminist-sanctuary-cabins.jpg", "sacred-heavens": "images/land/sacred-heavens.jpg", "freedom-trail": "images/land/freedom-trail.jpg", "legacy-forest-east": "images/land/legacy-forest-east.jpg", "the-v-temple": "images/land/the-v-temple.jpg", "sacred-sites-of-concience": "images/land/sacred-sites-of-concience.jpg", "visual-arts-center": "images/land/visual-arts-center.jpg", "running-through-the-trees": "images/land/running-through-the-trees.jpg", "birth-center": "images/land/birth-center.jpg", "legacy-forest-south": "images/land/legacy-forest-south.jpg", "healing-center": "images/land/healing-center.jpg", "legacy-theater": "images/land/legacy-theater.jpg", "peace-garden": "images/land/peace-garden.jpg", "center-for-earth-and-technology": "images/land/center-for-earth-and-technology.jpg", "reflecting-pools": "images/land/reflecting-pools.jpg", "dreamers-meeting-point": "images/land/dreamers-meeting-point.jpg", "library": "images/land/library.jpg", "orchard-muses": "images/land/orchard-muses.jpg", "matriarchal-village": "images/land/matriarchal-village.jpg"};
-      var scrim = root.querySelector("#wip-grove4-scrim");
-      var pop   = scrim.querySelector(".wip-grove4-pop");
-      var body  = scrim.querySelector(".wip-grove4-pop-body");
+      var stage = root.querySelector(".wip-grove4-stage");
+      var pop   = root.querySelector("#wip-grove4-pop");
+      var body  = pop.querySelector(".wip-grove4-pop-body");
       var sr    = root.querySelector(".wip-grove4-sr");
-      var open  = null, lastFocus = null;
+      var open  = null;
 
-      function show(id){
+      /* Anchor the bubble by its EDGE, never its centre, so the pin it belongs to stays
+         visible next to it. Percentages of the stage are converted to rem-free offsets
+         via calc, so the whole thing still scales with the band. */
+      function place(pin){
+        var cx = parseFloat(pin.dataset.cx), cy = parseFloat(pin.dataset.cy);
+        var rad = parseFloat(pin.style.width) / 2;        /* pin radius, % of stage */
+        var gap = 1.4;                                     /* breathing room, % of stage */
+        var side = cx > 55 ? "left" : "right";
+        pop.style.left = pop.style.right = pop.style.top = pop.style.bottom = "auto";
+
+        if (side === "right") pop.style.left  = (cx + rad + gap) + "%";
+        else                  pop.style.right = (100 - cx + rad + gap) + "%";
+
+        /* vertically centre on the pin, then keep the whole bubble on screen */
+        pop.style.top = cy + "%";
+        pop.style.transform = "translateY(-50%)";
+        pop.className = "wip-grove4-pop wip-grove4-pop--" + side;
+
+        /* nudge back inside if centring would push it off the top or bottom, and move the
+           arrow to keep pointing at the pin */
+        var sr_ = stage.getBoundingClientRect(), pr = pop.getBoundingClientRect();
+        var shift = 0;
+        if (pr.top < sr_.top)          shift = sr_.top - pr.top + 8;
+        else if (pr.bottom > sr_.bottom) shift = sr_.bottom - pr.bottom - 8;
+        if (shift) {
+          pop.style.transform = "translateY(calc(-50% + " + shift + "px))";
+          pop.style.setProperty("--wip-grove4-arrow", "calc(50% - " + shift + "px)");
+        } else {
+          pop.style.removeProperty("--wip-grove4-arrow");
+        }
+      }
+
+      function show(id, pin){
         var sp = SPACES[id];
         if (!sp) return;
         root.querySelectorAll("[data-space]").forEach(function(el){
@@ -4918,48 +4961,42 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         else if (sp.unnamed) bits.push('<p class="wip-grove4-hint">On the plan, not yet named.</p>');
         else                 bits.push('<p class="wip-grove4-hint">Not yet dedicated.</p>');
         /* No price on purpose: a mail link is useful today and promises nothing about cost
-           or availability, both of which are still open questions for the client. */
-        bits.push('<p class="wip-grove4-cta"><a class="btn btn-primary" href="mailto:info@restoreny.org' +
+           or availability, both still open questions for the client. */
+        bits.push('<p class="wip-grove4-cta"><a class="btn btn-ghost" href="mailto:info@restoreny.org' +
                   "?subject=" + encodeURIComponent("About " + sp.name) + '">Ask about this space</a></p>');
         body.innerHTML = bits.join("");
-
-        lastFocus = document.activeElement;
-        scrim.hidden = false;
-        requestAnimationFrame(function(){ scrim.classList.add("is-open"); });
+        pop.hidden = false;
+        if (pin && window.matchMedia("(min-width:761px)").matches) place(pin);
+        requestAnimationFrame(function(){ pop.classList.add("is-open"); });
         open = id;
-        sr.textContent = sp.name + " opened.";
-        var f = pop.querySelector(".wip-grove4-x");
-        if (f) f.focus();
+        sr.textContent = sp.name + " selected.";
       }
 
       function close(){
         if (!open) return;
-        scrim.classList.remove("is-open");
+        pop.classList.remove("is-open");
         var id = open; open = null;
         root.querySelectorAll("[data-space]").forEach(function(el){ el.setAttribute("aria-current","false"); });
-        setTimeout(function(){ scrim.hidden = true; }, 220);
-        var back = lastFocus || root.querySelector('.wip-grove4-pin[data-space="' + id + '"]');
-        if (back && back.focus) back.focus();
+        setTimeout(function(){ if (!open) pop.hidden = true; }, 180);
+        var back = root.querySelector('.wip-grove4-pin[data-space="' + id + '"]');
+        if (back) back.focus();
       }
 
       root.addEventListener("click", function(e){
         if (e.target.closest(".wip-grove4-x")) { close(); return; }
-        if (e.target === scrim) { close(); return; }        /* click the dimmed area */
         var t = e.target.closest("[data-space]");
-        if (t) show(t.dataset.space);
+        if (!t) return;
+        if (t.dataset.space === open) { close(); return; }
+        var pin = t.classList.contains("wip-grove4-pin") ? t
+                : root.querySelector('.wip-grove4-pin[data-space="' + t.dataset.space + '"]');
+        show(t.dataset.space, pin);
       });
 
-      document.addEventListener("keydown", function(e){
-        if (!open) return;
-        if (e.key === "Escape") { close(); return; }
-        if (e.key === "Tab") {                              /* keep focus inside the dialog */
-          var f = pop.querySelectorAll("button, a[href]");
-          if (!f.length) return;
-          var first = f[0], last = f[f.length-1];
-          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-        }
+      document.addEventListener("keydown", function(e){ if (e.key === "Escape") close(); });
+      document.addEventListener("click", function(e){
+        if (open && !e.target.closest("#wip-grove4-landmarkmap")) close();
       });
+      addEventListener("resize", function(){ if (open) close(); });
     })();
     </script>
   </section>
