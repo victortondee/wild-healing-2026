@@ -496,7 +496,7 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
   opacity:1; transition:opacity .7s var(--ease), visibility .7s var(--ease); }
 .preloader.done{ opacity:0; visibility:hidden; pointer-events:none; }
 .pl-mark{ display:flex; flex-direction:column; align-items:center; gap:1.05rem; text-align:center; padding:2rem; }
-.pl-leaf{ width:2.6rem; height:2.6rem; color:var(--lantern); opacity:0; transform:translateY(10px) scale(0.92); animation:pl-rise .5s var(--ease) .03s forwards; }
+.pl-leaf{ width:2.9rem; height:2.9rem; color:var(--lantern); opacity:0; transform:translateY(10px) scale(0.92); animation:pl-rise .5s var(--ease) .03s forwards; }
 .pl-logo{ width:5rem; height:5rem; display:block; opacity:0; transform:translateY(10px) scale(0.92); animation:pl-rise .5s var(--ease) .03s forwards; }
 .pl-word{ font-family:var(--ff-display); font-size:clamp(2rem,6vw,3rem); letter-spacing:-0.015em; color:var(--ink); font-weight:500; opacity:0; transform:translateY(14px); transition:opacity .45s var(--ease), transform .45s var(--ease); }
 .pl-word .bang{ color:var(--lantern); }
@@ -4730,8 +4730,9 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       /* The stage deliberately does NOT clip: the popover is allowed to spill past the
          map edge onto the page, which is what stops edge pins opening a cramped bubble.
          The rounded corners live on an inner frame around the image instead. */
-      #wip-grove4-landmarkmap .wip-grove4-stage{ position:relative; width:100%; max-width:52rem;
-        margin:2rem auto 0; aspect-ratio:1/1; }
+      #wip-grove4-landmarkmap .wip-grove4-mapwrap{ position:relative; width:100%; max-width:52rem;
+        margin:2rem auto 0; }
+      #wip-grove4-landmarkmap .wip-grove4-stage{ position:relative; width:100%; aspect-ratio:1/1; }
       #wip-grove4-landmarkmap .wip-grove4-frame{ position:absolute; inset:0; overflow:hidden;
         border-radius:var(--radius); border:1px solid var(--line-strong); background:var(--cream); }
       #wip-grove4-landmarkmap .wip-grove4-stage img.wip-grove4-base{ width:100%; height:100%;
@@ -4789,7 +4790,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       #wip-grove4-landmarkmap .wip-grove4-pop--below::after{ top:-0.37rem; left:-0.37rem;
         border-top:1px solid var(--line-strong); border-bottom:0; transform:none; }
       #wip-grove4-landmarkmap .wip-grove4-pop--above::after{ bottom:-0.34rem; left:var(--wip-grove4-arrow,50%); margin-left:-0.31rem; transform:rotate(315deg); }
-      #wip-grove4-landmarkmap .wip-grove4-popico{ width:2.6rem; height:2.6rem; margin:0 0 0.6rem;
+      #wip-grove4-landmarkmap .wip-grove4-popico{ width:2.9rem; height:2.9rem; margin:0 0 0.6rem;
         display:flex; align-items:center; justify-content:center; background:#fff;
         border:1px solid var(--line); border-radius:50%; overflow:hidden; }
       #wip-grove4-landmarkmap .wip-grove4-popico img{ width:78%; height:78%; object-fit:contain; }
@@ -4829,7 +4830,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         #wip-grove4-landmarkmap .wip-grove4-list{ grid-template-columns:1fr; }
         /* Full-bleed: the map is the point of the section and every rem of width buys
            a bigger pin. Escaping the wrap's padding gains about 45px here. */
-        #wip-grove4-landmarkmap .wip-grove4-stage{ max-width:none;
+        #wip-grove4-landmarkmap .wip-grove4-mapwrap{ max-width:none;
           margin-left:calc(var(--wrap-pad, 1.5rem) * -1); margin-right:calc(var(--wrap-pad, 1.5rem) * -1);
           width:auto; }
         #wip-grove4-landmarkmap .wip-grove4-frame{ border-radius:0; border-left:0; border-right:0; }
@@ -4837,14 +4838,15 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
            the artwork the size it is while giving each pin a proper target. */
         #wip-grove4-landmarkmap .wip-grove4-pin::before{ content:""; position:absolute;
           left:50%; top:50%; transform:translate(-50%,-50%);
-          width:2.6rem; height:2.6rem; min-width:100%; min-height:100%; border-radius:50%; }
+          width:2.9rem; height:2.9rem; min-width:100%; min-height:100%; border-radius:50%; }
         #wip-grove4-landmarkmap .wip-grove4-zoomhint{ font-size:0.52rem; padding:0.26rem 0.6rem;
           left:0.4rem; bottom:0.4rem; opacity:0.85; transition:opacity .3s var(--ease); }
         #wip-grove4-landmarkmap .wip-grove4-frame.is-zoomed ~ .wip-grove4-zoomhint{ opacity:0; }
         #wip-grove4-landmarkmap .wip-grove4-reset{ font-size:0.6rem; padding:0.36rem 0.8rem; }
         /* Below the map, not over it: at phone width an anchored bubble is wider than the
            gap between pins, so it would always hide something. */
-        #wip-grove4-landmarkmap .wip-grove4-pop{ position:static; width:auto; margin-top:0.8rem; }
+        #wip-grove4-landmarkmap .wip-grove4-pop{ position:static; width:auto;
+          margin:0.9rem var(--wrap-pad, 1.5rem) 0; }
         #wip-grove4-landmarkmap .wip-grove4-pop::after{ display:none; } }
     </style>
 
@@ -4857,7 +4859,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 
       <a class="wip-grove4-skip" href="#wip-grove4-after">Skip the map pins</a>
 
-      <div class="wip-grove4-stage">
+      <div class="wip-grove4-mapwrap">
+        <div class="wip-grove4-stage">
         <div class="wip-grove4-frame">
           <div class="wip-grove4-zoom">
             <picture>
@@ -4894,6 +4897,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         </div>
         <button type="button" class="wip-grove4-reset" hidden>Reset</button>
         <span class="wip-grove4-zoomhint" aria-hidden="true">Pinch to zoom</span>
+
+        </div>
 
         <div class="wip-grove4-pop" id="wip-grove4-pop" role="dialog"
              aria-labelledby="wip-grove4-pop-t" hidden>
