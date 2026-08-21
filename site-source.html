@@ -4853,10 +4853,19 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         #wip-grove4-landmarkmap .wip-grove4-list--b{ grid-column:1; grid-row:2; }
         #wip-grove4-landmarkmap .wip-grove4-nm{ font-size:0.8rem; } }
       @media (max-width:760px){
-        /* one column again on a phone: the map takes the full width and the list follows it */
-        #wip-grove4-landmarkmap .wip-grove4-layout{ display:block; }
-        #wip-grove4-landmarkmap .wip-grove4-list{ max-height:none; overflow:visible;
-          margin:1.4rem var(--wrap-pad, 1.5rem) 0; }
+        /* Phone: map across the top, then the whole list beneath it in two columns —
+           one column of 24 names ran far longer than the map it describes. */
+        #wip-grove4-landmarkmap .wip-grove4-layout{ display:grid;
+          grid-template-columns:1fr 1fr; column-gap:0.7rem; row-gap:0; justify-content:stretch; }
+        #wip-grove4-landmarkmap .wip-grove4-mapwrap{ grid-column:1 / -1; grid-row:1; }
+        #wip-grove4-landmarkmap .wip-grove4-list--a{ grid-column:1; grid-row:2; }
+        #wip-grove4-landmarkmap .wip-grove4-list--b{ grid-column:2; grid-row:2; }
+        #wip-grove4-landmarkmap .wip-grove4-list{ max-height:none; overflow:visible; margin:1.3rem 0 0; }
+        /* narrower columns, so the row has to give up some padding and weight */
+        #wip-grove4-landmarkmap .wip-grove4-item{ gap:0.45rem; padding:0.4rem 0.3rem; align-items:center; }
+        #wip-grove4-landmarkmap .wip-grove4-ico{ width:1.75rem; height:1.75rem; }
+        #wip-grove4-landmarkmap .wip-grove4-nm{ font-size:0.76rem; line-height:1.15; }
+        #wip-grove4-landmarkmap .wip-grove4-hon{ font-size:0.64rem; }
         /* Full-bleed: the map is the point of the section and every rem of width buys
            a bigger pin. Escaping the wrap's padding gains about 45px here. */
         #wip-grove4-landmarkmap .wip-grove4-mapwrap{ max-width:none;
