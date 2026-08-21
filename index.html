@@ -4738,8 +4738,14 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       /* List beside the map rather than under it: at desktop width the page had a column
          of names far below the thing they point at, so you lost the map while reading them.
          Side by side, a name and its pin are in the same glance. */
-      #wip-grove4-landmarkmap .wip-grove4-layout{ display:grid; grid-template-columns:16rem 1fr;
-        gap:1.6rem; align-items:start; margin-top:2rem; }
+      /* The map is square, so its height follows its width — left to fill the row it stood
+         1014px tall in a 900px window and could not be seen at once. Capping the column at
+         40rem keeps the whole map on screen: the root tracks viewport width, so at a normal
+         16:9 display this lands around two thirds of the height at any size. A vh cap would
+         be the obvious tool and is exactly what the scaling law forbids. */
+      #wip-grove4-landmarkmap .wip-grove4-layout{ display:grid;
+        grid-template-columns:16rem minmax(0, 40rem);
+        justify-content:start; gap:1.6rem; align-items:start; margin-top:2rem; }
       #wip-grove4-landmarkmap .wip-grove4-mapwrap{ position:relative; width:100%; }
       #wip-grove4-landmarkmap .wip-grove4-stage{ position:relative; width:100%; aspect-ratio:1/1; }
       #wip-grove4-landmarkmap .wip-grove4-frame{ position:absolute; inset:0; overflow:hidden;
