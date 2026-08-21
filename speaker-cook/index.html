@@ -4734,7 +4734,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
          of names far below the thing they point at, so you lost the map while reading them.
          Side by side, a name and its pin are in the same glance. */
       #wip-grove4-landmarkmap .wip-grove4-layout{ display:grid; grid-template-columns:16rem 1fr;
-        gap:1.6rem; align-items:stretch; margin-top:2rem; }
+        gap:1.6rem; align-items:start; margin-top:2rem; }
       #wip-grove4-landmarkmap .wip-grove4-mapwrap{ position:relative; width:100%; }
       #wip-grove4-landmarkmap .wip-grove4-stage{ position:relative; width:100%; aspect-ratio:1/1; }
       #wip-grove4-landmarkmap .wip-grove4-frame{ position:absolute; inset:0; overflow:hidden;
@@ -5039,6 +5039,22 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         if (open && !e.target.closest("#wip-grove4-landmarkmap")) close();
       });
       addEventListener("resize", function(){ if (open) close(); });
+
+      /* Cap the list at the map's height so the two columns end level and the list scrolls
+         inside itself. It has to be JS: the map is square, so its height comes from its own
+         width, and no CSS length can refer to a sibling's computed height. */
+      var listEl = root.querySelector(".wip-grove4-list");
+      var stageEl = root.querySelector(".wip-grove4-stage");
+      function syncListHeight(){
+        if (!matchMedia("(min-width:761px)").matches){ listEl.style.maxHeight = ""; return; }
+        var h = stageEl.getBoundingClientRect().height;
+        listEl.style.maxHeight = h ? h + "px" : "";
+      }
+      syncListHeight();
+      addEventListener("resize", syncListHeight);
+      if (window.ResizeObserver) new ResizeObserver(syncListHeight).observe(stageEl);
+      var mapImg = root.querySelector(".wip-grove4-base");
+      if (mapImg && !mapImg.complete) mapImg.addEventListener("load", syncListHeight);
 
       /* ---- pinch-zoom and drag, phones only -------------------------------------
          Desktop keeps a still map: the anchored bubble positions itself from measured
