@@ -5029,9 +5029,25 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         body.innerHTML = bits.join("");
         pop.hidden = false;
         if (pin && window.matchMedia("(min-width:761px)").matches) place(pin);
-        requestAnimationFrame(function(){ pop.classList.add("is-open"); });
+        requestAnimationFrame(function(){ pop.classList.add("is-open"); revealPair(); });
         open = id;
         sr.textContent = sp.name + " selected.";
+      }
+
+      /* On a phone the card opens under the map, often just off the bottom of the screen.
+         Scroll the least amount that puts the map and its card in view together: centre the
+         pair when they both fit, otherwise anchor the card and let the map fill above it. */
+      function revealPair(){
+        if (matchMedia("(min-width:761px)").matches) return;
+        var stageR = root.querySelector(".wip-grove4-stage").getBoundingClientRect();
+        var popR = pop.getBoundingClientRect();
+        var top = stageR.top + scrollY, bottom = popR.bottom + scrollY;
+        var need = bottom - top, pad = 12;
+        var target = (need <= innerHeight - pad * 2)
+          ? top - (innerHeight - need) / 2
+          : bottom - innerHeight + pad;
+        if (Math.abs(target - scrollY) < 8) return;
+        scrollTo({ top: Math.max(0, target), behavior: "smooth" });
       }
 
       function close(){
@@ -5112,6 +5128,16 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         ty = py - k * (py - ty);
         sc = next; clamp();
       }
+      /* Pinch has to be computed from the state the gesture STARTED in. Recomputing from
+         the live tx/ty while resetting sc to the start value mixed two frames of reference
+         together, and the map crept away from the fingers as you pinched. */
+      function pinchTo(mx, my, ratio, st){
+        var next = Math.min(MAX, Math.max(MIN, st.sc * ratio));
+        var k = next / st.sc;
+        tx = st.m[0] - k * (st.m[0] - st.tx) + (mx - st.m[0]);
+        ty = st.m[1] - k * (st.m[1] - st.ty) + (my - st.m[1]);
+        sc = next; clamp();
+      }
       function dist(t){ return Math.hypot(t[0].clientX-t[1].clientX, t[0].clientY-t[1].clientY); }
       function mid(t, r){ return [ (t[0].clientX+t[1].clientX)/2 - r.left,
                                    (t[0].clientY+t[1].clientY)/2 - r.top ]; }
@@ -5121,7 +5147,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         moved = false;
         var r = frame.getBoundingClientRect();
         if (e.touches.length === 2){
-          st = {d: dist(e.touches), sc: sc, m: mid(e.touches, r)};
+          st = {d: dist(e.touches), sc: sc, tx: tx, ty: ty, m: mid(e.touches, r)};
         } else if (e.touches.length === 1){
           st = {x: e.touches[0].clientX, y: e.touches[0].clientY, tx: tx, ty: ty};
           var now = Date.now();
@@ -5141,7 +5167,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         if (e.touches.length === 2 && st.d){
           e.preventDefault(); moved = true;
           var m = mid(e.touches, r);
-          sc = st.sc; zoomAt(m[0], m[1], st.sc * (dist(e.touches) / st.d));
+          pinchTo(m[0], m[1], dist(e.touches) / st.d, st);
           apply(false);
         } else if (e.touches.length === 1 && sc > 1.01 && st.tx !== undefined){
           e.preventDefault();
