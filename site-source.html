@@ -5086,8 +5086,13 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         if (pin && window.matchMedia("(min-width:761px)").matches) place(pin);
         /* restart the animation even when the card is already open and you pick another
            space — without the reflow the browser keeps the finished animation. */
-        pop.classList.remove("is-open"); void pop.offsetWidth;
-        requestAnimationFrame(function(){ pop.classList.add("is-open"); revealPair(); });
+        /* Forcing a reflow between removing and re-adding the class is enough to restart
+           the animation. The earlier requestAnimationFrame version left the card at
+           opacity 0 whenever rAF was throttled — a background tab, for one. */
+        pop.classList.remove("is-open");
+        void pop.offsetWidth;
+        pop.classList.add("is-open");
+        revealPair();
         if (pin){
           pin.classList.remove("is-firing"); void pin.offsetWidth;
           pin.classList.add("is-firing");
