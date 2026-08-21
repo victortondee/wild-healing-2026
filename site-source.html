@@ -4820,6 +4820,19 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       #wip-grove4-landmarkmap .wip-grove4-pin.is-firing::after{ content:""; position:absolute;
         inset:0; border-radius:50%; border:0.14rem solid #994E33; pointer-events:none;
         animation:wip-grove4-ripple .6s var(--ease) forwards; }
+      /* Chosen from the LIST, the eye is nowhere near the map — so the pin has to announce
+         itself: it swells once and sends out three rings rather than the single quiet one
+         a direct tap gets, where you are already looking at the pin. */
+      #wip-grove4-landmarkmap .wip-grove4-pin.is-locating::after{ content:""; position:absolute;
+        inset:0; border-radius:50%; border:0.16rem solid #994E33; pointer-events:none;
+        animation:wip-grove4-ripple .85s var(--ease) 3; }
+      #wip-grove4-landmarkmap .wip-grove4-pin.is-locating{
+        animation:wip-grove4-locate .62s cubic-bezier(.22,1.3,.36,1) both; z-index:20; }
+      @keyframes wip-grove4-locate{
+        0%{ transform:translate(-50%,-50%) scale(1); }
+        28%{ transform:translate(-50%,-50%) scale(1.45); }
+        60%{ transform:translate(-50%,-50%) scale(.94); }
+        100%{ transform:translate(-50%,-50%) scale(1); } }
       @keyframes wip-grove4-ripple{
         from{ transform:scale(1); opacity:.85; }
         to{ transform:scale(2.7); opacity:0; } }
@@ -4838,6 +4851,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         #wip-grove4-landmarkmap .wip-grove4-pop.is-open,
         #wip-grove4-landmarkmap .wip-grove4-pop.is-open *,
         #wip-grove4-landmarkmap .wip-grove4-pin.is-firing::after,
+        #wip-grove4-landmarkmap .wip-grove4-pin.is-locating,
+        #wip-grove4-landmarkmap .wip-grove4-pin.is-locating::after,
         #wip-grove4-landmarkmap .wip-grove4-pin[aria-current="true"] .wip-grove4-ring,
         #wip-grove4-landmarkmap .wip-grove4-item[aria-current="true"] .wip-grove4-ico{
           animation:none !important; }
@@ -5064,7 +5079,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         pop.style.removeProperty("--wip-grove4-arrow");
       }
 
-      function show(id, pin){
+      function show(id, pin, fromList){
         var sp = SPACES[id];
         if (!sp) return;
         root.querySelectorAll("[data-space]").forEach(function(el){
@@ -5094,9 +5109,19 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         pop.classList.add("is-open");
         revealPair();
         if (pin){
-          pin.classList.remove("is-firing"); void pin.offsetWidth;
-          pin.classList.add("is-firing");
-          setTimeout(function(){ pin.classList.remove("is-firing"); }, 620);
+          var cue = fromList ? "is-locating" : "is-firing";
+          pin.classList.remove("is-firing", "is-locating");
+          void pin.offsetWidth;
+          pin.classList.add(cue);
+          setTimeout(function(){ pin.classList.remove(cue); }, fromList ? 2600 : 620);
+          /* On a phone the map may be scrolled off; bring the pin into view before it
+             performs, otherwise the whole point of the cue is missed. */
+          if (fromList && !matchMedia("(min-width:761px)").matches){
+            var st2 = root.querySelector(".wip-grove4-stage").getBoundingClientRect();
+            if (st2.top < 0 || st2.bottom > innerHeight){
+              scrollTo({ top: Math.max(0, st2.top + scrollY - 12), behavior: "smooth" });
+            }
+          }
         }
         open = id;
         sr.textContent = sp.name + " selected.";
@@ -5133,9 +5158,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         var t = e.target.closest("[data-space]");
         if (!t) return;
         if (t.dataset.space === open) { close(); return; }
-        var pin = t.classList.contains("wip-grove4-pin") ? t
+        var onMap = t.classList.contains("wip-grove4-pin");
+        var pin = onMap ? t
                 : root.querySelector('.wip-grove4-pin[data-space="' + t.dataset.space + '"]');
-        show(t.dataset.space, pin);
+        show(t.dataset.space, pin, !onMap);
       });
 
       document.addEventListener("keydown", function(e){ if (e.key === "Escape") close(); });
