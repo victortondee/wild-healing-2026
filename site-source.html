@@ -4793,9 +4793,55 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       #wip-grove4-landmarkmap .wip-grove4-pop{ position:absolute; z-index:40; width:17rem;
         background:var(--cream); border:1px solid var(--line-strong); border-radius:var(--radius);
         box-shadow:0 1.4rem 3.4rem -1.2rem rgba(20,19,16,0.6); padding:1rem 1.1rem 1.1rem;
-        opacity:0; transition:opacity .18s var(--ease); }
+        opacity:0; }
       #wip-grove4-landmarkmap .wip-grove4-pop[hidden]{ display:none; }
-      #wip-grove4-landmarkmap .wip-grove4-pop.is-open{ opacity:1; }
+      /* The card arrives with a small overshoot rather than a plain fade. On a phone the
+         card opens below the map while your finger is still on the pin, so the movement is
+         what tells you the tap did something. */
+      #wip-grove4-landmarkmap .wip-grove4-pop.is-open{ opacity:1;
+        animation:wip-grove4-rise .34s cubic-bezier(.22,1.2,.36,1) both; }
+      @keyframes wip-grove4-rise{
+        from{ opacity:0; transform:translateY(0.7rem) scale(.965); }
+        to{ opacity:1; transform:none; } }
+      /* contents settle a beat after the card, so the eye lands on the name */
+      #wip-grove4-landmarkmap .wip-grove4-pop.is-open .wip-grove4-popico{
+        animation:wip-grove4-pop-in .42s cubic-bezier(.22,1.4,.36,1) .06s both; }
+      #wip-grove4-landmarkmap .wip-grove4-pop.is-open h4{
+        animation:wip-grove4-slide .3s var(--ease) .08s both; }
+      #wip-grove4-landmarkmap .wip-grove4-pop.is-open p{
+        animation:wip-grove4-slide .3s var(--ease) .13s both; }
+      @keyframes wip-grove4-pop-in{ from{ opacity:0; transform:scale(.4); } to{ opacity:1; transform:none; } }
+      @keyframes wip-grove4-slide{ from{ opacity:0; transform:translateY(0.35rem); } to{ opacity:1; transform:none; } }
+
+      /* The tapped pin pushes in, then a ring travels outward from it — a visible link
+         between the thing you touched and the card that appeared elsewhere. */
+      #wip-grove4-landmarkmap .wip-grove4-pin{ transition:transform .12s var(--ease); }
+      #wip-grove4-landmarkmap .wip-grove4-pin:active{ transform:translate(-50%,-50%) scale(.86); }
+      #wip-grove4-landmarkmap .wip-grove4-pin.is-firing::after{ content:""; position:absolute;
+        inset:0; border-radius:50%; border:0.14rem solid #994E33; pointer-events:none;
+        animation:wip-grove4-ripple .6s var(--ease) forwards; }
+      @keyframes wip-grove4-ripple{
+        from{ transform:scale(1); opacity:.85; }
+        to{ transform:scale(2.7); opacity:0; } }
+      #wip-grove4-landmarkmap .wip-grove4-pin[aria-current="true"] .wip-grove4-ring{
+        animation:wip-grove4-glow 1.8s var(--ease) infinite; }
+      @keyframes wip-grove4-glow{
+        0%,100%{ box-shadow:0 0 0 0.22rem #994E33, 0 0 2.2rem 0.5rem rgba(153,78,51,0.35); }
+        50%{ box-shadow:0 0 0 0.22rem #994E33, 0 0 2.6rem 0.9rem rgba(153,78,51,0.15); } }
+      /* the matching row lights up too, so map and list stay tied together */
+      #wip-grove4-landmarkmap .wip-grove4-item{ transition:background .2s var(--ease), border-color .2s var(--ease); }
+      #wip-grove4-landmarkmap .wip-grove4-item[aria-current="true"] .wip-grove4-ico{
+        animation:wip-grove4-nudge .4s cubic-bezier(.22,1.4,.36,1) both; }
+      @keyframes wip-grove4-nudge{ from{ transform:scale(.8); } to{ transform:none; } }
+
+      @media (prefers-reduced-motion: reduce){
+        #wip-grove4-landmarkmap .wip-grove4-pop.is-open,
+        #wip-grove4-landmarkmap .wip-grove4-pop.is-open *,
+        #wip-grove4-landmarkmap .wip-grove4-pin.is-firing::after,
+        #wip-grove4-landmarkmap .wip-grove4-pin[aria-current="true"] .wip-grove4-ring,
+        #wip-grove4-landmarkmap .wip-grove4-item[aria-current="true"] .wip-grove4-ico{
+          animation:none !important; }
+        #wip-grove4-landmarkmap .wip-grove4-pin{ transition:none; } }
       #wip-grove4-landmarkmap .wip-grove4-pop::after{ content:""; position:absolute; width:0.62rem;
         height:0.62rem; background:var(--cream); border-left:1px solid var(--line-strong);
         border-bottom:1px solid var(--line-strong); }
@@ -5038,7 +5084,15 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         body.innerHTML = bits.join("");
         pop.hidden = false;
         if (pin && window.matchMedia("(min-width:761px)").matches) place(pin);
+        /* restart the animation even when the card is already open and you pick another
+           space — without the reflow the browser keeps the finished animation. */
+        pop.classList.remove("is-open"); void pop.offsetWidth;
         requestAnimationFrame(function(){ pop.classList.add("is-open"); revealPair(); });
+        if (pin){
+          pin.classList.remove("is-firing"); void pin.offsetWidth;
+          pin.classList.add("is-firing");
+          setTimeout(function(){ pin.classList.remove("is-firing"); }, 620);
+        }
         open = id;
         sr.textContent = sp.name + " selected.";
       }
