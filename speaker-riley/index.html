@@ -5061,6 +5061,12 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       if (window.ResizeObserver) new ResizeObserver(syncListHeight).observe(stageEl);
       var mapImg = root.querySelector(".wip-grove4-base");
       if (mapImg && !mapImg.complete) mapImg.addEventListener("load", syncListHeight);
+      /* The block starts inside a display:none page, so the first measurement is 0 and the
+         observer does not reliably fire when the router reveals it. Re-measure on the
+         router's own signal, after a frame so layout has settled. */
+      addEventListener("hashchange", function(){
+        requestAnimationFrame(function(){ requestAnimationFrame(syncListHeight); });
+      });
 
       /* ---- pinch-zoom and drag, phones only -------------------------------------
          Desktop keeps a still map: the anchored bubble positions itself from measured
