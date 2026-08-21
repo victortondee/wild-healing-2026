@@ -4739,7 +4739,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
          of names far below the thing they point at, so you lost the map while reading them.
          Side by side, a name and its pin are in the same glance. */
       #wip-grove4-landmarkmap .wip-grove4-layout{ display:grid; grid-template-columns:16rem 1fr;
-        gap:1.6rem; align-items:start; margin-top:2rem; }
+        gap:1.6rem; align-items:stretch; margin-top:2rem; }
       #wip-grove4-landmarkmap .wip-grove4-mapwrap{ position:relative; width:100%; }
       #wip-grove4-landmarkmap .wip-grove4-stage{ position:relative; width:100%; aspect-ratio:1/1; }
       #wip-grove4-landmarkmap .wip-grove4-frame{ position:absolute; inset:0; overflow:hidden;
@@ -4817,7 +4817,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       /* A list beside the map: the pins cluster tightly round the pond and are too small
          for a thumb at phone width, and this doubles as the path a screen reader takes. */
       #wip-grove4-landmarkmap .wip-grove4-list{ list-style:none; margin:0; padding:0.2rem 0.2rem 0.2rem 0;
-        display:flex; flex-direction:column; gap:0.15rem; max-height:52rem; overflow-y:auto; }
+        display:flex; flex-direction:column; gap:0.15rem; overflow-y:auto;
+        /* stretch to the map's height so the two columns end level; the map is square so
+           its height follows its width and cannot be known up front in CSS. */
+        height:100%; }
       #wip-grove4-landmarkmap .wip-grove4-item{ display:flex; align-items:center; gap:0.6rem;
         width:100%; text-align:left; background:none; border:1px solid transparent;
         border-radius:0.5rem; padding:0.45rem 0.55rem; cursor:pointer; font:inherit; color:inherit; }
