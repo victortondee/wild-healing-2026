@@ -4738,8 +4738,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
          46rem keeps the whole map on screen: the root tracks viewport width, so at a normal
          16:9 display this lands around two thirds of the height at any size. A vh cap would
          be the obvious tool and is exactly what the scaling law forbids. */
+      /* Names run down BOTH sides of the map. One column meant scrolling while the whole
+         right of the page sat empty; split in two, all 24 spaces are visible at once. */
       #wip-grove4-landmarkmap .wip-grove4-layout{ display:grid;
-        grid-template-columns:16rem minmax(0, 46rem);
+        grid-template-columns:15rem minmax(0, 46rem) 15rem;
         justify-content:start; gap:1.6rem; align-items:start; margin-top:2rem; }
       #wip-grove4-landmarkmap .wip-grove4-mapwrap{ position:relative; width:100%; }
       #wip-grove4-landmarkmap .wip-grove4-stage{ position:relative; width:100%; aspect-ratio:1/1; }
@@ -4838,7 +4840,12 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         overflow:hidden; clip:rect(0 0 0 0); }
 
       @media (min-width:761px) and (max-width:1024px){
-        #wip-grove4-landmarkmap .wip-grove4-layout{ grid-template-columns:12.5rem 1fr; gap:1.1rem; }
+        /* Not enough width for three columns: both lists stack on the left and the map
+           spans the two rows beside them. */
+        #wip-grove4-landmarkmap .wip-grove4-layout{ grid-template-columns:13rem 1fr; gap:1.1rem; }
+        #wip-grove4-landmarkmap .wip-grove4-list--a{ grid-column:1; grid-row:1; }
+        #wip-grove4-landmarkmap .wip-grove4-mapwrap{ grid-column:2; grid-row:1 / span 2; }
+        #wip-grove4-landmarkmap .wip-grove4-list--b{ grid-column:1; grid-row:2; }
         #wip-grove4-landmarkmap .wip-grove4-nm{ font-size:0.8rem; } }
       @media (max-width:760px){
         /* one column again on a phone: the map takes the full width and the list follows it */
@@ -4880,7 +4887,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <a class="wip-grove4-skip" href="#wip-grove4-after">Skip the map pins</a>
 
       <div class="wip-grove4-layout">
-        <ul class="wip-grove4-list">
+        <ul class="wip-grove4-list wip-grove4-list--a">
           <li><button type="button" class="wip-grove4-item" data-space="legacy-forest-north"><span class="wip-grove4-ico"><img src="images/land/legacy-forest-north.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Legacy Forest North</span></span></button></li>
           <li><button type="button" class="wip-grove4-item" data-space="feminist-sanctuary-cabins"><span class="wip-grove4-ico"><img src="images/land/feminist-sanctuary-cabins.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Feminist Sanctuary Cabins</span></span></button></li>
           <li><button type="button" class="wip-grove4-item" data-space="sacred-heavens"><span class="wip-grove4-ico"><img src="images/land/sacred-heavens.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Sacred Heavens</span></span></button></li>
@@ -4893,18 +4900,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <li><button type="button" class="wip-grove4-item" data-space="unnamed-10"><span class="wip-grove4-ico wip-grove4-ico--tbd" aria-hidden="true">?</span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Space to be named</span></span></button></li>
           <li><button type="button" class="wip-grove4-item" data-space="running-through-the-trees"><span class="wip-grove4-ico"><img src="images/land/running-through-the-trees.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Running Through the Trees</span></span></button></li>
           <li><button type="button" class="wip-grove4-item" data-space="birth-center"><span class="wip-grove4-ico"><img src="images/land/birth-center.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Birth Center</span></span></button></li>
-          <li><button type="button" class="wip-grove4-item" data-space="unnamed-13"><span class="wip-grove4-ico wip-grove4-ico--tbd" aria-hidden="true">?</span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Space to be named</span></span></button></li>
-          <li><button type="button" class="wip-grove4-item" data-space="legacy-forest-south"><span class="wip-grove4-ico"><img src="images/land/legacy-forest-south.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Legacy Forest South</span><span class="wip-grove4-hon">Ntozake Shange</span></span></button></li>
-          <li><button type="button" class="wip-grove4-item" data-space="healing-center"><span class="wip-grove4-ico"><img src="images/land/healing-center.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Healing Center</span></span></button></li>
-          <li><button type="button" class="wip-grove4-item" data-space="legacy-theater"><span class="wip-grove4-ico"><img src="images/land/legacy-theater.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Legacy Theater</span><span class="wip-grove4-hon">Abigail Disney</span></span></button></li>
-          <li><button type="button" class="wip-grove4-item" data-space="peace-garden"><span class="wip-grove4-ico"><img src="images/land/peace-garden.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Peace Garden</span></span></button></li>
-          <li><button type="button" class="wip-grove4-item" data-space="center-for-earth-and-technology"><span class="wip-grove4-ico"><img src="images/land/center-for-earth-and-technology.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Center for Earth &amp; Technology</span></span></button></li>
-          <li><button type="button" class="wip-grove4-item" data-space="reflecting-pools"><span class="wip-grove4-ico"><img src="images/land/reflecting-pools.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Reflecting Pools</span></span></button></li>
-          <li><button type="button" class="wip-grove4-item" data-space="unnamed-20"><span class="wip-grove4-ico wip-grove4-ico--tbd" aria-hidden="true">?</span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Space to be named</span></span></button></li>
-          <li><button type="button" class="wip-grove4-item" data-space="dreamers-meeting-point"><span class="wip-grove4-ico"><img src="images/land/dreamers-meeting-point.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Dreamers&rsquo; Meeting Point</span></span></button></li>
-          <li><button type="button" class="wip-grove4-item" data-space="library"><span class="wip-grove4-ico"><img src="images/land/library.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Library</span></span></button></li>
-          <li><button type="button" class="wip-grove4-item" data-space="orchard-muses"><span class="wip-grove4-ico"><img src="images/land/orchard-muses.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Orchard of Muses</span></span></button></li>
-          <li><button type="button" class="wip-grove4-item" data-space="matriarchal-village"><span class="wip-grove4-ico"><img src="images/land/matriarchal-village.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Matriarchal Village</span></span></button></li>
         </ul>
       <div class="wip-grove4-mapwrap">
         <div class="wip-grove4-stage">
@@ -4953,6 +4948,20 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <div class="wip-grove4-pop-body"></div>
         </div>
       </div>
+        <ul class="wip-grove4-list wip-grove4-list--b">
+          <li><button type="button" class="wip-grove4-item" data-space="unnamed-13"><span class="wip-grove4-ico wip-grove4-ico--tbd" aria-hidden="true">?</span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Space to be named</span></span></button></li>
+          <li><button type="button" class="wip-grove4-item" data-space="legacy-forest-south"><span class="wip-grove4-ico"><img src="images/land/legacy-forest-south.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Legacy Forest South</span><span class="wip-grove4-hon">Ntozake Shange</span></span></button></li>
+          <li><button type="button" class="wip-grove4-item" data-space="healing-center"><span class="wip-grove4-ico"><img src="images/land/healing-center.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Healing Center</span></span></button></li>
+          <li><button type="button" class="wip-grove4-item" data-space="legacy-theater"><span class="wip-grove4-ico"><img src="images/land/legacy-theater.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Legacy Theater</span><span class="wip-grove4-hon">Abigail Disney</span></span></button></li>
+          <li><button type="button" class="wip-grove4-item" data-space="peace-garden"><span class="wip-grove4-ico"><img src="images/land/peace-garden.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Peace Garden</span></span></button></li>
+          <li><button type="button" class="wip-grove4-item" data-space="center-for-earth-and-technology"><span class="wip-grove4-ico"><img src="images/land/center-for-earth-and-technology.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Center for Earth &amp; Technology</span></span></button></li>
+          <li><button type="button" class="wip-grove4-item" data-space="reflecting-pools"><span class="wip-grove4-ico"><img src="images/land/reflecting-pools.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Reflecting Pools</span></span></button></li>
+          <li><button type="button" class="wip-grove4-item" data-space="unnamed-20"><span class="wip-grove4-ico wip-grove4-ico--tbd" aria-hidden="true">?</span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Space to be named</span></span></button></li>
+          <li><button type="button" class="wip-grove4-item" data-space="dreamers-meeting-point"><span class="wip-grove4-ico"><img src="images/land/dreamers-meeting-point.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Dreamers&rsquo; Meeting Point</span></span></button></li>
+          <li><button type="button" class="wip-grove4-item" data-space="library"><span class="wip-grove4-ico"><img src="images/land/library.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Library</span></span></button></li>
+          <li><button type="button" class="wip-grove4-item" data-space="orchard-muses"><span class="wip-grove4-ico"><img src="images/land/orchard-muses.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Orchard of Muses</span></span></button></li>
+          <li><button type="button" class="wip-grove4-item" data-space="matriarchal-village"><span class="wip-grove4-ico"><img src="images/land/matriarchal-village.jpg" alt="" loading="lazy" width="160" height="160"></span><span class="wip-grove4-txt"><span class="wip-grove4-nm">Matriarchal Village</span></span></button></li>
+        </ul>
       </div>
 
       <p class="wip-grove4-sr" role="status" aria-live="polite"></p>
@@ -5049,12 +5058,12 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       /* Cap the list at the map's height so the two columns end level and the list scrolls
          inside itself. It has to be JS: the map is square, so its height comes from its own
          width, and no CSS length can refer to a sibling's computed height. */
-      var listEl = root.querySelector(".wip-grove4-list");
+      var listEls = root.querySelectorAll(".wip-grove4-list");
       var stageEl = root.querySelector(".wip-grove4-stage");
       function syncListHeight(){
-        if (!matchMedia("(min-width:761px)").matches){ listEl.style.maxHeight = ""; return; }
+        var wide = matchMedia("(min-width:761px)").matches;
         var h = stageEl.getBoundingClientRect().height;
-        listEl.style.maxHeight = h ? h + "px" : "";
+        listEls.forEach(function(el){ el.style.maxHeight = (wide && h) ? h + "px" : ""; });
       }
       syncListHeight();
       addEventListener("resize", syncListHeight);
