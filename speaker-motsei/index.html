@@ -663,10 +663,11 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
    arithmetic a grid would do — row count minus one gap, divided by the row count —
    so full rows still line up as columns; only the short row re-centres. */
 .speakers{ display:flex; flex-wrap:wrap; justify-content:center; gap:1.6rem; margin-top:2.8rem; max-width:74rem; margin-inline:auto; }
-/* n cards per row need n-1 gaps, so the subtraction is gap x (n-1) = 8rem for six.
-   Subtracting exactly 8rem makes the row fit to the pixel, and sub-pixel rounding then
-   tips it over so only five fit — 0.4rem of slack is invisible and holds six. */
-.speakers > *{ flex:0 0 calc((100% - 8.4rem) / 6); }
+/* n cards per row need n-1 gaps, so the subtraction is gap x (n-1) = 9.6rem for seven.
+   Subtract a little more than that: an exact fit sits right on the container edge and
+   sub-pixel rounding then tips the last card down to a row of its own. Fourteen
+   speakers therefore read as two rows of seven. */
+.speakers > *{ flex:0 0 calc((100% - 10rem) / 7); }
 @media (min-width:761px) and (max-width:1024px){
   .speakers{ gap:1.5rem; max-width:48rem; }
   .speakers > *{ flex-basis:calc((100% - 3rem) / 3); } }
@@ -2335,9 +2336,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <span class="eyebrow"><span class="tick"></span>Speakers</span>
       </div>
       <div class="speakers reveal d1">
-        <!-- Farah Tanis and Dr. Vincent Leonti have no bio yet, so their cards are
-             plain divs that link nowhere. Turn each into an <a href="/speaker-…/">
-             once a bio arrives. -->
+        <!-- Farah Tanis has no bio yet, so her card is a plain div that links
+             nowhere. Turn it into an <a href="/speaker-…/"> once a bio arrives. -->
         <div class="speaker">
           <div class="speaker-photo"><picture><source srcset="images/farah-tanis.webp" type="image/webp"><img src="images/farah-tanis.jpg" alt="" loading="lazy" width="450" height="600"></picture></div>
           <div class="speaker-name">Farah Tanis</div>
@@ -2388,11 +2388,21 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <div class="speaker-name">Naimah Efia</div>
           <div class="speaker-role">Holistic Health &amp; Healing Justice</div>
         </a>
-        <div class="speaker">
+        <a class="speaker" href="/speaker-leonti/">
           <div class="speaker-photo"><picture><source srcset="images/dr-vincent-leonti.webp" type="image/webp"><img src="images/dr-vincent-leonti.jpg" alt="" loading="lazy" width="675" height="900"></picture></div>
           <div class="speaker-name">Dr. Vincent Leonti</div>
-          <div class="speaker-role">Functional &amp; Integrative Medicine</div>
-        </div>
+          <div class="speaker-role">Family &amp; Functional Medicine</div>
+        </a>
+        <a class="speaker" href="/speaker-vanluven/">
+          <div class="speaker-photo"><picture><source srcset="images/dr-neena-van-luven.webp" type="image/webp"><img src="images/dr-neena-van-luven.jpg" alt="" loading="lazy" width="675" height="900"></picture></div>
+          <div class="speaker-name">Dr. Neena Van Luven</div>
+          <div class="speaker-role">Internal &amp; Functional Medicine</div>
+        </a>
+        <a class="speaker" href="/speaker-rose/">
+          <div class="speaker-photo"><picture><source srcset="images/karen-rose.webp" type="image/webp"><img src="images/karen-rose.jpg" alt="" loading="lazy" width="450" height="600"></picture></div>
+          <div class="speaker-name">Karen Rose</div>
+          <div class="speaker-role">Herbalism &amp; Ancestral Medicine</div>
+        </a>
         <a class="speaker" href="/speaker-zombek/">
           <div class="speaker-photo"><picture><source srcset="images/alicia-zombek.webp" type="image/webp"><img src="images/alicia-zombek.jpg" alt="" loading="lazy" width="675" height="900"></picture></div>
           <div class="speaker-name">Alicia Luhrssen-Zombek</div>
@@ -3496,6 +3506,96 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
             <li>Founder, <em>#FreeToo</em> &mdash; BIPOC healing justice initiative, 2018</li>
             <li>Over 20 years of clinical experience in trauma</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ticket-strip">
+    <div class="wrap ticket-strip-inner">
+      <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
+      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     SPEAKER — Dr. Vincent Leonti (added 2026-08-23)
+     Bio verbatim from the client's "Speaker Bios" doc (updated 2026-08-21); it is
+     short by the client's own hand, so the page runs to a single paragraph.
+     ============================================================ -->
+<div class="page" id="page-speaker-leonti" role="region" aria-label="Dr. Vincent Leonti">
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Speaker</span>
+    <h1>Dr. Vincent Leonti</h1>
+    <p class="spk-cred">MD &middot; Family &amp; Functional Medicine</p>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="spk-grid reveal">
+        <figure class="spk-photo"><picture><source srcset="images/dr-vincent-leonti.webp" type="image/webp"><img src="images/dr-vincent-leonti.jpg" alt="" loading="lazy" width="675" height="900"></picture></figure>
+        <div class="spk-body">
+          <p>Dr. Vincent &ldquo;Vinny&rdquo; Leonti, MD, is a board-certified family medicine and functional medicine physician based in New Jersey. He is the co-founder and medical director of <a href="https://www.princetonih.com/" target="_blank" rel="noopener">Princeton Integrative Health</a> in Lawrence Township, which he established alongside his daughter, Jenna Richardson.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ticket-strip">
+    <div class="wrap ticket-strip-inner">
+      <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
+      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     SPEAKER — Dr. Neena Van Luven (added 2026-08-23)
+     Bio verbatim from the client's "Speaker Bios" doc (updated 2026-08-21).
+     ============================================================ -->
+<div class="page" id="page-speaker-vanluven" role="region" aria-label="Dr. Neena Van Luven">
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Speaker</span>
+    <h1>Dr. Neena Van Luven</h1>
+    <p class="spk-cred">MD &middot; Internal Medicine &amp; Integrative Cancer Care</p>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="spk-grid reveal">
+        <figure class="spk-photo"><picture><source srcset="images/dr-neena-van-luven.webp" type="image/webp"><img src="images/dr-neena-van-luven.jpg" alt="" loading="lazy" width="675" height="900"></picture></figure>
+        <div class="spk-body">
+          <p>Dr. Neena (Iyer) Van Luven is an internal medicine physician and advocate dedicated to providing personalized, holistic healthcare. She earned her medical degree from the University of Michigan Medical School and completed her specialty training at the University of California, San Diego. Board-certified by the American Board of Internal Medicine (ABIM), Dr. Van Luven also holds a specialized certification through the Institute for Functional Medicine (IFM). Her clinical approach emphasizes treating the root causes of illness rather than just symptoms, utilizing her deep expertise to manage complex health conditions affecting the body&rsquo;s internal systems, including the heart, lungs, and digestive tract.</p>
+          <p>A leader in her field, Dr. Van Luven maintains a specialized practice with a profound passion for integrative cancer care. Throughout her career, she has supported hundreds of patients on their journey toward remission, blending clinical excellence with a deeply compassionate approach. Her unwavering dedication to helping individuals achieve optimal health through patient-centered care makes her a pivotal figure in holistic medicine. By combining traditional internal medicine with functional insights, she ensures that every patient receives a comprehensive and supportive path to wellness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ticket-strip">
+    <div class="wrap ticket-strip-inner">
+      <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
+      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     SPEAKER — Karen Rose (added 2026-08-23)
+     Bio verbatim from the client's "Speaker Bios" doc (updated 2026-08-21).
+     ============================================================ -->
+<div class="page" id="page-speaker-rose" role="region" aria-label="Karen Rose">
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Speaker</span>
+    <h1>Karen Rose</h1>
+    <p class="spk-cred">Herbalist &middot; Founder, Sacred Vibes Apothecary</p>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="spk-grid reveal">
+        <figure class="spk-photo"><picture><source srcset="images/karen-rose.webp" type="image/webp"><img src="images/karen-rose.jpg" alt="" loading="lazy" width="450" height="600"></picture></figure>
+        <div class="spk-body">
+          <p>Karen Rose is the founder and owner of Sacred Vibes Apothecary, a premier herb-focused destination in Brooklyn. Drawing deep inspiration from her upbringing in coastal Guyana, Karen&rsquo;s expertise is rooted in the ancestral wisdom of her community&rsquo;s elders and grandparents, who were revered for their mastery of herbal medicine and root work. Her journey into professional herbalism began as a personal mission to preserve these traditional healing practices for future generations.</p>
+          <p>A dedicated practitioner and educator, Karen formalised her extensive knowledge through rigorous training at herbal medicine school and by collaborating with Indigenous practitioners across Mexico and Jamaica. Recognizing a significant gap in the Brooklyn wellness landscape, she opened Sacred Vibes Apothecary to provide her community with direct access to high-quality botanical resources and consultations. Under her leadership, the apothecary recently celebrated a decade of success, establishing itself as a cornerstone of holistic health and spiritual service in East Flatbush.</p>
         </div>
       </div>
     </div>
@@ -6282,7 +6382,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   /* "attend" is intentionally NOT a route: the retired Attend page (#page-attend)
      is kept in source for reference but is unreachable. Any unknown route (incl.
      #/attend) falls back to "home" below. See the Dashboard "Locked pages" note. */
-  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","founding","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-riley","speaker-cook","speaker-gray","speaker-adams","speaker-oakes","speaker-brown","speaker-zombek","speaker-motsei","speaker-efia"];
+  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","founding","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-riley","speaker-cook","speaker-gray","speaker-adams","speaker-oakes","speaker-brown","speaker-zombek","speaker-motsei","speaker-efia","speaker-leonti","speaker-vanluven","speaker-rose"];
   /* per-route <title> for in-app (hash) navigation — screen readers announce the new title,
      and browser history/tabs stay meaningful. Mirrors the crawlable route pages' titles. */
   var DEFAULT_TITLE = "WILD! Healing Gala 2026 — A Harvest of Medicine | Restore Forward";
@@ -6305,7 +6405,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     "speaker-brown": "Sevonna Brown — WILD! Healing Gala 2026",
     "speaker-zombek": "Alicia Luhrssen-Zombek — WILD! Healing Gala 2026",
     "speaker-motsei": "Dr. Mmatshilo Motsei — WILD! Healing Gala 2026",
-    "speaker-efia": "Naimah Efia — WILD! Healing Gala 2026"
+    "speaker-efia": "Naimah Efia — WILD! Healing Gala 2026",
+    "speaker-leonti": "Dr. Vincent Leonti — WILD! Healing Gala 2026",
+    "speaker-vanluven": "Dr. Neena Van Luven — WILD! Healing Gala 2026",
+    "speaker-rose": "Karen Rose — WILD! Healing Gala 2026"
   };
   var pages = {};
   routes.forEach(function(r){ pages[r] = document.getElementById("page-" + r); });
