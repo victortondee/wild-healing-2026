@@ -663,10 +663,10 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
    arithmetic a grid would do — row count minus one gap, divided by the row count —
    so full rows still line up as columns; only the short row re-centres. */
 .speakers{ display:flex; flex-wrap:wrap; justify-content:center; gap:1.6rem; margin-top:2.8rem; max-width:74rem; margin-inline:auto; }
-/* n cards per row need n-1 gaps, so the subtraction has to be gap x (n-1). It was
-   7.5rem against six 1.6rem gaps = 8rem, which overflowed the row by half a rem and
-   quietly dropped the layout to 5 per row - eleven cards then read 5+5+1. */
-.speakers > *{ flex:0 0 calc((100% - 8rem) / 6); }
+/* n cards per row need n-1 gaps, so the subtraction is gap x (n-1) = 8rem for six.
+   Subtracting exactly 8rem makes the row fit to the pixel, and sub-pixel rounding then
+   tips it over so only five fit — 0.4rem of slack is invisible and holds six. */
+.speakers > *{ flex:0 0 calc((100% - 8.4rem) / 6); }
 @media (min-width:761px) and (max-width:1024px){
   .speakers{ gap:1.5rem; max-width:48rem; }
   .speakers > *{ flex-basis:calc((100% - 3rem) / 3); } }
