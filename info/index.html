@@ -2374,11 +2374,11 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         </a>
         <!-- No bio supplied for these two yet, so their cards do not link anywhere.
              Turn each into an <a href="/speaker-…/"> once a bio arrives. -->
-        <div class="speaker">
+        <a class="speaker" href="/speaker-efia/">
           <div class="speaker-photo"><picture><source srcset="images/naimah-efia.webp" type="image/webp"><img src="images/naimah-efia.jpg" alt="" loading="lazy" width="675" height="900"></picture></div>
           <div class="speaker-name">Naimah Efia</div>
-          <div class="speaker-role">Holistic Health Practitioner</div>
-        </div>
+          <div class="speaker-role">Holistic Health &amp; Healing Justice</div>
+        </a>
         <div class="speaker">
           <div class="speaker-photo"><picture><source srcset="images/dr-vincent-leonti.webp" type="image/webp"><img src="images/dr-vincent-leonti.jpg" alt="" loading="lazy" width="675" height="900"></picture></div>
           <div class="speaker-name">Dr. Vincent Leonti</div>
@@ -3442,6 +3442,46 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
             <span class="lbl">Selected books</span>
             <span class="titles">Kanga and the Kangaroo Court &middot; Hearing Visions &middot; Reweaving the Soul of the Nation</span>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ticket-strip">
+    <div class="wrap ticket-strip-inner">
+      <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
+      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     SPEAKER — Naimah Efia (added 2026-08-23)
+     Bio taken from naimahefia.com/meet-naimah at the client's instruction
+     (21 Aug meeting: "Efia's bio - take from her website"). Naimah uses
+     they/them, which the source bio does — keep it that way.
+     ============================================================ -->
+<div class="page" id="page-speaker-efia" role="region" aria-label="Naimah Efia">
+  <div class="wrap page-intro">
+    <span class="eyebrow"><span class="tick"></span>Speaker</span>
+    <h1>Naimah Efia</h1>
+    <p class="spk-cred">Holistic health &amp; psychic emancipation &middot; Healing justice practitioner</p>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="spk-grid reveal">
+        <figure class="spk-photo"><picture><source srcset="images/naimah-efia.webp" type="image/webp"><img src="images/naimah-efia.jpg" alt="" loading="lazy" width="675" height="900"></picture></figure>
+        <div class="spk-body">
+          <p>Naimah Efia is a holistic health maven, specializing in mental health and psychic emancipation. Through a commitment to self-determined healing for Black, Indigenous and People of Color (BIPOC), Naimah activates transformation within a politicized praxis of decolonial care. Decolonial care allows for the return to our inherent right to heal, and be healed on our own terms, and in line with our legacies and traditions past, present and future.</p>
+          <p>Naimah teaches yoga and offers integrative training on the intersections of yoga, social justice and identity politics. They&rsquo;re a proud Ma-MaGe of twins, as well as a doula, who centers reproductive mental health across the spectrum of birthwork. Naimah also offers their skills and care as a healing justice practitioner, liberation-based educator and community activist. Their array of expertise creates an integrated approach to healing and responding to violence &mdash; informed by activism, esotericism, mindfulness, liberation psychology, and traditions of the diaspora, and grounded in over 20 years of clinical experience and a deep understanding of trauma and its psychic impact on the human condition.</p>
+          <p>Alongside their direct healing work with communities, Naimah works with organizations, institutions and collectives, providing liberation-based training, facilitating community healing spaces, and creating processes to transform conflict and activate collective peace, power and possibility. In 2018 they founded <em>#FreeToo</em>, a BIPOC healing justice initiative focused on survivor-centered collective care. Over the past decade Naimah has built and co-created with Harriet&rsquo;s Apothecary, Black Women&rsquo;s Blueprint, Ancient Song Doula Services, Black Youth Project 100, and In Our Names Network, among others. Naimah believes in healing as a revolutionary act of resistance that is essential to our liberation, and centers Black survivors in that work.</p>
+          <ul class="spk-facts">
+            <li>Holistic health practitioner &mdash; mental health and psychic emancipation</li>
+            <li>Yoga instructor; training on yoga, social justice and identity politics</li>
+            <li>Doula, centering reproductive mental health across birthwork</li>
+            <li>Founder, <em>#FreeToo</em> &mdash; BIPOC healing justice initiative, 2018</li>
+            <li>Over 20 years of clinical experience in trauma</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -6219,7 +6259,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   /* "attend" is intentionally NOT a route: the retired Attend page (#page-attend)
      is kept in source for reference but is unreachable. Any unknown route (incl.
      #/attend) falls back to "home" below. See the Dashboard "Locked pages" note. */
-  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","founding","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-riley","speaker-cook","speaker-gray","speaker-adams","speaker-oakes","speaker-brown","speaker-zombek","speaker-motsei"];
+  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","founding","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-riley","speaker-cook","speaker-gray","speaker-adams","speaker-oakes","speaker-brown","speaker-zombek","speaker-motsei","speaker-efia"];
   /* per-route <title> for in-app (hash) navigation — screen readers announce the new title,
      and browser history/tabs stay meaningful. Mirrors the crawlable route pages' titles. */
   var DEFAULT_TITLE = "WILD! Healing Gala 2026 — A Harvest of Medicine | Restore Forward";
@@ -6241,7 +6281,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     "speaker-oakes": "Iakowi:he’ne’ Oakes — WILD! Healing Gala 2026",
     "speaker-brown": "Sevonna Brown — WILD! Healing Gala 2026",
     "speaker-zombek": "Alicia Luhrssen-Zombek — WILD! Healing Gala 2026",
-    "speaker-motsei": "Dr. Mmatshilo Motsei — WILD! Healing Gala 2026"
+    "speaker-motsei": "Dr. Mmatshilo Motsei — WILD! Healing Gala 2026",
+    "speaker-efia": "Naimah Efia — WILD! Healing Gala 2026"
   };
   var pages = {};
   routes.forEach(function(r){ pages[r] = document.getElementById("page-" + r); });
