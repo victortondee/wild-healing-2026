@@ -141,6 +141,24 @@ ROUTES = {
         "Afrika Ikalafe, on healing justice and decolonising childbirth at WILD! Healing "
         "— A Harvest of Medicine, September 9–12, 2026.",
     ),
+    "speaker-leonti": (
+        "Dr. Vincent Leonti — WILD! Healing Gala 2026",
+        "Dr. Vincent Leonti, MD, board-certified family and functional medicine physician "
+        "and co-founder of Princeton Integrative Health, at WILD! Healing — A Harvest of "
+        "Medicine, September 9–12, 2026.",
+    ),
+    "speaker-vanluven": (
+        "Dr. Neena Van Luven — WILD! Healing Gala 2026",
+        "Dr. Neena Van Luven, internal medicine physician and integrative cancer care "
+        "specialist, on root-cause medicine at WILD! Healing — A Harvest of Medicine, "
+        "September 9–12, 2026.",
+    ),
+    "speaker-rose": (
+        "Karen Rose — WILD! Healing Gala 2026",
+        "Karen Rose, herbalist and founder of Sacred Vibes Apothecary in Brooklyn, on "
+        "ancestral herbal medicine at WILD! Healing — A Harvest of Medicine, "
+        "September 9–12, 2026.",
+    ),
 }
 
 # Static pages that already live at a real path and should stay in the sitemap.
