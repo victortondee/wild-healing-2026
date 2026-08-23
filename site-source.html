@@ -656,7 +656,7 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
 .day-mode{ color:var(--clay); }
 .mode-land{ color:var(--ember); }
 /* speakers (v12) — Home page: blank photo frames + name + placeholder role */
-/* Nine speakers as of 2026-08-19. The grid was built for exactly two (2 cols capped at
+/* Eleven speakers as of 2026-08-23. The grid was built for exactly two (2 cols capped at
    36rem); left alone, five would stack 2+2+1 inside a narrow column with an orphan on
    its own row. Column count is set per band so the row always fills: 5 across on
    desktop so nine land as 5+4 rather than trailing a single card onto a third
@@ -668,7 +668,7 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
    arithmetic a grid would do — row count minus one gap, divided by the row count —
    so full rows still line up as columns; only the short row re-centres. */
 .speakers{ display:flex; flex-wrap:wrap; justify-content:center; gap:1.6rem; margin-top:2.8rem; max-width:74rem; margin-inline:auto; }
-.speakers > *{ flex:0 0 calc((100% - 6.4rem) / 5); }
+.speakers > *{ flex:0 0 calc((100% - 7.5rem) / 6); }
 @media (min-width:761px) and (max-width:1024px){
   .speakers{ gap:1.5rem; max-width:48rem; }
   .speakers > *{ flex-basis:calc((100% - 3rem) / 3); } }
@@ -2352,6 +2352,16 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <div class="speaker-name">Tiffany Cook</div>
           <div class="speaker-role">Food as Medicine</div>
         </a>
+        <a class="speaker" href="/speaker-gray/">
+          <div class="speaker-photo"><picture><source srcset="images/eddie-gray.webp" type="image/webp"><img src="images/eddie-gray.jpg" alt="" loading="lazy" width="675" height="900"></picture></div>
+          <div class="speaker-name">Eddie Gray</div>
+          <div class="speaker-role">Traditional Medicine</div>
+        </a>
+        <a class="speaker" href="/speaker-adams/">
+          <div class="speaker-photo"><picture><source srcset="images/della-adams.webp" type="image/webp"><img src="images/della-adams.jpg" alt="" loading="lazy" width="675" height="900"></picture></div>
+          <div class="speaker-name">Della Adams</div>
+          <div class="speaker-role">Traditional Medicine</div>
+        </a>
         <a class="speaker" href="/speaker-oakes/">
           <div class="speaker-photo"><picture><source srcset="images/iakowi-oakes.webp" type="image/webp"><img src="images/iakowi-oakes.jpg" alt="" loading="lazy" width="675" height="900"></picture></div>
           <div class="speaker-name"><span lang="moh">Iakowi:he&rsquo;ne&rsquo;</span> Oakes</div>
@@ -3255,10 +3265,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   </section>
 </div>
 
-<!-- UNLISTED 2026-08-18: the client renamed Eddie Gray's photo "Not Confirmed_" in the
-     speaker folder after we published, so the card and route were pulled. The page is
-     kept intact and unrouted; re-add "speaker-gray" to the routes array, ROUTE_TITLES,
-     build-routes.py and the workflow PATHS to bring it back. -->
 <div class="page" id="page-speaker-gray" role="region" aria-label="Eddie Gray">
   <div class="wrap page-intro">
     <span class="eyebrow"><span class="tick"></span>Speaker</span>
@@ -3292,10 +3298,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   </section>
 </div>
 
-<!-- UNLISTED 2026-08-18: the client renamed Della Adams's photo "Not Confirmed_" in the
-     speaker folder after we published, so the card and route were pulled. The page is
-     kept intact and unrouted; re-add "speaker-adams" to the routes array, ROUTE_TITLES,
-     build-routes.py and the workflow PATHS to bring it back. -->
 <div class="page" id="page-speaker-adams" role="region" aria-label="Della Adams">
   <div class="wrap page-intro">
     <span class="eyebrow"><span class="tick"></span>Speaker</span>
@@ -6222,7 +6224,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   /* "attend" is intentionally NOT a route: the retired Attend page (#page-attend)
      is kept in source for reference but is unreachable. Any unknown route (incl.
      #/attend) falls back to "home" below. See the Dashboard "Locked pages" note. */
-  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","founding","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-riley","speaker-cook","speaker-oakes","speaker-brown","speaker-zombek","speaker-motsei"];
+  var routes = ["home","invitation","journey","gathering","contact","info","sponsor","founding","luminaries","archive","drafts","workbench","dashboard","terminal","speaker-jb","speaker-riley","speaker-cook","speaker-gray","speaker-adams","speaker-oakes","speaker-brown","speaker-zombek","speaker-motsei"];
   /* per-route <title> for in-app (hash) navigation — screen readers announce the new title,
      and browser history/tabs stay meaningful. Mirrors the crawlable route pages' titles. */
   var DEFAULT_TITLE = "WILD! Healing Gala 2026 — A Harvest of Medicine | Restore Forward";
@@ -6239,6 +6241,8 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     "speaker-jb": "Dr. Dieudonné Jean-Baptiste — WILD! Healing Gala 2026",
     "speaker-riley": "Dr. Nathan Riley — WILD! Healing Gala 2026",
     "speaker-cook": "Katsitsienhawi Iakoskarewake (Tiffany Cook) — WILD! Healing Gala 2026",
+    "speaker-gray": "Eddie Gray — WILD! Healing Gala 2026",
+    "speaker-adams": "Della Adams — WILD! Healing Gala 2026",
     "speaker-oakes": "Iakowi:he’ne’ Oakes — WILD! Healing Gala 2026",
     "speaker-brown": "Sevonna Brown — WILD! Healing Gala 2026",
     "speaker-zombek": "Alicia Luhrssen-Zombek — WILD! Healing Gala 2026",
