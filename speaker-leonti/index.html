@@ -663,11 +663,12 @@ a.hdate:hover::after, a.hdate:focus-visible::after{ transform:scaleX(1); }
    arithmetic a grid would do — row count minus one gap, divided by the row count —
    so full rows still line up as columns; only the short row re-centres. */
 .speakers{ display:flex; flex-wrap:wrap; justify-content:center; gap:1.6rem; margin-top:2.8rem; max-width:74rem; margin-inline:auto; }
-/* n cards per row need n-1 gaps, so the subtraction is gap x (n-1) = 9.6rem for seven.
+/* n cards per row need n-1 gaps, so the subtraction is gap x (n-1) = 6.4rem for five.
    Subtract a little more than that: an exact fit sits right on the container edge and
    sub-pixel rounding then tips the last card down to a row of its own. Fourteen
-   speakers therefore read as two rows of seven. */
-.speakers > *{ flex:0 0 calc((100% - 10rem) / 7); }
+   speakers therefore read as three rows - 5, 5, 4 - each centred by the flex
+   justify-content above, so the short last row sits under the middle of the block. */
+.speakers > *{ flex:0 0 calc((100% - 6.8rem) / 5); }
 @media (min-width:761px) and (max-width:1024px){
   .speakers{ gap:1.5rem; max-width:48rem; }
   .speakers > *{ flex-basis:calc((100% - 3rem) / 3); } }
