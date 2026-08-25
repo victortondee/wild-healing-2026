@@ -142,9 +142,9 @@ ROUTES = {
         "— A Harvest of Medicine, September 9–12, 2026.",
     ),
     "speaker-leonti": (
-        "Dr. Vincent Leonti — WILD! Healing Gala 2026",
-        "Dr. Vincent Leonti, MD, board-certified family and functional medicine physician "
-        "and co-founder of Princeton Integrative Health, at WILD! Healing — A Harvest of "
+        "Dr. Vincent “Vinny” Leonti — WILD! Healing Gala 2026",
+        "Dr. Vincent “Vinny” Leonti, MD, holistic integrative medicine physician and "
+        "co-founder of Princeton Integrative Health, at WILD! Healing — A Harvest of "
         "Medicine, September 9–12, 2026.",
     ),
     "speaker-vanluven": (
