@@ -459,15 +459,16 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
 .nav-links a:hover::after, .nav-links a[aria-current="page"]::after{ transform:scaleX(1); }
 .nav-links a:hover{ opacity:0.78; }
 .nav-cta-btn{ flex:none; }
-/* Donate reads as a button, but takes its colour from the nav rather than a palette
-   token. The header sits over a dark hero on some pages and cream on others, so the
-   nav text colour is the only value already proven to contrast in both - currentColor
-   inherits it and cannot drift out of compliance. Pill only on true desktop; in the
-   drawer it is a normal menu row like its siblings. */
-@media (min-width:1025px){
-  .nav-donate-link{ border:1px solid currentColor; border-radius:999rem;
-    padding:0.5rem 1.1rem; min-height:0; }
-}
+/* Donate is the secondary half of a pair, so it carries the same .btn geometry as
+   Get tickets and the two line up. It is FILLED rather than outlined: the header is
+   translucent and passes over dark heroes as well as cream, and terracotta text only
+   reaches 3.06:1 on the dark state. Painting its own cream ground fixes the pairing
+   at 4.71:1 whatever is behind it, and hover simply inverts to the primary's fill. */
+.nav-donate-btn{ background:var(--cream); color:#994E33; border-color:#994E33;
+  box-shadow:0 6px 18px -12px rgba(11,20,14,0.45); padding:1.05em 1.5em; }
+.nav-donate-btn:hover{ background:#994E33; color:var(--cream); border-color:#994E33;
+  transform:translateY(-2px); }
+.nav-mob-donate{ display:none; }  /* drawer only — desktop uses the button above */
 .nav-back-rf{ display:none; }  /* mobile-menu only — see @media (max-width:1000px) */
 .nav-mob-home{ display:none; }  /* shown only in the mobile/tablet menu — desktop uses the logo as home */
 .menu-toggle{ display:none; background:none; border:1px solid var(--line-strong); border-radius:999px; color:var(--ink); width:2.8rem; height:2.8rem; cursor:pointer; align-items:center; justify-content:center; flex:none; }
@@ -487,6 +488,8 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
   .nav-links .nl-mode{ font-size:0.74rem; }
   .nav-links a::after{ display:none; }
   .nav-mob-home{ display:block; }
+  .nav-mob-donate{ display:block; }
+  .nav-donate-btn{ display:none; }
   /* Restore Forward credit in the mobile menu — mirrors the pinned pill */
   .nav-back-rf{ display:block; margin-top:1.7rem; }  /* no border here — Sep 12's bottom rule already separates the credit (avoids a double line) */
   .nav-links .nav-back-rf a{ display:flex; align-items:center; gap:0.7rem; padding:0.1rem 0.25rem; min-height:0; border-bottom:none; }
@@ -2005,7 +2008,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <li><a href="#/journey/day-two" data-key="journey/day-two"><span class="nl-date">Sep 10</span><span class="nl-mode">(Online)</span></a></li>
       <li><a href="#/journey/day-three" data-key="journey/day-three"><span class="nl-date">Sep 11</span><span class="nl-mode">(Travel day)</span></a></li>
       <li><a href="/gathering/" data-key="gathering" class="land"><span class="nl-date">Sep 12</span><span class="nl-mode">(On the land)</span></a></li>
-      <li class="nav-donate"><a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="nav-donate-link">Donate</a></li>
+      <li class="nav-mob-donate"><a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener">Donate</a></li>
       <li class="nav-back-rf"><a href="https://restoreny.org" target="_blank" rel="noopener" aria-label="A Restore Forward gathering — visit Restore Forward">
         <span class="nav-rf-by">by</span>
         <img class="nav-rf-logo" src="images/restore-forward.svg" alt="">
@@ -2014,6 +2017,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </a></li>
     </ul>
     </nav>
+    <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn nav-cta-btn nav-donate-btn">Donate</a>
     <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary nav-cta-btn">Get tickets</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
       <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
