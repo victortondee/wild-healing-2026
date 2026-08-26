@@ -454,6 +454,15 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
 .nav-links a:hover::after, .nav-links a[aria-current="page"]::after{ transform:scaleX(1); }
 .nav-links a:hover{ opacity:0.78; }
 .nav-cta-btn{ flex:none; }
+/* Donate reads as a button, but takes its colour from the nav rather than a palette
+   token. The header sits over a dark hero on some pages and cream on others, so the
+   nav text colour is the only value already proven to contrast in both - currentColor
+   inherits it and cannot drift out of compliance. Pill only on true desktop; in the
+   drawer it is a normal menu row like its siblings. */
+@media (min-width:1025px){
+  .nav-donate-link{ border:1px solid currentColor; border-radius:999rem;
+    padding:0.5rem 1.1rem; min-height:0; }
+}
 .nav-back-rf{ display:none; }  /* mobile-menu only — see @media (max-width:1000px) */
 .nav-mob-home{ display:none; }  /* shown only in the mobile/tablet menu — desktop uses the logo as home */
 .menu-toggle{ display:none; background:none; border:1px solid var(--line-strong); border-radius:999px; color:var(--ink); width:2.8rem; height:2.8rem; cursor:pointer; align-items:center; justify-content:center; flex:none; }
@@ -1991,6 +2000,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <li><a href="#/journey/day-two" data-key="journey/day-two"><span class="nl-date">Sep 10</span><span class="nl-mode">(Online)</span></a></li>
       <li><a href="#/journey/day-three" data-key="journey/day-three"><span class="nl-date">Sep 11</span><span class="nl-mode">(Travel day)</span></a></li>
       <li><a href="/gathering/" data-key="gathering" class="land"><span class="nl-date">Sep 12</span><span class="nl-mode">(On the land)</span></a></li>
+      <li class="nav-donate"><a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="nav-donate-link">Donate</a></li>
       <li class="nav-back-rf"><a href="https://restoreny.org" target="_blank" rel="noopener" aria-label="A Restore Forward gathering — visit Restore Forward">
         <span class="nav-rf-by">by</span>
         <img class="nav-rf-logo" src="images/restore-forward.svg" alt="">
@@ -6343,6 +6353,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <a href="/contact/">Contact us</a>
         <a href="/sponsor/">Become a sponsor</a>
         <a href="https://www.institute-restoreny.org/restore-forward-membership" target="_blank" rel="noopener">Become a member</a>
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener">Donate</a>
       </div>
     </div>
     <div class="footer-newsletter">
