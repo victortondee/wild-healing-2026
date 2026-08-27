@@ -1608,7 +1608,13 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
    Mobile menu — fullscreen, contemporary, accessible
    ============================================================ */
 body.menu-open{ overflow:hidden; }
-body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none; }
+/* While the menu is open the header floats above the drawer at z-index 211, so a
+   transparent header let the list scroll straight through the brand and the close
+   control - fine at rest, a collision the moment you scrolled. Painting the strip
+   the drawer's own colour gives the content something to disappear behind. The
+   header is 5rem and the drawer's top padding is 7rem, so nothing is covered at rest. */
+body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
+  background:rgb(244,239,228); border-bottom-color:transparent; }
 @media (max-width:1000px){
   .site-header{ z-index:210; }
   .menu-toggle{ position:relative; z-index:211; color:var(--ink); }
