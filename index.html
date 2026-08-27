@@ -1645,9 +1645,15 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         a fixed strip the height of the header, above the list but below the brand
         and the close control, which sit at z-index 211 in the header above it. */
   .nav-links{ justify-content:flex-start; }
-  .nav-links li{ position:relative; z-index:1; }
-  .nav-links.open::before{ content:""; position:fixed; top:0; left:0; right:0;
-    height:5rem; background:rgb(244,239,228); z-index:2; pointer-events:none; }
+  /* The cover cannot live inside the drawer. .nav-links carries backdrop-filter,
+     which makes it the containing block for its own position:fixed descendants, so
+     a fixed strip in there is measured from the top of the SCROLLED CONTENT and
+     rides up with it - which is exactly what the previous attempt did. It has to be
+     a sibling of the drawer inside the header: absolute to the header, above the
+     drawer's z-index 200, below the brand and close control at 211. */
+  body.menu-open .site-header::after{ content:""; position:absolute;
+    top:0; left:0; right:0; height:5rem; background:rgb(244,239,228);
+    z-index:205; pointer-events:none; }
 
   .nav-links li{ width:100%; }
   .nav-links a{
