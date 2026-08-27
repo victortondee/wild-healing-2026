@@ -474,16 +474,17 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
    translucent and passes over dark heroes as well as cream, and terracotta text only
    reaches 3.06:1 on the dark state. Painting its own cream ground fixes the pairing
    at 4.71:1 whatever is behind it, and hover simply inverts to the primary's fill. */
-/* Carries the donate rail's own ink, so the two donate surfaces are recognisably
-   the same thing. Cream on ink-deep is 12.22:1, and the fill means it does not
-   depend on whatever the translucent header is sitting over. */
-.nav-donate-btn{ background:var(--ink-deep); color:var(--cream);
-  border-color:var(--ink-deep); box-shadow:0 6px 18px -12px rgba(11,20,14,0.45);
+/* Carries the rail's colour so the two donate surfaces stay recognisably the same
+   thing. Filling with --forest rather than inheriting it means the button paints its
+   own ground, so 5.04:1 holds over a dark hero as well as over cream. */
+.nav-donate-btn{ background:var(--forest); color:#8A4632;
+  border-color:#8A4632; box-shadow:0 6px 18px -12px rgba(11,20,14,0.35);
   padding:1.05em 1.5em; }
-/* Hover inverts to a cream fill rather than going transparent: the header is
-   translucent, and ink text on a dark hero would vanish. Both states stay 12.22:1. */
-.nav-donate-btn:hover{ background:var(--cream); color:var(--ink-deep);
-  border-color:var(--cream); transform:translateY(-2px); }
+/* Hover fills rather than going transparent: the header is translucent, and letting
+   the backdrop through would put terracotta text on a dark hero. Cream on #8A4632
+   is 5.48:1. */
+.nav-donate-btn:hover{ background:#8A4632; color:var(--cream);
+  border-color:#8A4632; transform:translateY(-2px); }
 .nav-mob-donate, .nav-mob-tickets{ display:none; }  /* drawer only — desktop uses the buttons above */
 .nav-back-rf{ display:none; }  /* mobile-menu only — see @media (max-width:1000px) */
 .nav-mob-home{ display:none; }  /* shown only in the mobile/tablet menu — desktop uses the logo as home */
@@ -1064,18 +1065,20 @@ body[data-page="invitation"]{ --lantern:#e2a25e; }
    thing setting the height, so the band is the button plus a hair of breathing room. */
 /* section.band sets padding-block from --pad and outranks a bare class, so this
    has to match its specificity or the "narrow" rail inherits a full band of space. */
-section.band.donate-rail{ padding-block:0.75rem; background:var(--ink-deep); border-block:0; }
+section.band.donate-rail{ padding-block:0.75rem; background:var(--forest);
+  border-block:1px solid var(--line); }
 /* Desktop already has Donate in the header, so the rail would be the same ask twice
    within one screen. It stays where that button is hidden: the drawer breakpoints. */
 @media (min-width:1025px){ section.band.donate-rail{ display:none; } }
 .donate-rail .wrap{ display:flex; justify-content:center; }
-/* Deep ink rather than a tint: terracotta on the ticket strip's wash only reaches
-   4.27:1, while cream on ink-deep is 12.22:1. It also gives the hero a hard edge to
-   end on instead of fading into the cream band below. */
+/* One step off the page rather than a dark bar across it - the rail appears up to
+   twice per page now, and ink at that frequency read as an interruption. The deeper
+   terracotta carries it: #994E33 on --forest is 4.34:1 and fails, #8A4632 is 5.04:1.
+   Hairlines rather than a block of colour do the separating. */
 .donate-rail .btn{ padding:0.7em 1.7em; font-size:0.74rem;
-  background:transparent; color:var(--cream); border-color:rgba(236,227,207,0.55); }
-.donate-rail .btn:hover{ background:var(--cream); color:var(--ink-deep);
-  border-color:var(--cream); transform:translateY(-2px); }
+  background:transparent; color:#8A4632; border-color:#8A4632; }
+.donate-rail .btn:hover{ background:#8A4632; color:var(--cream);
+  border-color:#8A4632; transform:translateY(-2px); }
 .footer-col a.footer-org-link{ display:inline-flex; align-items:center; gap:0.4rem; margin:0.6rem 0 0; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--lantern); border-bottom:1px solid transparent; padding-bottom:1px; transition:color .25s var(--ease), border-color .25s var(--ease); }
 .footer-col a.footer-org-link:hover{ color:var(--lantern-hi); border-bottom-color:var(--lantern-hi); }
 .footer-bottom{ margin-top:3.4rem; padding-top:1.7rem; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.8rem; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.05em; color:var(--sage-dim); }
