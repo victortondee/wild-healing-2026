@@ -464,10 +464,16 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
    translucent and passes over dark heroes as well as cream, and terracotta text only
    reaches 3.06:1 on the dark state. Painting its own cream ground fixes the pairing
    at 4.71:1 whatever is behind it, and hover simply inverts to the primary's fill. */
-.nav-donate-btn{ background:var(--cream); color:#994E33; border-color:#994E33;
-  box-shadow:0 6px 18px -12px rgba(11,20,14,0.45); padding:1.05em 1.5em; }
-.nav-donate-btn:hover{ background:#994E33; color:var(--cream); border-color:#994E33;
-  transform:translateY(-2px); }
+/* Carries the donate rail's own ink, so the two donate surfaces are recognisably
+   the same thing. Cream on ink-deep is 12.22:1, and the fill means it does not
+   depend on whatever the translucent header is sitting over. */
+.nav-donate-btn{ background:var(--ink-deep); color:var(--cream);
+  border-color:var(--ink-deep); box-shadow:0 6px 18px -12px rgba(11,20,14,0.45);
+  padding:1.05em 1.5em; }
+/* Hover inverts to a cream fill rather than going transparent: the header is
+   translucent, and ink text on a dark hero would vanish. Both states stay 12.22:1. */
+.nav-donate-btn:hover{ background:var(--cream); color:var(--ink-deep);
+  border-color:var(--cream); transform:translateY(-2px); }
 .nav-mob-donate, .nav-mob-tickets{ display:none; }  /* drawer only — desktop uses the buttons above */
 .nav-back-rf{ display:none; }  /* mobile-menu only — see @media (max-width:1000px) */
 .nav-mob-home{ display:none; }  /* shown only in the mobile/tablet menu — desktop uses the logo as home */
@@ -1049,6 +1055,9 @@ body[data-page="invitation"]{ --lantern:#e2a25e; }
 /* section.band sets padding-block from --pad and outranks a bare class, so this
    has to match its specificity or the "narrow" rail inherits a full band of space. */
 section.band.donate-rail{ padding-block:0.75rem; background:var(--ink-deep); border-block:0; }
+/* Desktop already has Donate in the header, so the rail would be the same ask twice
+   within one screen. It stays where that button is hidden: the drawer breakpoints. */
+@media (min-width:1025px){ section.band.donate-rail{ display:none; } }
 .donate-rail .wrap{ display:flex; justify-content:center; }
 /* Deep ink rather than a tint: terracotta on the ticket strip's wash only reaches
    4.27:1, while cream on ink-deep is 12.22:1. It also gives the hero a hard edge to
