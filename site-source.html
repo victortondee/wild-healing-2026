@@ -488,8 +488,14 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
   .nav-links .nl-mode{ font-size:0.74rem; }
   .nav-links a::after{ display:none; }
   .nav-mob-home{ display:block; }
-  .nav-mob-donate{ display:block; }
   .nav-donate-btn{ display:none; }
+  /* In the drawer Donate was text row nine of nine and disappeared into the list.
+     It keeps its own row but is drawn as a button, and sits last so it reads as an
+     action rather than another destination. */
+  .nav-mob-donate{ display:block; order:99; border-bottom:0; margin-top:1.1rem; }
+  .nav-mob-donate a{ justify-content:center; border-bottom:0;
+    border:1px solid #994E33; border-radius:999rem; color:#994E33;
+    padding:0.9rem 1.4rem; font-weight:600; }
   /* Restore Forward credit in the mobile menu — mirrors the pinned pill */
   .nav-back-rf{ display:block; margin-top:1.7rem; }  /* no border here — Sep 12's bottom rule already separates the credit (avoids a double line) */
   .nav-links .nav-back-rf a{ display:flex; align-items:center; gap:0.7rem; padding:0.1rem 0.25rem; min-height:0; border-bottom:none; }
@@ -1013,7 +1019,27 @@ body[data-page="invitation"]{ --lantern:#e2a25e; }
 .ticket-strip-copy{ margin:0; font-family:var(--ff-ui); font-size:1rem; line-height:1.5; color:var(--ink-2); max-width:40rem; }
 .ticket-strip-copy strong{ color:var(--ink); font-weight:700; }
 .ticket-strip .btn{ flex:none; }
-@media (max-width:760px){ .ticket-strip-inner{ flex-direction:column; align-items:flex-start; } }
+.ts-actions{ display:flex; align-items:center; gap:0.9rem; flex:none; flex-wrap:wrap; }
+/* Same secondary treatment as the header pair - its own cream ground, so it holds
+   4.71:1 over the strip's tinted background rather than depending on it. */
+.ts-donate{ background:var(--cream); color:#994E33; border-color:#994E33; padding:1.05em 1.5em; }
+.ts-donate:hover{ background:#994E33; color:var(--cream); transform:translateY(-2px); }
+@media (max-width:760px){
+  .ticket-strip-inner{ flex-direction:column; align-items:flex-start; }
+  .ts-actions{ width:100%; }
+  .ts-actions .btn{ flex:1 1 auto; justify-content:center; }
+}
+
+/* A rule across the page rather than a section of its own: the padding is the only
+   thing setting the height, so the band is the button plus a hair of breathing room. */
+/* section.band sets padding-block from --pad and outranks a bare class, so this
+   has to match its specificity or the "narrow" rail inherits a full band of space. */
+section.band.donate-rail{ padding-block:0.75rem; background:var(--cream);
+  border-bottom:1px solid var(--line); }
+.donate-rail .wrap{ display:flex; justify-content:center; }
+.donate-rail .btn{ padding:0.7em 1.7em; font-size:0.74rem;
+  background:transparent; color:#994E33; border-color:#994E33; }
+.donate-rail .btn:hover{ background:#994E33; color:var(--cream); transform:translateY(-2px); }
 .footer-col a.footer-org-link{ display:inline-flex; align-items:center; gap:0.4rem; margin:0.6rem 0 0; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--lantern); border-bottom:1px solid transparent; padding-bottom:1px; transition:color .25s var(--ease), border-color .25s var(--ease); }
 .footer-col a.footer-org-link:hover{ color:var(--lantern-hi); border-bottom-color:var(--lantern-hi); }
 .footer-bottom{ margin-top:3.4rem; padding-top:1.7rem; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.8rem; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.05em; color:var(--sage-dim); }
@@ -2244,6 +2270,12 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     </div>
   </section>
 
+  <section class="band donate-rail" aria-label="Support Restore Forward">
+    <div class="wrap">
+      <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn">Donate</a>
+    </div>
+  </section>
+
   <!-- opening remembering -->
   <section class="band band--breathe rem-draftfig">
     <div class="wrap prose reveal">
@@ -2788,7 +2820,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join us online and on the land — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3185,7 +3220,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3223,7 +3261,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3266,7 +3307,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3303,7 +3347,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3336,7 +3383,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3368,7 +3418,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3400,7 +3453,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3426,7 +3482,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3454,7 +3513,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3498,7 +3560,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3538,7 +3603,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3569,7 +3637,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3599,7 +3670,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3629,7 +3703,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Join the speakers at WILD! Healing — September 9–12, 2026.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
@@ -3868,7 +3945,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
       <p class="ticket-strip-copy"><strong>Tickets are open.</strong> Ready to join us? September 9–12, 2026 — online &amp; on the land.</p>
-      <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      <span class="ts-actions">
+        <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
+        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener" class="btn btn-primary">Get tickets <span class="arrow" aria-hidden="true">→</span></a>
+      </span>
     </div>
   </section>
 </div>
