@@ -1603,13 +1603,7 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
    Mobile menu — fullscreen, contemporary, accessible
    ============================================================ */
 body.menu-open{ overflow:hidden; }
-/* While the menu is open the header floats above the drawer at z-index 211, so a
-   transparent header let the list scroll straight through the brand and the close
-   control - fine at rest, a collision the moment you scrolled. Painting the strip
-   the drawer's own colour gives the content something to disappear behind. The
-   header is 5rem and the drawer's top padding is 7rem, so nothing is covered at rest. */
-body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
-  background:rgb(244,239,228); border-bottom-color:transparent; }
+body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none; }
 @media (max-width:1000px){
   .site-header{ z-index:210; }
   .menu-toggle{ position:relative; z-index:211; color:var(--ink); }
@@ -1628,6 +1622,24 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   }
   .nav-links.open{ opacity:1; visibility:visible; pointer-events:auto; max-height:none;
     padding:7rem clamp(1.8rem,8vw,4rem) 3rem; }
+
+  /* Two separate reasons the list collided with the wordmark:
+
+     1. justify-content:center on a scroll container. Once the items are taller than
+        the screen - which nine of them always are - centring overflows equally at
+        BOTH ends, and the top overflow sits outside the padding and cannot be
+        scrolled back to. flex-start keeps the 7rem top padding honest.
+
+     2. The drawer is a CHILD of the header, so no background on the header can ever
+        hide it: an element's background paints beneath its own positioned
+        descendants. Giving the HEADER a colour did nothing, which is why the first
+        attempt looked identical. The cover has to live inside the drawer instead -
+        a fixed strip the height of the header, above the list but below the brand
+        and the close control, which sit at z-index 211 in the header above it. */
+  .nav-links{ justify-content:flex-start; }
+  .nav-links li{ position:relative; z-index:1; }
+  .nav-links.open::before{ content:""; position:fixed; top:0; left:0; right:0;
+    height:5rem; background:rgb(244,239,228); z-index:2; pointer-events:none; }
 
   .nav-links li{ width:100%; }
   .nav-links a{
