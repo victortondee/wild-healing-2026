@@ -1646,13 +1646,21 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         a fixed strip the height of the header, above the list but below the brand
         and the close control, which sit at z-index 211 in the header above it. */
   .nav-links{ justify-content:flex-start; }
-  /* The cover cannot live inside the drawer. .nav-links carries backdrop-filter,
-     which makes it the containing block for its own position:fixed descendants, so
-     a fixed strip in there is measured from the top of the SCROLLED CONTENT and
-     rides up with it - which is exactly what the previous attempt did. It has to be
-     a sibling of the drawer inside the header: absolute to the header, above the
-     drawer's z-index 200, below the brand and close control at 211. */
-  body.menu-open .site-header::after{ content:""; position:absolute;
+  /* Where the cover has to live, after three wrong answers:
+
+     - Not the header's background: an element paints beneath its own positioned
+       descendants, and the drawer is inside the header.
+     - Not fixed inside .nav-links: that carries backdrop-filter, so it becomes the
+       containing block for its own fixed children and the strip scrolled with the
+       list it was hiding.
+     - Not on .site-header either. .wrap sets position:relative and z-index:2, so it
+       is a stacking context: the brand's 211 and the drawer's 200 are both sealed
+       inside it. A cover placed on the header outranked the whole wrap and painted
+       over the wordmark and the close control together.
+
+     It belongs on .nav, inside that same context, where 205 really does sit between
+     the drawer at 200 and the brand and close at 211. */
+  body.menu-open .nav::before{ content:""; position:fixed;
     top:0; left:0; right:0; height:5rem; background:rgb(244,239,228);
     z-index:205; pointer-events:none; }
 
