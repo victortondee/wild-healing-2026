@@ -1606,7 +1606,13 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
    Mobile menu — fullscreen, contemporary, accessible
    ============================================================ */
 body.menu-open{ overflow:hidden; }
-body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none; }
+/* Pin the header open. body.nav-hidden slides it off on downward scroll, and the
+   handler that clears the class only runs on window scroll - but an open menu sets
+   overflow:hidden on the body, so the window never scrolls again. A header hidden
+   before you opened the menu therefore stayed hidden, taking the close control with
+   it and leaving no way out of the drawer. */
+body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
+  transform:none; }
 @media (max-width:1000px){
   .site-header{ z-index:210; }
   .menu-toggle{ position:relative; z-index:211; color:var(--ink); }
