@@ -1350,15 +1350,17 @@ a.dash-link:hover{ border-color:var(--lantern); background:rgba(215,158,140,0.06
 @media (min-width:1025px){ .band.info-hero.info-hero--photo{ aspect-ratio:2692/1199; min-height:0; } } /* desktop: locked to the image aspect (pixel-aligned) */
 @media (min-width:761px) and (max-width:1024px){ .band.info-hero.info-hero--photo{ aspect-ratio:1.3636; min-height:0; } } /* tablet: match The Gathering hero (~1.36:1) */
 @media (min-width:761px){ #draft-D-04{ aspect-ratio:2.033; } } /* D-04: avg of the other page heroes (invitation 704 + journey 717 + gathering 704 = 708px @1440) */
-@media (max-width:760px){ .band.info-hero.info-hero--photo{ background-image:url("images/info-hero-draft-mobile.jpg"); background-image:image-set(url("images/info-hero-draft-mobile.webp") type("image/webp"), url("images/info-hero-draft-mobile.jpg") type("image/jpeg")); aspect-ratio:1608/1942; padding-bottom:1.6rem; min-height:max-content; } }
+@media (max-width:760px){ .band.info-hero.info-hero--photo{ background-image:url("images/info-hero-draft-mobile.jpg"); background-image:image-set(url("images/info-hero-draft-mobile.webp") type("image/webp"), url("images/info-hero-draft-mobile.jpg") type("image/jpeg")); aspect-ratio:auto; padding-block:0 2.4rem; min-height:28rem; } }
 @media (min-width:761px){ .band.info-hero{ display:flex; flex-direction:column; justify-content:flex-start; min-height:40rem; } }
 @media (max-width:760px){ .ih-eb-sep{ display:none; } .ih-eb-land{ display:block; } }
 
-/* The mobile Info hero is sized by aspect-ratio with min-height:0, so when its
-   three buttons wrapped to two rows the content simply overflowed the box and
-   landed on whatever came next - invisible until the donate rail moved in under
-   it. max-content lets the box grow to its own content; the ratio still governs
-   whenever the content is shorter. */
+/* No aspect-ratio on the mobile Info hero. The ratio gives a block box a DEFINITE
+   height, and content taller than it simply overflows - which is what three
+   buttons wrapping to two rows did, landing 30px over whatever followed. Nor does
+   min-height:max-content rescue it: on a block box that resolves against the
+   ratio's height and loses. Measured at 375px the box was 453px around 529px of
+   content. Content drives the height now, with a floor so the photo still reads
+   as a hero when the copy is short, and background-size:cover does the rest. */
 
 /* The Journey header — full-bleed background image only. */
 .band.journey-hero{ padding-block:0;
