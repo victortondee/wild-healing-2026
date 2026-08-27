@@ -489,13 +489,18 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
   .nav-links a::after{ display:none; }
   .nav-mob-home{ display:block; }
   .nav-donate-btn{ display:none; }
-  /* In the drawer Donate was text row nine of nine and disappeared into the list.
-     It keeps its own row but is drawn as a button, and sits last so it reads as an
-     action rather than another destination. */
-  .nav-mob-donate{ display:block; order:99; border-bottom:0; margin-top:1.1rem; }
-  .nav-mob-donate a{ justify-content:center; border-bottom:0;
-    border:1px solid #994E33; border-radius:999rem; color:#994E33;
-    padding:0.9rem 1.4rem; font-weight:600; }
+  /* In the drawer Donate was text row nine of nine and disappeared into the list,
+     so it is drawn as a button instead. It must out-specify `.nav-links a`, which
+     is declared later and would otherwise impose the 2.7rem display serif, the
+     flush-left alignment and the zero side padding - which is exactly what it did
+     the first time: the word sat on the pill's left edge in huge serif. */
+  .nav-mob-donate{ display:block; margin-top:1.4rem; }
+  .nav-links li.nav-mob-donate a{
+    display:flex; justify-content:center; align-items:center;
+    font-family:var(--ff-ui); font-weight:600; font-size:0.8rem;
+    text-transform:uppercase; letter-spacing:0.16em; line-height:1;
+    padding:1.05em 1.9em; border:1px solid #994E33; border-radius:999rem;
+    border-bottom:1px solid #994E33; color:#994E33; }
   /* Restore Forward credit in the mobile menu — mirrors the pinned pill */
   .nav-back-rf{ display:block; margin-top:1.7rem; }  /* no border here — Sep 12's bottom rule already separates the credit (avoids a double line) */
   .nav-links .nav-back-rf a{ display:flex; align-items:center; gap:0.7rem; padding:0.1rem 0.25rem; min-height:0; border-bottom:none; }
