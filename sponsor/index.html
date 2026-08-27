@@ -463,7 +463,7 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
   box-shadow:0 6px 18px -12px rgba(11,20,14,0.45); padding:1.05em 1.5em; }
 .nav-donate-btn:hover{ background:#994E33; color:var(--cream); border-color:#994E33;
   transform:translateY(-2px); }
-.nav-mob-donate{ display:none; }  /* drawer only — desktop uses the button above */
+.nav-mob-donate, .nav-mob-tickets{ display:none; }  /* drawer only — desktop uses the buttons above */
 .nav-back-rf{ display:none; }  /* mobile-menu only — see @media (max-width:1000px) */
 .nav-mob-home{ display:none; }  /* shown only in the mobile/tablet menu — desktop uses the logo as home */
 .menu-toggle{ display:none; background:none; border:1px solid var(--line-strong); border-radius:999px; color:var(--ink); width:2.8rem; height:2.8rem; cursor:pointer; align-items:center; justify-content:center; flex:none; }
@@ -489,13 +489,22 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
      is declared later and would otherwise impose the 2.7rem display serif, the
      flush-left alignment and the zero side padding - which is exactly what it did
      the first time: the word sat on the pill's left edge in huge serif. */
-  .nav-mob-donate{ display:block; margin-top:1.4rem; }
+  /* The header's Get tickets is hidden while the drawer is open so the close control
+     is the only thing competing at the top, which left the drawer with no way to buy
+     a ticket. Both actions now sit at the end of the list, primary then secondary.
+     Both must out-specify `.nav-links a`, declared later, or its 2.7rem display
+     serif, flush-left alignment and zero side padding win. */
+  .nav-mob-tickets{ display:block; margin-top:1.6rem; }
+  .nav-mob-donate{ display:block; margin-top:0.7rem; }
+  .nav-links li.nav-mob-tickets a,
   .nav-links li.nav-mob-donate a{
     display:flex; justify-content:center; align-items:center;
     font-family:var(--ff-ui); font-weight:600; font-size:0.8rem;
     text-transform:uppercase; letter-spacing:0.16em; line-height:1;
-    padding:1.05em 1.9em; border:1px solid #994E33; border-radius:999rem;
-    border-bottom:1px solid #994E33; color:#994E33; }
+    padding:1.05em 1.9em; border-radius:999rem; border-bottom:0; }
+  .nav-links li.nav-mob-tickets a{ background:linear-gradient(180deg,#994E33,#8A4632);
+    color:var(--cream); border:1px solid transparent; }
+  .nav-links li.nav-mob-donate a{ border:1px solid #994E33; color:#994E33; }
   /* Restore Forward credit in the mobile menu — mirrors the pinned pill */
   .nav-back-rf{ display:block; margin-top:1.7rem; }  /* no border here — Sep 12's bottom rule already separates the credit (avoids a double line) */
   .nav-links .nav-back-rf a{ display:flex; align-items:center; gap:0.7rem; padding:0.1rem 0.25rem; min-height:0; border-bottom:none; }
@@ -1682,6 +1691,10 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   .nav-links.open li:nth-child(6) a{ animation-delay:.35s; }
   .nav-links.open li:nth-child(7) a{ animation-delay:.41s; }
   .nav-links.open li:nth-child(8) a{ animation-delay:.47s; }
+  /* Two more rows now: the ticket and donate buttons. Without their own delays they
+     would land instantly while everything above them was still staggering in. */
+  .nav-links.open li:nth-child(9) a{ animation-delay:.53s; }
+  .nav-links.open li:nth-child(10) a{ animation-delay:.59s; }
   .nav-links a .nl-date{ font-weight:300; }
   .nav-links a .nl-mode{ font-family:var(--ff-ui); font-style:normal; font-weight:500;
     font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--sage); align-self:center; }
@@ -2075,6 +2088,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       <li><a href="#/journey/day-two" data-key="journey/day-two"><span class="nl-date">Sep 10</span><span class="nl-mode">(Online)</span></a></li>
       <li><a href="#/journey/day-three" data-key="journey/day-three"><span class="nl-date">Sep 11</span><span class="nl-mode">(Travel day)</span></a></li>
       <li><a href="/gathering/" data-key="gathering" class="land"><span class="nl-date">Sep 12</span><span class="nl-mode">(On the land)</span></a></li>
+      <li class="nav-mob-tickets"><a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener">Get tickets</a></li>
       <li class="nav-mob-donate"><a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener">Donate</a></li>
       <li class="nav-back-rf"><a href="https://restoreny.org" target="_blank" rel="noopener" aria-label="A Restore Forward gathering — visit Restore Forward">
         <span class="nav-rf-by">by</span>
