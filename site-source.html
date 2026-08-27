@@ -1039,12 +1039,15 @@ body[data-page="invitation"]{ --lantern:#e2a25e; }
    thing setting the height, so the band is the button plus a hair of breathing room. */
 /* section.band sets padding-block from --pad and outranks a bare class, so this
    has to match its specificity or the "narrow" rail inherits a full band of space. */
-section.band.donate-rail{ padding-block:0.75rem; background:var(--cream);
-  border-bottom:1px solid var(--line); }
+section.band.donate-rail{ padding-block:0.75rem; background:var(--ink-deep); border-block:0; }
 .donate-rail .wrap{ display:flex; justify-content:center; }
+/* Deep ink rather than a tint: terracotta on the ticket strip's wash only reaches
+   4.27:1, while cream on ink-deep is 12.22:1. It also gives the hero a hard edge to
+   end on instead of fading into the cream band below. */
 .donate-rail .btn{ padding:0.7em 1.7em; font-size:0.74rem;
-  background:transparent; color:#994E33; border-color:#994E33; }
-.donate-rail .btn:hover{ background:#994E33; color:var(--cream); transform:translateY(-2px); }
+  background:transparent; color:var(--cream); border-color:rgba(236,227,207,0.55); }
+.donate-rail .btn:hover{ background:var(--cream); color:var(--ink-deep);
+  border-color:var(--cream); transform:translateY(-2px); }
 .footer-col a.footer-org-link{ display:inline-flex; align-items:center; gap:0.4rem; margin:0.6rem 0 0; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--lantern); border-bottom:1px solid transparent; padding-bottom:1px; transition:color .25s var(--ease), border-color .25s var(--ease); }
 .footer-col a.footer-org-link:hover{ color:var(--lantern-hi); border-bottom-color:var(--lantern-hi); }
 .footer-bottom{ margin-top:3.4rem; padding-top:1.7rem; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.8rem; font-family:var(--ff-ui); font-size:0.72rem; letter-spacing:0.05em; color:var(--sage-dim); }
