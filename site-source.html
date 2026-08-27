@@ -434,6 +434,16 @@ body.nav-hidden .site-header{ transform:translateY(-101%); }
 /* Restore Forward attribution tab — hangs below the header, left (desktop) */
 .rf-tab{ position:fixed; top:5rem; left:0; z-index:154; display:flex; align-items:center; gap:0.72rem; padding:0.5rem 1.55rem 0.62rem clamp(1.5rem,5vw,4.5rem); background:#FBF7ED; border:1px solid var(--line); border-top:none; border-radius:0 0 2rem 0; box-shadow:0 16px 30px -22px rgba(30,20,10,0.6); text-decoration:none; transition:transform .38s var(--ease); will-change:transform; }
 body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> label sticks to the very top */
+
+/* Below desktop the header stays put while you scroll. On a phone the auto-hide
+   cost more than it returned: the nav is where Get tickets and Donate live, and
+   reaching them meant scrolling up first. The class still toggles, so the Restore
+   Forward tab has to be pinned in step or it slides up to meet a header that is
+   no longer moving. */
+@media (max-width:1024px){
+  body.nav-hidden .site-header{ transform:none; }
+  body.nav-hidden .rf-tab{ transform:none; }
+}
 .rf-tab-by{ font-family:var(--ff-body); font-style:italic; font-size:0.92rem; color:var(--ink-2); }
 .rf-tab-logo{ width:2.2rem; height:2.2rem; display:block; flex:none; }
 .rf-tab-name{ font-family:var(--ff-ui); font-size:0.82rem; font-weight:600; line-height:1.08; letter-spacing:0.01em; color:var(--ink-deep); transition:color .2s var(--ease); }
