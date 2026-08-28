@@ -485,7 +485,16 @@ body.nav-hidden .rf-tab{ transform:translateY(-5rem); }  /* header collapsed -> 
 .nav-mob-home{ display:none; }  /* shown only in the mobile/tablet menu — desktop uses the logo as home */
 .menu-toggle{ display:none; background:none; border:1px solid var(--line-strong); border-radius:999px; color:var(--ink); width:2.8rem; height:2.8rem; cursor:pointer; align-items:center; justify-content:center; flex:none; }
 .menu-toggle svg{ width:1.2rem; height:1.2rem; }
-#day-one, #day-two{ scroll-margin-top:5.5rem; }
+/* Every in-page anchor target, not just the two that had it. Measured: the header
+   ends at 5rem and the Restore Forward tab is fixed directly under it, ending at
+   7.71rem - so 5.5rem left an anchor sitting behind the tab, and the seven targets
+   with no rule at all landed behind the header itself. It bit hardest once the
+   header stopped auto-hiding below desktop, because there is now always something
+   there to land behind. One value works at every width: the whole layout is
+   rem-scaled, so 7.71rem is 7.71rem on a phone and on a desktop. */
+#day-one, #day-two, #day-three,
+#getting-there, #wild-stays, #volunteers,
+#contactForm, #claim, #subscribe{ scroll-margin-top:8.4rem; }
 
 @media (max-width: 1000px){
   .nav{ gap:0.7rem; }
