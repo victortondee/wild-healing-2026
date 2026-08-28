@@ -6726,11 +6726,20 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   function scrollToAnchor(anchor, smooth){
     var el = anchor ? document.getElementById(anchor) : null;
     if(!el){ window.scrollTo(0, 0); return; }
+    // Clear whatever is actually pinned at the top, measured rather than assumed:
+    // the header, and the Restore Forward tab that sits directly beneath it.
     var headerEl = document.getElementById("header");
-    var headerH = headerEl ? headerEl.offsetHeight : 70;
-    var y = el.getBoundingClientRect().top + window.pageYOffset - headerH - 10;
+    var obstruction = headerEl ? headerEl.offsetHeight : 70;
+    var rf = document.querySelector(".rf-tab");
+    if(rf){
+      var rb = rf.getBoundingClientRect();
+      if(rb.height && rb.bottom > obstruction){ obstruction = rb.bottom; }
+    }
+    var y = el.getBoundingClientRect().top + window.pageYOffset - obstruction - 10;
     if(y < 0){ y = 0; }
-    window.scrollTo({ top: y, behavior: (smooth && !reduceMotion) ? "smooth" : "auto" });
+    // "auto" defers to CSS scroll-behavior, which is smooth here - so a cross-page
+    // jump has to say "instant" outright or it never lands.
+    window.scrollTo({ top: y, behavior: (smooth && !reduceMotion) ? "smooth" : "instant" });
   }
 
   var renderedRoute = null;
@@ -6770,7 +6779,11 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     menuToggle.setAttribute("aria-label","Open menu");
     document.removeEventListener("keydown", onMenuKey);
 
-    if(routeChanged){ window.scrollTo(0, 0); }
+    // Only reset to the top when there is nowhere else to go. Firing scrollTo(0,0)
+    // and then a second scroll in the same task left two smooth animations racing,
+    // and the anchor one lost: tapping Sep 10 or Sep 11 from the menu landed on the
+    // top of The Walk instead of the day you asked for.
+    if(routeChanged && !st.anchor){ window.scrollTo(0, 0); }
     if(st.anchor){ scrollToAnchor(st.anchor, !routeChanged); }
   }
 
