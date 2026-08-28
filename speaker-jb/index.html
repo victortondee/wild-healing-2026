@@ -1659,8 +1659,19 @@ body.menu-open{ overflow:hidden; }
    overflow:hidden on the body, so the window never scrolls again. A header hidden
    before you opened the menu therefore stayed hidden, taking the close control with
    it and leaving no way out of the drawer. */
+/* Pin the header for real while the menu is open.
+
+   position:sticky sticks to the nearest scrolling ancestor - and body.menu-open sets
+   overflow:hidden, which turns the body INTO one. The header then falls back to its
+   static position, which is wherever the page happens to be scrolled to. Measured on
+   Sep 10 with the menu open: header top -4124px, brand and close button with it. It
+   looked fine on any page opened near the top, which is why it read as a per-page
+   bug; Sep 10 and Sep 11 auto-scroll ~4125px, so it always bit there.
+
+   transform:none additionally undoes body.nav-hidden, which slides the header away
+   on downward scroll and cannot be cleared while the window no longer scrolls. */
 body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
-  transform:none; }
+  transform:none; position:fixed; top:0; left:0; right:0; }
 @media (max-width:1000px){
   .site-header{ z-index:210; }
   .menu-toggle{ position:relative; z-index:211; color:var(--ink); }
