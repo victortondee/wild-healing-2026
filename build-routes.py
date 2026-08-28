@@ -159,6 +159,12 @@ ROUTES = {
         "ancestral herbal medicine at WILD! Healing — A Harvest of Medicine, "
         "September 9–12, 2026.",
     ),
+    "speaker-tanis": (
+        "Farah Tanis — WILD! Healing Gala 2026",
+        "Farah Tanis, critical futurist, transnational Black feminist and CEO of "
+        "Restore Forward, on healing and reconciliation at WILD! Healing — A Harvest "
+        "of Medicine, September 9–12, 2026.",
+    ),
 }
 
 # Static pages that already live at a real path and should stay in the sitemap.
