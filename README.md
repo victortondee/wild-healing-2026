@@ -1,7 +1,9 @@
 # WILD! Healing 2026
 
 Single-page site for **WILD! Healing 2026** — a Restore Forward gathering.
-Online Sept 17–18, on-the-land gathering Sept 19 in Ava, New York.
+Online Sept 9–10, travel day Sept 11, on-the-land gathering Sept 12, 2026 in
+Ava, New York. The event is over; the site now thanks visitors and points them
+to WILD 2027. The site as it stood during the event is tag `wild-healing-2026-final`.
 
 ## Files
 
