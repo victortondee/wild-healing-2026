@@ -1029,7 +1029,7 @@ body[data-page="invitation"]{ --lantern:#e2a25e; }
 /* footer newsletter — email collection (posts to a Google Apps Script Web App) */
 .footer-newsletter{ margin-top:3.2rem; padding-top:2.6rem; border-top:1px solid var(--line); display:grid; grid-template-columns:1.4fr 1fr; gap:1.6rem 3rem; align-items:start; }
 @media (max-width:760px){ .footer-newsletter{ grid-template-columns:1fr; gap:1.3rem; } }
-.footer-newsletter h5{ font-family:var(--ff-ui); font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage); margin:0 0 0.7rem; font-weight:600; }
+.footer-newsletter h5{ font-family:var(--ff-ui); font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink-2); margin:0 0 0.7rem; font-weight:600; }
 .footer-newsletter .fn-copy p{ color:var(--ink-2); font-size:0.96rem; line-height:1.6; margin:0; max-width:26rem; }
 .fn-row{ display:flex; gap:0.6rem; }
 .fn-form input[type=email]{ flex:1 1 auto; min-width:0; font-family:var(--ff-ui); font-size:0.95rem; color:var(--ink); background:rgba(255,255,255,0.55); border:1px solid var(--line-strong); border-radius:999px; padding:0.8em 1.2em; transition:border-color .2s var(--ease); }
@@ -1040,7 +1040,7 @@ body[data-page="invitation"]{ --lantern:#e2a25e; }
 .fn-btn:disabled{ opacity:0.55; cursor:default; }
 .fn-consent{ display:flex; align-items:flex-start; gap:0.5rem; margin-top:0.85rem; font-family:var(--ff-ui); font-size:0.76rem; line-height:1.5; color:var(--ink-2); }
 .fn-consent input{ margin-top:0.18rem; flex:none; accent-color:var(--lantern); }
-.fn-consent a{ color:var(--lantern); }
+.fn-consent a{ color:var(--focus); }  /* --lantern was 2.55:1 on the light ground; --focus is 4.76:1 */
 .fn-msg{ margin:0.7rem 0 0; font-family:var(--ff-ui); font-size:0.82rem; color:var(--sage); min-height:1.1em; }
 .fn-msg.err{ color:var(--ember); }
 /* subscribe section (home) + ticket strips — marketing CTAs added 2026-07-10 */
@@ -2392,9 +2392,23 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       .thanks-line{ font-size:1.25rem; }
     }
   </style>
-  <section class="band thanks-band" aria-label="Thank you">
+  <!-- Collecting emails for the next WILD is the site's main job now (2026-09-30), so the
+       sign-up sits directly under the hero and every "Stay in touch" button lands here. -->
+  <section class="band alt home-subscribe" id="subscribe">
     <div class="wrap">
-      <p class="thanks-line"><span class="thanks-lead">Thank you for walking with us.</span> WILD! Healing 2026 came to a close on September 12 &mdash; and WILD returns in 2027.</p>
+      <div class="section-head reveal" style="text-align:center; margin-inline:auto; max-width:44rem">
+        <span class="eyebrow"><span class="tick"></span>WILD returns in 2027</span>
+        <h2 class="mt-s">Be the first to hear</h2>
+        <p class="dim mt-s">Thank you for walking with us. Leave your email and you&rsquo;ll be the first to know when WILD returns &mdash; the dates, the speakers, and how to take part. No noise, only what matters.</p>
+      </div>
+      <form class="fn-form js-subscribe reveal d1" data-source="wildgala.com (home)" novalidate>
+        <div class="fn-row">
+          <input type="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
+          <button type="submit" class="fn-btn">Join</button>
+        </div>
+        <label class="fn-consent"><input type="checkbox" required><span>I agree to receive occasional updates and accept the <a href="privacy.html">Privacy Policy</a>.</span></label>
+        <p class="fn-msg" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
@@ -2608,7 +2622,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band" id="tickets">
     <div class="wrap">
       <div class="section-head reveal" style="text-align:center; margin-inline:auto; max-width:46rem">
-        <span class="eyebrow"><span class="tick"></span>WILD returns in 2027</span>
+        <span class="eyebrow"><span class="tick"></span>Until next year</span>
         <h2>Walk with us again</h2>
         <p class="dim mt-s">WILD! Healing 2026 has come to a close. Leave your email and you&rsquo;ll be the first to hear when WILD returns.</p>
       </div>
@@ -2642,23 +2656,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   </section>
 
   <!-- subscribe (home tail) — shares the Google Sheets backend with the footer form -->
-  <section class="band alt home-subscribe" id="subscribe">
-    <div class="wrap">
-      <div class="section-head reveal" style="text-align:center; margin-inline:auto; max-width:44rem">
-        <span class="eyebrow"><span class="tick"></span>Stay close</span>
-        <h2 class="mt-s">Keep the gathering in view</h2>
-        <p class="dim mt-s">Leave your email for occasional word on WILD! Healing — the program, the speakers, and the gathering on the land. No noise, only what matters.</p>
-      </div>
-      <form class="fn-form js-subscribe reveal d1" data-source="wildgala.com (home)" novalidate>
-        <div class="fn-row">
-          <input type="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
-          <button type="submit" class="fn-btn">Join</button>
-        </div>
-        <label class="fn-consent"><input type="checkbox" required> I agree to receive occasional updates and accept the <a href="privacy.html">Privacy Policy</a>.</label>
-        <p class="fn-msg" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
 
 </div>
 
@@ -6705,7 +6702,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
       </div>
       <div class="footer-col">
         <h5>Stay close</h5>
-        <a href="https://www.institute-restoreny.org/event-details/wild-healing-a-harvest-of-medicine" target="_blank" rel="noopener">Get tickets</a>
         <a href="mailto:info@restoreny.org">info@restoreny.org</a>
         <a href="/info/">Info</a>
         <a href="/contact/">Contact us</a>
@@ -6717,14 +6713,14 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     <div class="footer-newsletter">
       <div class="fn-copy">
         <h5>Stay in the circle</h5>
-        <p>Leave your email for occasional word on WILD! Healing &mdash; the program, tickets, and the gathering on the land. No noise, just what matters.</p>
+        <p>Be the first to hear when WILD returns in 2027 &mdash; the dates, the speakers, and how to take part. No noise, just what matters.</p>
       </div>
       <form class="fn-form js-subscribe" id="nlForm" data-source="wildgala.com (footer)" novalidate>
         <div class="fn-row">
           <input type="email" id="nlEmail" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
           <button type="submit" class="fn-btn" id="nlBtn">Join</button>
         </div>
-        <label class="fn-consent"><input type="checkbox" id="nlConsent" required> I agree to receive occasional updates and accept the <a href="privacy.html">Privacy Policy</a>.</label>
+        <label class="fn-consent"><input type="checkbox" id="nlConsent" required><span>I agree to receive occasional updates and accept the <a href="privacy.html">Privacy Policy</a>.</span></label>
         <p class="fn-msg" id="nlMsg" role="status" aria-live="polite"></p>
       </form>
     </div>
