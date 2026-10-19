@@ -2624,7 +2624,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 
       <div class="btn-row reveal d1" style="justify-content:center; margin-top:2.6rem">
         <a href="#/home/subscribe" class="btn btn-primary">Stay in touch <span class="arrow" aria-hidden="true">→</span></a>
-        <a href="/sponsor/" class="btn btn-ghost">Become a sponsor <span class="arrow" aria-hidden="true">→</span></a>
+        <a href="/sponsor/" class="btn btn-ghost">Sponsors &amp; giving <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -4408,17 +4408,20 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     #page-sponsor .spon-add{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; border-bottom:1px solid var(--line); padding:0.9rem 0; }
     #page-sponsor .spon-add-name{ font-family:var(--ff-body); font-size:1rem; line-height:1.4; color:var(--ink); }
     #page-sponsor .spon-add-price{ flex:none; font-family:var(--ff-ui); font-weight:700; font-size:0.95rem; color:var(--ink-deep); }
+    /* ghost buttons: --lantern text on this light ground fails 4.5:1, so use the deep ink set */
+    #page-sponsor .btn-ghost{ color:var(--ink-deep); border-color:var(--line-deep-2); }
+    #page-sponsor .btn-ghost:hover{ color:var(--ink-deep); border-color:var(--ink-deep); }
     @media (min-width:761px) and (max-width:1024px){ #page-sponsor .spon-tiers{ grid-template-columns:repeat(2,1fr); } }
     @media (max-width:760px){ #page-sponsor .spon-tiers{ grid-template-columns:1fr; } #page-sponsor .spon-adds{ grid-template-columns:1fr; gap:0; } }
     </style>
   <section class="band">
     <div class="wrap page-intro">
-      <span class="eyebrow"><span class="tick"></span>Sponsorship</span>
-      <h1>Become a Founding Steward of WILD<span class="bang">!</span> Healing</h1>
-      <p class="lede dim spon-lede">By sponsoring WILD! Healing, you are not simply supporting an event &mdash; you are helping launch a new movement at the intersection of Healing Justice, Integrative Medicine, regenerative agriculture, Indigenous knowledge, Food as Medicine, and community well-being. Your investment helps cultivate a future in which health is rooted in prevention, environmental stewardship, cultural wisdom, and collective care.</p>
+      <span class="eyebrow"><span class="tick"></span>Sponsors &middot; 2026</span>
+      <h1>Thank you to our 2026 sponsors</h1>
+      <p class="lede dim spon-lede">WILD! Healing 2026 &mdash; A Harvest of Medicine took place September 9&ndash;12, 2026. To everyone who sponsored and supported it: thank you. You did not simply support an event &mdash; you helped launch a movement at the intersection of Healing Justice, Integrative Medicine, regenerative agriculture, Indigenous knowledge, Food as Medicine, and community well-being. This page keeps a record of how sponsorship worked in 2026.</p>
       <div class="btn-row" style="margin-top:1.9rem">
-        <a href="#/contact/contactForm" class="btn btn-primary">Become a sponsor <span class="arrow" aria-hidden="true">&rarr;</span></a>
-        <a href="mailto:info@restoreny.org?subject=WILD%21%20Healing%20Sponsorship" class="btn btn-ghost">Email us</a>
+        <a href="https://www.restoreny.org/capital-campaigns" target="_blank" rel="noopener" class="btn btn-primary">Support Restore Forward&rsquo;s work <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="mailto:info@restoreny.org?subject=Sponsoring%20WILD%20in%202027" class="btn btn-ghost">Sponsor WILD in 2027? Email us</a>
       </div>
     </div>
   </section>
@@ -4426,16 +4429,15 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band alt">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow"><span class="tick"></span>Sponsorship levels</span>
-        <h2>Grow with us</h2>
-        <p class="lede dim" style="margin-top:1rem; max-width:44rem">Rather than metals &mdash; gold, silver, bronze &mdash; our levels reflect growth, stewardship, and healing. Every level carries meaningful recognition and benefits.</p>
+        <span class="eyebrow"><span class="tick"></span>2026 sponsorship levels</span>
+        <h2>How sponsors grew with us</h2>
+        <p class="lede dim" style="margin-top:1rem; max-width:44rem">Rather than metals &mdash; gold, silver, bronze &mdash; our 2026 levels reflected growth, stewardship, and healing. Each level carried its own recognition.</p>
       </div>
       <div class="spon-tiers reveal d1">
         <article class="spon-card">
           <h3 class="spon-level">Seed Sponsor</h3>
           <p class="spon-price">$2,500</p>
           <ul class="spon-benefits">
-            <li>2 Gala tickets</li>
             <li>Name listed on the website and event program</li>
             <li>Recognition on event signage</li>
             <li>Social-media thank-you</li>
@@ -4446,21 +4448,17 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <h3 class="spon-level">Harvest Sponsor</h3>
           <p class="spon-price">$10,000</p>
           <ul class="spon-benefits">
-            <li>6 Gala tickets</li>
             <li>Recognition during one program session</li>
             <li>Logo on the website, program, and signage</li>
             <li>Quarter-page program ad</li>
             <li>Recognition in event emails and social media</li>
-            <li>Exhibit table at the Gala</li>
           </ul>
         </article>
         <article class="spon-card">
           <h3 class="spon-level">Medicine Sponsor</h3>
           <p class="spon-price">$25,000</p>
           <ul class="spon-benefits">
-            <li>10 Gala tickets</li>
             <li>Half-page program ad</li>
-            <li>Premium exhibit space</li>
             <li>Recognition from the stage during the Gala</li>
             <li>Featured logo on the website and promotional materials</li>
             <li>Sponsor a medicine walk, healing circle, or Food as Medicine experience</li>
@@ -4471,7 +4469,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <h3 class="spon-level">Healing Justice Sponsor</h3>
           <p class="spon-price">$50,000</p>
           <ul class="spon-benefits">
-            <li>VIP table for 10</li>
             <li>Full-page program ad</li>
             <li>Featured recognition throughout the virtual summit and Gala</li>
             <li>Sponsor a keynote session, wellness pavilion, or Harvest Feast</li>
@@ -4485,7 +4482,6 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
           <p class="spon-price">$100,000</p>
           <ul class="spon-benefits">
             <li>Presenting recognition as a principal sponsor of WILD! Healing</li>
-            <li>Two VIP tables (20 guests)</li>
             <li>Prominent logo across all event materials, website, livestream, and signage</li>
             <li>Recognition in all press materials (where appropriate)</li>
             <li>Welcome attendees at the Gala, or introduce a keynote speaker</li>
@@ -4507,9 +4503,9 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
   <section class="band">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow"><span class="tick"></span>Underwrite an experience</span>
-        <h2>Sponsor a moment on the land</h2>
-        <p class="lede dim" style="margin-top:1rem; max-width:44rem">You can also underwrite a specific experience &mdash; giving it your name and helping bring it to life.</p>
+        <span class="eyebrow"><span class="tick"></span>2026 experiences</span>
+        <h2>Moments sponsors could underwrite</h2>
+        <p class="lede dim" style="margin-top:1rem; max-width:44rem">In 2026, sponsors could also underwrite a specific experience &mdash; giving it their name and helping bring it to life.</p>
       </div>
       <div class="spon-adds reveal d1">
         <div class="spon-add"><span class="spon-add-name">Medicine Walk</span><span class="spon-add-price">$15,000</span></div>
@@ -4526,18 +4522,19 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
 
   <section class="band callband">
     <div class="wrap reveal">
-      <span class="eyebrow"><span class="tick"></span>Become a Founding Steward</span>
-      <h2 class="mt-s">Partner with us in a lasting movement.</h2>
-      <p>Tell us which level or experience speaks to you and we&rsquo;ll send the full sponsorship packet. We&rsquo;re glad to tailor a package to your interests.</p>
+      <span class="eyebrow"><span class="tick"></span>Give or sponsor</span>
+      <h2 class="mt-s">Help the work continue.</h2>
+      <p>WILD returns in 2027. If you&rsquo;d like to sponsor it, or support Restore Forward&rsquo;s healing work year-round, we&rsquo;d love to hear from you.</p>
       <div class="btn-row" style="justify-content:center; margin-top:2rem">
-        <a href="#/contact/contactForm" class="btn btn-primary">Request the sponsorship packet <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="#/contact/contactForm" class="btn btn-primary">Talk to us about sponsoring <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="https://www.restoreny.org/capital-campaigns" target="_blank" rel="noopener" class="btn btn-ghost">Support Restore Forward&rsquo;s work</a>
       </div>
     </div>
   </section>
 
   <section class="band ticket-strip">
     <div class="wrap ticket-strip-inner">
-      <p class="ticket-strip-copy"><strong>Not every gift needs a tier.</strong> If none of the levels above are the right fit, a donation supports the same work.</p>
+      <p class="ticket-strip-copy"><strong>Not every gift needs a tier.</strong> A donation supports the same work, all year round.</p>
       <span class="ts-actions">
         <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener" class="btn ts-donate">Donate</a>
         <a href="#/home/subscribe" class="btn btn-primary">Stay in touch <span class="arrow" aria-hidden="true">&rarr;</span></a>
@@ -6694,7 +6691,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
         <a href="mailto:info@restoreny.org">info@restoreny.org</a>
         <a href="/info/">Info</a>
         <a href="/contact/">Contact us</a>
-        <a href="/sponsor/">Become a sponsor</a>
+        <a href="/sponsor/">Sponsors &amp; giving</a>
         <a href="https://www.institute-restoreny.org/restore-forward-membership" target="_blank" rel="noopener">Become a member</a>
         <a href="https://blackwomensblueprint.ourpowerbase.net/civicrm/contribute/transact?reset=1&amp;id=4" target="_blank" rel="noopener">Donate</a>
       </div>
@@ -6748,7 +6745,7 @@ body.menu-open .site-header{ -webkit-backdrop-filter:none; backdrop-filter:none;
     journey: "The Walk — WILD! Healing Gala 2026",
     gathering: "The Restoration — WILD! Healing Gala 2026",
     info: "Info — WILD! Healing Gala 2026 | Dates & Location",
-    sponsor: "Sponsorship — WILD! Healing Gala 2026 | Become a Founding Steward",
+    sponsor: "Thank you to our 2026 sponsors — WILD! Healing | Sponsors & giving",
     founding: "Founding 100 — WILD! Healing Gala 2026",
     contact: "Contact — WILD! Healing Gala 2026",
     luminaries: "Past Luminaries — WILD! Healing Gala 2026",
