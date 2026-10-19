@@ -66,10 +66,10 @@ ROUTES = {
         "Medicine, presented by Restore Forward.",
     ),
     "sponsor": (
-        "Sponsorship — WILD! Healing Gala 2026 | Become a Founding Steward",
-        "Sponsor WILD! Healing: A Harvest of Medicine. Five giving levels from "
-        "Seed ($2,500) to Legacy ($100,000), plus ways to underwrite a medicine "
-        "walk, harvest feast, or the virtual summit. Become a Founding Steward.",
+        "Thank you to our 2026 sponsors — WILD! Healing | Sponsors & giving",
+        "Thank you to the sponsors of WILD! Healing 2026 — A Harvest of Medicine. "
+        "A record of the 2026 sponsorship levels, and how to support Restore "
+        "Forward's work or talk to us about sponsoring when WILD returns in 2027.",
     ),
     # "founding" is intentionally omitted: the Founding 100 page is UNLISTED —
     # reachable at #/founding for the campaign links, but with no crawlable URL and
